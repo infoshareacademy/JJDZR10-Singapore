@@ -1,7 +1,5 @@
 package com.infoshareacademy.model;
 
-import com.infoshareacademy.place.Town;
-
 public class Opinion {
 
     private String comment;
