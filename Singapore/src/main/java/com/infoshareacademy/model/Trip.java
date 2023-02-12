@@ -6,6 +6,6 @@ public class Trip extends TripGenerator {
 
     private TripGenerator tripGenerator;
 
-
+    private AddUserTrip addUserTrip;
 
 }

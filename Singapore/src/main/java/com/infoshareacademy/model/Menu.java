@@ -1,6 +1,5 @@
 package com.infoshareacademy.model;
 
-public class AddUserTrip {
-
+public class Menu {
 
 }
