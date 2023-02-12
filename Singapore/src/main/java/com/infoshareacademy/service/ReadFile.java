@@ -8,7 +8,7 @@ public class ReadFile {
 
 
     private String filePath = "src/main/resources/Gdańsk/Monuments/próba.txt";
-
+    // TODO Stworzyć metodę na generowanie ścieżki
     public String readFile() {
         File file = new File(filePath);
         Scanner in = null;
