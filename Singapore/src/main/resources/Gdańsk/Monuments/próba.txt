@@ -1,1 +1,17 @@
-test3
+Miasto
+Gdańsk
+%koniec%
+
+Zabytek:
+Bazylika Mariacka:
+Bazylika konkatedralna Wniebowzięcia Najświętszej Maryi Panny, zwana także bazyliką Mariacką – historyczna fara Głównego Miasta w Gdańsku zwana często „Koroną Gdańska”, pełniąca funkcję kościoła katolickiego i ewangelickiego, od 1986 konkatedra diecezji gdańskiej, która w 1992 stała się archidiecezją.
+%koniec%
+
+Średnia ocena:
+7.5
+%koniec%
+
+Komentarz:
+Super miejsce!
+login użytkownika
+%koniec%

@@ -1,5 +1,7 @@
 package com.infoshareacademy.model;
 
+import com.infoshareacademy.service.ReadFile;
+
 public class Opinion {
 
     private String comment;
@@ -8,7 +10,13 @@ public class Opinion {
 
     private User user;
 
-   // private Town town;
+    public void userOpinion() {
+        ReadFile readFile = new ReadFile();
+        readFile.readFile();
+  //      while (readFile.readFile()=="Komentarz"){
+ //           readFile.writeFile();
+     //   }
+    }
 
 
 }
