@@ -1,13 +1,10 @@
 package com.infoshareacademy.service;
 
 import java.io.*;
-
-import java.nio.Buffer;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class ReadFile {
-    private String readFile;
+
     private File file;
     private String userInput;
     private String filePath = "/home/bartek/Desktop/Singapore/JJDZR10-Singapore/Singapore/src/main/resources/Gdańsk/Monuments/próba.txt";
@@ -16,6 +13,10 @@ public class ReadFile {
 
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    public void setWriteFile(String writeFile) {
+        this.userInput = writeFile;
     }
 
     public void readFile() {
@@ -28,12 +29,11 @@ public class ReadFile {
             while (in.hasNextLine()) {
                 userInput = in.nextLine();
                 if (userInput.equals("Komentarz:")) {
-                    do{
-                        userInput=in.nextLine();
+                    do {
+                        userInput = in.nextLine();
                         System.out.println(userInput);
                     }
                     while (!in.hasNext("%koniec%"));
-
                 }
             }
         } catch (FileNotFoundException e) {
@@ -43,26 +43,15 @@ public class ReadFile {
 
 
 
-    public void setWriteFile(String writeFile) {
-        this.userInput = writeFile;
-    }
 
-    public void writeFile() {    //metoda zapisu na końcu pliku tekstowego
+    public void writeFile(String userInput) {//metoda zapisu na końcu pliku tekstowego
         file = new File(filePath); //file - zmienna z nazwą pliku
         try {
             FileWriter fileWriter = new FileWriter(filePath, true);
-            Scanner scanner = new Scanner(System.in);
-            userInput = scanner.nextLine();
-            fileWriter.write(userInput);
-            // fileWriter.write(userLogin);   //TODO dopisanie na końcu komentarza loginu użytkownika
+            fileWriter.write("\n" + userInput);
             fileWriter.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-
-
-        System.out.println("Dodanie tekstu zakończone sukcesem");
     }
-
-
 }
