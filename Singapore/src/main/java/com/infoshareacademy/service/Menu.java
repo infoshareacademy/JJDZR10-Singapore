@@ -1,4 +1,4 @@
-package com.infoshareacademy.model;
+package com.infoshareacademy.service;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
