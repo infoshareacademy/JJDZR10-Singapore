@@ -1,12 +1,10 @@
 package com.infoshareacademy;
 
-import com.infoshareacademy.model.Menu;
 import com.infoshareacademy.service.ReadFile;
 
 import java.io.IOException;
-import java.util.InputMismatchException;
 
-import static com.infoshareacademy.model.Menu.OpenMenuMethod;
+import static com.infoshareacademy.service.Menu.OpenMenuMethod;
 
 /**
  * Hello world!
