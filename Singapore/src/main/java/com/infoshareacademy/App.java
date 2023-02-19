@@ -1,9 +1,5 @@
 package com.infoshareacademy;
-
 import com.infoshareacademy.service.ReadFile;
-
-import java.io.IOException;
-
 import static com.infoshareacademy.service.Menu.OpenMenuMethod;
 
 /**
@@ -11,7 +7,7 @@ import static com.infoshareacademy.service.Menu.OpenMenuMethod;
  *
  */
 public class App {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         OpenMenuMethod();
 
