@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
-    public static void main(String args[]) throws IOException {
+    public void menu(){
+
         Scanner sc = new Scanner(System.in);
         int option, subOption, subSubOption;
         System.out.println("\nWitaj Włóczykiju! Zaplanuj swoją wycieczkę razem ze mną!");
