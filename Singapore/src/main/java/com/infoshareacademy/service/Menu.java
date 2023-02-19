@@ -1,12 +1,11 @@
 package com.infoshareacademy.service;
-import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 //stworzyłem metody do obsługi menu w oparciu o kombinację pętli "do while" oraz instrukcji warunkowej "switch"
 
 public class Menu {
-      public static void OpenMenu() throws IOException {
+      public static void OpenMenu() {
         Scanner sc = new Scanner(System.in);
         int option;      //przerzuciłem zmienne subOption i subSubOption do metody prywatnej OpenSubOption
         System.out.println("\nWitaj Włóczykiju! Zaplanuj swoją wycieczkę razem ze mną!");
@@ -30,7 +29,7 @@ public class Menu {
 
     //* Wyodrębniłem kod podMenu do prywatnej metody OpenSubMenu celem jego hermetyzacji
 
-    private static void OpenSubMenu(Scanner sc, int option) throws IOException {
+    private static void OpenSubMenu(Scanner sc, int option) {
         int subOption;
         int subSubOption;
         switch (option) {
@@ -220,12 +219,12 @@ public class Menu {
 
     //Obsłużyłem wyjątek InputMismatchException metody OpenMenuMethod
 
-    public static void OpenMenuMethod() throws IOException {
+    public static void OpenMenuMethod() {
         repeat: while (true) {
             try {
                 Menu.OpenMenu();
             } catch (InputMismatchException e) {
-                System.out.println("Podałeś literę zamiast liczby, spróbuj ponownie!");
+                System.out.println("Nie podałeś liczby z przedziału od 1 do 6, spróbuj ponownie!");
                 continue repeat;
             }
         }
