@@ -8,7 +8,7 @@ public class Opinion {
 
     private User user;
 
-    private Town town;
+   // private Town town;
 
 
 }
