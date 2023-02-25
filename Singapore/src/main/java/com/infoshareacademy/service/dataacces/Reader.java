@@ -63,6 +63,12 @@ public class Reader {
 
 
     }
+
+    /**
+     *
+     * @param c
+     * @return
+     */
     public JSONArray getListInJson(Class c) {
 
         JSONArray jsonArray;
@@ -70,10 +76,12 @@ public class Reader {
 
         /**
          * Odczyt z resources InputStream + InputStreamReader
+         * Parsujemy InputStream
          */
         InputStream resource = getResource(c);
+        InputStreamReader isr =new InputStreamReader(resource);
         try {
-            jsonArray = (JSONArray) parser.parse(new InputStreamReader(resource));
+            jsonArray = (JSONArray) parser.parse(isr);
         } catch (Exception e) {
             System.out.println(e);
             return new JSONArray();
@@ -81,7 +89,15 @@ public class Reader {
         return  jsonArray;
 
     }
+
+    /**
+     * Budowanie ścieżki pod jaką oczekujemy Jsona dla konkretnej klasy.
+     * (getResource zwraca nam Inputstream)
+     * @param c
+     * @return
+     */
     private InputStream getResource(Class c) {
+
         return c.getResourceAsStream("/"
                 + this.method + "/"
                 + c.getPackageName() + "/"
@@ -107,7 +123,7 @@ public class Reader {
         if(jsonObject.containsKey("created_by_user")){
             long idUser = (long) jsonObject.get("created_by_user");
             User user = (User) this.getObjectById(User.class, idUser);
-            trip.setCreatedByUser(user);
+            trip.setUser(user);
         }
         return trip;
     }
