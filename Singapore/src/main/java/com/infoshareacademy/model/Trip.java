@@ -19,21 +19,19 @@ public class Trip implements Persistent{
      */
     private Double time_for_trip;
 
-    private User created_by_user;
-
-    public User getCreatedByUser() {
-        return created_by_user;
-    }
-
-    public void setCreatedByUser(User created_by_user) {
-        this.created_by_user = created_by_user;
-    }
-
+    private User user;
     /**
      * Places to see on the route
      */
     private List<Places> places;
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public long getId() {
         return id;
@@ -74,7 +72,7 @@ public class Trip implements Persistent{
                 ", name='" + name + '\'' +
                 ", distance=" + distance +
                 ", time_for_trip=" + time_for_trip +
-                ", created_by_user=" + created_by_user +
+                ", created_by_user=" + user +
                 ", places=" + places +
                 '}';
     }
