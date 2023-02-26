@@ -1,4 +1,6 @@
 package com.infoshareacademy;
+import com.infoshareacademy.service.ReadFile;
+import static com.infoshareacademy.service.Menu.OpenMenuMethod;
 
 import com.infoshareacademy.model.Persistent;
 import com.infoshareacademy.model.Trip;
@@ -18,5 +20,14 @@ public class App {
             Trip oParsed = (Trip) o;
             System.out.println(oParsed);
         }
+
+        OpenMenuMethod();
+
+        ReadFile readFile = new ReadFile();
+        readFile.readFile();
+
+
     }
+
+
 }
