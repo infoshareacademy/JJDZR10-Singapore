@@ -2,7 +2,7 @@ package com.infoshareacademy;
 
 
 import com.infoshareacademy.model.User;
-import com.infoshareacademy.service.Opinion;
+import com.infoshareacademy.service.OpinionService;
 
 /**
  * Hello world!
@@ -10,14 +10,14 @@ import com.infoshareacademy.service.Opinion;
 public class App {
     public static void main(String[] args) {
         User user = new User("ALAN", "Albert", "Komoda");
-        Opinion opinion = new Opinion(user);
+        OpinionService opinionService = new OpinionService(user);
 
         for (int i = 0; i < 3; i++) {
-            opinion.setUserOpinion();
+            opinionService.setUserOpinion();
         }
 
 
-        System.out.println(opinion.getUserOpinion());
+        System.out.println(opinionService.getUserOpinion());
 
     }
 }
