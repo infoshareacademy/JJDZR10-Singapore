@@ -1,14 +1,14 @@
 [
   {
     "id": 1,
-    "name": "Seven days trip on 3city",
+    "name": "Seven days trip in 3city",
     "distance": 67.5,
     "time_for_trip": 49.5,
     "created_by_user": 1
   },
   {
     "id": 2,
-    "name": "Three days trip on Gdańsk",
+    "name": "Three days trip in Gdańsk",
     "distance": 40,
     "time_for_trip": 23,
     "created_by_user": 1
