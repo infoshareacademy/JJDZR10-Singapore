@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class Opinion extends ReadFile {
+public class OpinionService extends ReadFile {
     private String userOpinion;
 
     private String comment;
@@ -18,7 +18,7 @@ public class Opinion extends ReadFile {
     private int rate;
     private User user;
 
-    public Opinion(User user) {
+    public OpinionService(User user) {
         this.user = user;
     }
 
