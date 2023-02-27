@@ -13,9 +13,9 @@ public class OpinionService extends ReadFile {
     private String comment;
     private boolean isValidRate;
     private boolean isValidComment;
-    private Double rating;
-    private List<Integer> ratings = new ArrayList<>();
-    private int rate;
+    private Double objectRate;
+    private List<Integer> ratingsList = new ArrayList<>();
+    private int userRate;
     private User user;
 
     public OpinionService(User user) {
@@ -33,7 +33,7 @@ public class OpinionService extends ReadFile {
 
         setRate();
         System.out.println("Komentarz dodano. ");
-        userOpinion = "Komentarz:\n" + comment + "\nod: " + user.getLogin() + "\nŚrednia ocena " + ratings.size() + " użytkowników to " + rating + ".";
+        userOpinion = "Komentarz:\n" + comment + "\nod: " + user.getLogin() + "\nŚrednia ocena " + ratingsList.size() + " użytkowników to " + objectRate + ".";
         return userOpinion;
     }
 
@@ -49,29 +49,29 @@ public class OpinionService extends ReadFile {
             try {
 
                 Scanner scanner = new Scanner(System.in);
-                rate = scanner.nextInt();
+                userRate = scanner.nextInt();
                 checkValidRate();
 
             } catch (Exception f) {
                 System.out.println("Podaj liczbę z zakresu 1-10.");
             }
         }
-        ratings.add(rate);
-        getRating();
+        ratingsList.add(userRate);
+        getObjectRate();
     }
 
 
-    private Double getRating() {
+    private Double getObjectRate() {
         Double sum = 0d;
-        for (int i = 0; i < ratings.size(); i++) {
-            sum += (double) ratings.get(i);
+        for (int i = 0; i < ratingsList.size(); i++) {
+            sum += (double) ratingsList.get(i);
         }
-        return rating = (double) (sum / ratings.size());
+        return objectRate = (double) (sum / ratingsList.size());
     }
 
 
     private boolean checkValidRate() {
-        if (rate < 1 || rate > 10) {
+        if (userRate < 1 || userRate > 10) {
             throw new IllegalArgumentException();
         } else {
             isValidRate = false;
