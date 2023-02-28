@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Gdańsk",
+    "description": "Miasto w województwie pomorskim, położone nad Morzem Bałtyckim u ujścia Motławy do Wisły nad Zatoką Gdańską.\nCentrum kulturalne, naukowe i gospodarcze oraz stolica województwa pomorskiego."
+  },
+  {
+    "id": 2,
+    "name": "Gdynia",
+    "description": "Miasto w województwie pomorskim, położone nad Morzem Bałtyckim. Wchodzi w skład Trójmiasta (wraz z Gdańskiem i Sopotem).\nJest najludniejszym w Polsce miastem niewojewódzkim z wieloma ciekawymi restauracjami i dostępem do plaży."
+  },
+  {
+    "id": 3,
+    "name": "Warszawa",
+    "description": "Stolica Polski i województwa mazowieckiego, największe miasto w kraju, położone w jego centralnej części,\nna Nizinie Środkowomazowieckiej, na Mazowszu, nad Wisłą."
+  },
+  {
+    "id": 4,
+    "name": "Kraków",
+    "description": "Miasto położone w południowej Polsce nad Wisłą, drugie co do liczby mieszkańców i powierzchni miasto kraju.\nFormalna stolica Polski do 1795 roku i miasto koronacyjne oraz nekropolia królów Polski. Kraków jest stolicą historycznej Małopolski.\nLeży na obszarze Bramy Krakowskiej, Niecki Nidziańskiej i Pogórza Zachodniobeskidzkiego."
+  },
+  {
+    "id": 5,
+    "name": "Wrocław",
+    "description": "Miasto w południowo-zachodniej Polsce. Położone na Nizinie Śląskiej, nad Odrą i czterema jej dopływami.\nJest historyczną stolicą Dolnego Śląska, a także całego Śląska. Jest głównym miastem aglomeracji wrocławskiej.\nTrzecie pod względem liczby ludności miasto w Polsce"
+  }
+]
