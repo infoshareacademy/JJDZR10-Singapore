@@ -21,12 +21,9 @@ public class App {
             System.out.println(oParsed);
         }
 
+
+
         OpenMenuMethod();
-
-        ReadFile readFile = new ReadFile();
-        readFile.readFile();
-
-
     }
 
 }
