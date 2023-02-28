@@ -6,7 +6,7 @@ import com.infoshareacademy.service.dataacces.Reader;
 
 import java.util.List;
 
-public class CityViewer  extends Reader {
+public class CityViewer extends Reader {
     public void cityView() {
         List<Persistent> city = getList(City.class);
         for (Persistent o : city) {
