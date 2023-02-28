@@ -1,4 +1,7 @@
 package com.infoshareacademy;
+import com.infoshareacademy.model.City;
+import com.infoshareacademy.model.User;
+import com.infoshareacademy.service.CityViewer;
 import com.infoshareacademy.service.ReadFile;
 import static com.infoshareacademy.service.Menu.OpenMenuMethod;
 
@@ -14,16 +17,11 @@ import java.util.List;
  */
 public class App {
     public static void main(String[] args) {
-        Reader reader = new Reader();
-        List<Persistent> trips = reader.getList(Trip.class);
-        for (Persistent o: trips) {
-            Trip oParsed = (Trip) o;
-            System.out.println(oParsed);
-        }
+        CityViewer cityViewer = new CityViewer();
+        cityViewer.cityView();
 
 
-
-        OpenMenuMethod();
+        //OpenMenuMethod();
     }
 
 }

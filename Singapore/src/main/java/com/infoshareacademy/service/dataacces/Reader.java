@@ -3,6 +3,8 @@ package com.infoshareacademy.service.dataacces;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.infoshareacademy.model.City;
 import com.infoshareacademy.model.Persistent;
 import com.infoshareacademy.model.Trip;
 import com.infoshareacademy.model.User;
@@ -40,9 +42,10 @@ public class Reader {
         switch (className) {
             case "com.infoshareacademy.model.Trip":
                 return this.createTripInstance(jsonObject);
-
             case "com.infoshareacademy.model.User":
                 return this.createUserInstance(jsonObject);
+            case "com.infoshareacademy.model.City":
+                return this.createCityInstance(jsonObject);
         }
         throw(new Exception("No such model entity"));
     }
@@ -111,6 +114,13 @@ public class Reader {
         user.setLogin(jsonObject.get("login").toString());
         user.setId((Long) jsonObject.get("id"));
         return user;
+    }
+    private City createCityInstance(JSONObject jsonObject){
+        City city = new City();
+        city.setId((Long) jsonObject.get("id"));
+        city.setName(jsonObject.get("name").toString());
+        city.setDescription(jsonObject.get("description").toString());
+        return city;
     }
 
     private Trip createTripInstance(JSONObject jsonObject) {
