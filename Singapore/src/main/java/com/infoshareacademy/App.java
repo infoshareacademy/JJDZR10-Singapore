@@ -1,5 +1,6 @@
 package com.infoshareacademy;
 import com.infoshareacademy.model.User;
+import com.infoshareacademy.service.Menu;
 import com.infoshareacademy.service.OpinionService;
 
 
@@ -10,7 +11,10 @@ public class App {
         User user = new User();
         user.setLogin("Bolesław");
 
-        OpinionService opinionService = new OpinionService(user);
-        opinionService.setUserOpinion();
+        Menu menu = new Menu();
+        menu.OpenMenuMethod();
+
+
+
     }
 }
