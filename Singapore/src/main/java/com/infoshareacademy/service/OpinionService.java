@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class OpinionService extends SystemInService {
+public class OpinionService extends ValidatorService {
     private String userOpinion;
     private Double objectRate;
     private List<Integer> ratingsList = new ArrayList<>();
@@ -17,15 +17,17 @@ public class OpinionService extends SystemInService {
     }
 
     public String setUserOpinion() {
-        scanUserString("Napisz komentarz.");
+        scanUserString("Napisz komentarz.", "Nic nie napisałeś, podaj swoją opinię");
         setRate();
         System.out.println("Komentarz dodano. ");
         userOpinion = "Komentarz:\n" + getUserScanString() + "\nod: " + user.getLogin() + "\nŚrednia ocena " + ratingsList.size() + " użytkowników to " + objectRate + ".";
+        System.out.println(userOpinion);  //FIXME usunąć po scaleniu z zapisywaniem w json
         return userOpinion;
+
     }
 
     private void setRate() {
-        userScanInteger("Podaj swoją ocenę w skali 1-10", 1, 10);
+        userScanInteger("Podaj swoją ocenę w skali 1-10", "Podałeś liczbę spoza zakresu", 1, 10);
         ratingsList.add(getUserScanInteger());
         getObjectRate();
     }
