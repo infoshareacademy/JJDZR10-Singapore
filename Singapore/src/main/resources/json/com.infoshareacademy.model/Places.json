@@ -130,9 +130,108 @@
     "name": "Pomnik Syreny nad Wisłą",
     "description": "Monument znajdujący się przy ul. Wybrzeże Kościuszkowskie. Rzeźba przedstawia postać Syreny z uniesionym mieczem i tarczą.\nWzrok ma skierowany na północ, a jej mocny kobiecy korpus osłania trzymana w lewej ręce okrągła, lekko wypukła tarcza.\nNa tarczy znajduje się wizerunek orła w koronie, wokół którego biegnie napis „Warszawa”",
     "prize":0,
-    "rate" : 4.6,
+    "rate" : 4.2,
     "opinion" : "Ładne miejsce na spacer i porobienia zdjęć.",
     "fromCity" : 3
   }
+  {
+   "id": 16,
+    "name": "Pizzaiolo",
+    "description": "Bezpretensjonalna restauracja serwująca koktajle oraz pizzę w stylu neapolitańskim z różnymi dodatkami.",
+    "prize":0,
+    "rate" : 4.6,
+    "opinion" : "Zdecydowanie jedna z lepszych pizzerii w  Wawie.",
+    "fromCity" : 3
+  },
+   {
+   "id": 17,
+    "name": "Zamek Królewski na Wawelu",
+    "description": "Zamek obronno-rezydencyjny w Krakowie, na wzgórzu Wawelskim.Mają w nim siedzibę Państwowe Zbiory Sztuki - Zamek Królewski na Wawelu, muzeum o powierzchni 7040 m² z 71 salami wystawowymi.",
+    "prize":40,
+    "rate" : 4.7,
+    "opinion" : "Piękne miejsce, dużo histori Polski.",
+    "fromCity" : 4
+  },
+   {
+   "id": 18,
+    "name": "Sukiennice",
+    "description": "Sukiennice – zabytkowy budynek sukiennic znajdujący się w Krakowie na Starym Mieście, pośrodku Rynku Głównego. ",
+    "prize":0,
+    "rate" : 4.7,
+    "opinion" : "So much fun to walk around and buy souvenirs at.",
+    "fromCity" : 4
+  },
+   {
+   "id": 19,
+    "name": "Planty",
+    "description": "Planty – park miejski w Krakowie otaczający Stare Miasto. Został założony w latach 1822–1830, ma powierzchnię 21 ha i ok. 4 km długości.",
+    "prize":0,
+    "rate" : 4.7,
+    "opinion" : "Fajne miejsce na spacer lub do pobiegania",
+    "fromCity" : 4
+  },
+     {
+   "id": 20,
+    "name": "Kopiec Kościuszki",
+    "description": "Kopiec Kościuszki – jeden z pięciu kopców krakowskich, poświęcony Tadeuszowi Kościuszce, znajduje się na Górze św. Bronisławy w zachodniej części Krakowa na terenie Dzielnicy VII Zwierzyniec.",
+    "prize":0,
+    "rate" : 4.2,
+    "opinion" : "Ładne miejsce na zachód słońca i widok na miasto",
+    "fromCity" : 4
+  },
+  {
+   "id": 21,
+    "name": "Restauracja Starka Kraków",
+    "description": "Kameralna, przytulna restauracja z 2 salami i barem serwująca pożywne nowoczesne dania i szeroki wybór wódek.",
+    "prize":0,
+    "rate" : 4.5,
+    "opinion" : "Jest to jedna z droższych restauracji w których bywam, ale zdecydowanie warta swojej ceny.",
+    "fromCity" : 4
+  },
+   {
+   "id": 22,
+    "name": "Muzeum Panorama Racławicka",
+    "description": "Muzeum sztuki we Wrocławiu, założone w 1893 we Lwowie, od 1980 we Wrocławiu; eksponuje cykloramiczny obraz Bitwa pod Racławicami\nnamalowany w latach 1893–1894 przez zespół malarzy pod kierunkiem Jana Styki i Wojciecha Kossaka. ",
+    "prize":25,
+    "rate" : 4.9,
+    "opinion" : "Nie tylko wspaniała sztuka ale też dużo historii",
+    "fromCity" : 5
+  },
+    {
+   "id": 23,
+    "name": "Ogród Japonski",
+    "description": "Znajduje się w Parku Szczytnickim w Śródmieściu Wrocławia. W ogrodzie zgromadzono prawie 270 taksonów roślin drzewiastych. ",
+    "prize":0,
+    "rate" : 4.5,
+    "opinion" : "Wspaniały, szczególnie wiosną",
+    "fromCity" : 5
+  },
+    {
+   "id": 24,
+    "name": "Wrocławski Rynek",
+    "description": "Średniowieczny plac targowy we Wrocławiu, obecnie centralna część strefy pieszej. Jeden z największych rynków staromiejskich Europy, z największymi ratuszami w Polsce.\nRynek wrocławski, według Olgierda Czernera, obejmuje cały teren placu wraz z wszystkimi elementami architektonicznymi znajdującym się na jego obszarze oraz zabudowę otaczającą plac z czterech stron.
+    "prize":0,
+    "rate" : 4.9,
+    "opinion" : "Piękne miejsce z dużą ilością restaturacji i pubów.",
+    "fromCity" : 5
+  },
+   {
+   "id": 25,
+    "name": "Most Tumski",
+    "description": "Dwuprzęsłowy stalowy, nitowany most we Wrocławiu zbudowany w roku 1889 nad północną odnogą Odry pomiędzy Ostrowem Tumskim a Wyspą Piasek, na miejscu wcześniejszego mostu drewnianego"
+    "prize":0,
+    "rate" : 4.2,
+    "opinion" : "Czarujący most",
+    "fromCity" : 5
+  }, 
+    {
+   "id": 26,
+    "name": "Pepik PUB",
+    "description": "Tradycyjne czeskie potrawy, kawa i piwo w rustykalnym lokalu z tarasem."
+    "prize":0,
+    "rate" : 4.6,
+    "opinion" : "Miejsce bardzo klimatyczne z czeską obsługą.",
+    "fromCity" : 5
+  }, 
 ]
 
