@@ -14,4 +14,8 @@ public class PlaceViewer extends Reader {
             System.out.println(oParsed);
         }
     }
+    public void placesViewByCityId(long id){
+        }
+
+
 }

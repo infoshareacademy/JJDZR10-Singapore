@@ -23,7 +23,8 @@ public class App {
         CityViewer cityViewer = new CityViewer();
         cityViewer.cityView();
         PlaceViewer placeViewer = new PlaceViewer();
-        placeViewer.placesView();
+        //placeViewer.placesView();
+        placeViewer.placesViewByCityId(2);
 
 
 
