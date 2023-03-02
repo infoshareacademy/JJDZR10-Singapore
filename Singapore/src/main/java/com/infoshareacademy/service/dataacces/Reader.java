@@ -4,10 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.infoshareacademy.model.City;
-import com.infoshareacademy.model.Persistent;
-import com.infoshareacademy.model.Trip;
-import com.infoshareacademy.model.User;
+import com.infoshareacademy.model.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -46,6 +43,8 @@ public class Reader {
                 return this.createUserInstance(jsonObject);
             case "com.infoshareacademy.model.City":
                 return this.createCityInstance(jsonObject);
+            case "com.infoshareacademy.model.Places":
+                return this.createPlaceInstance(jsonObject);
         }
         throw(new Exception("No such model entity"));
     }
@@ -143,5 +142,20 @@ public class Reader {
             trip.setUser(user);
         }
         return trip;
+    }
+    private Places createPlaceInstance(JSONObject jsonObject) {
+        Places place = new Places();
+        place.setId((Long) jsonObject.get("id"));
+        place.setName((String) jsonObject.get("name"));
+        place.setDescription(jsonObject.get("description").toString());
+        place.setRate(Double.parseDouble(jsonObject.get("rate").toString()));
+        place.setPrize(Double.parseDouble(jsonObject.get("prize").toString()));
+        place.setOpinion((String) jsonObject.get("opinion"));
+        if(jsonObject.containsKey("fromCity")){
+            long idCity = (long) jsonObject.get("fromCity");
+            City city = (City) this.getObjectById(City.class, idCity);
+            place.setCity(city);
+        }
+        return place;
     }
 }
