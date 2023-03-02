@@ -1,4 +1,5 @@
 package com.infoshareacademy.model;
+import java.util.List;
 
 public class City implements Persistent {
     private long id;

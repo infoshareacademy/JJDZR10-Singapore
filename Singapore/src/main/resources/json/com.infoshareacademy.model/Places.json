@@ -125,6 +125,14 @@
     "opinion" : "Duży park i piękne łazienki",
     "fromCity" : 3
   },
-  
+  {
+    "id": 15,
+    "name": "Pomnik Syreny nad Wisłą",
+    "description": "Monument znajdujący się przy ul. Wybrzeże Kościuszkowskie. Rzeźba przedstawia postać Syreny z uniesionym mieczem i tarczą.\nWzrok ma skierowany na północ, a jej mocny kobiecy korpus osłania trzymana w lewej ręce okrągła, lekko wypukła tarcza.\nNa tarczy znajduje się wizerunek orła w koronie, wokół którego biegnie napis „Warszawa”",
+    "prize":0,
+    "rate" : 4.6,
+    "opinion" : "Ładne miejsce na spacer i porobienia zdjęć.",
+    "fromCity" : 3
+  }
 ]
 
