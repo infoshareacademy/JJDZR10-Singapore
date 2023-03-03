@@ -1,4 +1,5 @@
 package com.infoshareacademy;
+import com.infoshareacademy.model.User;
 import com.infoshareacademy.service.ReadFile;
 import static com.infoshareacademy.service.Menu.OpenMenuMethod;
 
@@ -23,9 +24,16 @@ public class App {
         Reader reader = new Reader();
         Persistent tripPersistent = reader.getObjectById(Trip.class,1);
         Trip trip = (Trip) tripPersistent;
-
         trip.setName("Weekend in 3City");
         writer.save(trip);
+
+        Trip trip2 = new Trip();
+        trip2.setName("Test");
+        User user = (User) reader.getObjectById(User.class,1);
+        trip2.setUser(user);
+        trip2.setDistance(20.5);
+        writer.save(trip2);
+
     }
 
     public static void readerUsage(){
