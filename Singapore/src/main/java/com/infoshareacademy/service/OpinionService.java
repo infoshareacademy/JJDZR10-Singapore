@@ -4,18 +4,12 @@ import com.infoshareacademy.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 
-public class OpinionService extends ReadFile {
+public class OpinionService extends ValidatorService {
     private String userOpinion;
-
-    private String comment;
-    private boolean isValidRate;
-    private boolean isValidComment;
-    private Double rating;
-    private List<Integer> ratings = new ArrayList<>();
-    private int rate;
+    private Double objectRate;
+    private List<Integer> ratingsList = new ArrayList<>();
     private User user;
 
     public OpinionService(User user) {
@@ -23,70 +17,27 @@ public class OpinionService extends ReadFile {
     }
 
     public String setUserOpinion() {
-        System.out.println("Napisz komentarz!");
-        isValidComment = true;
-        while (isValidComment) {
-            Scanner scanner = new Scanner(System.in);
-            comment = scanner.nextLine();
-            checkValidComment();
-        }
-
+        scanUserString("Napisz komentarz.", "Nic nie napisałeś, podaj swoją opinię");
         setRate();
         System.out.println("Komentarz dodano. ");
-        userOpinion = "Komentarz:\n" + comment + "\nod: " + user.getLogin() + "\nŚrednia ocena " + ratings.size() + " użytkowników to " + rating + ".";
+        userOpinion = "Komentarz:\n" + getUserScanString() + "\nod: " + user.getLogin() + "\nŚrednia ocena " + ratingsList.size() + " użytkowników to " + objectRate + ".";
+        System.out.println(userOpinion);  //FIXME usunąć po scaleniu z zapisywaniem w json
         return userOpinion;
-    }
 
-    public String getUserOpinion() {
-        return userOpinion;
     }
 
     private void setRate() {
-
-        System.out.println("Podaj swoją ocenę w skali 1-10");
-        isValidRate = true;
-        while (isValidRate) {
-            try {
-
-                Scanner scanner = new Scanner(System.in);
-                rate = scanner.nextInt();
-                checkValidRate();
-
-            } catch (Exception f) {
-                System.out.println("Podaj liczbę z zakresu 1-10.");
-            }
-        }
-        ratings.add(rate);
-        getRating();
+        userScanInteger("Podaj swoją ocenę w skali 1-10", "Podałeś liczbę spoza zakresu", 1, 10);
+        ratingsList.add(getUserScanInteger());
+        getObjectRate();
     }
 
-
-    private Double getRating() {
+    private Double getObjectRate() {
         Double sum = 0d;
-        for (int i = 0; i < ratings.size(); i++) {
-            sum += (double) ratings.get(i);
+        for (int i = 0; i < ratingsList.size(); i++) {
+            sum += (double) ratingsList.get(i);
         }
-        return rating = (double) (sum / ratings.size());
-    }
-
-
-    private boolean checkValidRate() {
-        if (rate < 1 || rate > 10) {
-            throw new IllegalArgumentException();
-        } else {
-            isValidRate = false;
-        }
-        return isValidRate;
-    }
-
-    private boolean checkValidComment() {
-        if (comment.isEmpty()) {
-            System.out.println("Napisz coś.");
-            isValidComment = true;
-        } else {
-            isValidComment = false;
-        }
-        return isValidComment;
+        return objectRate = (double) (sum / ratingsList.size());
     }
 }
 

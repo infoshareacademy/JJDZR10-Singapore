@@ -1,4 +1,6 @@
 package com.infoshareacademy.service;
+import com.infoshareacademy.model.User;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -118,7 +120,8 @@ public class Menu {
 
             switch (subOption) {
                 case 1: {
-                    System.out.println("Dodaj");
+                    OpinionService opinionService = new OpinionService(new User()); //FIXME wstawić wykreowanego Usera
+                    opinionService.setUserOpinion();
                     break;
                 }
                 case 2: {
@@ -244,7 +247,7 @@ public class Menu {
 
     //Obsłużyłem wyjątek InputMismatchException metody OpenMenuMethod
 
-    public static void OpenMenuMethod() {
+    public void OpenMenuMethod() {
         repeat: while (true) {
             try {
                 Menu.OpenMenu();
