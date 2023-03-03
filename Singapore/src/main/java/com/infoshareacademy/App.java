@@ -1,4 +1,6 @@
 package com.infoshareacademy;
+import com.infoshareacademy.service.ReadFile;
+import static com.infoshareacademy.service.Menu.OpenMenuMethod;
 
 import com.infoshareacademy.model.Persistent;
 import com.infoshareacademy.model.Trip;
@@ -33,5 +35,13 @@ public class App {
             Trip trip = (Trip) o;
             System.out.println("To jest wycieczka " + trip.getName() + " utworzona przez użytkownika " + trip.getUser().getFirstName() + " " + trip.getUser().getLastName());
         }
+
+        OpenMenuMethod();
+
+        ReadFile readFile = new ReadFile();
+        readFile.readFile();
+
+
     }
+
 }
