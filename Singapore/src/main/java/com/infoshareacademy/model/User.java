@@ -1,8 +1,7 @@
 package com.infoshareacademy.model;
 
-public class User implements Persistent {
+public class User extends PersistentAbstract {
 
-    private long id;
 
     private String login;
 
@@ -10,13 +9,6 @@ public class User implements Persistent {
 
     private String lastName;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getLogin() {
         return login;
@@ -45,10 +37,11 @@ public class User implements Persistent {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", login='" + login + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';
     }
+
 }

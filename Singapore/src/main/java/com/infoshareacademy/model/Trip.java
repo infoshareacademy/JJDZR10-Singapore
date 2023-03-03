@@ -1,11 +1,12 @@
 package com.infoshareacademy.model;
 
 import com.infoshareacademy.model.place.Places;
+import org.json.simple.JSONObject;
+
 import java.util.List;
 
-public class Trip implements Persistent{
+public class Trip extends PersistentAbstract {
 
-    private long id;
 
     private String name;
 
@@ -33,14 +34,6 @@ public class Trip implements Persistent{
         this.user = user;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -66,9 +59,16 @@ public class Trip implements Persistent{
     }
 
     @Override
+    public JSONObject toJSON() {
+        JSONObject jsonObject = super.toJSON();
+        jsonObject.put("user", user.getId());
+        return jsonObject;
+    }
+
+    @Override
     public String toString() {
         return "Trip{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", name='" + name + '\'' +
                 ", distance=" + distance +
                 ", time_for_trip=" + time_for_trip +

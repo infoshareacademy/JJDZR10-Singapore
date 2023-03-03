@@ -120,8 +120,8 @@ public class Reader {
         trip.setDistance(Double.parseDouble(jsonObject.get("distance").toString()));
         trip.setTimeForTrip(Double.parseDouble(jsonObject.get("time_for_trip").toString()));
 
-        if(jsonObject.containsKey("created_by_user")){
-            long idUser = (long) jsonObject.get("created_by_user");
+        if(jsonObject.containsKey("user")){
+            long idUser = (long) jsonObject.get("user");
             User user = (User) this.getObjectById(User.class, idUser);
             trip.setUser(user);
         }
