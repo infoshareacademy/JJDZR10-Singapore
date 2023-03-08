@@ -4,8 +4,6 @@ import com.infoshareacademy.model.City;
 import com.infoshareacademy.model.User;
 import com.infoshareacademy.service.CityViewer;
 import com.infoshareacademy.service.PlaceViewer;
-import com.infoshareacademy.service.ReadFile;
-import static com.infoshareacademy.service.Menu.OpenMenuMethod;
 import com.infoshareacademy.model.User;
 import com.infoshareacademy.service.Menu;
 import com.infoshareacademy.service.OpinionService;
