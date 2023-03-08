@@ -9,7 +9,15 @@ public class Places implements Persistent {
     private String opinion;
     private City city;
 
+    private long fromCity;
 
+    public long getFromCity() {
+        return fromCity;
+    }
+
+    public void setFromCity(long fromCity) {
+        this.fromCity = fromCity;
+    }
 
     @Override
     public void setId(long id) {
@@ -74,6 +82,6 @@ public class Places implements Persistent {
                 "\nOpis: "+ description+
                 "\nCena: "+prize + " zł\nOcena: " + rate +
                 "\nOpinie: " + opinion +
-                "\n******************************";
+                "\n******************************\n";
     }
 }
