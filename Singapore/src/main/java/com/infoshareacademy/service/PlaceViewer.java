@@ -23,7 +23,7 @@ public class PlaceViewer extends Reader {
         }
     }
 
-    public void placesViewForCityOnlyNames(int index) {
+    public void findAllPlacesByCity(int index) {
         List<Places> place = getListOfPlaces(Places.class);
         List <Places> filteredList = place.stream().filter(p -> p.getFromCity() == index).collect(Collectors.toList());
         Function<Places, String> onlyName = s -> s.getName();
