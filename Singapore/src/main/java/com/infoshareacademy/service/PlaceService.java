@@ -24,17 +24,17 @@ public class PlaceService extends Reader {
 
     public void findAllPlacesByCityOnlyNames(int index) {
         List<Places> place = getAllPlaces(Places.class);
-        List <Places> filteredList = filterListByCityIndex(index, place);
-        showOnlyNamesCity(filteredList).forEach(s -> System.out.println(s));
+        List<Places> filteredList = filterListByCityIndex(index, place);
+        showOnlyNamesCity(filteredList).forEach(System.out::println);
 
     }
-    private List<Places> filterListByCityIndex (int index, List <Places> place){
-        List <Places> filteredList = place.stream().filter(p -> p.getFromCity() == index).collect(Collectors.toList());
-        return filteredList;
+
+    private List<Places> filterListByCityIndex(int index, List<Places> place) {
+        return place.stream().filter(p -> p.getFromCity() == index).collect(Collectors.toList());
     }
-    private List<String> showOnlyNamesCity (List <Places> list){
+
+    private List<String> showOnlyNamesCity(List<Places> list) {
         Function<Places, String> onlyName = s -> s.getName();
-        List<String> namesOfPlaces = list.stream().map(onlyName).collect(Collectors.toList());
-        return namesOfPlaces;
+        return list.stream().map(onlyName).collect(Collectors.toList());
     }
 }
