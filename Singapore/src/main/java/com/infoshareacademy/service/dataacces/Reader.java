@@ -33,20 +33,20 @@ public class Reader {
         return lo;
     }
 
-    public List<Places> getListOfPlaces(Class c) {
+    public List<Places> getAllPlaces(Class c) {
 
-        List<Places> lo = new ArrayList<>();
+        List<Places> listOfPlaces = new ArrayList<>();
         JSONArray jsonArray = this.getListInJson(c);
 
         try {
             for (Object o : jsonArray) {
                 JSONObject jsonObject = (JSONObject) o;
-                lo.add(this.createPlaceInstance(jsonObject));
+                listOfPlaces.add(this.createPlaceInstance(jsonObject));
             }
         } catch (Exception e) {
             System.out.println(e);
         }
-        return lo;
+        return listOfPlaces;
     }
 
     private Persistent mapJsonToEntity(JSONObject jsonObject, Class c) throws Exception {
