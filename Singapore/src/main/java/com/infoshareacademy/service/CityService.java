@@ -6,11 +6,11 @@ import com.infoshareacademy.service.dataacces.Reader;
 
 import java.util.List;
 
-public class CityViewer extends Reader {
-    public void cityView() {
+public class CityService extends Reader {
+    public void findAllCities() {
         List<Persistent> city = getList(City.class);
-        for (Persistent o : city) {
-            City oParsed = (City) o;
+        for (Persistent listOfCity : city) {
+            City oParsed = (City) listOfCity;
             System.out.println(oParsed);
         }
     }
