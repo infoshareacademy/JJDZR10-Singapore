@@ -8,7 +8,7 @@ public class Menu {
       public static void OpenMenu() {
         Scanner sc = new Scanner(System.in);
         int option;
-        System.out.println("\nWitaj Włóczykiju! Zaplanuj swoją wycieczkę razem ze mną!");
+//        System.out.println("\nWitaj Włóczykiju! Zaplanuj swoją wycieczkę razem ze mną!");
         do {
             System.out.println("");
             System.out.println("     ****************************************");
