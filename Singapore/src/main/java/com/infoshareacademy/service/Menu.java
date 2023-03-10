@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Menu {
       public static void OpenMenu() {
         Scanner sc = new Scanner(System.in);
-        int option;      //przerzuciłem zmienne subOption i subSubOption do metody prywatnej OpenSubOption
+        int option;
         System.out.println("\nWitaj Włóczykiju! Zaplanuj swoją wycieczkę razem ze mną!");
         do {
             System.out.println("");
@@ -15,18 +15,16 @@ public class Menu {
             System.out.println("     *              MENU PLANER             *");
             System.out.println("     ****************************************");
             System.out.println("     1. Miasta");
-            System.out.println("     2. Wyszukiwarka");
+            System.out.println("     2. Wyszukaj");
             System.out.println("     3. Wycieczka");
             System.out.println("     4. Wyjście");
             System.out.println("\nWybierz opcję i wprowadź liczbę od 1 do 4:");
             option = sc.nextInt();
 
-            OpenSubMenu(sc, option);   //*
+            OpenSubMenu(sc, option);
 
         } while (option != 4);
     }
-
-    //* Wyodrębniłem kod podMenu do prywatnej metody OpenSubMenu celem jego hermetyzacji
 
     private static void OpenSubMenu(Scanner sc, int option) {
         int subOption;
@@ -59,7 +57,7 @@ public class Menu {
             System.out.println("     *                MIASTA                *");
             System.out.println("     ****************************************");
             System.out.println("     1. Wyświetl");
-            System.out.println("     2. Wybierz losowe");
+            System.out.println("     2. Opinia");
             System.out.println("     3. Dodaj");
             System.out.println("     4. Powrót");
             System.out.println("\nWybierz opcję i wprowadź liczbę od 1 do 4:");
@@ -80,7 +78,7 @@ public class Menu {
                     break;
                 }
                 case 2: {
-                    System.out.println("Wybierz losowe");
+                    System.out.println("Opinia");
                     break;
                 }
                 case 3: {
@@ -98,10 +96,6 @@ public class Menu {
     private static void openSubMenuMiejsca(Scanner sc) {
         int subSubOption;
         do {
-//            System.out.println("");
-//            System.out.println("     ****************************************");
-//            System.out.println("     * MIEJSCA w: "+"                        ");
-//            System.out.println("     ****************************************");
             System.out.println("     1. Zabytki");
             System.out.println("     2. Natura");
             System.out.println("     3. Jedzenie");
@@ -112,14 +106,26 @@ public class Menu {
             switch (subSubOption) {
                 case 1: {
                     System.out.println("Zabytki");
+                    System.out.println("Wybierz nr zabytku:");
+                    Scanner scannerZabytków = new Scanner(System.in);
+                    int nrZabytku = scannerZabytków.nextInt();
+                    openSubSubMenu(sc);
                     break;
                 }
                 case 2: {
                     System.out.println("Natura");
+                    System.out.println("Wybierz nr natura:");
+                    Scanner scannerNatura = new Scanner(System.in);
+                    int nrNatury = scannerNatura.nextInt();
+                    openSubSubMenu(sc);
                     break;
                 }
                 case 3: {
                     System.out.println("Jedzenie");
+                    System.out.println("Wybierz nr jedzenia:");
+                    Scanner scannerJedzenie = new Scanner(System.in);
+                    int nrJedzenia = scannerJedzenie.nextInt();
+                    openSubSubMenu(sc);
                     break;
                 }
                 case 4: {
@@ -130,18 +136,49 @@ public class Menu {
         } while (subSubOption != 4);
     }
 
+    private static void openSubSubMenu(Scanner sc) {
+        int subSubSubOption;
+        do {
+            System.out.println("     1. Wyświetl");
+            System.out.println("     2. Opinia");
+            System.out.println("     3. Dodaj");
+            System.out.println("     4. Powrót");
+            System.out.println("\nWybierz opcję i wprowadź liczbę od 1 do 4:");
+            subSubSubOption = sc.nextInt();
+
+            switch (subSubSubOption) {
+                case 1: {
+                    System.out.println("Wyświetl");
+                    break;
+                }
+                case 2: {
+                    System.out.println("Opinia");
+                    break;
+                }
+                case 3: {
+                    System.out.println("Dodaj");
+                    break;
+                }
+                case 4: {
+                    System.out.println("powrót do miejsc");
+                    break;
+                }
+            }
+        } while (subSubSubOption != 4);
+    }
+
     private static void openMenuWyszukiwarka(Scanner sc) {
         int subOption;
         do {
             System.out.println("");
             System.out.println("     ****************************************");
-            System.out.println("     *             Wyszukiwarka             *");
+            System.out.println("     *               Wyszukaj               *");
             System.out.println("     ****************************************");
-            System.out.println("     1. Wyszukaj miasto");
-            System.out.println("     2. Wyszukaj zabytek");
-            System.out.println("     3. Wyszukaj natura i tereny rekreacyjne");
-            System.out.println("     4. Wyszukaj jedzenie");
-            System.out.println("     5. Wyszukaj użytkownika");
+            System.out.println("     1. miasto");
+            System.out.println("     2. zabytek");
+            System.out.println("     3. natura i tereny rekreacyjne");
+            System.out.println("     4. jedzenie");
+            System.out.println("     5. użytkownika");
             System.out.println("     6. Powrót");
             System.out.println("\nWybierz opcję i wprowadź liczbę od 1 do 6:");
             subOption = sc.nextInt();
@@ -188,7 +225,7 @@ public class Menu {
             System.out.println("     4. Edytuj");
             System.out.println("     5. Usuń");
             System.out.println("     6. Powrót");
-            System.out.println("\nWybierz opcję i wprowadź liczbę od 1 do 5:");
+            System.out.println("\nWybierz opcję i wprowadź liczbę od 1 do 6:");
             subOption = sc.nextInt();
 
             switch (subOption) {
@@ -212,7 +249,6 @@ public class Menu {
                     System.out.println("Usuń");
                     break;
                 }
-
                 case 6: {
                     System.out.println("powrót do PLANERA");
                     break;
