@@ -15,21 +15,21 @@ import java.util.Objects;
 
 public class Writer {
 
+
+
     public void save(Persistent entity)  {
-        Gson gson = new Gson();
+
 
         Reader reader = new Reader();
         List<Persistent> list = reader.getList(entity.getClass());
         JSONArray listJson = new JSONArray();
+
+  //Dodanie nowego elementu + sprawdzanie jakie ID można mu nadać -> np. jeśli nadane id=2 to ten przyjmie nr 3
+
         boolean isNew = false;
         if (entity.getId() == 0){
             isNew = true;
-            long currMaxId = 0;
-            for (Persistent o: list) {
-                if(currMaxId < o.getId()){
-                    currMaxId = o.getId();
-                }
-            }
+            long currMaxId =PersistentService.getMaxId(list);
             entity.setId(currMaxId+1);
         }
 
@@ -68,26 +68,5 @@ public class Writer {
 
 
 
-
-
-
-
-
-
-    private String entityToJson (Persistent entity){
-        Gson gson = new Gson();
-        String jsonStr = gson.toJson(entity);
-        return jsonStr;
-    }
-
-    /**
-     * przyjmujemy stringa z jsonem do zapisu
-     * @param jsonStr
-     */
-    private void saveInResources(String jsonStr,Persistent entity){
-        Reader reader = new Reader();
-        List<Persistent> trips = reader.getList(Trip.class);
-
-    }
 }
 

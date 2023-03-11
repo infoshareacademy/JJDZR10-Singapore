@@ -76,4 +76,8 @@ public class Trip extends PersistentAbstract {
                 ", places=" + places +
                 '}';
     }
+
+    public void userSentence() {
+        System.out.println("To jest wycieczka " + this.getName() + " utworzona przez użytkownika " + this.getUser().getFirstName() + " " + this.getUser().getLastName());
+    }
 }
