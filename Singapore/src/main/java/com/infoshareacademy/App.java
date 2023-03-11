@@ -1,22 +1,44 @@
 package com.infoshareacademy;
+
 import com.infoshareacademy.model.User;
-import com.infoshareacademy.service.ReadFile;
-import static com.infoshareacademy.service.Menu.OpenMenuMethod;
 
 import com.infoshareacademy.model.Persistent;
 import com.infoshareacademy.model.Trip;
 import com.infoshareacademy.service.dataacces.Reader;
 import com.infoshareacademy.service.dataacces.Writer;
 
-import java.io.IOException;
 import java.util.List;
 
-/**
- * Hello world!
- */
+import com.infoshareacademy.service.CityService;
+import com.infoshareacademy.service.PlaceService;
+import com.infoshareacademy.service.Menu;
+
+
+
+
 public class App {
-    public static void main(String[] args)  {
-        writerUsage();
+
+
+
+    public static void main(String[] args) {
+            writerUsage();
+
+
+
+        CityService cityService = new CityService();
+        cityService.findAllCities();
+        PlaceService placeService = new PlaceService();
+        placeService.findAllPlaces();
+        placeService.findAllPlacesByCity(4);
+        placeService.findAllPlacesByCityOnlyNames(2);
+    
+        User user = new User();
+        user.setLogin("Bolesław");
+
+        Menu menu = new Menu();
+        menu.OpenMenuMethod();
+
+
 
     }
     public static void writerUsage(){
@@ -36,20 +58,12 @@ public class App {
 
     }
 
-    public static void readerUsage(){
+    public static void readerUsage() {
         Reader reader = new Reader();
         List<Persistent> trips = reader.getList(Trip.class);
-        for (Persistent o: trips) {
+        for (Persistent o : trips) {
             Trip trip = (Trip) o;
             trip.userSentence();
         }
-
-        OpenMenuMethod();
-
-        ReadFile readFile = new ReadFile();
-        readFile.readFile();
-
-
     }
-
 }
