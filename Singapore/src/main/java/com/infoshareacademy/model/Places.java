@@ -1,7 +1,9 @@
 package com.infoshareacademy.model;
 
-public class Places implements Persistent {
-    private long id;
+import org.json.simple.JSONObject;
+
+public class Places extends PersistentAbstract {
+
     private String name;
     private String description;
     private double prize;
@@ -19,14 +21,6 @@ public class Places implements Persistent {
         this.fromCity = fromCity;
     }
 
-    @Override
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getId() {
-        return id;
-    }
 
     public String getName() {
         return name;
@@ -83,5 +77,16 @@ public class Places implements Persistent {
                 "\nCena: "+prize + " zł\nOcena: " + rate +
                 "\nOpinie: " + opinion +
                 "\n******************************\n";
+    }
+    /**
+     * należy wkleić do każdej klasy która ma zagnieżdżone obiekty - jak tu Id , bo Gson nie obsługuje ich
+     * jsonObject.put przechwytuje dziłania tej metody z rodzica i dodaje do jsonObject pola których nie potrafi obsłużyć Gson.
+     * @return
+     */
+    @Override
+    public JSONObject toJSON() {
+        JSONObject jsonObject = super.toJSON();
+        jsonObject.put("city",city.getId());
+        return jsonObject;
     }
 }
