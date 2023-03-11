@@ -99,7 +99,8 @@ public class Menu {
             System.out.println("     1. Zabytki");
             System.out.println("     2. Natura");
             System.out.println("     3. Jedzenie");
-            System.out.println("     4. Powrót");
+            System.out.println("     4. Wszystkie miejsca");
+            System.out.println("     5. Powrót");
             System.out.println("\nWybierz opcję i wprowadź liczbę od 1 do 4:");
             subSubOption = sc.nextInt();
 
@@ -129,11 +130,19 @@ public class Menu {
                     break;
                 }
                 case 4: {
+                    System.out.println("Wszystkie miejsca");
+                    System.out.println("Wybierz nr:");
+                    Scanner scannerWszystkieMiejsca = new Scanner(System.in);
+                    int wszystkieMiejsca = scannerWszystkieMiejsca.nextInt();
+                    openSubSubMenu(sc);
+                    break;
+                }
+                case 5: {
                     System.out.println("powrót do MIAST");
                     break;
                 }
             }
-        } while (subSubOption != 4);
+        } while (subSubOption != 5);
     }
 
     private static void openSubSubMenu(Scanner sc) {
