@@ -41,7 +41,7 @@ public class App {
         List<Persistent> trips = reader.getList(Trip.class);
         for (Persistent o: trips) {
             Trip trip = (Trip) o;
-            System.out.println("To jest wycieczka " + trip.getName() + " utworzona przez użytkownika " + trip.getUser().getFirstName() + " " + trip.getUser().getLastName());
+            trip.userSentence();
         }
 
         OpenMenuMethod();

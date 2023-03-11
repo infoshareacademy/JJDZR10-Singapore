@@ -116,9 +116,16 @@ public class Reader {
     private Trip createTripInstance(JSONObject jsonObject) {
         Trip trip = new Trip();
         trip.setId((Long) jsonObject.get("id"));
-        trip.setName((String) jsonObject.get("name"));
-        trip.setDistance(Double.parseDouble(jsonObject.get("distance").toString()));
-        trip.setTimeForTrip(Double.parseDouble(jsonObject.get("time_for_trip").toString()));
+        if(jsonObject.containsKey("name")) {
+            trip.setName((String) jsonObject.get("name"));
+        }
+        if(jsonObject.containsKey("distance")) {
+            trip.setDistance(Double.parseDouble(jsonObject.get("distance").toString()));
+        }
+        if(jsonObject.containsKey("time_for_trip")){
+            trip.setTimeForTrip(Double.parseDouble(jsonObject.get("time_for_trip").toString()));
+        }
+
 
         if(jsonObject.containsKey("user")){
             long idUser = (long) jsonObject.get("user");
