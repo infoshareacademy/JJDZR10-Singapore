@@ -4,7 +4,7 @@ import com.infoshareacademy.model.User;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-//stworzyłem metody do obsługi menu w oparciu o kombinację pętli "do while" oraz instrukcji warunkowej "switch"
+//stworzyłem metody do obsługi menu w oparciu o kombinację pętli "do while" oraz instrukcji warunkowej "switch".
 
 public class Menu {
       public static void OpenMenu() {
