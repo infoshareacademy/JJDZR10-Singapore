@@ -10,6 +10,8 @@ public class User implements Persistent {
 
     private String lastName;
 
+//    private String password;
+
     public long getId() {
         return id;
     }
@@ -51,14 +53,4 @@ public class User implements Persistent {
                 ", lastName='" + lastName + '\'' +
                 '}';
     }
-
-    public User createUser(){
-        User user = new User();
-        user.id += 0;
-//        user.firstName = setFirstName();
-//        user.lastName = setLastName();
-//        user.login = setLogin();
-        return user;
-    }
-
 }
