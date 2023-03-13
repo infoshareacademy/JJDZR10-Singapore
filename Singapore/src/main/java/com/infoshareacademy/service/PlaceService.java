@@ -14,6 +14,7 @@ public class PlaceService extends Reader {
         System.out.println(place.stream().filter(p -> p.getFromCity() == index).collect(Collectors.toList()));
     }
 
+
     public void findAllPlaces() {
         List<Persistent> place = getList(Places.class);
         for (Persistent listOfPlaces : place) {
