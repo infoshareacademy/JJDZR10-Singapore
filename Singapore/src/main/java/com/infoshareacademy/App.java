@@ -15,7 +15,8 @@ public class App {
         placeService.findAllPlaces();
         placeService.findAllPlacesByCity(4);
         placeService.findAllPlacesByCityOnlyNames(2);
-    
+        placeService.findAllPlacesByCityOnlyNames(3);
+
         User user = new User();
         user.setLogin("Bolesław");
 
