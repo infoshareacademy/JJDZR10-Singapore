@@ -9,33 +9,37 @@ import java.util.Objects;
 public class Opinion {
     private long id;
     private String userOpinion;
+    private Integer userRate;
     private Double objectRate;
     private List<Integer> ratingsList;
+
     private Integer id_user;
 
     public Opinion(Integer id_user) {
         this.id_user = id_user;
     }
+
     OpinionService opinionService = new OpinionService();
-    public long getId() {
-        return opinionService.getId();
-    }
-
-
-    public OpinionService getOpinionService() {
-        return opinionService;
-    }
 
     public void setUserOpinion(String userOpinion) {
-        this.userOpinion=opinionService.setUserOpinion();
+        this.userOpinion = opinionService.setUserOpinion();
     }
+
+    public void setUserRate(Integer userRate) {
+        this.userRate = opinionService.setRate();
+    }
+    public Integer getUserRate() {
+        return userRate;
+    }
+
+
 
     public Double getObjectRate() {
         return objectRate;
     }
 
     public void setObjectRate(Double objectRate) {
-        this.objectRate=opinionService.objectRate();
+        this.objectRate = opinionService.objectRate();
     }
 
     public List<Integer> getRatingsList() {

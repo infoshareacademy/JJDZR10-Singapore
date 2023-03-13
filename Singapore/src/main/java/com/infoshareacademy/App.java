@@ -9,9 +9,9 @@ public class App {
 
         User user = new User();
         user.setLogin("Bolesław");
-        OpinionService opinionService = new OpinionService(user);
+        OpinionService opinionService = new OpinionService();
         opinionService.setUserOpinion();
-        opinionService.getObjectRate();
+        opinionService.objectRate();
 
     }
 }

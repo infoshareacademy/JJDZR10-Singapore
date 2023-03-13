@@ -2,42 +2,46 @@ package com.infoshareacademy.service;
 
 import com.infoshareacademy.model.Persistent;
 import com.infoshareacademy.model.User;
-import com.infoshareacademy.service.dataacces.Reader;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 public class OpinionService extends ValidatorService implements Persistent {
+    private long id_user;
     private String userOpinion;
     private Double objectRate;
     private List<Integer> ratingsList = new ArrayList<>();
     private Integer userRate;
     private User user;
 
-
-    public OpinionService(User user) {
-        this.user = user;
+    private User scanUsers(){
+        User user = new User();
+        User user1 = new User();
+        user.setId(1);
+        user1.setId(2);
+        List <User> userList = Arrays.asList(user, user1); //TODO zamiana na wczytaną listę z plików .json
+        return user = userList.get((int)id_user);
     }
-
 
     public String setUserOpinion() {
         scanUserString("Napisz komentarz.", "Nic nie napisałeś, podaj swoją opinię");
-        setRate();
         System.out.println("Komentarz dodano. ");
         userOpinion = "Komentarz:\n" + getUserScanString() + "\nod: " + user.getLogin();
-        System.out.println(userOpinion);  //FIXME usunąć po scaleniu z zapisywaniem w json
         return userOpinion;
 
     }
 
-    private Integer setRate() {
+    public Integer setRate() {
         userScanInteger("Podaj swoją ocenę w skali 1-10", "Podałeś liczbę spoza zakresu", 1, 10);
         ratingsList.add(getUserScanInteger());
         setObjectRate();
         return userRate = getUserScanInteger();
     }
+
+
 
     private Double setObjectRate() {
         Double sum = 0d;
@@ -78,7 +82,7 @@ public class OpinionService extends ValidatorService implements Persistent {
         return userRate;
     }
 
-    public Double getObjectRate() {
+    public Double objectRate() {
         System.out.println( "\nŚrednia ocena " + ratingsList.size() + " użytkowników to " + objectRate + ".");
         return objectRate;
     }
