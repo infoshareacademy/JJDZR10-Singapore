@@ -1,6 +1,8 @@
 package com.infoshareacademy.model;
 
+
 public class User extends PersistentAbstract {
+
 
 
     private String login;
@@ -8,6 +10,7 @@ public class User extends PersistentAbstract {
     private String firstName;
 
     private String lastName;
+
 
 
     public String getLogin() {
@@ -43,6 +46,7 @@ public class User extends PersistentAbstract {
                 ", lastName='" + lastName + '\'' +
                 '}';
     }
+
 
 
 }

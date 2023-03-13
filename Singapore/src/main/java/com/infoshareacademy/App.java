@@ -1,5 +1,6 @@
 package com.infoshareacademy;
 
+
 import com.infoshareacademy.model.User;
 
 import com.infoshareacademy.model.Persistent;
@@ -9,10 +10,11 @@ import com.infoshareacademy.service.dataacces.Writer;
 
 import java.util.List;
 
-import com.infoshareacademy.service.CityService;
-import com.infoshareacademy.service.PlaceService;
+
 import com.infoshareacademy.service.Menu;
 
+
+import com.infoshareacademy.service.Menu;
 
 
 
@@ -21,19 +23,11 @@ public class App {
 
 
     public static void main(String[] args) {
+
             writerUsage();
 
 
 
-        CityService cityService = new CityService();
-        cityService.findAllCities();
-        PlaceService placeService = new PlaceService();
-        placeService.findAllPlaces();
-        placeService.findAllPlacesByCity(4);
-        placeService.findAllPlacesByCityOnlyNames(2);
-    
-        User user = new User();
-        user.setLogin("Bolesław");
 
         Menu menu = new Menu();
         menu.OpenMenuMethod();
@@ -41,6 +35,7 @@ public class App {
 
 
     }
+
     public static void writerUsage(){
         Writer writer = new Writer();
         Reader reader = new Reader();
@@ -66,4 +61,6 @@ public class App {
             trip.userSentence();
         }
     }
+
 }
+
