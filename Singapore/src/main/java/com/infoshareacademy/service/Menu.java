@@ -120,7 +120,7 @@ public class Menu {
 
             switch (subOption) {
                 case 1: {
-                    OpinionService opinionService = new OpinionService(new User()); //FIXME wstawić wykreowanego Usera
+                    OpinionService opinionService = new OpinionService(); //FIXME wstawić wykreowanego Usera
                     opinionService.setUserOpinion();
                     break;
                 }
