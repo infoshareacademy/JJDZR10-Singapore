@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "firstname": "Johny",
-    "lastname": "Kowalski",
+    "firstName": "Johny",
+    "lastName": "Kowalski",
     "login": "Jasiu"
   }
 ]
