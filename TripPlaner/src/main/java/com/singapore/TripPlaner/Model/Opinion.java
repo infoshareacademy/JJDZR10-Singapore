@@ -1,12 +1,12 @@
-package com.infoshareacademy.model;
+package com.singapore.TripPlaner.Model;
 
-import com.infoshareacademy.service.OpinionService;
 
-import java.util.ArrayList;
+import com.singapore.TripPlaner.Service.OpinionService;
+
 import java.util.List;
 import java.util.Objects;
 
-public class Opinion {
+public class Opinion extends OpinionService  {
     private long id;
     private String userOpinion;
     private Integer userRate;

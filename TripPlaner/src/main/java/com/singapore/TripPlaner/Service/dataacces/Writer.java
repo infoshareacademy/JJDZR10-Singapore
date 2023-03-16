@@ -1,27 +1,27 @@
 package com.singapore.TripPlaner.Service.dataacces;
 
 import com.google.gson.Gson;
-import com.infoshareacademy.model.Persistent;
-import com.infoshareacademy.model.Trip;
+
+
+import com.singapore.TripPlaner.Model.Persistent;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.*;
-import java.io.Reader;
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Writer {
+public class Writer implements Persistent {
 
 
 
     public void save(Persistent entity)  {
 
 
-        java.io.Reader reader = new Reader();
+        Reader reader = new Reader();
         List<Persistent> list = reader.getList(entity.getClass());
         JSONArray listJson = new JSONArray();
 
@@ -68,6 +68,19 @@ public class Writer {
     }
 
 
+    @Override
+    public void setId(long id) {
 
+    }
+
+    @Override
+    public long getId() {
+        return 0;
+    }
+
+    @Override
+    public JSONObject toJSON() {
+        return null;
+    }
 }
 

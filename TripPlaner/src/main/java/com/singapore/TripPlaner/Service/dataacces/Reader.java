@@ -4,7 +4,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.infoshareacademy.model.*;
+import com.singapore.TripPlaner.Model.*;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -33,34 +34,34 @@ public class Reader {
         return lo;
     }
 
-    public List<Places> getAllPlaces(Class c) {
-
-        List<Places> listOfPlaces = new ArrayList<>();
-        JSONArray jsonArray = this.getListInJson(c);
-
-        try {
-            for (Object o : jsonArray) {
-                JSONObject jsonObject = (JSONObject) o;
-                listOfPlaces.add(this.createPlaceInstance(jsonObject));
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return listOfPlaces;
-    }
+//    public List<Places> getAllPlaces(Class c) {
+//
+//        List<Places> listOfPlaces = new ArrayList<>();
+//        JSONArray jsonArray = this.getListInJson(c);
+//
+//        try {
+//            for (Object o : jsonArray) {
+//                JSONObject jsonObject = (JSONObject) o;
+//                listOfPlaces.add(this.createPlaceInstance(jsonObject));
+//            }
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//        return listOfPlaces;
+//    }
 
     private Persistent mapJsonToEntity(JSONObject jsonObject, Class c) throws Exception {
 
         String className = c.getName();
         switch (className) {
-            case "com.infoshareacademy.model.Trip":
-                return this.createTripInstance(jsonObject);
+//            case "com.infoshareacademy.model.Trip":
+//                return this.createTripInstance(jsonObject);
             case "com.infoshareacademy.model.User":
                 return this.createUserInstance(jsonObject);
-            case "com.infoshareacademy.model.City":
-                return this.createCityInstance(jsonObject);
-            case "com.infoshareacademy.model.Places":
-                return this.createPlaceInstance(jsonObject);
+//            case "com.infoshareacademy.model.City":
+//                return this.createCityInstance(jsonObject);
+//            case "com.infoshareacademy.model.Places":
+//                return this.createPlaceInstance(jsonObject);
         }
         throw (new Exception("No such model entity"));
     }
@@ -131,49 +132,49 @@ public class Reader {
         return user;
     }
 
-    private City createCityInstance(JSONObject jsonObject) {
-        City city = new City();
-        city.setId((Long) jsonObject.get("id"));
-        city.setName(jsonObject.get("name").toString());
-        city.setDescription(jsonObject.get("description").toString());
-        return city;
-    }
+//    private City createCityInstance(JSONObject jsonObject) {
+//        City city = new City();
+//        city.setId((Long) jsonObject.get("id"));
+//        city.setName(jsonObject.get("name").toString());
+//        city.setDescription(jsonObject.get("description").toString());
+//        return city;
+//    }
 
-    private Trip createTripInstance(JSONObject jsonObject) {
-        Trip trip = new Trip();
-        trip.setId((Long) jsonObject.get("id"));
-        if(jsonObject.containsKey("name")) {
-            trip.setName((String) jsonObject.get("name"));
-        }
-        if(jsonObject.containsKey("distance")) {
-            trip.setDistance(Double.parseDouble(jsonObject.get("distance").toString()));
-        }
-        if(jsonObject.containsKey("time_for_trip")){
-            trip.setTimeForTrip(Double.parseDouble(jsonObject.get("time_for_trip").toString()));
-        }
+//    private Trip createTripInstance(JSONObject jsonObject) {
+//        Trip trip = new Trip();
+//        trip.setId((Long) jsonObject.get("id"));
+//        if(jsonObject.containsKey("name")) {
+//            trip.setName((String) jsonObject.get("name"));
+//        }
+//        if(jsonObject.containsKey("distance")) {
+//            trip.setDistance(Double.parseDouble(jsonObject.get("distance").toString()));
+//        }
+//        if(jsonObject.containsKey("time_for_trip")){
+//            trip.setTimeForTrip(Double.parseDouble(jsonObject.get("time_for_trip").toString()));
+//        }
 
-        if(jsonObject.containsKey("user")){
-            long idUser = (long) jsonObject.get("user");
-            User user = (User) this.getObjectById(User.class, idUser);
-            trip.setUser(user);
-        }
-        return trip;
-    }
+//        if(jsonObject.containsKey("user")){
+//            long idUser = (long) jsonObject.get("user");
+//            User user = (User) this.getObjectById(User.class, idUser);
+//            trip.setUser(user);
+//        }
+//        return trip;
+//    }
 
-    private Places createPlaceInstance(JSONObject jsonObject) {
-        Places place = new Places();
-        place.setId((Long) jsonObject.get("id"));
-        place.setName((String) jsonObject.get("name"));
-        place.setDescription(jsonObject.get("description").toString());
-        place.setRate(Double.parseDouble(jsonObject.get("rate").toString()));
-        place.setPrize(Double.parseDouble(jsonObject.get("prize").toString()));
-        place.setOpinion((String) jsonObject.get("opinion"));
-        place.setFromCity((Long) jsonObject.get("fromCity"));
-        if (jsonObject.containsKey("fromCity")) {
-            long idCity = (long) jsonObject.get("fromCity");
-            City city = (City) this.getObjectById(City.class, idCity);
-            place.setCity(city);
-        }
-        return place;
-    }
+//    private Places createPlaceInstance(JSONObject jsonObject) {
+//        Places place = new Places();
+//        place.setId((Long) jsonObject.get("id"));
+//        place.setName((String) jsonObject.get("name"));
+//        place.setDescription(jsonObject.get("description").toString());
+//        place.setRate(Double.parseDouble(jsonObject.get("rate").toString()));
+//        place.setPrize(Double.parseDouble(jsonObject.get("prize").toString()));
+//        place.setOpinion((String) jsonObject.get("opinion"));
+//        place.setFromCity((Long) jsonObject.get("fromCity"));
+//        if (jsonObject.containsKey("fromCity")) {
+//            long idCity = (long) jsonObject.get("fromCity");
+//            City city = (City) this.getObjectById(City.class, idCity);
+//            place.setCity(city);
+//        }
+//        return place;
+//    }
 }

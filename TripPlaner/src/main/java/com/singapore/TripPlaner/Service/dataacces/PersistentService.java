@@ -1,6 +1,7 @@
 package com.singapore.TripPlaner.Service.dataacces;
 
-import com.infoshareacademy.model.Persistent;
+
+import com.singapore.TripPlaner.Model.Persistent;
 
 import java.util.List;
 
