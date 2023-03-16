@@ -1,4 +1,6 @@
-package com.infoshareacademy.model;
+package com.singapore.TripPlaner.Model;
+
+import org.json.simple.JSONObject;
 
 import java.util.Objects;
 
@@ -14,6 +16,11 @@ public class User implements Persistent {
 
     public long getId() {
         return id;
+    }
+
+    @Override
+    public JSONObject toJSON() {
+        return null;
     }
 
     public void setId(long id) {

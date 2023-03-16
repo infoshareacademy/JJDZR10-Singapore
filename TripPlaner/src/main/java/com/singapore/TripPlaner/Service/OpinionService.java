@@ -1,12 +1,13 @@
-package com.infoshareacademy.service;
+package com.singapore.TripPlaner.Service;
 
-import com.infoshareacademy.model.Persistent;
-import com.infoshareacademy.model.User;
+
+import com.singapore.TripPlaner.Model.Persistent;
+import com.singapore.TripPlaner.Model.User;
+import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 public class OpinionService extends ValidatorService implements Persistent {
@@ -17,13 +18,13 @@ public class OpinionService extends ValidatorService implements Persistent {
     private Integer userRate;
     private User user;
 
-    private User scanUsers(){
+    private User scanUsers() {
         User user = new User();
         User user1 = new User();
         user.setId(1);
         user1.setId(2);
-        List <User> userList = Arrays.asList(user, user1); //TODO zamiana na wczytaną listę z plików .json
-        return user = userList.get((int)id_user);
+        List<User> userList = Arrays.asList(user, user1); //TODO zamiana na wczytaną listę z plików .json
+        return user = userList.get((int) id_user);
     }
 
     public String setUserOpinion() {
@@ -40,7 +41,6 @@ public class OpinionService extends ValidatorService implements Persistent {
         setObjectRate();
         return userRate = getUserScanInteger();
     }
-
 
 
     private Double setObjectRate() {
@@ -69,7 +69,6 @@ public class OpinionService extends ValidatorService implements Persistent {
 //        }
 
 
-
     public String getUserOpinion() {
         return userOpinion;
     }
@@ -83,13 +82,23 @@ public class OpinionService extends ValidatorService implements Persistent {
     }
 
     public Double objectRate() {
-        System.out.println( "\nŚrednia ocena " + ratingsList.size() + " użytkowników to " + objectRate + ".");
+        System.out.println("\nŚrednia ocena " + ratingsList.size() + " użytkowników to " + objectRate + ".");
         return objectRate;
     }
 
     @Override
     public void setId(long id) {
 
+    }
+
+    @Override
+    public long getId() {
+        return 0;
+    }
+
+    @Override
+    public JSONObject toJSON() {
+        return null;
     }
 }
 
