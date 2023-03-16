@@ -79,8 +79,6 @@ public class Reader {
             System.out.println(e);
         }
         return null;
-
-
     }
 
     /**
@@ -177,4 +175,15 @@ public class Reader {
 //        }
 //        return place;
 //    }
+
+    private Opinion createOpinionInstance(JSONObject jsonObject) {
+        Opinion opinion = new Opinion();
+        opinion.setId((Long) jsonObject.get("id"));
+        opinion.setUserOpinion((String) jsonObject.get("userOpinion"));
+        opinion.setUserRate(Integer.parseInt(jsonObject.get("userRate").toString()));
+        opinion.setObjectRate(Double.parseDouble(jsonObject.get("objectRate").toString()));
+//        opinion.setRatingsList(getList.jsonObject.get("prize").toString());
+        opinion.setId_user(Integer.parseInt(jsonObject.get("id_user").toString()));
+        return opinion;
+    }
 }

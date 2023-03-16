@@ -6,7 +6,7 @@ import com.singapore.TripPlaner.Service.OpinionService;
 import java.util.List;
 import java.util.Objects;
 
-public class Opinion extends OpinionService  {
+public class Opinion extends PersistentAbstract  {
     private long id;
     private String userOpinion;
     private Integer userRate;
@@ -14,10 +14,16 @@ public class Opinion extends OpinionService  {
     private List<Integer> ratingsList;
 
     private Integer id_user;
+    private User user;
 
-    public Opinion(Integer id_user) {
-        this.id_user = id_user;
+    public User getUser() {
+        return user;
     }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 
     OpinionService opinionService = new OpinionService();
 
@@ -34,7 +40,7 @@ public class Opinion extends OpinionService  {
 
 
 
-    public Double getObjectRate() {
+    private Double getObjectRate() {
         return objectRate;
     }
 
@@ -42,7 +48,7 @@ public class Opinion extends OpinionService  {
         this.objectRate = opinionService.objectRate();
     }
 
-    public List<Integer> getRatingsList() {
+    private List<Integer> getRatingsList() {
         return ratingsList;
     }
 

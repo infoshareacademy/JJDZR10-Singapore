@@ -1,7 +1,6 @@
 package com.singapore.TripPlaner.Model;
 
 import com.google.gson.Gson;
-import com.infoshareacademy.model.Persistent;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;

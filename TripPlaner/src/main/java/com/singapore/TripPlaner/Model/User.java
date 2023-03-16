@@ -4,7 +4,7 @@ import org.json.simple.JSONObject;
 
 import java.util.Objects;
 
-public class User implements Persistent {
+public class User extends PersistentAbstract {
 
     private long id;
 
@@ -82,4 +82,7 @@ public class User implements Persistent {
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         return result;
     }
+
+
+
 }
