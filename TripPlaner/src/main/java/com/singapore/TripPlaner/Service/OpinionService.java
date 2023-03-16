@@ -3,6 +3,8 @@ package com.singapore.TripPlaner.Service;
 
 import com.singapore.TripPlaner.Model.Persistent;
 import com.singapore.TripPlaner.Model.User;
+import com.singapore.TripPlaner.Service.dataacces.Reader;
+import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
@@ -19,19 +21,14 @@ public class OpinionService extends ValidatorService implements Persistent {
     private User user;
 
     private User scanUsers() {
-        User user = new User();
-        User user1 = new User();
-        user.setId(1);
-        user1.setId(2);
-        List<User> userList = Arrays.asList(user, user1); //TODO zamiana na wczytaną listę z plików .json
-        return user = userList.get((int) id_user);
+        Reader reader = new Reader();
+        Writer writer = new Writer();
+        return user = (User)  reader.getObjectById(User.class, id_user);
     }
 
     public String setUserOpinion() {
         scanUserString("Napisz komentarz.", "Nic nie napisałeś, podaj swoją opinię");
-        System.out.println("Komentarz dodano. ");
-        userOpinion = "Komentarz:\n" + getUserScanString() + "\nod: " + user.getLogin();
-        return userOpinion;
+        return userOpinion = getUserScanString();
 
     }
 
