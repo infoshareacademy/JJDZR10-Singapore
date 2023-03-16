@@ -38,12 +38,12 @@ public class Reader {
     public List<Places> getAllPlaces(Class c) {
 
         List<Places> listOfPlaces = new ArrayList<>();
-        JSONArray jsonArray = this.getListInJson(c);
+        List<Persistent> lo = this.getList(c);
 
         try {
-            for (Object o : jsonArray) {
-                JSONObject jsonObject = (JSONObject) o;
-                listOfPlaces.add(this.createPlaceInstance(jsonObject));
+            for (Object o : lo) {
+                Places place = (Places) o;
+                listOfPlaces.add(place);
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -141,8 +141,8 @@ public class Reader {
 
     private Places createPlaceInstance(JSONObject jsonObject, Object object) {
         Places place = (Places) object;
-        if (jsonObject.containsKey("fromCity")) {
-            long idCity = (long) jsonObject.get("fromCity");
+        if (jsonObject.containsKey("fromCityId")) {
+            long idCity = (long) jsonObject.get("fromCityId");
             City city = (City) this.getObjectById(City.class, idCity);
             place.setCity(city);
         }
