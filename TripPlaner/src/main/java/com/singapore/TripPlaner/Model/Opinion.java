@@ -81,7 +81,7 @@ public class Opinion extends PersistentAbstract  {
 
         Opinion opinion = (Opinion) o;
 
-        if (id != opinion.id) return false;
+        if (getId() != opinion.getId()) return false;
         if (!Objects.equals(userOpinion, opinion.userOpinion)) return false;
         if (!Objects.equals(objectRate, opinion.objectRate)) return false;
         if (!Objects.equals(ratingsList, opinion.ratingsList)) return false;
@@ -90,7 +90,7 @@ public class Opinion extends PersistentAbstract  {
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = (int) (getId() ^ (getId() >>> 32));
         result = 31 * result + (userOpinion != null ? userOpinion.hashCode() : 0);
         result = 31 * result + (objectRate != null ? objectRate.hashCode() : 0);
         result = 31 * result + (ratingsList != null ? ratingsList.hashCode() : 0);

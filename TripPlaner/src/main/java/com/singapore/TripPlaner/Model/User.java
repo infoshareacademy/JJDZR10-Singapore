@@ -40,7 +40,7 @@ public class User extends PersistentAbstract {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", login='" + login + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -54,7 +54,7 @@ public class User extends PersistentAbstract {
 
         User user = (User) o;
 
-        if (id != user.id) return false;
+        if (getId() != user.getId()) return false;
         if (!Objects.equals(login, user.login)) return false;
         if (!Objects.equals(firstName, user.firstName)) return false;
         return Objects.equals(lastName, user.lastName);
@@ -62,7 +62,7 @@ public class User extends PersistentAbstract {
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = (int) (getId() ^ (getId() >>> 32));
         result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
