@@ -7,6 +7,7 @@ import com.singapore.TripPlaner.Model.Persistent;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.lang.annotation.Annotation;
@@ -14,9 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Component
 public class Writer {
-
-
 
     public void save(Persistent entity)  {
 
