@@ -10,7 +10,9 @@ import com.singapore.TripPlaner.Model.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Reader {
 
     private String method;
@@ -65,8 +67,8 @@ public class Reader {
             case "com.singapore.TripPlaner.Model.User":
                 return (User) object;
 // Do wyjaśnienia z KB
-//            case "com.singapore.TripPlaner.Model.City":
-//                return (City) object;
+            case "com.singapore.TripPlaner.Model.City":
+                return (City) object;
 //            case "com.singapore.TripPlaner.Model.Places":
 //                return this.createPlaceInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.Opinion":
@@ -128,7 +130,7 @@ public class Reader {
 
         return c.getResourceAsStream("/"
                 + this.method + "/"
-                + c.getPackageName() + "/"
+//                + c.getPackageName() + "/"
                 + c.getSimpleName() + ".json");
     }
 

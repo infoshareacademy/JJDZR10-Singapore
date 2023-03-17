@@ -1,6 +1,6 @@
 package com.singapore.TripPlaner.Model;
 
-public class City /* extends PersistentAbstract*/ {
+public class City extends PersistentAbstract {
     private String name;
     private String description;
 
