@@ -86,7 +86,7 @@ public class Places extends PersistentAbstract {
     @Override
     public JSONObject toJSON() {
         JSONObject jsonObject = super.toJSON();
-        jsonObject.put("city",city.getId());
+        jsonObject.put("cityid",city.getId());
         return jsonObject;
     }
 }
