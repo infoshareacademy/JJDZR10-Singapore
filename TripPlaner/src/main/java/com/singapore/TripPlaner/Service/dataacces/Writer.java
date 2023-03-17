@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Writer implements Persistent {
+public class Writer {
 
 
 
@@ -65,22 +65,6 @@ public class Writer implements Persistent {
     private String getResourcePath(Class c) {
 
         return c.getResource(".").getFile()+"../../../json/" + c.getPackageName() + "/"  + c.getSimpleName() + ".json";
-    }
-
-
-    @Override
-    public void setId(long id) {
-
-    }
-
-    @Override
-    public long getId() {
-        return 0;
-    }
-
-    @Override
-    public JSONObject toJSON() {
-        return null;
     }
 }
 
