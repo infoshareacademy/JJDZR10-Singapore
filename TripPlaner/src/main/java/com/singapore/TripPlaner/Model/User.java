@@ -6,26 +6,12 @@ import java.util.Objects;
 
 public class User extends PersistentAbstract {
 
-    private long id;
 
     private String login;
 
     private String firstName;
 
     private String lastName;
-
-    public long getId() {
-        return id;
-    }
-
-    @Override
-    public JSONObject toJSON() {
-        return null;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getLogin() {
         return login;

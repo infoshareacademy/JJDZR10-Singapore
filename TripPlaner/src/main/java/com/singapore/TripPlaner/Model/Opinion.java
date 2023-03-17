@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Opinion extends PersistentAbstract  {
-    private long id;
+
     private String userOpinion;
     private Integer userRate;
     private Double objectRate;

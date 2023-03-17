@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class OpinionService extends ValidatorService implements Persistent {
+public class OpinionService extends ValidatorService {
     private long id_user;
     private String userOpinion;
     private Double objectRate;
@@ -83,20 +83,6 @@ public class OpinionService extends ValidatorService implements Persistent {
         return objectRate;
     }
 
-    @Override
-    public void setId(long id) {
-
-    }
-
-    @Override
-    public long getId() {
-        return 0;
-    }
-
-    @Override
-    public JSONObject toJSON() {
-        return null;
-    }
 }
 
 
