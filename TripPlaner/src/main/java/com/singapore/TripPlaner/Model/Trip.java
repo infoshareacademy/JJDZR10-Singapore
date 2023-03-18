@@ -1,6 +1,6 @@
-package com.infoshareacademy.model;
+package com.singapore.TripPlaner.Model;
 
-import com.infoshareacademy.model.place.Places;
+import com.singapore.TripPlaner.Model.Places;
 import org.json.simple.JSONObject;
 
 import java.util.List;

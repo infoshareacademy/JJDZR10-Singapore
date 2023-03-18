@@ -1,8 +1,6 @@
-package com.infoshareacademy.model;
+package com.singapore.TripPlaner.Model;
 
-import org.json.simple.JSONObject;
-
-public class Places extends PersistentAbstract {
+public class Places /*extends PersistentAbstract*/ {
 
     private String name;
     private String description;
@@ -83,10 +81,10 @@ public class Places extends PersistentAbstract {
      * jsonObject.put przechwytuje dziłania tej metody z rodzica i dodaje do jsonObject pola których nie potrafi obsłużyć Gson.
      * @return
      */
-    @Override
-    public JSONObject toJSON() {
-        JSONObject jsonObject = super.toJSON();
-        jsonObject.put("cityid",city.getId());
-        return jsonObject;
-    }
+//    @Override
+//    public JSONObject toJSON() {
+//        JSONObject jsonObject = super.toJSON();
+//        jsonObject.put("city",city.getId());
+//        return jsonObject;
+//    }
 }

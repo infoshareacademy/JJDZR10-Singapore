@@ -1,4 +1,4 @@
-package com.infoshareacademy.service.dataacces;
+package com.singapore.TripPlaner.Service.dataacces;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -6,11 +6,13 @@ import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.infoshareacademy.model.*;
+import com.singapore.TripPlaner.Model.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Reader {
 
     private String method;
@@ -60,14 +62,17 @@ public class Reader {
         Object object = gson.fromJson(jsonObject.toJSONString(), c);
 
         switch (className) {
-            case "com.infoshareacademy.model.Trip":
+            case "com.singapore.TripPlaner.Model.Trip":
                 return this.createTripInstance(jsonObject, object);
-            case "com.infoshareacademy.model.User":
+            case "com.singapore.TripPlaner.Model.User":
                 return (User) object;
-            case "com.infoshareacademy.model.City":
+// Do wyjaśnienia z KB
+            case "com.singapore.TripPlaner.Model.City":
                 return (City) object;
-            case "com.infoshareacademy.model.Places":
-                return this.createPlaceInstance(jsonObject, object);
+//            case "com.singapore.TripPlaner.Model.Places":
+//                return this.createPlaceInstance(jsonObject, object);
+            case "com.singapore.TripPlaner.Model.Opinion":
+                return this.createOpinionInstance(jsonObject, object);
         }
         throw (new Exception("No such model entity"));
     }
@@ -125,7 +130,7 @@ public class Reader {
 
         return c.getResourceAsStream("/"
                 + this.method + "/"
-                + c.getPackageName() + "/"
+//                + c.getPackageName() + "/"
                 + c.getSimpleName() + ".json");
     }
 
@@ -147,5 +152,15 @@ public class Reader {
             place.setCity(city);
         }
         return place;
+    }
+
+    private Opinion createOpinionInstance(JSONObject jsonObject, Object object) {
+        Opinion opinion = (Opinion) object;
+        if(jsonObject.containsKey("userid")) {
+            long idUser = (long) jsonObject.get("userid");
+            User user = (User) this.getObjectById(User.class, idUser);
+            opinion.setUser(user);
+        }
+        return opinion;
     }
 }

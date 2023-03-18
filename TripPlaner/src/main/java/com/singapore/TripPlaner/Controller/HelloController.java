@@ -1,4 +1,4 @@
-package com.singapore.TripPlaner;
+package com.singapore.TripPlaner.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
