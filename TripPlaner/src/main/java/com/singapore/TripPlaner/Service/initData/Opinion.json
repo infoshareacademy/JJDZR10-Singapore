@@ -1,0 +1,12 @@
+[
+        {
+        "id": 1,
+        "name": "Bazylika Mariacka",
+        "description": "Bazylika konkatedralna Wniebowzięcia Najświętszej Maryi Panny, zwana często „Koroną Gdańska” jest największą w Europie świątynią wybudowaną z cegły.\nJej potężne mury i wieże wznoszą się wysoko nad panoramą miasta oraz nad rozległą okolicą.",
+        "prize": 12,
+        "rate": 4,
+        "opinion": "Duża katedra w centrum miasta. Polecamy wejść na wieże.",
+        "fromCity": 1,
+        "type": 1
+        }
+        ]
