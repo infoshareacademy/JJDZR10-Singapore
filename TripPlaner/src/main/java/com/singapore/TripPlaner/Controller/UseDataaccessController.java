@@ -17,6 +17,12 @@ public class UseDataaccessController {
     @Autowired
     private Reader reader;
 
+    @GetMapping("/start")
+    public String getStart(){
+        return "index";
+    }
+
+
     @GetMapping("/ex1")
     public String ex1(Model model) {
         List<Persistent> cities = reader.getList(City.class);
