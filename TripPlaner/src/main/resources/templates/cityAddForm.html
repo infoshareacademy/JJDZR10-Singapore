@@ -12,46 +12,34 @@
 
 <form class="row g-3">
   <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Nazwa miasta:</label>
-    <input type="email" class="form-control" id="inputEmail4">
+    <label for="inputCityName" class="form-label">Nazwa miasta:</label>
+    <input type="text" class="form-control" id="inputCityName" required>
   </div>
 
   <div class="col-12">
-    <label for="inputAddress" class="form-label">Opis miasta:</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress2" class="form-label">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+    <label for="Textarea" class="form-label">Opis miasta:</label>
+    <textarea class="form-control" id="Textarea" rows="3" required></textarea>
   </div>
   <div class="col-md-6">
-    <label for="inputCity" class="form-label">City</label>
-    <input type="text" class="form-control" id="inputCity">
+    <label for="inputCountry" class="form-label">Kraj</label>
+    <input type="text" class="form-control" id="inputCountry">
   </div>
   <div class="col-md-4">
-    <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select">
-      <option selected="">Choose...</option>
-      <option>...</option>
+    <label for="inputContinent" class="form-label">Kontynent</label>
+    <select id="inputContinent" class="form-select">
+      <option selected="">Wybierz...</option>
+      <option>Europa</option>
+      <option>Azja</option>
+      <option>Afryka</option>
+      <option>Ameryka Południowa</option>
+      <option>Ameryka Północna</option>
+      <option>Australia i Oceania</option>
+      <option>Antarktyda</option>
     </select>
   </div>
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="inputZip">
-  </div>
   <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
-    </div>
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
   </div>
 </form>
-
-<!-- End Example Code -->
 </body>
 </html>
