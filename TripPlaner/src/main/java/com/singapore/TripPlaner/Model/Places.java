@@ -8,16 +8,16 @@ public class Places /*extends PersistentAbstract*/ {
     private double rate;
     private String opinion;
     private City city;
-
-    private long fromCity;
-
-    public long getFromCity() {
-        return fromCity;
-    }
-
-    public void setFromCity(long fromCity) {
-        this.fromCity = fromCity;
-    }
+//
+//    private long fromCity;
+//
+//    public long getFromCity() {
+//        return fromCity;
+//    }
+//
+//    public void setFromCity(long fromCity) {
+//        this.fromCity = fromCity;
+//    }
 
 
     public String getName() {

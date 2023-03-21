@@ -64,7 +64,9 @@ public class Writer {
      */
     private String getResourcePath(Class c) {
 
-        return c.getResource(".").getFile()+"../../../json/" + c.getPackageName() + "/"  + c.getSimpleName() + ".json";
+        return c.getResource(".").getFile()+"../../../json/"
+//                + c.getPackageName()
+                + "/"  + c.getSimpleName() + ".json";
     }
 }
 
