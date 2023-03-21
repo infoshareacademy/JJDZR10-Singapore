@@ -1,47 +1,85 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-  <title>Singapore - create City</title>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Singapore</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js"></script>
+    <style>
+        html,
+        body {
+            height: 400px;
+            margin: 0;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body class="p-3 m-0 border-0 bd-example">
 <div action="#" th:action="@{/city}" th:object="${city}" method="post">
-<form class="row g-3" >
-  <div class="col-md-6">
-    <label for="inputCityName" class="form-label">Nazwa miasta:</label>
-    <input type="text" class="form-control" id="inputCityName" required th:field="*{name}">
-  </div>
+    <form class="row g-3">
+        <div class="col-md-6">
+            <label for="inputCityName" class="form-label">Nazwa miasta:</label>
+            <input type="text" class="form-control" id="inputCityName" required th:field="*{name}">
+        </div>
 
-  <div class="col-12">
-    <label for="Textarea" class="form-label">Opis miasta:</label>
-      <input type="text" class="form-control" id="Textarea" required th:field="*{description}">
-  </div>
+        <div class="col-12">
+            <label for="Textarea" class="form-label">Opis miasta:</label>
+            <input type="text" class="form-control" id="Textarea" required th:field="*{description}">
+        </div>
 
-  <div class="col-md-4">
-    <label for="inputCountry" class="form-label">Kraj</label>
-    <input type="text" class="form-control" id="inputCountry">
-  </div>
-  <div class="col-md-4">
-    <label for="inputContinent" class="form-label">Kontynent</label>
-    <select id="inputContinent" class="form-select">
-      <option selected="">Wybierz...</option>
-      <option>Europa</option>
-      <option>Azja</option>
-      <option>Afryka</option>
-      <option>Ameryka Południowa</option>
-      <option>Ameryka Północna</option>
-      <option>Australia i Oceania</option>
-      <option>Antarktyda</option>
-    </select>
-  </div>
-  <div class="col-12">
-    <button type="submit" value="Submit" class="btn btn-primary">Dodaj</button>
-  </div>
-</form>
+        <div class="col-md-4">
+            <label for="inputCountry" class="form-label">Kraj</label>
+            <input type="text" class="form-control" id="inputCountry">
+        </div>
+        <div class="col-md-4">
+            <label for="inputContinent" class="form-label">Kontynent</label>
+            <select id="inputContinent" class="form-select">
+                <option selected="">Wybierz...</option>
+                <option>Europa</option>
+                <option>Azja</option>
+                <option>Afryka</option>
+                <option>Ameryka Południowa</option>
+                <option>Ameryka Północna</option>
+                <option>Australia i Oceania</option>
+                <option>Antarktyda</option>
+            </select>
+        </div>
+
+        <div class="col-12">
+            <button type="submit" value="Save" class="btn btn-primary">Dodaj</button>
+        </div>
+    </form>
 </div>
+        <div id="map"></div>
+
+
 </body>
+
+<script th:inline="javascript">
+    let zoom = 6;
+    let lat = 52.369;
+    let lon = 19.314;
+
+    let map = L.map('map', {
+        minZoom: 6,
+        maxZoom: 18
+    }).setView([lat, lon], zoom);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    map.on('click', function (e) {
+        console.log(e.latlng)
+        alert(e.latlng)
+    })
+
+</script>
 </html>
