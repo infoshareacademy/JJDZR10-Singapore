@@ -61,7 +61,9 @@ public class Trip extends PersistentAbstract {
     @Override
     public JSONObject toJSON() {
         JSONObject jsonObject = super.toJSON();
-        jsonObject.put("userid", user.getId());
+        if(user != null){
+            jsonObject.put("userid", user.getId());
+        }
         return jsonObject;
     }
 

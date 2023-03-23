@@ -2,7 +2,7 @@ package com.singapore.TripPlaner.Model;
 
 import org.json.simple.JSONObject;
 
-public class Places /*extends PersistentAbstract*/ {
+public class Places extends PersistentAbstract {
 
     private String name;
     private String description;
