@@ -6,7 +6,7 @@
     "prize": 12,
     "rate": 4,
     "opinion": "Duża katedra w centrum miasta. Polecamy wejść na wieże.",
-    "fromCity": 1,
+    "cityid": 1,
     "type": 1
   },
   {
@@ -16,7 +16,7 @@
     "prize": 0,
     "rate": 5,
     "opinion": "Super miejsce, super widok, polecamy.",
-    "fromCity": 1,
+    "cityid": 1,
     "type": 2
   },
   {
@@ -26,7 +26,7 @@
     "prize": 0,
     "rate": 4.5,
     "opinion": "Duży park, można zrobić piknik i napić się kawy.",
-    "fromCity": 1,
+    "cityid": 1,
     "type": 2
   },
   {
@@ -36,7 +36,7 @@
     "prize": 0,
     "rate": 4,
     "opinion": "Fajna atrakcja podczas spaceru.",
-    "fromCity": 1,
+    "cityid": 1,
     "type": 1
   },
   {
@@ -46,7 +46,7 @@
     "prize": 0,
     "rate": 4.7,
     "opinion": "Smaczne pierogi, super obsługa polecamy.",
-    "fromCity": 1,
+    "cityid": 1,
     "type": 3
   },
   {
@@ -56,7 +56,7 @@
     "prize": 20,
     "rate": 4,
     "opinion": "Fajny widok na Gdynie i zatokę",
-    "fromCity": 2,
+    "cityid": 2,
     "type": 1
   },
   {
@@ -66,7 +66,7 @@
     "prize": 0,
     "rate": 5,
     "opinion": "Plaża i molo w orłowie są super",
-    "fromCity": 2,
+    "cityid": 2,
     "type": 2
   },
   {
@@ -76,7 +76,7 @@
     "prize": 0,
     "rate": 5,
     "opinion": "Bardzo fajne miejsce aby odpocząć, pospacerować po lesie lub plaży. Będąc tam widziałem ludzi z dziećmi, pary acz również osoby stroniące od towarzystwa.",
-    "fromCity": 2,
+    "cityid": 2,
     "type": 2
   },
   {
@@ -86,7 +86,7 @@
     "prize": 25,
     "rate": 3.9,
     "opinion": "Jeden z moich must see w czasie podróży do Gdyni. Czytałam o nim dużo wcześniej chciałam od zawsze go zobaczyć.",
-    "fromCity": 2,
+    "cityid": 2,
     "type": 1
   },
   {
@@ -96,7 +96,7 @@
     "prize": 0,
     "rate": 4.5,
     "opinion": "Kultowy lokal warty odwiedzenia podczas wizyty w Gdyni. Wystrój wnętrza idealnie pasuje do azjatyckiej koncepcji lokalu.",
-    "fromCity": 2,
+    "cityid": 2,
     "type": 3
   },
   {
@@ -106,7 +106,7 @@
     "prize": 20,
     "rate": 4.5,
     "opinion": "Bardzo ładnie widoczna panorama Warszawy.",
-    "fromCity": 3,
+    "cityid": 3,
     "type": 1
   },
   {
@@ -116,7 +116,7 @@
     "prize": 15,
     "rate": 4.2,
     "opinion": "Zamek robi wrażenie.",
-    "fromCity": 3,
+    "cityid": 3,
     "type": 1
   },
   {
@@ -126,7 +126,7 @@
     "prize": 0,
     "rate": 4.4,
     "opinion": "Spokojny park w środku miasta, polecamy",
-    "fromCity": 3,
+    "cityid": 3,
     "type": 2
   },
   {
@@ -136,7 +136,7 @@
     "prize": 0,
     "rate": 4.6,
     "opinion": "Duży park i piękne łazienki",
-    "fromCity": 3,
+    "cityid": 3,
     "type": 2
   },
   {
@@ -146,7 +146,7 @@
     "prize": 0,
     "rate": 4.6,
     "opinion": "Ładne miejsce na spacer i porobienia zdjęć.",
-    "fromCity": 3,
+    "cityid": 3,
     "type": 1
   },
   {
@@ -156,7 +156,7 @@
     "prize": 0,
     "rate": 4.6,
     "opinion": "Zdecydowanie jedna z lepszych pizzerii w  Wawie.",
-    "fromCity": 3,
+    "cityid": 3,
     "type": 3
   },
   {
@@ -166,7 +166,7 @@
     "prize": 40,
     "rate": 4.7,
     "opinion": "Piękne miejsce, dużo histori Polski.",
-    "fromCity": 4,
+    "cityid": 4,
     "type": 1
   },
   {
@@ -176,7 +176,7 @@
     "prize": 0,
     "rate": 4.7,
     "opinion": "So much fun to walk around and buy souvenirs at.",
-    "fromCity": 4,
+    "cityid": 4,
     "type": 1
   },
   {
@@ -186,7 +186,7 @@
     "prize": 0,
     "rate": 4.7,
     "opinion": "Fajne miejsce na spacer lub do pobiegania",
-    "fromCity": 4,
+    "cityid": 4,
     "type": 2
   },
   {
@@ -196,7 +196,7 @@
     "prize": 0,
     "rate": 4.2,
     "opinion": "Ładne miejsce na zachód słońca i widok na miasto",
-    "fromCity": 4,
+    "cityid": 4,
     "type": 2
   },
   {
@@ -206,7 +206,7 @@
     "prize": 0,
     "rate": 4.5,
     "opinion": "Jest to jedna z droższych restauracji w których bywam, ale zdecydowanie warta swojej ceny.",
-    "fromCity": 4,
+    "cityid": 4,
     "type": 5
   },
   {
@@ -216,7 +216,7 @@
     "prize": 25,
     "rate": 4.9,
     "opinion": "Nie tylko wspaniała sztuka ale też dużo historii",
-    "fromCity": 5,
+    "cityid": 5,
     "type": 1
   },
   {
@@ -226,7 +226,7 @@
     "prize": 0,
     "rate": 4.5,
     "opinion": "Wspaniały, szczególnie wiosną",
-    "fromCity": 5,
+    "cityid": 5,
     "type": 2
   },
   {
@@ -236,7 +236,7 @@
     "prize": 0,
     "rate": 4.9,
     "opinion": "Piękne miejsce z dużą ilością restaturacji i pubów.",
-    "fromCity": 5,
+    "cityid": 5,
     "type": 2
   },
   {
@@ -246,7 +246,7 @@
     "prize": 0,
     "rate": 4.2,
     "opinion": "Czarujący most",
-    "fromCity": 5,
+    "cityid": 5,
     "type": 2
   },
   {
@@ -256,7 +256,7 @@
     "prize": 0,
     "rate": 4.6,
     "opinion": "Miejsce bardzo klimatyczne z czeską obsługą.",
-    "fromCity": 5,
+    "cityid": 5,
     "type": 3
   }
 ]

@@ -146,8 +146,8 @@ public class Reader {
 
     private Places createPlaceInstance(JSONObject jsonObject, Object object) {
         Places place = (Places) object;
-        if (jsonObject.containsKey("fromCityId")) {
-            long idCity = (long) jsonObject.get("fromCityId");
+        if (jsonObject.containsKey("cityid")) {
+            long idCity = (long) jsonObject.get("cityid");
             City city = (City) this.getObjectById(City.class, idCity);
             place.setCity(city);
         }

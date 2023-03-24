@@ -18,6 +18,11 @@ public abstract class PersistentAbstract implements Persistent {
         this.id = id;
     }
 
+    /**
+     * należy wkleić do każdej klasy która ma zagnieżdżone obiekty - jak tu Id , bo Gson nie obsługuje ich
+     * jsonObject.put przechwytuje dziłania tej metody z rodzica i dodaje do jsonObject pola których nie potrafi obsłużyć Gson.
+     * @return
+     */
     @Override
     public JSONObject toJSON() {
 
