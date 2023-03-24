@@ -39,6 +39,6 @@ public class CityService extends PersistentAbstract {
 //        List <City> cityList = (List<City>) cityPersistent;
 //        cityList.add(city);
         Writer writer = new Writer();
-        writer.save((Persistent) city);
+        writer.save(city);
     }
 }

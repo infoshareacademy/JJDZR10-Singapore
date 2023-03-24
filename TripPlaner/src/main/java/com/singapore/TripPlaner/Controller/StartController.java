@@ -8,9 +8,9 @@ public class StartController {
 
 
 
-    @GetMapping("/start")
+    @GetMapping("/")
     public String getStart(){
-        return "index";
+        return "dashboard";
     }
 
 
