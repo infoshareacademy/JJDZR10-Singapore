@@ -6,11 +6,19 @@ import com.singapore.TripPlaner.Model.PersistentAbstract;
 import com.singapore.TripPlaner.Service.dataacces.*;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+
 @Component
 public class CityService extends PersistentAbstract {
+    private final Reader reader;
+    private final Writer writer;
+
+    public CityService(Reader reader, Writer writer) {
+        this.reader = reader;
+        this.writer = writer;
+    }
+
 //    public void findAllCities() {
 //        List<Persistent> city = getList(City.class);
 //        for (Persistent listOfCity : city) {
@@ -33,12 +41,19 @@ public class CityService extends PersistentAbstract {
 //        return list.stream().map(onlyName).collect(Collectors.toList());
 //    }
 
-    public void addCity(City city) {
-//        Reader reader = new Reader();
-//        Persistent cityPersistent = (Persistent) reader.getList(City.class);
-//        List <City> cityList = (List<City>) cityPersistent;
-//        cityList.add(city);
+    public void createCity(City city) {
         Writer writer = new Writer();
         writer.save(city);
+    }
+    public City findById(Long id){
+        Reader reader = new Reader();
+        City city = new City();
+        return city = (City) reader.getObjectById(City.class, id);
+    }
+
+    public List getCities () {
+        List<Persistent> cities = new ArrayList<>();
+        return cities = reader.getList(City.class);
+
     }
 }
