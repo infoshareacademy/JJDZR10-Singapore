@@ -2,16 +2,35 @@ package com.singapore.TripPlaner.Model;
 
 import org.json.simple.JSONObject;
 
-public class Places /*extends PersistentAbstract*/ {
+public class Places extends PersistentAbstract {
 
     private String name;
     private String description;
-    private double prize;
+    private double price;
     private double rate;
     private String opinion;
     private City city;
+    private long cityid;
+    private int type;
 
 
+
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public long getCityid() {
+        return cityid;
+    }
+
+    public void setCityid(long cityid) {
+        this.cityid = cityid;
+    }
 
     public String getName() {
         return name;
@@ -30,11 +49,11 @@ public class Places /*extends PersistentAbstract*/ {
     }
 
     public double getPrize() {
-        return prize;
+        return price;
     }
 
     public void setPrize(double prize) {
-        this.prize = prize;
+        this.price = prize;
     }
 
     public double getRate() {
@@ -65,7 +84,7 @@ public class Places /*extends PersistentAbstract*/ {
     public String toString() {
         return "Nazwa: " + name +
                 "\nOpis: "+ description+
-                "\nCena: "+prize + " zł\nOcena: " + rate +
+                "\nCena: "+price + " zł\nOcena: " + rate +
                 "\nOpinie: " + opinion +
                 "\n******************************\n";
     }

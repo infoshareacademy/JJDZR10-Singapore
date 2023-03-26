@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Singapore</title>
+</head>
+<body>
+<table class="table table-sm">
+
+    <tr th:each="place: ${places}">
+        <td th:text="${place.name}"/>
+        <!--  <td><a th:href="@{/city/details(id=${city.id})}" value="button"> details </a> </td>-->
+    </tr>
+</table>
+</body>
+</html>
