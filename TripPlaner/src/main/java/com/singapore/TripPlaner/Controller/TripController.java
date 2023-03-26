@@ -74,7 +74,6 @@ public class TripController {
         List<Persistent> places = reader.getList(Places.class);
         model.addAttribute("places", places);
         model.addAttribute("positionNew", tpNext);
-        Collections.sort(tripPoints);
         TripPoint emptyTripPoint = new TripPoint();
         emptyTripPoint.setPosition(tpNext);
         emptyTripPoint.setTrip(trip);

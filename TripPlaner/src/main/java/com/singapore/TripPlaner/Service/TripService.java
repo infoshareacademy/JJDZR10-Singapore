@@ -5,10 +5,10 @@ import com.singapore.TripPlaner.Model.Trip;
 import com.singapore.TripPlaner.Model.TripPoint;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -35,6 +35,9 @@ public class TripService {
             if(tripPoint.getTrip().getId() == trip.getId()) {
                 tpListRet.add(tripPoint);
             }
+        }
+        if(sortByPosition){
+            Collections.sort(tpListRet);
         }
 
         return tpListRet;
