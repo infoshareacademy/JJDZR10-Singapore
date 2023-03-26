@@ -8,14 +8,7 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-<table class="table table-sm">
-
-    <tr th:each="city: ${cities}">
-        <td th:text="${city.id}"/>
-        <td th:text="${city.name}"/>
-        <td><a th:href="@{/city/details(id=${city.id})}" value="button"> detale </a> </td>
-    </tr>
-</table>
+<div th:insert="~{/fragments/tabel :: body}"></div>
 
 <div class="col-12">
     <a th:href="@{/city}">Dodaj miasto</a>

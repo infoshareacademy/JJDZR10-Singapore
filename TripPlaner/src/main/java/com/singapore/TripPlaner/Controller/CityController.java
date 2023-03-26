@@ -48,7 +48,8 @@ public class CityController {
     public String createCity(@ModelAttribute City city) {
         cityService.createCity(city);
         return "redirect:/cities/";
-
     }
+
+
 
 }

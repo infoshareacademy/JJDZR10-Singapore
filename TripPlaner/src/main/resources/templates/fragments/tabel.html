@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table class="table table-sm">
+
+  <tr th:each="city, iterStat: ${cities}">
+    <td th:text="${iterStat.count}"/>
+    <td th:text="${city.name}"/>
+    <td><a th:href="@{/city/details(id=${city.id})}" value="button"> detale </a> </td>
+  </tr>
+</table>
+
+</body>
+</html>
