@@ -1,9 +1,19 @@
 package com.singapore.TripPlaner.Model;
 
-public class TripPoint extends PersistentAbstract {
-    private long placeid;
+import org.json.simple.JSONObject;
 
+public class TripPoint extends PersistentAbstract{
+    private Places place;
     private Trip trip;
+    private long position;
+
+    public long getPosition() {
+        return position;
+    }
+
+    public void setPosition(long position) {
+        this.position = position;
+    }
 
     public Trip getTrip() {
         return trip;
@@ -13,12 +23,33 @@ public class TripPoint extends PersistentAbstract {
         this.trip = trip;
     }
 
-    public long getPlaceid() {
-        return placeid;
+    public Places getPlace() {
+        return place;
     }
 
-    public void setPlaceid(long placeid) {
-        this.placeid = placeid;
+    public void setPlace(Places place) {
+        this.place = place;
     }
 
+    @Override
+    public JSONObject toJSON() {
+        JSONObject jsonObject = super.toJSON();
+        if(trip != null){
+            jsonObject.put("tripid", trip.getId());
+        }
+        if(place != null){
+            jsonObject.put("placeid", place.getId());
+        }
+        return jsonObject;
+
+    }
+
+    @Override
+    public int compareTo(Persistent o) {
+        TripPoint tripPoint = (TripPoint) o;
+        if(getPosition() == tripPoint.getPosition()) {
+            return 0;
+        }
+        return getPosition() > tripPoint.getPosition()? 1:-1;
+    }
 }

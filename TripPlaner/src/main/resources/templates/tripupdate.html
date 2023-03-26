@@ -86,23 +86,69 @@
 <div class="container ">
     <div class="row ">
         <div class="mt-4 mb-3">
-            <h1>Utwórz wycieczkę</h1>
+            <h1>Twoja wycieczka</h1>
         </div>
     </div>
     <div class="row ">
-        <div class="col-6">
+        <div class="col-12">
             <form action="#" th:action="@{/tripcreate}" th:object="${trip}" method="post">
-                <input type="hidden" th:field="*{id}" />
+                <input type="hidden" th:field="*{id}"/>
                 <div class="mb-3">
                     <label for="name" class="form-label">Nazwa wycieczki</label>
-                    <input id="name" class="form-control" placeholder="Nazwa wycieczki" type="text" th:field="*{name}" />
+                    <input id="name" class="form-control" placeholder="Nazwa wycieczki" type="text" th:field="*{name}"/>
                 </div>
-              <div class="mb-3">
-                  <input class="btn btn-primary" type="submit" value="Dodaj" />
-                  <input class="btn" type="reset" value="Reset" />
-              </div>
-
+                <div class="mb-3">
+                    <input class="btn btn-primary" type="submit" value="Zmień"/>
+                    <input class="btn" type="reset" value="Reset"/>
+                    <input class="btn btn-danger" type="button" value="Usuń"/>
+                </div>
             </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 px-4" th:if="${trip.id > 0}">
+            <div class="mt-4 mb-3">
+                <h2>Punkty wycieczki</h2>
+            </div>
+            <div class="mt-4 mb-3">
+                <!--Aktualnie dodane punkty wycieczki-->
+                <div class="row" th:each="tp: ${tripPoints}">
+                    <div class="col-2">
+                        <div style="width: 30px;background: grey;border-radius: 10px;height: 35px;padding: 6px 10px;color: #fff;"
+                             th:text="${tp.position}"></div>
+                    </div>
+                    <div class="col-10">
+                        <div>
+                            <p th:text="${tp.place.city.name}+' - '+${tp.place.name}"> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4 mb-3 row" style="background: aliceblue; padding: 20px; border-radius: 10px;">
+                <!--Formularz dodawania kolejnego punktu wycieczki-->
+                <div class="col-2">
+                    <div style="width: 30px;background: grey;border-radius: 10px;height: 35px;padding: 6px 10px;color: #fff;"
+                         th:text="${positionNew}"></div>
+                </div>
+                <div class="col-10">
+
+                    <form action="#" th:action="@{/tripPointCreate}" th:object="${tripPoint}" method="post">
+                        <input type="hidden" th:field="*{id}"/>
+                        <input type="hidden" th:field="*{position}"/>
+                        <input type="hidden" th:name="tripid" th:value="*{trip.id}"/>
+                        <div class="mb-3">
+                            <label for="point" class="form-label">Wybierz miejsce</label>
+                            <select id="point" class="form-control" th:name="placeid">
+                                <option th:each="place: ${places}" th:value="${place.id}" th:text="${place.city.name}+' - '+${place.name}"/>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <input class="btn btn-primary" type="submit" value="Dodaj"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
