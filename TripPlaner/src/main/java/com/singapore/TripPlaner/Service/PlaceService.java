@@ -35,4 +35,7 @@ public class PlaceService extends PersistentAbstract{
     public List<Places> filterListByTypeOfPlace(int index, List<Places> place) {
         return place.stream().filter(p -> p.getType() == index).collect(Collectors.toList());
     }
+    public Places findById(Long id){
+        return (Places) reader.getObjectById(Places.class,id);
+    }
 }

@@ -67,10 +67,10 @@ public class Reader {
             case "com.singapore.TripPlaner.Model.User":
                 return (User) object;
 // Do wyjaśnienia z KB
-            case "com.singapore.TripPlaner.Model.Places":
-                return (Places) object;
             case "com.singapore.TripPlaner.Model.City":
                 return (City) object;
+            case "com.singapore.TripPlaner.Model.Places":
+                return this.createPlaceInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.Opinion":
                 return this.createOpinionInstance(jsonObject, object);
         }

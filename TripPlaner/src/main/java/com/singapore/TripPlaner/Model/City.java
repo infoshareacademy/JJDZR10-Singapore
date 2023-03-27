@@ -28,10 +28,4 @@ public class City extends PersistentAbstract {
         this.description = description;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Miasto: "+ name +
-//                "\nOpis: " +description+ "\nid="+getId()+
-//                "\n**********************";
-//    }
 }

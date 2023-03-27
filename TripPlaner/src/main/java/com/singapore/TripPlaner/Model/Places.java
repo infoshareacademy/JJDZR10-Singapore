@@ -48,12 +48,12 @@ public class Places extends PersistentAbstract {
         this.description = description;
     }
 
-    public double getPrize() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrize(double prize) {
-        this.price = prize;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public double getRate() {

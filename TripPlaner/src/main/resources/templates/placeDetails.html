@@ -7,21 +7,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
-
 <body>
 <nav th:insert="~{/fragments/dashboard :: nav}"></nav>
-<table class="table table-sm">
-
-    <tr th:each="place,iterStat: ${places}">
-        <td th:text="${iterStat.count}"/>
-        <td th:text="${place.name}"/>
-        <td th:text="${place.city.name}"/>
-        <td><a th:href="@{/place/details(id=${place.id})}" value="button"> Detale </a> </td>
-    </tr>
+<table>
+    <h2 th:text="${place.name}"></h2>
+    <div><span>Opis: <span><span th:text="${place.description}"> </span></span></div>
+    <div><span>Ocena: <span><span th:text="${place.rate}"> </span>/5</span></div>
+    <div>
+        <span th:if="${place.price==0}"></span>
+        <span th:unless="${place.price==0}"><span>Cena: <span><span th:text="${place.price}"></span> zł </span>
+    </div>
+    <div>Opinie:</div>
+    <div><span th:text="${place.opinion}"> </span></span></div>
 </table>
-
-<div class="col-12">
-    <a th:href="@{/places}">Dodaj miejsce</a>
-</div>
 </body>
 </html>
