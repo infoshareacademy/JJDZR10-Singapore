@@ -7,6 +7,34 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
+<div th:insert="~{fragments/navbar :: body}"></div>
+
+<table class="table table-striped">
+
+    <tr th:each="car,iterStat: ${cars}">
+        <td th:text="${iterStat.count}"></td>
+        <td th:text="#{car.brand} + ': ' + ${car.name}"></td>
+        <td th:switch="${car.color.name()}">
+            <p th:case="'RED'" th:text="#{color.red}"></p>
+            <p th:case="'BLUE'" th:text="#{color.blue}"></p>
+            <p th:case="'GREEN'" th:text="#{color.green}"></p>
+            <p th:case="*" th:text="#{color.unknown}"></p>
+        </td>
+        <td th:text="${car.engine}"></td>
+        <td>
+            <i th:if="${car.available}" class="fa fa-check" aria-hidden="true"></i>
+            <i th:unless="${car.available}" class="fa fa-times" aria-hidden="true"></i>
+        </td>
+        <td>
+            <a th:href="@{/cars/delete-car/{id}(id=${car.id})}" class="btn btn-danger">
+                DELETE
+            </a>
+            <a th:href="@{/cars/{carId}(carId=${car.id})}" class="btn btn-primary">
+                EDIT
+            </a>
+        </td>
+    </tr>
+</table>
 
 </body>
 </html>

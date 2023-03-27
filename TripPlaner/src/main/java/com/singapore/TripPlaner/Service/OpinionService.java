@@ -1,43 +1,72 @@
 package com.singapore.TripPlaner.Service;
 
 
-import com.singapore.TripPlaner.Model.Persistent;
+import com.singapore.TripPlaner.Model.Opinion;
 import com.singapore.TripPlaner.Model.User;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
-import org.json.simple.JSONObject;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-
-public class OpinionService extends ValidatorService {
+@Service
+public class OpinionService {
     private long id_user;
     private String userOpinion;
     private Double objectRate;
     private List<Integer> ratingsList = new ArrayList<>();
     private Integer userRate;
     private User user;
+    private List opinionsList;
 
-    private User scanUsers() {
-        Reader reader = new Reader();
-        Writer writer = new Writer();
-        return user = (User)  reader.getObjectById(User.class, id_user);
+    private final Reader reader;
+    private final Writer writer;
+
+    public OpinionService(Reader reader, Writer writer) {
+        this.reader = reader;
+        this.writer = writer;
     }
 
-    public String setUserOpinion() {
-        scanUserString("Napisz komentarz.", "Nic nie napisałeś, podaj swoją opinię");
-        return userOpinion = getUserScanString();
-
+    public List<Opinion> getOpinions(){
+        return opinionsList = reader.getList(Opinion.class);
     }
 
-    public Integer setRate() {
-        userScanInteger("Podaj swoją ocenę w skali 1-10", "Podałeś liczbę spoza zakresu", 1, 10);
-        ratingsList.add(getUserScanInteger());
-        setObjectRate();
-        return userRate = getUserScanInteger();
+    public Opinion findById(Long id){
+        return (Opinion) reader.getObjectById(Opinion.class, id);
     }
+
+    public void editOpinionById (Long id, Opinion opinion){
+        Opinion opinionToEdit = findById(id);
+
+        opinionToEdit.setUserOpinion(opinion.getUserOpinion());
+        opinionToEdit.setUserRate(getUserRate());
+        opinionToEdit.setObjectRate(opinion.getObjectRate());
+        opinionToEdit.setId_user(opinion.getId_user());
+    }
+
+    public void removeOpinionById(long id){
+        getOpinions();
+        Opinion opinionToRemove = findById(id);
+        opinionsList.remove(opinionToRemove);
+    }
+
+    public void addOpinion(Opinion opinion){
+        getOpinions();
+        opinionsList.add(opinion);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     private Double setObjectRate() {
@@ -66,9 +95,7 @@ public class OpinionService extends ValidatorService {
 //        }
 
 
-    public String getUserOpinion() {
-        return userOpinion;
-    }
+
 
     public List<Integer> getRatingsList() {
         return ratingsList;
@@ -79,10 +106,20 @@ public class OpinionService extends ValidatorService {
     }
 
     public Double objectRate() {
-        System.out.println("\nŚrednia ocena " + ratingsList.size() + " użytkowników to " + objectRate + ".");
         return objectRate;
     }
 
+    @Override
+    public String toString() {
+        return "OpinionService{" +
+                "id_user=" + id_user +
+                ", userOpinion='" + userOpinion + '\'' +
+                ", objectRate=" + objectRate +
+                ", ratingsList=" + ratingsList +
+                ", userRate=" + userRate +
+                ", opinionsList=" + opinionsList +
+                '}';
+    }
 }
 
 

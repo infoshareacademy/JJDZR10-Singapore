@@ -5,6 +5,7 @@
     <title>Singapore</title>
 </head>
 <body>
+<div th:insert="~{fragments/navbar :: body}"></div>
 <table>
     <h1 th:text="${city.name}" ></h1>
     <div th:text="${city.description}" ></div>
