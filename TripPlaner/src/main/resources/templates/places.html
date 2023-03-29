@@ -16,7 +16,7 @@
         <td th:text="${iterStat.count}"/>
         <td th:text="${place.name}"/>
         <td th:text="${place.city.name}"/>
-        <td><a th:href="@{/place/details(id=${place.id})}" value="button"> Detale </a> </td>
+        <td><a th:href="@{/place/{placeId}(placeId=${place.id})}" value="button"> Detale </a> </td>
     </tr>
 </table>
 

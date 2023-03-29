@@ -11,16 +11,14 @@ public class Places extends PersistentAbstract {
     private String opinion;
     private City city;
     private long cityid;
-    private int type;
+//    private int type;
+    private Type type;
 
-
-
-
-    public int getType() {
+    public Type getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(Type type) {
         this.type = type;
     }
 

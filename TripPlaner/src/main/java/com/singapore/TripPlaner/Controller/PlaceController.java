@@ -2,6 +2,7 @@ package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Model.Places;
+import com.singapore.TripPlaner.Model.Type;
 import com.singapore.TripPlaner.Service.PlaceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,21 +20,20 @@ public class PlaceController {
         this.placeService = placeService;
     }
 
-    @GetMapping("/place")
+    @GetMapping("/places")
     public String getPlace(Model model) {
-        List places = placeService.getPlace();
-        model.addAttribute("places", places);
+        model.addAttribute("places", placeService.getPlace());
         return "places";
     }
-    @GetMapping("/place/type/{index}")
-    public String getPlacesByType(@PathVariable int index , Model model){
+    @GetMapping("/place/type/{type}")
+    public String getPlacesByType(@PathVariable String type, Model model){
         List places = placeService.getPlace();
-        List filtredPlaces = placeService.filterListByTypeOfPlace(index,places);
+        List filtredPlaces = placeService.filterListByTypeOfPlace(type,places);
         model.addAttribute("places",filtredPlaces);
         return "places";
     }
     @GetMapping ("/place/{id}")
-    public String placeDetails(@RequestParam(required = true) Long id, Model model){
+    public String placeDetails(@PathVariable Long id, Model model){
         model.addAttribute("place", placeService.findById(id));
         return "placeDetails";
     }
