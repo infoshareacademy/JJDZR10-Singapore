@@ -9,53 +9,53 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Controller
 public class OpinionController {
 
-private final OpinionService opinionService;
+    private final OpinionService opinionService;
 
     public OpinionController(OpinionService opinionService) {
         this.opinionService = opinionService;
     }
 
     @GetMapping("/opinions")
-    public String getOpinions (Model model) {
+    public String getOpinions(Model model) {
         List opinions = opinionService.getOpinions();
         model.addAttribute("opinions", opinions);
-        return "opinions";
+        return "opinion/opinions";
     }
+
     @GetMapping("/opinion/{id}")
-    public String getOpinion(@PathVariable Long id, Model model){
+    public String getOpinionById(@PathVariable Long id, Model model) {
         Opinion opinion = opinionService.findById(id);
         model.addAttribute(opinion);
-        return "opinion"; //TODO
+        return "opinion/opinion"; //TODO
     }
 
     @PostMapping("/opinion/{id}/edit")
-    public String editOpinion (@PathVariable("id") Long id, @ModelAttribute Opinion opinion, Model model){
+    public String editOpinion(@PathVariable("id") Long id, @ModelAttribute Opinion opinion, Model model) {
         opinionService.editOpinionById(id, opinion);
-        return "redirect opinions";
+        return "redirect: opinion/opinions";
     }
 
-    @GetMapping ("opinions/delete/{id}")
-    public String deleteOpinion (@PathVariable long id){
+    @GetMapping("opinions/delete/{id}")
+    public String deleteOpinion(@PathVariable long id) {
         opinionService.removeOpinionById(id);
-        return "redirect: /opinions";
+        return "redirect: opinion/opinions";
     }
 
-    @GetMapping ("opinion/new")
-    public String opinionForm(Model model){
+    @GetMapping("opinion/new")
+    public String opinionForm(Model model) {
         model.addAttribute("opinion", new Opinion());
-        return "opinionForm";
+        return "opinion/opinionForm";
     }
 
     @PostMapping("/opinions")
-    public String addOpinion(@ModelAttribute Opinion opinion, Model model){
+    public String addOpinion(@ModelAttribute Opinion opinion, Model model) {
         opinionService.addOpinion(opinion);
-        return "redirect: /opinions";
+        return "redirect: opinion/opinions";
     }
 
 }
