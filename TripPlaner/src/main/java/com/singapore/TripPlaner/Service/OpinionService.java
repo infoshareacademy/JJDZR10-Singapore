@@ -19,7 +19,6 @@ public class OpinionService {
     private Integer userRate;
     private User user;
     private List opinionsList;
-
     private final Reader reader;
     private final Writer writer;
 
@@ -28,46 +27,33 @@ public class OpinionService {
         this.writer = writer;
     }
 
-    public List<Opinion> getOpinions(){
+    public List<Opinion> getOpinions() {
         return opinionsList = reader.getList(Opinion.class);
     }
 
-    public Opinion findById(Long id){
+    public Opinion findById(Long id) {
         return (Opinion) reader.getObjectById(Opinion.class, id);
     }
 
-    public void editOpinionById (Long id, Opinion opinion){
+    public void editOpinionById(Long id, Opinion opinion) {
         Opinion opinionToEdit = findById(id);
 
         opinionToEdit.setUserOpinion(opinion.getUserOpinion());
-        opinionToEdit.setUserRate(getUserRate());
+        opinionToEdit.setUserRate(opinion.getUserRate());
         opinionToEdit.setObjectRate(opinion.getObjectRate());
         opinionToEdit.setId_user(opinion.getId_user());
+        writer.save(opinionToEdit);
     }
 
-    public void removeOpinionById(long id){
+    public void removeOpinionById(long id) {
         getOpinions();
         Opinion opinionToRemove = findById(id);
         opinionsList.remove(opinionToRemove);
     }
 
-    public void addOpinion(Opinion opinion){
-        getOpinions();
-        opinionsList.add(opinion);
+    public void addOpinion(Opinion opinion) {
+        writer.save(opinion);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     private Double setObjectRate() {
         Double sum = 0d;
@@ -76,26 +62,6 @@ public class OpinionService {
         }
         return objectRate = (double) (sum / ratingsList.size());
     }
-
-//    public void opinionFilter (){
-//
-//        Reader reader = new Reader();
-//        List opinionList = reader.getList(OpinionService.class);
-//
-//        Integer rate = userScanInteger("Podaj minimalną ocenę komentarza", "Podałeś liczbę spoza zakresu. Wprowadź ją ponownie", 1, 10);
-//        List<String> reducedList = opinionList.stream()
-//                .filter(o -> o.getUserRate() > rate)
-//                .map(o->o.getUserOpinion()).collect(Collectors.toList());
-//
-//        Integer opinionsToShow = userScanInteger("Podaj ilość opinii do wyświetlenie", "Nie mamy tylu opinii", 1, reducedList.size());
-//        for (int i=0; i<opinionsToShow; i++){
-//                System.out.println(reducedList.get(i));
-//                System.out.println();
-//            }
-//        }
-
-
-
 
     public List<Integer> getRatingsList() {
         return ratingsList;

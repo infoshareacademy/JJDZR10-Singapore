@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edycja Opinii - administrator</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<div>
+  <form action="#" th:action="@{/opinions/{id}/edit(id=${opinion.id})}" th:object="${opinion}" method="post">
+    <p>Komentarz: <input type="text" th:field="*{opinion.userOpinion}"/></p>
+    <p>Ocena <input type="text" th:field="*{opinion.userRate}"/></p>
+<!--    <p>Engine power: <input type="text" th:field="*{engine.power}"/></p>-->
+<!--    <p>Engine capacity: <input type="text" th:field="*{engine.capacity}"/></p>-->
+<!--    <p>Color: <select th:field="*{color}">-->
+<!--      <option value="0" th:text="#{car.select-color}"/>-->
+<!--      <option th:each="color : ${T(com.infoshare.thymeleaf.cars.model.Color).values()}" th:value="${color}" th:text="${color}"/>-->
+<!--    </select></p>-->
+<!--    <p>Is available?<input type="checkbox" th:checked="*{available}" th:field="*{available}"/></p>-->
+<!--    <ul th:if="${#fields.hasErrors('*')}">-->
+<!--      <li th:each="err : ${#fields.errors('*')}" th:text="${err}"/>-->
+<!--    </ul>-->
+    <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+  </form>
+</div>
+</body>
+</html>

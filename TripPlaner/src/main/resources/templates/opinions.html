@@ -15,6 +15,7 @@
         <td th:text="${opinion.userOpinion}"/>
         <td th:text="${opinion.userRate}"/>
         <td th:text="${opinion.objectRate}"/>
+        <td> <a th:href="@{opinions/delete/{id}}" > Usuń </a></td>
     </tr>
 </table>
 </div>

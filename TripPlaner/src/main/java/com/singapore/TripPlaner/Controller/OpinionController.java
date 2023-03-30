@@ -24,38 +24,38 @@ public class OpinionController {
     public String getOpinions(Model model) {
         List opinions = opinionService.getOpinions();
         model.addAttribute("opinions", opinions);
-        return "opinion/opinions";
+        return "opinions";
     }
 
-    @GetMapping("/opinion/{id}")
+    @GetMapping("/opinions/{id}")
     public String getOpinionById(@PathVariable Long id, Model model) {
         Opinion opinion = opinionService.findById(id);
         model.addAttribute(opinion);
-        return "opinion/opinion"; //TODO
+        return "opinions/opinionAdmForm"; //TODO
     }
 
-    @PostMapping("/opinion/{id}/edit")
+    @PostMapping("/opinions/{id}/edit")
     public String editOpinion(@PathVariable("id") Long id, @ModelAttribute Opinion opinion, Model model) {
         opinionService.editOpinionById(id, opinion);
-        return "redirect: opinion/opinions";
+        return "redirect:/opinions";
     }
 
     @GetMapping("opinions/delete/{id}")
     public String deleteOpinion(@PathVariable long id) {
         opinionService.removeOpinionById(id);
-        return "redirect: opinion/opinions";
+        return "redirect:/opinions";
     }
 
     @GetMapping("opinion/new")
     public String opinionForm(Model model) {
         model.addAttribute("opinion", new Opinion());
-        return "opinion/opinionForm";
+        return "opinionForm";
     }
 
     @PostMapping("/opinions")
     public String addOpinion(@ModelAttribute Opinion opinion, Model model) {
         opinionService.addOpinion(opinion);
-        return "redirect: opinion/opinions";
+        return "redirect:/opinions";
     }
 
 }
