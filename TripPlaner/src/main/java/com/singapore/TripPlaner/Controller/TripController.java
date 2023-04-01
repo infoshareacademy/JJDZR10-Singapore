@@ -83,5 +83,27 @@ public class TripController {
         return "tripupdate";
     }
 
+    @GetMapping("/tripPlaceDelete")
+    public RedirectView tripPlaceDelete(@RequestParam(name = "id") long id, Model model) {
 
+        TripPoint tripPoint = tripService.findTpById(id);
+        tripService.removeTpFromTrip(tripPoint);
+
+        RedirectView rv = new RedirectView();
+        rv.setContextRelative(true);
+        rv.setUrl("/tripUpdate/" + tripPoint.getTrip().getId());
+        return rv;
+    }
+
+    @GetMapping("/tripDelete")
+    public RedirectView tripDelete(@RequestParam(name = "id") long id, Model model) {
+
+        Trip trip = tripService.findById(id);
+        tripService.removeTrip(trip);
+
+        RedirectView rv = new RedirectView();
+        rv.setContextRelative(true);
+        rv.setUrl("/tripcreate/");
+        return rv;
+    }
 }

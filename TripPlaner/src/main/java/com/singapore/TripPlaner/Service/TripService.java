@@ -27,6 +27,13 @@ public class TripService {
         return getTripPoints(trip, true);
 
     }
+
+    /**
+     * Medoda wyciąga wszystkie trippointy przypisane do danego tripa
+     * @param trip
+     * @param sortByPosition
+     * @return
+     */
     public List<TripPoint> getTripPoints(Trip trip, boolean sortByPosition) {
         List<Persistent> tpList = reader.getList(TripPoint.class);
         List<TripPoint> tpListRet = new ArrayList<TripPoint>();
@@ -44,6 +51,28 @@ public class TripService {
     }
     public Trip findById(long id ){
         return (Trip) reader.getObjectById(Trip.class, id);
+    }
+    public TripPoint findTpById(long id ){
+        return (TripPoint) reader.getObjectById(TripPoint.class, id);
+    }
+
+    public void removeTpFromTrip(TripPoint tripPoint){
+        Trip trip = tripPoint.getTrip();
+        writer.remove(tripPoint);
+        List<TripPoint> tripPoints = getTripPoints(trip);
+        int idx = 1;
+        for(TripPoint tp: tripPoints){
+            tp.setPosition(idx);
+            idx++;
+            writer.save(tp);
+        }
+    }
+    public void removeTrip(Trip trip){
+        List<TripPoint> tripPoints = getTripPoints(trip);
+        for(TripPoint tripPoint: tripPoints){
+            writer.remove(tripPoint);
+        }
+        writer.remove(trip);
     }
 
 }

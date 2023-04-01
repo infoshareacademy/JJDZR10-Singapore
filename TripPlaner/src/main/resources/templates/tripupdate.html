@@ -100,7 +100,7 @@
                 <div class="mb-3">
                     <input class="btn btn-primary" type="submit" value="Zmień"/>
                     <input class="btn" type="reset" value="Reset"/>
-                    <input class="btn btn-danger" type="button" value="Usuń"/>
+                    <a th:href="@{/tripDelete(id=*{id})}" class="btn btn-danger" type="button" >Usuń</a>
                 </div>
             </form>
         </div>
@@ -117,11 +117,12 @@
                         <div style="width: 30px;background: grey;border-radius: 10px;height: 35px;padding: 6px 10px;color: #fff;"
                              th:text="${tp.position}"></div>
                     </div>
-                    <div class="col-10">
+                    <div class="col-9">
                         <div>
                             <p th:text="${tp.place.city.name}+' - '+${tp.place.name}"> </p>
                         </div>
                     </div>
+                    <div class="col-1"><a th:href="@{/tripPlaceDelete(id=${tp.id})}" class="btn btn-danger" type="button" >Usuń</a></div>
                 </div>
             </div>
 
