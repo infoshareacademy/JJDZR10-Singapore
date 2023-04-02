@@ -3,260 +3,260 @@
     "id": 1,
     "name": "Bazylika Mariacka",
     "description": "Bazylika konkatedralna Wniebowzięcia Najświętszej Maryi Panny, zwana często „Koroną Gdańska” jest największą w Europie świątynią wybudowaną z cegły.\nJej potężne mury i wieże wznoszą się wysoko nad panoramą miasta oraz nad rozległą okolicą.",
-    "prize": 12,
+    "price": 12,
     "rate": 4,
     "opinion": "Duża katedra w centrum miasta. Polecamy wejść na wieże.",
     "cityid": 1,
-    "type": 1
+    "type": "MONUMENT"
   },
   {
     "id": 2,
     "name": "Wzgórze Pachołek-wieża widokowa",
     "description": "Wzgórze Pachołek z 15 metrową wieżą widokową znajdujące się w Oliwie. Można podziwiać wspaniałą panoramę Gdańska oraz pospacerować lasem.",
-    "prize": 0,
+    "price": 0,
     "rate": 5,
     "opinion": "Super miejsce, super widok, polecamy.",
     "cityid": 1,
-    "type": 2
+    "type": "NATURE"
   },
   {
     "id": 3,
     "name": "Park Oliwski",
     "description": "Zabytkowy park w dzielnicy Oliwa, nad Potokiem Oliwskim. Powierzchnia parku wynosi 11,3 ha.",
-    "prize": 0,
+    "price": 0,
     "rate": 4.5,
     "opinion": "Duży park, można zrobić piknik i napić się kawy.",
     "cityid": 1,
-    "type": 2
+    "type": "NATURE"
   },
   {
     "id": 4,
     "name": "Fontanna Neptuna",
     "description": "Zabytkowa fontanna. Stoi w najbardziej reprezentacyjnej części Gdańska – na Długim Targu, przed wejściem do Dworu Artusa.",
-    "prize": 0,
+    "price": 0,
     "rate": 4,
     "opinion": "Fajna atrakcja podczas spaceru.",
     "cityid": 1,
-    "type": 1
+    "type": "MONUMENT"
   },
   {
     "id": 5,
     "name": "Pierogarnia Mandu",
     "description": "Mieszanka rutyny, młodości, pasji, perfekcjonizmu, elementy polskiej tradycji, powiew kuchni świata, super pierogi. Kilka lokalizacji w Gdańsku",
-    "prize": 0,
+    "price": 0,
     "rate": 4.7,
     "opinion": "Smaczne pierogi, super obsługa polecamy.",
     "cityid": 1,
-    "type": 3
+    "type": "RESTAURANT"
   },
   {
     "id": 6,
     "name": "Sea Towers",
     "description": "Dwa wieżowce o charakterze mieszkalnym i biurowo-usługowym zlokalizowane w śródmieściu Gdyni, zbudowane w latach 2006–2009. Całkowita wysokość wyższej wieży to 141,6 m, a niższej 91 m.\nW rankingu wysokości wieżowców Polsce wyższa wieża znajduje się na 12. miejscu. Można wjechać na punkt widokowy.",
-    "prize": 20,
+    "price": 20,
     "rate": 4,
     "opinion": "Fajny widok na Gdynie i zatokę",
     "cityid": 2,
-    "type": 1
+    "type": "MONUMENT"
   },
   {
     "id": 7,
     "name": "Molo Orłowo",
     "description": "Drewniane molo znajdujące się w nadmorskiej, południowo-wschodniej dzielnicy Gdyni. Należy do najchętniej odwiedzanych obiektów w mieście.",
-    "prize": 0,
+    "price": 0,
     "rate": 5,
     "opinion": "Plaża i molo w orłowie są super",
     "cityid": 2,
-    "type": 2
+    "type": "NATURE"
   },
   {
     "id": 8,
     "name": "Klif Orłowski",
     "description": "Długi, szybko ulegający erozji klif poprzecinany leśnymi ścieżkami. Rozciąga się z niego widok na Zatokę Gdańską.",
-    "prize": 0,
+    "price": 0,
     "rate": 5,
     "opinion": "Bardzo fajne miejsce aby odpocząć, pospacerować po lesie lub plaży. Będąc tam widziałem ludzi z dziećmi, pary acz również osoby stroniące od towarzystwa.",
     "cityid": 2,
-    "type": 2
+    "type": "NATURE"
   },
   {
     "id": 9,
     "name": "Statek-muzeum Dar Pomorza",
     "description": "Dar Pomorza – trzymasztowy żaglowiec szkolny zakupiony przez społeczeństwo Pomorza w 1929 dla Szkoły Morskiej w Gdyni.\nOd 1982 zacumowany w Gdyni jako statek-muzeum, oddział Narodowego Muzeum Morskiego w Gdańsku.",
-    "prize": 25,
+    "price": 25,
     "rate": 3.9,
     "opinion": "Jeden z moich must see w czasie podróży do Gdyni. Czytałam o nim dużo wcześniej chciałam od zawsze go zobaczyć.",
     "cityid": 2,
-    "type": 1
+    "type": "MONUMENT"
   },
   {
     "id": 10,
     "name": "Neon",
     "description": "NEON to kuchnia z azjatyckim twistem. Wszystkie potrawy są przygotowywane na miejscu. W kuchni rządzi Jan Kilański - laureat polskiego Top Chefa.",
-    "prize": 0,
+    "price": 0,
     "rate": 4.5,
     "opinion": "Kultowy lokal warty odwiedzenia podczas wizyty w Gdyni. Wystrój wnętrza idealnie pasuje do azjatyckiej koncepcji lokalu.",
     "cityid": 2,
-    "type": 3
+    "type": "RESTAURANT"
   },
   {
     "id": 11,
     "name": "Pałac Kultury i Nauki",
     "description": "Pałac Kultury i Nauki – drugi pod względem wysokości całkowitej budynek w Polsce. Znajduje się w śródmieściu Warszawy, przy placu Defilad 1.\nW 2007 budynek został wpisany do rejestru zabytków. Pałac stanowił „dar narodu radzieckiego dla narodu polskiego”. Możliwośc wjechania na taras widokowy oraz zwiedzenia muzeum.",
-    "prize": 20,
+    "price": 20,
     "rate": 4.5,
     "opinion": "Bardzo ładnie widoczna panorama Warszawy.",
     "cityid": 3,
-    "type": 1
+    "type": "MONUMENT"
   },
   {
     "id": 12,
     "name": "Zamek Królewski w Warszawie",
     "description": "Barokowo-klasycystyczny zamek królewski znajdujący się w Warszawie przy placu Zamkowym 4. Pełni funkcje muzealne i reprezentacyjne.\nPierwotnie rezydencja książąt mazowieckich, a od XVI wieku siedziba władz I Rzeczypospolitej: króla i Sejmu.",
-    "prize": 15,
+    "price": 15,
     "rate": 4.2,
     "opinion": "Zamek robi wrażenie.",
     "cityid": 3,
-    "type": 1
+    "type": "MONUMENT"
   },
   {
     "id": 13,
     "name": "Ogród Saski w Warszawie",
     "description": "Park miejski w śródmieściu Warszawy, położony między placem marsz. Józefa Piłsudskiego, placem Żelaznej Bramy, ul. Marszałkowską i ul. Królewską, na Osi Saskiej.\nPierwotnie geometryczny ogród francuski założony w latach 1724–1748 dla króla Augusta II Mocnego jako ogród pałacu Saskiego.",
-    "prize": 0,
+    "price": 0,
     "rate": 4.4,
     "opinion": "Spokojny park w środku miasta, polecamy",
     "cityid": 3,
-    "type": 2
+    "type": "NATURE"
   },
   {
     "id": 14,
     "name": "Łazienki Królewskie",
     "description": "Zespół pałacowo-ogrodowy w Warszawie założony w XVIII wieku przez Stanisława Augusta Poniatowskiego. Nazwa pochodzi od barokowego pawilonu Łaźni, wzniesionego w latach 80.XVII wieku\nprzez Stanisława Herakliusza Lubomirskiego i przebudowanego przez Stanisława Augusta Poniatowskiego na pałac Na Wyspie.",
-    "prize": 0,
+    "price": 0,
     "rate": 4.6,
     "opinion": "Duży park i piękne łazienki",
     "cityid": 3,
-    "type": 2
+    "type": "MONUMENT"
   },
   {
     "id": 15,
     "name": "Pomnik Syreny nad Wisłą",
     "description": "Monument znajdujący się przy ul. Wybrzeże Kościuszkowskie. Rzeźba przedstawia postać Syreny z uniesionym mieczem i tarczą.\nWzrok ma skierowany na północ, a jej mocny kobiecy korpus osłania trzymana w lewej ręce okrągła, lekko wypukła tarcza.\nNa tarczy znajduje się wizerunek orła w koronie, wokół którego biegnie napis „Warszawa”",
-    "prize": 0,
+    "price": 0,
     "rate": 4.6,
     "opinion": "Ładne miejsce na spacer i porobienia zdjęć.",
     "cityid": 3,
-    "type": 1
+    "type": "MONUMENT"
   },
   {
     "id": 16,
     "name": "Pizzaiolo",
     "description": "Bezpretensjonalna restauracja serwująca koktajle oraz pizzę w stylu neapolitańskim z różnymi dodatkami.",
-    "prize": 0,
+    "price": 0,
     "rate": 4.6,
     "opinion": "Zdecydowanie jedna z lepszych pizzerii w  Wawie.",
     "cityid": 3,
-    "type": 3
+    "type": "RESTAURANT"
   },
   {
     "id": 17,
     "name": "Zamek Królewski na Wawelu",
     "description": "Zamek obronno-rezydencyjny w Krakowie, na wzgórzu Wawelskim.Mają w nim siedzibę Państwowe Zbiory Sztuki - Zamek Królewski na Wawelu, muzeum o powierzchni 7040 m² z 71 salami wystawowymi.",
-    "prize": 40,
+    "price": 40,
     "rate": 4.7,
     "opinion": "Piękne miejsce, dużo histori Polski.",
     "cityid": 4,
-    "type": 1
+    "type": "MONUMENT"
   },
   {
     "id": 18,
     "name": "Sukiennice",
     "description": "Sukiennice – zabytkowy budynek sukiennic znajdujący się w Krakowie na Starym Mieście, pośrodku Rynku Głównego. ",
-    "prize": 0,
+    "price": 0,
     "rate": 4.7,
     "opinion": "So much fun to walk around and buy souvenirs at.",
     "cityid": 4,
-    "type": 1
+    "type": "MONUMENT"
   },
   {
     "id": 19,
     "name": "Planty",
     "description": "Planty – park miejski w Krakowie otaczający Stare Miasto. Został założony w latach 1822–1830, ma powierzchnię 21 ha i ok. 4 km długości.",
-    "prize": 0,
+    "price": 0,
     "rate": 4.7,
     "opinion": "Fajne miejsce na spacer lub do pobiegania",
     "cityid": 4,
-    "type": 2
+    "type": "NATURE"
   },
   {
     "id": 20,
     "name": "Kopiec Kościuszki",
     "description": "Kopiec Kościuszki – jeden z pięciu kopców krakowskich, poświęcony Tadeuszowi Kościuszce, znajduje się na Górze św. Bronisławy w zachodniej części Krakowa na terenie Dzielnicy VII Zwierzyniec.",
-    "prize": 0,
+    "price": 0,
     "rate": 4.2,
     "opinion": "Ładne miejsce na zachód słońca i widok na miasto",
     "cityid": 4,
-    "type": 2
+    "type": "NATURE"
   },
   {
     "id": 21,
     "name": "Restauracja Starka Kraków",
     "description": "Kameralna, przytulna restauracja z 2 salami i barem serwująca pożywne nowoczesne dania i szeroki wybór wódek.",
-    "prize": 0,
+    "price": 0,
     "rate": 4.5,
     "opinion": "Jest to jedna z droższych restauracji w których bywam, ale zdecydowanie warta swojej ceny.",
     "cityid": 4,
-    "type": 5
+    "type": "RESTAURANT"
   },
   {
     "id": 22,
     "name": "Muzeum Panorama Racławicka",
     "description": "Muzeum sztuki we Wrocławiu, założone w 1893 we Lwowie, od 1980 we Wrocławiu; eksponuje cykloramiczny obraz Bitwa pod Racławicami\nnamalowany w latach 1893–1894 przez zespół malarzy pod kierunkiem Jana Styki i Wojciecha Kossaka. ",
-    "prize": 25,
+    "price": 25,
     "rate": 4.9,
     "opinion": "Nie tylko wspaniała sztuka ale też dużo historii",
     "cityid": 5,
-    "type": 1
+    "type": "MONUMENT"
   },
   {
     "id": 23,
     "name": "Ogród Japonski",
     "description": "Znajduje się w Parku Szczytnickim w Śródmieściu Wrocławia. W ogrodzie zgromadzono prawie 270 taksonów roślin drzewiastych. ",
-    "prize": 0,
+    "price": 0,
     "rate": 4.5,
     "opinion": "Wspaniały, szczególnie wiosną",
     "cityid": 5,
-    "type": 2
+    "type": "NATURE"
   },
   {
     "id": 24,
     "name": "Wrocławski Rynek",
     "description": "Średniowieczny plac targowy we Wrocławiu, obecnie centralna część strefy pieszej. Jeden z największych rynków staromiejskich Europy, z największymi ratuszami w Polsce.\nRynek wrocławski, według Olgierda Czernera, obejmuje cały teren placu wraz z wszystkimi elementami architektonicznymi znajdującym się na jego obszarze oraz zabudowę otaczającą plac z czterech stron.",
-    "prize": 0,
+    "price": 0,
     "rate": 4.9,
     "opinion": "Piękne miejsce z dużą ilością restaturacji i pubów.",
     "cityid": 5,
-    "type": 2
+    "type": "NATURE"
   },
   {
     "id": 25,
     "name": "Most Tumski",
     "description": "Dwuprzęsłowy stalowy, nitowany most we Wrocławiu zbudowany w roku 1889 nad północną odnogą Odry pomiędzy Ostrowem Tumskim a Wyspą Piasek, na miejscu wcześniejszego mostu drewnianego",
-    "prize": 0,
+    "price": 0,
     "rate": 4.2,
     "opinion": "Czarujący most",
     "cityid": 5,
-    "type": 2
+    "type": "NATURE"
   },
   {
     "id": 26,
     "name": "Pepik PUB",
     "description": "Tradycyjne czeskie potrawy, kawa i piwo w rustykalnym lokalu z tarasem.",
-    "prize": 0,
+    "price": 0,
     "rate": 4.6,
     "opinion": "Miejsce bardzo klimatyczne z czeską obsługą.",
     "cityid": 5,
-    "type": 3
+    "type": "RESTAURANT"
   }
 ]
