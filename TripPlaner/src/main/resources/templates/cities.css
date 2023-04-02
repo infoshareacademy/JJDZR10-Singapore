@@ -1,0 +1,6 @@
+.cards-wrapper {
+    display: flex;
+}
+.card{
+    margin: 0 .5em ;
+}
