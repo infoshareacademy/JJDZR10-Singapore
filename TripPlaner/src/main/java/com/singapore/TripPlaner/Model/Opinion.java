@@ -15,6 +15,16 @@ public class Opinion extends PersistentAbstract  {
 
     private Integer id_user;
     private User user;
+    
+    private Places place;
+
+    public Places getPlace() {
+        return user;
+    }
+
+    public void setPlace(Places place) {
+        this.place = place;
+    }
 
     public User getUser() {
         return user;
