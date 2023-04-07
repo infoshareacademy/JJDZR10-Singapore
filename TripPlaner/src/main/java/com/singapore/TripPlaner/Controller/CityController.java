@@ -4,6 +4,7 @@ import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Model.Persistent;
 import com.singapore.TripPlaner.Service.CityService;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
+import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,39 +18,37 @@ import java.util.List;
 public class CityController {
 
     private final CityService cityService;
-    private final Reader reader;
 
-    public CityController(CityService cityService, Reader reader) {
+    public CityController(CityService cityService, Reader reader, Writer writer) {
         this.cityService = cityService;
-        this.reader = reader;
     }
 
 
-
-    @GetMapping("/city")
+    @GetMapping("/cities")
     public String getCity(Model model) {
-        List<Persistent> cities = reader.getList(City.class);
+        List cities = cityService.getCities();
         model.addAttribute("cities", cities);
-        return "city";
+        return "cities";
     }
 
-    @GetMapping("/city/details")
+    @GetMapping("/city/{id}")
     public String cityDetails(@RequestParam(required = true) Long id, Model model) {
-        City city = (City) reader.getObjectById(City.class, id);
-        model.addAttribute("city", city);
+        model.addAttribute("city", cityService.findById(id));
         return "cityDetails";
     }
 
-    @GetMapping("/city/create")
-    public String showAddForm(Model model) {
+    @GetMapping("/city")
+    public String cityForm(Model model) {
         model.addAttribute("city", new City());
-        return "cityAddForm";
+        return "cityForm";
     }
 
-    @PostMapping("/city")
+
+    @PostMapping("/cities")
     public String createCity(@ModelAttribute City city) {
-        cityService.addCity(city);
-        return "redirect:/city/";
+        cityService.createCity(city);
+        return "redirect:/cities/";
+
     }
 
 }

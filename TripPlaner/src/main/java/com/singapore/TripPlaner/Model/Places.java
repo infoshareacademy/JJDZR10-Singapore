@@ -1,6 +1,8 @@
 package com.singapore.TripPlaner.Model;
 
-public class Places /*extends PersistentAbstract*/ {
+import org.json.simple.JSONObject;
+
+public class Places extends PersistentAbstract {
 
     private String name;
     private String description;
@@ -9,15 +11,6 @@ public class Places /*extends PersistentAbstract*/ {
     private String opinion;
     private City city;
 
-    private long fromCity;
-
-    public long getFromCity() {
-        return fromCity;
-    }
-
-    public void setFromCity(long fromCity) {
-        this.fromCity = fromCity;
-    }
 
 
     public String getName() {
@@ -76,15 +69,6 @@ public class Places /*extends PersistentAbstract*/ {
                 "\nOpinie: " + opinion +
                 "\n******************************\n";
     }
-    /**
-     * należy wkleić do każdej klasy która ma zagnieżdżone obiekty - jak tu Id , bo Gson nie obsługuje ich
-     * jsonObject.put przechwytuje dziłania tej metody z rodzica i dodaje do jsonObject pola których nie potrafi obsłużyć Gson.
-     * @return
-     */
-//    @Override
-//    public JSONObject toJSON() {
-//        JSONObject jsonObject = super.toJSON();
-//        jsonObject.put("city",city.getId());
-//        return jsonObject;
-//    }
+
+
 }

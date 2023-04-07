@@ -69,10 +69,12 @@ public class Reader {
 // Do wyjaśnienia z KB
             case "com.singapore.TripPlaner.Model.City":
                 return (City) object;
-//            case "com.singapore.TripPlaner.Model.Places":
-//                return this.createPlaceInstance(jsonObject, object);
+            case "com.singapore.TripPlaner.Model.Places":
+                return this.createPlaceInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.Opinion":
                 return this.createOpinionInstance(jsonObject, object);
+            case "com.singapore.TripPlaner.Model.TripPoint":
+                return this.createTripPointInstance(jsonObject, object);
         }
         throw (new Exception("No such model entity"));
     }
@@ -146,8 +148,8 @@ public class Reader {
 
     private Places createPlaceInstance(JSONObject jsonObject, Object object) {
         Places place = (Places) object;
-        if (jsonObject.containsKey("fromCityId")) {
-            long idCity = (long) jsonObject.get("fromCityId");
+        if (jsonObject.containsKey("cityid")) {
+            long idCity = (long) jsonObject.get("cityid");
             City city = (City) this.getObjectById(City.class, idCity);
             place.setCity(city);
         }
@@ -162,5 +164,19 @@ public class Reader {
             opinion.setUser(user);
         }
         return opinion;
+    }
+    private TripPoint createTripPointInstance(JSONObject jsonObject, Object object) {
+        TripPoint tripPoint = (TripPoint) object;
+        if(jsonObject.containsKey("placeid")) {
+            long idPlace = (long) jsonObject.get("placeid");
+            Places place  = (Places) this.getObjectById(Places.class, idPlace);
+            tripPoint.setPlace(place);
+        }
+        if(jsonObject.containsKey("tripid")) {
+            long idTrip = (long) jsonObject.get("tripid");
+            Trip trip  = (Trip) this.getObjectById(Trip.class, idTrip);
+            tripPoint.setTrip(trip);
+        }
+        return tripPoint;
     }
 }
