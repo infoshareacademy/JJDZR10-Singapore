@@ -40,12 +40,12 @@ public class Reader {
     public List<Places> getAllPlaces(Class c) {
 
         List<Places> listOfPlaces = new ArrayList<>();
-        List<Persistent> lo = this.getList(c);
+        JSONArray jsonArray = this.getListInJson(c);
 
         try {
-            for (Object o : lo) {
-                Places place = (Places) o;
-                listOfPlaces.add(place);
+            for (Object o : jsonArray) {
+                JSONObject jsonObject = (JSONObject) o;
+                listOfPlaces.add((Places) this.mapJsonToEntity(jsonObject, c));
             }
         } catch (Exception e) {
             System.out.println(e);

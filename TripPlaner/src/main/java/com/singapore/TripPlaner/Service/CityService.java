@@ -19,28 +19,6 @@ public class CityService extends PersistentAbstract {
         this.writer = writer;
     }
 
-//    public void findAllCities() {
-//        List<Persistent> city = getList(City.class);
-//        for (Persistent listOfCity : city) {
-//            City oParsed = (City) listOfCity;
-//            System.out.println(oParsed);
-//        }
-//    }
-//    public void showCityNameById(int index) {
-//        List<City> city = getAllCities(City.class);
-//        List<City> filteredList = filterListByCityIndex(index, city);
-//        showOnlyNameOfCity(filteredList).forEach(System.out::println);
-//    }
-
-//
-//    private List<City> filterListByCityIndex(int index, List<City> place) {
-//        return place.stream().filter(p -> p.getId() == index).collect(Collectors.toList());
-//    }
-//    private List<String> showOnlyNameOfCity (List<City> list){
-//        Function<City, String> onlyName = s->s.getName();
-//        return list.stream().map(onlyName).collect(Collectors.toList());
-//    }
-
     public void createCity(City city) {
         Writer writer = new Writer();
         writer.save(city);
