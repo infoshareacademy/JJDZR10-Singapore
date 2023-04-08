@@ -4,16 +4,33 @@ import org.json.simple.JSONObject;
 
 import java.util.List;
 
-public class Places /*extends PersistentAbstract*/ {
+public class Places extends PersistentAbstract {
 
     private String name;
     private String description;
-    private double prize;
+    private double price;
     private double rate;
     private List opinions;
     private City city;
+    private long cityid;
+//    private int type;
+    private Type type;
 
+    public Type getType() {
+        return type;
+    }
 
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public long getCityid() {
+        return cityid;
+    }
+
+    public void setCityid(long cityid) {
+        this.cityid = cityid;
+    }
 
     public String getName() {
         return name;
@@ -31,12 +48,12 @@ public class Places /*extends PersistentAbstract*/ {
         this.description = description;
     }
 
-    public double getPrize() {
-        return prize;
+    public double getPrice() {
+        return price;
     }
 
-    public void setPrize(double prize) {
-        this.prize = prize;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public double getRate() {
@@ -68,10 +85,12 @@ public class Places /*extends PersistentAbstract*/ {
         return "Places{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", prize=" + prize +
+                ", prize=" + price +
                 ", rate=" + rate +
                 ", opinions=" + opinions +
                 ", city=" + city +
                 '}';
     }
+
+
 }
