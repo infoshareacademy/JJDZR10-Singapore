@@ -2,6 +2,7 @@ package com.singapore.TripPlaner.Model;
 
 import org.json.simple.JSONObject;
 
+public class Places extends PersistentAbstract {
 import java.util.List;
 
 public class Places extends PersistentAbstract {
