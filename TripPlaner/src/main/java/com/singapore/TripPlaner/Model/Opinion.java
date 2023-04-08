@@ -1,6 +1,8 @@
 package com.singapore.TripPlaner.Model;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class Opinion extends PersistentAbstract {
 
     private String userOpinion;

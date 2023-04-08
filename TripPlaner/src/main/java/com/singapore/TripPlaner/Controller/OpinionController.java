@@ -29,9 +29,9 @@ public class OpinionController {
 
     @GetMapping("/opinions/details{id}")
     public String getOpinionById(@RequestParam ("id") int id, Model model) {
-        Opinion opinion = opinionService.findById(id);
+        Opinion opinion = (Opinion) opinionService.findById(id);
         model.addAttribute("opinion", opinion);
-        return "opinionDetails"; // TODO  dodać html z opinią
+        return "opinionDetails";
     }
 
 //    @PostMapping("/opinions/details{id}")
@@ -55,30 +55,10 @@ public class OpinionController {
         return "opinionForm";
     }
 
-//    @PostMapping("/opinions")
-//    public String addOpinion(@ModelAttribute Opinion opinion, Model model) {
-//        opinionService.addOpinionToPlace(opinion);
-//        return "redirect:/opinions";
-//    }
-
-//    @PostMapping("/tripPointCreate")
-//    public RedirectView tripPointSubmit(@ModelAttribute TripPoint tripPoint, Model model,
-//                                        @RequestParam(name = "tripid") long tripId,
-//                                        @RequestParam(name = "placeid") long placesId) {
-//
-//        Trip trip = tripService.findById(tripId);
-//        Places place = (Places) reader.getObjectById(Places.class, placesId);
-//
-//        tripPoint.setTrip(trip);
-//        tripPoint.setPlace(place);
-//
-//        /* TODO: walidacja */
-//        writer.save(tripPoint);
-//
-//        RedirectView rv = new RedirectView();
-//        rv.setContextRelative(true);
-//        rv.setUrl("/tripUpdate/" + tripPoint.getTrip().getId());
-//        return rv;
-//    }
+    @PostMapping("/opinions")
+    public String addOpinion(@ModelAttribute Opinion opinion, Model model) {
+        opinionService.addOpinion(opinion);
+        return "redirect:/opinions";
+    }
 
 }

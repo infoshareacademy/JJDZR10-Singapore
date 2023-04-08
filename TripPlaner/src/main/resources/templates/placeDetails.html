@@ -15,10 +15,10 @@
     <div><span>Ocena: <span><span th:text="${place.rate}"> </span>/5</span></div>
     <div>
         <span th:if="${place.price==0}"></span>
-        <span th:unless="${place.price==0}"><span>Cena: <span><span th:text="${place.price}"></span> zł </span>
+        <span th:unless="${place.price==0}"><span>Cena: <span><span th:text="${place.price}"></span> zł </span></span></span>
     </div>
     <div>Opinie:</div>
-    <div><span th:text="${place.opinion}"> </span></span></div>
+<!--    <div><span th:text="${place.opinion}"> </span></span></div>-->
 </table>
 </body>
 </html>

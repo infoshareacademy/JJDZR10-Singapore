@@ -3,27 +3,22 @@ package com.singapore.TripPlaner.Service;
 
 import com.singapore.TripPlaner.Model.Opinion;
 import com.singapore.TripPlaner.Model.Persistent;
-import com.singapore.TripPlaner.Model.User;
-import com.singapore.TripPlaner.Model.Places;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
-import org.json.simple.JSONArray;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class OpinionService {
-    private long userId;
-    private String userOpinion;
-    private Integer userRate;
-    private User user;
     private List opinionsList;
+    private final Opinion opinion;
     private final Reader reader;
     private final Writer writer;
     private final PlaceService placeService;
 
-    public OpinionService(Reader reader, Writer writer, PlaceService placeService) {
+    public OpinionService(Opinion opinion, Reader reader, Writer writer, PlaceService placeService) {
+        this.opinion = opinion;
         this.reader = reader;
         this.writer = writer;
         this.placeService = placeService;
@@ -33,13 +28,14 @@ public class OpinionService {
         return opinionsList = reader.getList(Opinion.class);
     }
 
-    public Opinion findById(int id) {
-        Opinion opinion = getOpinions().get(id);
+    public Persistent findById(int id) {
+        Persistent opinion = reader.getObjectById(Opinion.class, id);
         return opinion;
     }
 
     public void editOpinionById(int id, Opinion opinion) {
-        Opinion opinionToEdit = getOpinions().get(id);
+        Opinion opinionToEdit = (Opinion) reader.getObjectById(Opinion.class, id);
+
 
         opinionToEdit.setUserOpinion(opinion.getUserOpinion());
         opinionToEdit.setUserRate(opinion.getUserRate());
@@ -48,14 +44,12 @@ public class OpinionService {
     }
 
     public void removeOpinionById(int id) {
-        opinionsList=getOpinions();
-        Opinion opinionToRemove = getOpinions().get(id);
-        // TODO zapisanie do jsona
+        Persistent opinionToRemove = reader.getObjectById(Opinion.class, id);
+        writer.remove(opinionToRemove);
     }
 
-    public void addOpinionToPlace(Opinion opinion) {
+    public void addOpinion(Opinion opinion) {
 //        Places place = placeService.findById(placeId);
-
         writer.save(opinion);
 
 //        place.getOpinions().add(opinion.getId());
@@ -63,12 +57,12 @@ public class OpinionService {
 //        writer.save(place);
     }
 
-    private void setObjectRate (Long placeId){
-        Places place = placeService.findById(placeId);
-        double rate = (place.getNumberOfOpinions()*place.getRate()+userRate)/(place.getNumberOfOpinions()+1);
-        place.setRate(rate);
-        place.setNumberOfOpinions(place.getNumberOfOpinions() + 1);
-    }
+//    private void setObjectRate (Long placeId){
+//        Places place = placeService.findById(placeId);
+//        double rate = (place.getNumberOfOpinions()*place.getRate()+userRate)/(place.getNumberOfOpinions()+1);
+//        place.setRate(rate);
+//        place.setNumberOfOpinions(place.getNumberOfOpinions() + 1);
+//    }
 
 
 }
