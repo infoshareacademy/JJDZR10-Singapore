@@ -2,33 +2,25 @@
   {
     "id": 0,
     "userOpinion": "Super miejsce, gorąco polecam!",
-    "user Rate": 10,
-    "object Rate": 5.6,
-    "ratingList": [5,6,8,7,5],
-    "userid": 0
+    "userRate": 10,
+    "userId": 0
   },
   {
     "id": 1,
     "userOpinion": "Super miejsce, gorąco polecam!",
-    "user Rate": 7,
-    "object Rate": 3.6,
-    "ratingList": [5,6,8,7,5],
-    "userid": 0
+    "userRate": 7,
+    "userId": 0
   },
   {
     "id": 2,
     "userOpinion": "Super miejsce, gorąco polecam!",
-    "user Rate": 10,
-    "object Rate": 5.6,
-    "ratingList": [5,6,8,7,5],
-    "userid": 0
+    "userRate": 10,
+    "userId": 0
   },
   {
     "id": 3,
     "userOpinion": "Super miejsce, gorąco polecam!",
-    "user Rate": 10,
-    "object Rate": 5.6,
-    "ratingList": [5,6,8,7,5],
-    "userid": 0
+    "userRate": 10,
+    "userId": 0
   }
 ]

@@ -1,13 +1,11 @@
 package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.Opinion;
+import com.singapore.TripPlaner.Model.User;
 import com.singapore.TripPlaner.Service.OpinionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,24 +22,29 @@ public class OpinionController {
     public String getOpinions(Model model) {
         List opinions = opinionService.getOpinions();
         model.addAttribute("opinions", opinions);
+        User user = new User();
+        model.addAttribute("user", user);
         return "opinions";
     }
 
-    @GetMapping("/opinions/{id}")
-    public String getOpinionById(@PathVariable Long id, Model model) {
+    @GetMapping("/opinions/details{id}")
+    public String getOpinionById(@RequestParam ("id") int id, Model model) {
         Opinion opinion = opinionService.findById(id);
-        model.addAttribute(opinion);
-        return "opinions/opinionAdmForm"; //TODO
+        model.addAttribute("opinion", opinion);
+        return "opinionDetails"; // TODO  dodać html z opinią
     }
 
-    @PostMapping("/opinions/{id}/edit")
-    public String editOpinion(@PathVariable("id") Long id, @ModelAttribute Opinion opinion, Model model) {
-        opinionService.editOpinionById(id, opinion);
-        return "redirect:/opinions";
-    }
+//    @PostMapping("/opinions/details{id}")
+//    public String editOpinion(@PathVariable("id") int id, @ModelAttribute Opinion opinion, Model model) {
+//        opinionService.editOpinionById(id, opinion);
+//        return "redirect:/opinions";
+//    }
 
-    @GetMapping("opinions/delete/{id}")
-    public String deleteOpinion(@PathVariable long id) {
+
+
+
+    @GetMapping("opinions/delete{id}")
+    public String deleteOpinion(@RequestParam ("id") int id) {
         opinionService.removeOpinionById(id);
         return "redirect:/opinions";
     }
@@ -52,10 +55,30 @@ public class OpinionController {
         return "opinionForm";
     }
 
-    @PostMapping("/opinions")
-    public String addOpinion(@ModelAttribute Opinion opinion, Model model) {
-        opinionService.addOpinion(opinion);
-        return "redirect:/opinions";
-    }
+//    @PostMapping("/opinions")
+//    public String addOpinion(@ModelAttribute Opinion opinion, Model model) {
+//        opinionService.addOpinionToPlace(opinion);
+//        return "redirect:/opinions";
+//    }
+
+//    @PostMapping("/tripPointCreate")
+//    public RedirectView tripPointSubmit(@ModelAttribute TripPoint tripPoint, Model model,
+//                                        @RequestParam(name = "tripid") long tripId,
+//                                        @RequestParam(name = "placeid") long placesId) {
+//
+//        Trip trip = tripService.findById(tripId);
+//        Places place = (Places) reader.getObjectById(Places.class, placesId);
+//
+//        tripPoint.setTrip(trip);
+//        tripPoint.setPlace(place);
+//
+//        /* TODO: walidacja */
+//        writer.save(tripPoint);
+//
+//        RedirectView rv = new RedirectView();
+//        rv.setContextRelative(true);
+//        rv.setUrl("/tripUpdate/" + tripPoint.getTrip().getId());
+//        return rv;
+//    }
 
 }

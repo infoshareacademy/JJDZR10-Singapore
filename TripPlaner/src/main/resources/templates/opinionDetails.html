@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Singapore</title>
+  <meta charset="UTF-8">
+  <title>Opinia</title>
 </head>
 <body>
 <div th:insert="~{fragments/dashboard :: body}"></div>
 <table>
-    <h1 th:text="${city.name}" ></h1>
-    <div th:text="${city.description}" ></div>
+  <td th:text="${opinion.userRate}"/>
+  <td th:text="${opinion.userOpinion}"/>
 </table>
 </body>
 </html>
