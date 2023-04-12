@@ -7,7 +7,8 @@
     "rate": 4,
     "opinion": "Duża katedra w centrum miasta. Polecamy wejść na wieże.",
     "cityid": 1,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "numberOfOpinions": 20
   },
   {
     "id": 2,
@@ -17,7 +18,8 @@
     "rate": 5,
     "opinion": "Super miejsce, super widok, polecamy.",
     "cityid": 1,
-    "type": "NATURE"
+    "type": "NATURE",
+    "numberOfOpinions": 4
   },
   {
     "id": 3,
@@ -27,7 +29,8 @@
     "rate": 4.5,
     "opinion": "Duży park, można zrobić piknik i napić się kawy.",
     "cityid": 1,
-    "type": "NATURE"
+    "type": "NATURE",
+    "numberOfOpinions": 5
   },
   {
     "id": 4,
@@ -37,7 +40,8 @@
     "rate": 4,
     "opinion": "Fajna atrakcja podczas spaceru.",
     "cityid": 1,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "numberOfOpinions": 10
   },
   {
     "id": 5,
@@ -47,7 +51,8 @@
     "rate": 4.7,
     "opinion": "Smaczne pierogi, super obsługa polecamy.",
     "cityid": 1,
-    "type": "RESTAURANT"
+    "type": "RESTAURANT",
+    "numberOfOpinions": 21
   },
   {
     "id": 6,
@@ -57,7 +62,8 @@
     "rate": 4,
     "opinion": "Fajny widok na Gdynie i zatokę",
     "cityid": 2,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "numberOfOpinions": 5
   },
   {
     "id": 7,
@@ -67,7 +73,8 @@
     "rate": 5,
     "opinion": "Plaża i molo w orłowie są super",
     "cityid": 2,
-    "type": "NATURE"
+    "type": "NATURE",
+    "numberOfOpinions": 5
   },
   {
     "id": 8,
@@ -77,7 +84,8 @@
     "rate": 5,
     "opinion": "Bardzo fajne miejsce aby odpocząć, pospacerować po lesie lub plaży. Będąc tam widziałem ludzi z dziećmi, pary acz również osoby stroniące od towarzystwa.",
     "cityid": 2,
-    "type": "NATURE"
+    "type": "NATURE",
+    "numberOfOpinions": 54
   },
   {
     "id": 9,
@@ -87,7 +95,8 @@
     "rate": 3.9,
     "opinion": "Jeden z moich must see w czasie podróży do Gdyni. Czytałam o nim dużo wcześniej chciałam od zawsze go zobaczyć.",
     "cityid": 2,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "numberOfOpinions": 3
   },
   {
     "id": 10,
@@ -97,7 +106,8 @@
     "rate": 4.5,
     "opinion": "Kultowy lokal warty odwiedzenia podczas wizyty w Gdyni. Wystrój wnętrza idealnie pasuje do azjatyckiej koncepcji lokalu.",
     "cityid": 2,
-    "type": "RESTAURANT"
+    "type": "RESTAURANT",
+    "numberOfOpinions": 12
   },
   {
     "id": 11,
@@ -107,7 +117,8 @@
     "rate": 4.5,
     "opinion": "Bardzo ładnie widoczna panorama Warszawy.",
     "cityid": 3,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "numberOfOpinions": 31
   },
   {
     "id": 12,
@@ -117,7 +128,8 @@
     "rate": 4.2,
     "opinion": "Zamek robi wrażenie.",
     "cityid": 3,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "numberOfOpinions": 11
   },
   {
     "id": 13,
@@ -127,7 +139,8 @@
     "rate": 4.4,
     "opinion": "Spokojny park w środku miasta, polecamy",
     "cityid": 3,
-    "type": "NATURE"
+    "type": "NATURE",
+    "numberOfOpinions": 5
   },
   {
     "id": 14,
@@ -137,7 +150,8 @@
     "rate": 4.6,
     "opinion": "Duży park i piękne łazienki",
     "cityid": 3,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "numberOfOpinions": 13
   },
   {
     "id": 15,
@@ -147,7 +161,8 @@
     "rate": 4.6,
     "opinion": "Ładne miejsce na spacer i porobienia zdjęć.",
     "cityid": 3,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "numberOfOpinions": 10
   },
   {
     "id": 16,
@@ -157,7 +172,8 @@
     "rate": 4.6,
     "opinion": "Zdecydowanie jedna z lepszych pizzerii w  Wawie.",
     "cityid": 3,
-    "type": "RESTAURANT"
+    "type": "RESTAURANT",
+    "numberOfOpinions": 15
   },
   {
     "id": 17,
@@ -167,7 +183,8 @@
     "rate": 4.7,
     "opinion": "Piękne miejsce, dużo histori Polski.",
     "cityid": 4,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "numberOfOpinions": 10
   },
   {
     "id": 18,
@@ -177,7 +194,8 @@
     "rate": 4.7,
     "opinion": "So much fun to walk around and buy souvenirs at.",
     "cityid": 4,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "numberOfOpinions": 12
   },
   {
     "id": 19,
@@ -187,7 +205,8 @@
     "rate": 4.7,
     "opinion": "Fajne miejsce na spacer lub do pobiegania",
     "cityid": 4,
-    "type": "NATURE"
+    "type": "NATURE",
+    "numberOfOpinions": 15
   },
   {
     "id": 20,
@@ -197,7 +216,8 @@
     "rate": 4.2,
     "opinion": "Ładne miejsce na zachód słońca i widok na miasto",
     "cityid": 4,
-    "type": "NATURE"
+    "type": "NATURE",
+    "numberOfOpinions": 4
   },
   {
     "id": 21,
@@ -207,7 +227,8 @@
     "rate": 4.5,
     "opinion": "Jest to jedna z droższych restauracji w których bywam, ale zdecydowanie warta swojej ceny.",
     "cityid": 4,
-    "type": "RESTAURANT"
+    "type": "RESTAURANT",
+    "numberOfOpinions": 5
   },
   {
     "id": 22,
@@ -217,7 +238,8 @@
     "rate": 4.9,
     "opinion": "Nie tylko wspaniała sztuka ale też dużo historii",
     "cityid": 5,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "numberOfOpinions": 12
   },
   {
     "id": 23,
@@ -227,7 +249,8 @@
     "rate": 4.5,
     "opinion": "Wspaniały, szczególnie wiosną",
     "cityid": 5,
-    "type": "NATURE"
+    "type": "NATURE",
+    "numberOfOpinions": 20
   },
   {
     "id": 24,
@@ -237,7 +260,8 @@
     "rate": 4.9,
     "opinion": "Piękne miejsce z dużą ilością restaturacji i pubów.",
     "cityid": 5,
-    "type": "NATURE"
+    "type": "NATURE",
+    "numberOfOpinions": 34
   },
   {
     "id": 25,
@@ -247,7 +271,8 @@
     "rate": 4.2,
     "opinion": "Czarujący most",
     "cityid": 5,
-    "type": "NATURE"
+    "type": "NATURE",
+    "numberOfOpinions": 8
   },
   {
     "id": 26,
@@ -257,6 +282,7 @@
     "rate": 4.6,
     "opinion": "Miejsce bardzo klimatyczne z czeską obsługą.",
     "cityid": 5,
-    "type": "RESTAURANT"
+    "type": "RESTAURANT",
+    "numberOfOpinions": 15
   }
 ]
