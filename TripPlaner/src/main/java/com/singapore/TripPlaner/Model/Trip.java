@@ -24,7 +24,15 @@ public class Trip extends PersistentAbstract {
     /**
      * Places to see on the route
      */
-    private List<Places> places;
+    private Long[] places;
+
+    public Long[] getPlaces() {
+        return places;
+    }
+
+    public void setPlaces(Long[] places) {
+        this.places = places;
+    }
 
     public User getUser() {
         return user;
@@ -81,5 +89,14 @@ public class Trip extends PersistentAbstract {
 
     public void userSentence() {
         System.out.println("To jest wycieczka " + this.getName() + " utworzona przez użytkownika " + this.getUser().getFirstName() + " " + this.getUser().getLastName());
+    }
+
+    @Override
+    public int compareTo(Persistent o) {
+
+        if(getId() == o.getId()) {
+            return 0;
+        }
+        return getId() > o.getId()? 1:-1;
     }
 }

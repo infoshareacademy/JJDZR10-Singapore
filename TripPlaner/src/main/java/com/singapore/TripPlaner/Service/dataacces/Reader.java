@@ -37,21 +37,7 @@ public class Reader {
         return lo;
     }
 
-    public List<Places> getAllPlaces(Class c) {
 
-        List<Places> listOfPlaces = new ArrayList<>();
-        List<Persistent> lo = this.getList(c);
-
-        try {
-            for (Object o : lo) {
-                Places place = (Places) o;
-                listOfPlaces.add(place);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return listOfPlaces;
-    }
 
     private Persistent mapJsonToEntity(JSONObject jsonObject, Class c) throws Exception {
         String className = c.getName();
@@ -179,4 +165,6 @@ public class Reader {
         }
         return tripPoint;
     }
+
+
 }

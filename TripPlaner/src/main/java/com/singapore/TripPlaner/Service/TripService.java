@@ -1,8 +1,6 @@
 package com.singapore.TripPlaner.Service;
 
-import com.singapore.TripPlaner.Model.Persistent;
-import com.singapore.TripPlaner.Model.Trip;
-import com.singapore.TripPlaner.Model.TripPoint;
+import com.singapore.TripPlaner.Model.*;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.stereotype.Component;
@@ -23,56 +21,45 @@ public class TripService {
     }
 
 
-    public List<TripPoint> getTripPoints(Trip trip) {
-        return getTripPoints(trip, true);
+    public List<Trip> getTrip(Trip trip, boolean sortByPosition) {
+        List<Persistent> tripList = reader.getList(Trip.class);
+        List<Trip> tripListRet = new ArrayList<Trip>();
+        for (Object o : tripList) {
 
-    }
-
-    /**
-     * Medoda wyciąga wszystkie trippointy przypisane do danego tripa
-     * @param trip
-     * @param sortByPosition
-     * @return
-     */
-    public List<TripPoint> getTripPoints(Trip trip, boolean sortByPosition) {
-        List<Persistent> tpList = reader.getList(TripPoint.class);
-        List<TripPoint> tpListRet = new ArrayList<TripPoint>();
-        for (Object o: tpList) {
-            TripPoint tripPoint = (TripPoint) o;
-            if(tripPoint.getTrip().getId() == trip.getId()) {
-                tpListRet.add(tripPoint);
+            if (trip.getId() == trip.getId()) {
+                tripListRet.add(trip);
             }
         }
-        if(sortByPosition){
-            Collections.sort(tpListRet);
+        if (sortByPosition) {
+            Collections.sort(tripListRet);
         }
 
-        return tpListRet;
+        return tripListRet;
     }
-    public Trip findById(long id ){
+
+    public Trip findById(long id) {
         return (Trip) reader.getObjectById(Trip.class, id);
     }
-    public TripPoint findTpById(long id ){
-        return (TripPoint) reader.getObjectById(TripPoint.class, id);
+
+    public void removeTrip(Trip trip) {
+        writer.remove(trip);
     }
 
-    public void removeTpFromTrip(TripPoint tripPoint){
-        Trip trip = tripPoint.getTrip();
-        writer.remove(tripPoint);
-        List<TripPoint> tripPoints = getTripPoints(trip);
-        int idx = 1;
-        for(TripPoint tp: tripPoints){
-            tp.setPosition(idx);
-            idx++;
-            writer.save(tp);
+    // jak będzie logowanie to trzeba będzie dodać taką metodę z Userem jako argument
+    public List<Trip> getTrips() {
+        List<Trip> trips = new ArrayList<>();
+        List<Persistent> tripsPersistent = reader.getList(Trip.class);
+
+        for (Object tripObject : tripsPersistent) {
+            Trip trip = (Trip) tripObject;
+            trips.add(trip);
+
         }
+        Collections.sort(trips);
+        return trips;
     }
-    public void removeTrip(Trip trip){
-        List<TripPoint> tripPoints = getTripPoints(trip);
-        for(TripPoint tripPoint: tripPoints){
-            writer.remove(tripPoint);
-        }
-        writer.remove(trip);
+    public void save(Trip trip){
+        writer.save(trip);
     }
 
 }

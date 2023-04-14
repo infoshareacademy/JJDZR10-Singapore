@@ -1,109 +1,93 @@
 package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.*;
+import com.singapore.TripPlaner.Service.CityService;
+import com.singapore.TripPlaner.Service.PlaceService;
 import com.singapore.TripPlaner.Service.TripService;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.server.DelegatingServerHttpResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.websocket.server.PathParam;
 import java.util.Collections;
 import java.util.List;
 
 @Controller
 public class TripController {
 
-    private final Writer writer;
-    private final Reader reader;
+
     private final TripService tripService;
+    private final PlaceService placeService;
+    private final CityService cityService;
 
-    public TripController(Writer writer, Reader reader, TripService tripService) {
-        this.writer = writer;
-        this.reader = reader;
+
+    public TripController(TripService tripService, PlaceService placeService, CityService cityService) {
         this.tripService = tripService;
+        this.placeService = placeService;
+        this.cityService = cityService;
     }
 
-    @GetMapping("/tripcreate")
-    public String tripCreateForm(Model model) {
+    @GetMapping("/trips/new")
+    public String tripCreateForm(@RequestParam(required = false) Long cityId, Model model) {
+
+        if(cityId==null){
+            model.addAttribute("places", placeService.findPlaces());
+        }
+        else {
+            model.addAttribute("places", placeService.findPlaces(cityId));
+        }
         model.addAttribute("trip", new Trip());
-        return "tripcreate";
+        model.addAttribute("cities", cityService.getCities()) ;
+        model.addAttribute("cityId", cityId);
+
+        return "trip";
     }
 
-    @PostMapping("/tripcreate")
-    public RedirectView tripCreateSubmit(@ModelAttribute Trip trip, Model model) {
+    @PostMapping("/trip")
+   public String createTrip(@ModelAttribute Trip trip) {
         trip.setUser(new User());
-        /* TODO: walidacja */
-        writer.save(trip);
+        tripService.save(trip);
 
-        RedirectView rv = new RedirectView();
-        rv.setContextRelative(true);
-        rv.setUrl("/tripUpdate/" + trip.getId());
-        return rv;
+        /* TODO: walidacja */
+
+        return "redirect:/trips";
     }
 
-    @PostMapping("/tripPointCreate")
-    public RedirectView tripPointSubmit(@ModelAttribute TripPoint tripPoint, Model model,
-                                        @RequestParam(name = "tripid") long tripId,
-                                        @RequestParam(name = "placeid") long placesId) {
+    @GetMapping("/trips")
+    public String getTrips(Model model) {
+        List trips = tripService.getTrips();
+        model.addAttribute("trips", trips);
+        return "trips";
+    }
+
+    @GetMapping("/trips/{tripId}/edit")
+    public String editTrip(@RequestParam(required = false) Long cityId,@PathVariable(required = true) Long tripId, Model model) {
+
+        if(cityId==null){
+            model.addAttribute("places", placeService.findPlaces());
+        }
+        else {
+            model.addAttribute("places", placeService.findPlaces(cityId));
+        }
+        Trip trip = tripService.findById(tripId);
+        model.addAttribute("trip", trip);
+        model.addAttribute("cities", cityService.getCities()) ;
+        model.addAttribute("cityId", cityId);
+        return "trip";
+    }
+
+
+    @GetMapping("/trips/{tripId}/delete")
+    public String tripDelete(@PathVariable(required = true) long tripId) {
 
         Trip trip = tripService.findById(tripId);
-        Places place = (Places) reader.getObjectById(Places.class, placesId);
-
-        tripPoint.setTrip(trip);
-        tripPoint.setPlace(place);
-
-        /* TODO: walidacja */
-        writer.save(tripPoint);
-
-        RedirectView rv = new RedirectView();
-        rv.setContextRelative(true);
-        rv.setUrl("/tripUpdate/" + tripPoint.getTrip().getId());
-        return rv;
-    }
-
-    @GetMapping("/tripUpdate/{id}")
-    public String tripEditForm(@PathVariable(required = true) Long id, Model model) {
-
-        Trip trip = tripService.findById(id);
-        List<TripPoint> tripPoints= tripService.getTripPoints(trip);
-        long tpNext = tripPoints.size() + 1;
-
-        List<Persistent> places = reader.getList(Places.class);
-        model.addAttribute("places", places);
-        model.addAttribute("positionNew", tpNext);
-        TripPoint emptyTripPoint = new TripPoint();
-        emptyTripPoint.setPosition(tpNext);
-        emptyTripPoint.setTrip(trip);
-        model.addAttribute("tripPoint", emptyTripPoint );
-        model.addAttribute("tripPoints", tripPoints );
-        model.addAttribute("trip", trip);
-        return "tripupdate";
-    }
-
-    @GetMapping("/tripPlaceDelete")
-    public RedirectView tripPlaceDelete(@RequestParam(name = "id") long id, Model model) {
-
-        TripPoint tripPoint = tripService.findTpById(id);
-        tripService.removeTpFromTrip(tripPoint);
-
-        RedirectView rv = new RedirectView();
-        rv.setContextRelative(true);
-        rv.setUrl("/tripUpdate/" + tripPoint.getTrip().getId());
-        return rv;
-    }
-
-    @GetMapping("/tripDelete")
-    public RedirectView tripDelete(@RequestParam(name = "id") long id, Model model) {
-
-        Trip trip = tripService.findById(id);
         tripService.removeTrip(trip);
 
-        RedirectView rv = new RedirectView();
-        rv.setContextRelative(true);
-        rv.setUrl("/tripcreate/");
-        return rv;
+        return "redirect:/trips";
     }
 }
