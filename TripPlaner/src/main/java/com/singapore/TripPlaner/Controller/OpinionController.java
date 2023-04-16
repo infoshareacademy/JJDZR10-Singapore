@@ -28,7 +28,7 @@ public class OpinionController {
         return "opinions";
     }
 
-    @GetMapping("/opinions/details/{id}")
+    @GetMapping("/opinions/details{id}")
     public String getOpinionById(@RequestParam ("id") long id, Model model) {
         Opinion opinion = (Opinion) opinionService.findById(id);
         model.addAttribute("opinion", opinion);
