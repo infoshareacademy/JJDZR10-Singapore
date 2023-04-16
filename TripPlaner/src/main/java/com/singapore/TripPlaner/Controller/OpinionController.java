@@ -29,7 +29,7 @@ public class OpinionController {
     }
 
     @GetMapping("/opinions/details{id}")
-    public String getOpinionById(@RequestParam ("id") int id, Model model) {
+    public String getOpinionById(@RequestParam ("id") long id, Model model) {
         Opinion opinion = (Opinion) opinionService.findById(id);
         model.addAttribute("opinion", opinion);
         return "opinionDetails";
@@ -63,7 +63,7 @@ public class OpinionController {
 
         model.addAttribute("place", places);
         opinionService.addOpinion(opinion, placeId);
-        return "redirect:/opinionDetails";
+        return "redirect:/opinions";
     }
 
 }

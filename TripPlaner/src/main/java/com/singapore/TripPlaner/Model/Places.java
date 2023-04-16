@@ -12,7 +12,6 @@ public class Places extends PersistentAbstract {
     private double price;
     private double rate;
     private List opinions;
-    private int numberOfOpinions;
     private City city;
     private long cityid;
 //    private int type;
@@ -82,13 +81,6 @@ public class Places extends PersistentAbstract {
         this.opinions = opinions;
     }
 
-    public int getNumberOfOpinions() {
-        return numberOfOpinions;
-    }
-
-    public void setNumberOfOpinions(int numberOfOpinions) {
-        this.numberOfOpinions = numberOfOpinions;
-    }
 
     @Override
     public String toString() {
@@ -98,7 +90,6 @@ public class Places extends PersistentAbstract {
                 ", price=" + price +
                 ", rate=" + rate +
                 ", opinions=" + opinions +
-                ", numberOfOpinions=" + numberOfOpinions +
                 ", city=" + city +
                 ", cityid=" + cityid +
                 ", type=" + type +
