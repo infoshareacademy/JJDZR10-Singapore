@@ -4,6 +4,7 @@ package com.singapore.TripPlaner.Service;
 import com.singapore.TripPlaner.Model.Opinion;
 import com.singapore.TripPlaner.Model.Persistent;
 import com.singapore.TripPlaner.Model.Places;
+import com.singapore.TripPlaner.Model.User;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,7 @@ public class OpinionService {
 
         opinionToEdit.setUserOpinion(opinion.getUserOpinion());
         opinionToEdit.setUserRate(opinion.getUserRate());
-        opinionToEdit.setUserId(opinion.getUserId());
+        opinionToEdit.setUser(opinion.getUser());
         writer.save(opinionToEdit);
     }
 
@@ -50,15 +51,16 @@ public class OpinionService {
     }
 
     public void addOpinion(Opinion opinion, long placeId) {
-        Places place = placeService.findById(placeId);
+        opinion.setUser(new User());
         writer.save(opinion);
+        Places place = placeService.findById(placeId);
         place.getOpinions().add(opinion.getId());
         setObjectRate(place, opinion);
         writer.save(place);
     }
 
-    private Places setObjectRate (Places place, Opinion opinion){
-        double rate = (place.getOpinions().size()*place.getRate()+opinion.getUserRate())/(place.getNumberOfOpinions()+1);
+    private Places setObjectRate(Places place, Opinion opinion) {
+        double rate = (place.getOpinions().size() * place.getRate() + opinion.getUserRate()) / (place.getOpinions().size() + 1);
         place.setRate(rate);
         return place;
     }

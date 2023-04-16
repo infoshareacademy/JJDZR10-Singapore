@@ -12,9 +12,8 @@
 <table class="table table-sm">
     <tr th:each="opinion, iterStat: ${opinions}">
         <td th:text="${iterStat.count}"/>
-        <td th:text="${opinion.id}"/>
         <td th:text="${opinion.userRate}"/>
-        <td th:text="${opinion.getUserId}"/>
+        <td th:text="${opinion.getUser.getLogin}"/>
         <td th:text="${opinion.userOpinion}"/>
         <td> <a th:href="@{/opinions/details(id=${opinion.getId})}" > Detale </a></td>
         <td> <a th:href="@{/opinions/delete(id=${opinion.getId})}" > Usuń </a></td>

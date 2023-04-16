@@ -7,8 +7,7 @@ public class Opinion extends PersistentAbstract {
 
     private String userOpinion;
     private Integer userRate;
-    private Integer userId;
-    private User user;
+    private User user = new User();
 
     public String getUserOpinion() {
         return userOpinion;
@@ -26,14 +25,6 @@ public class Opinion extends PersistentAbstract {
         this.userRate = userRate;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
     public User getUser() {
         return user;
     }
@@ -47,7 +38,6 @@ public class Opinion extends PersistentAbstract {
         return "Opinion{" +
                 "userOpinion='" + userOpinion + '\'' +
                 ", userRate=" + userRate +
-                ", id_user=" + userId +
                 ", user=" + user +
                 '}';
     }

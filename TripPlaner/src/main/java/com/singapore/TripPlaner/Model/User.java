@@ -7,11 +7,11 @@ import java.util.Objects;
 public class User extends PersistentAbstract {
 
 
-    private String login;
+    private String login = "Janek13";
 
-    private String firstName;
+    private String firstName = "Jan";
 
-    private String lastName;
+    private String lastName= "Dobry";
 
     public String getLogin() {
         return login;
