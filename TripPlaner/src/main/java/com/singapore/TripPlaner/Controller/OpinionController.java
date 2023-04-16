@@ -44,8 +44,8 @@ public class OpinionController {
 
 
 
-    @GetMapping("opinions/delete/{id}")
-    public String deleteOpinion(@PathVariable ("id") int id) {
+    @GetMapping("opinions/delete{id}")
+    public String deleteOpinion(@RequestParam ("id") long id) {
         opinionService.removeOpinionById(id);
         return "redirect:/opinions";
     }
@@ -63,7 +63,7 @@ public class OpinionController {
 
         model.addAttribute("place", places);
         opinionService.addOpinion(opinion, placeId);
-        return "redirect:/opinionDetail";
+        return "redirect:/opinionDetails";
     }
 
 }

@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class OpinionService {
     private List opinionsList;
-    private final Opinion opinion;
+    private Opinion opinion;
     private final Reader reader;
     private final Writer writer;
     private final PlaceService placeService;
@@ -44,7 +44,7 @@ public class OpinionService {
         writer.save(opinionToEdit);
     }
 
-    public void removeOpinionById(int id) {
+    public void removeOpinionById(long id) {
         Persistent opinionToRemove = reader.getObjectById(Opinion.class, id);
         writer.remove(opinionToRemove);
     }
@@ -52,17 +52,15 @@ public class OpinionService {
     public void addOpinion(Opinion opinion, long placeId) {
         Places place = placeService.findById(placeId);
         writer.save(opinion);
-
         place.getOpinions().add(opinion.getId());
-        setObjectRate(placeId);
+        setObjectRate(place, opinion);
         writer.save(place);
     }
 
-    private void setObjectRate (Long placeId){
-        Places place = placeService.findById(placeId);
-        double rate = (place.getNumberOfOpinions()*place.getRate()+opinion.getUserRate())/(place.getNumberOfOpinions()+1);
+    private Places setObjectRate (Places place, Opinion opinion){
+        double rate = (place.getOpinions().size()*place.getRate()+opinion.getUserRate())/(place.getNumberOfOpinions()+1);
         place.setRate(rate);
-        place.setNumberOfOpinions(place.getNumberOfOpinions() + 1);
+        return place;
     }
 
 
