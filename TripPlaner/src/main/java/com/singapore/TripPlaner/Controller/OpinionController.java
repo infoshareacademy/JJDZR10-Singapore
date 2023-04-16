@@ -28,20 +28,27 @@ public class OpinionController {
         return "opinions";
     }
 
-    @GetMapping("/opinions/details{id}")
+    @GetMapping("/opinions/details/{id}")
     public String getOpinionById(@RequestParam ("id") long id, Model model) {
         Opinion opinion = (Opinion) opinionService.findById(id);
         model.addAttribute("opinion", opinion);
         return "opinionDetails";
     }
 
-//    @PostMapping("/opinions/details{id}")
-//    public String editOpinion(@PathVariable("id") int id, @ModelAttribute Opinion opinion, Model model) {
-//        opinionService.editOpinionById(id, opinion);
-//        return "redirect:/opinions";
-//    }
+    @GetMapping("/opinions/edit{id}")
+    public String editOpinionById(@RequestParam ("id") long id, Model model) {
+        Opinion opinion = (Opinion) opinionService.findById(id);
+        model.addAttribute("opinion", opinion);
+        return "opinionEdit";
+    }
 
-
+    @PostMapping("/opinions/edit{id}")
+    public String editOpinion(@RequestParam("id") long id,
+                              @ModelAttribute Opinion opinion,
+                              Model model) {
+        opinionService.editOpinionById(id, opinion);
+        return "redirect:/opinions";
+    }
 
 
     @GetMapping("opinions/delete{id}")

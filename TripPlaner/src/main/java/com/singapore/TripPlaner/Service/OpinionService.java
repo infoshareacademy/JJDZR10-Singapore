@@ -35,10 +35,8 @@ public class OpinionService {
         return opinion;
     }
 
-    public void editOpinionById(int id, Opinion opinion) {
+    public void editOpinionById(long id, Opinion opinion) {
         Opinion opinionToEdit = (Opinion) reader.getObjectById(Opinion.class, id);
-
-
         opinionToEdit.setUserOpinion(opinion.getUserOpinion());
         opinionToEdit.setUserRate(opinion.getUserRate());
         opinionToEdit.setUser(opinion.getUser());
