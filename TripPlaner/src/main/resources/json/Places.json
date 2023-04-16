@@ -5,7 +5,8 @@
     "description": "Bazylika konkatedralna Wniebowzięcia Najświętszej Maryi Panny, zwana często „Koroną Gdańska” jest największą w Europie świątynią wybudowaną z cegły.\nJej potężne mury i wieże wznoszą się wysoko nad panoramą miasta oraz nad rozległą okolicą.",
     "price": 12,
     "rate": 4,
-    "opinion": "Duża katedra w centrum miasta. Polecamy wejść na wieże.",
+    "opinions": [1, 2, 6],
+    "numberOfOpinions": 1,
     "cityid": 1,
     "type": "MONUMENT"
   },

@@ -3,6 +3,7 @@ package com.singapore.TripPlaner.Service;
 
 import com.singapore.TripPlaner.Model.Opinion;
 import com.singapore.TripPlaner.Model.Persistent;
+import com.singapore.TripPlaner.Model.Places;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class OpinionService {
         return opinionsList = reader.getList(Opinion.class);
     }
 
-    public Persistent findById(int id) {
+    public Persistent findById(long id) {
         Persistent opinion = reader.getObjectById(Opinion.class, id);
         return opinion;
     }
@@ -48,21 +49,21 @@ public class OpinionService {
         writer.remove(opinionToRemove);
     }
 
-    public void addOpinion(Opinion opinion) {
-//        Places place = placeService.findById(placeId);
+    public void addOpinion(Opinion opinion, long placeId) {
+        Places place = placeService.findById(placeId);
         writer.save(opinion);
 
-//        place.getOpinions().add(opinion.getId());
-//        setObjectRate(placeId);
-//        writer.save(place);
+        place.getOpinions().add(opinion.getId());
+        setObjectRate(placeId);
+        writer.save(place);
     }
 
-//    private void setObjectRate (Long placeId){
-//        Places place = placeService.findById(placeId);
-//        double rate = (place.getNumberOfOpinions()*place.getRate()+userRate)/(place.getNumberOfOpinions()+1);
-//        place.setRate(rate);
-//        place.setNumberOfOpinions(place.getNumberOfOpinions() + 1);
-//    }
+    private void setObjectRate (Long placeId){
+        Places place = placeService.findById(placeId);
+        double rate = (place.getNumberOfOpinions()*place.getRate()+opinion.getUserRate())/(place.getNumberOfOpinions()+1);
+        place.setRate(rate);
+        place.setNumberOfOpinions(place.getNumberOfOpinions() + 1);
+    }
 
 
 }

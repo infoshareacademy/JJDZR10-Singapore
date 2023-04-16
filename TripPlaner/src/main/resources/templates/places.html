@@ -17,7 +17,7 @@
         <td th:text="${place.name}"/>
         <td th:text="${place.city.name}"/>
         <td><a th:href="@{/place/{placeId}(placeId=${place.id})}" value="button"> Detale </a> </td>
-        <td><a th:href="@{/opinion/new}" value="button"> Dodaj opinię </a> </td>
+        <td><a th:href="@{/opinion/new/{placeId}(placeId=${place.id})}" value="button"> Dodaj opinię </a> </td>
     </tr>
 </table>
 

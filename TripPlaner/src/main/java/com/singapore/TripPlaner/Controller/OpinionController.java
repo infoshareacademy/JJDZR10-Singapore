@@ -1,6 +1,7 @@
 package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.Opinion;
+import com.singapore.TripPlaner.Model.Places;
 import com.singapore.TripPlaner.Model.User;
 import com.singapore.TripPlaner.Service.OpinionService;
 import org.springframework.stereotype.Controller;
@@ -43,22 +44,26 @@ public class OpinionController {
 
 
 
-    @GetMapping("opinions/delete{id}")
-    public String deleteOpinion(@RequestParam ("id") int id) {
+    @GetMapping("opinions/delete/{id}")
+    public String deleteOpinion(@PathVariable ("id") int id) {
         opinionService.removeOpinionById(id);
         return "redirect:/opinions";
     }
 
-    @GetMapping("opinion/new")
-    public String opinionForm(Model model) {
+    @GetMapping("opinion/new/{placeId}")
+    public String opinionForm(@PathVariable ("placeId") long placeId,  Model model) {
         model.addAttribute("opinion", new Opinion());
+        model.addAttribute("placeId", placeId);
         return "opinionForm";
     }
 
     @PostMapping("/opinions")
-    public String addOpinion(@ModelAttribute Opinion opinion, Model model) {
-        opinionService.addOpinion(opinion);
-        return "redirect:/opinions";
+    public String addOpinion(@ModelAttribute Opinion opinion, Places places, Model model,
+                             @RequestParam long placeId) {
+
+        model.addAttribute("place", places);
+        opinionService.addOpinion(opinion, placeId);
+        return "redirect:/opinionDetail";
     }
 
 }
