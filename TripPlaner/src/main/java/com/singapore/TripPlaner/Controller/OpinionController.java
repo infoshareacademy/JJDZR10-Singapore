@@ -81,6 +81,8 @@ public class OpinionController {
                                  @PathVariable("placeId") long placeId, Model model){
         List opinions= opinionService.randomOpinions(number, placeId);
         model.addAttribute("opinions", opinions);
+        User user = new User();  //TODO poprawa po zdefiniowaniu użytkowników
+        model.addAttribute("user", user);
         return "opinions";
     }
 }

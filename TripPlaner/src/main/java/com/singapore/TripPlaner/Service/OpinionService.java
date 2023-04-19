@@ -78,11 +78,11 @@ public class OpinionService {
     public List<Opinion> randomOpinions(int numberOfOpinions, long placeId) {
         Places place = placeService.findById(placeId);
         List inputList = place.getOpinions();
-        List randomOpinions = Arrays.asList();
+        List randomOpinions = new ArrayList<>();
         Random index = new Random();
         for (int i = 0; i < numberOfOpinions; i++) {
-            int randomInt = index.nextInt(inputList.size() + 1);
-            randomOpinions.add(inputList.get(randomInt));
+            int randomInt = index.nextInt(inputList.size());
+            randomOpinions.add(findById((long) randomInt));
             inputList.remove(randomInt);
         }
         return randomOpinions;
