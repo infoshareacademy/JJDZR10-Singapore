@@ -11,14 +11,16 @@
 <nav th:insert="~{/fragments/dashboard :: nav}"></nav>
 <table>
     <h2 th:text="${place.name}"></h2>
-    <div><span>Opis: <span><span th:text="${place.description}"> </span></span></div>
-    <div><span>Ocena: <span><span th:text="${place.rate}"> </span>/5</span></div>
+    <div><span>Opis: <span><span th:text="${place.description}"> </span></span></span></div>
+    <div><span>Ocena: <span><span th:text="${place.rate}"> </span>/5</span></span></div>
     <div>
         <span th:if="${place.price==0}"></span>
-        <span th:unless="${place.price==0}"><span>Cena: <span><span th:text="${place.price}"></span> zł </span></span></span>
+        <span th:unless="${place.price==0}"><span>Cena: <span><span
+                th:text="${place.price}"></span> zł </span></span></span>
     </div>
-
-
 </table>
+<div class="form-floating">
+    <div th:insert="opinionForm"></div>
+</div>
 </body>
 </html>

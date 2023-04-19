@@ -1,5 +1,6 @@
 package com.singapore.TripPlaner.Controller;
 
+import com.singapore.TripPlaner.Model.Opinion;
 import com.singapore.TripPlaner.Service.PlaceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +32,8 @@ public class PlaceController {
     @GetMapping ("/place/{id}")
     public String placeDetails(@PathVariable Long id, Model model){
         model.addAttribute("place", placeService.findById(id));
+        model.addAttribute("opinion", new Opinion());
+        model.addAttribute("placeId", id);
         return "placeDetails";
     }
 }
