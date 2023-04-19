@@ -30,7 +30,7 @@ public class OpinionController {
     }
 
     @GetMapping("/details{id}")
-    public String getOpinionById(@RequestParam ("id") long id, Model model) {
+    public String getOpinionById(@RequestParam("id") long id, Model model) {
         Opinion opinion = (Opinion) opinionService.findById(id);
         Places placeOpinionById = opinionService.getPlaceByOpinionId(id);
         model.addAttribute("opinion", opinion);
@@ -39,7 +39,7 @@ public class OpinionController {
     }
 
     @GetMapping("/edit{id}")
-    public String editOpinionById(@RequestParam ("id") long id, Model model) {
+    public String editOpinionById(@RequestParam("id") long id, Model model) {
         Opinion opinion = (Opinion) opinionService.findById(id);
         model.addAttribute("opinion", opinion);
         return "opinionEdit";
@@ -55,13 +55,13 @@ public class OpinionController {
 
 
     @GetMapping("/delete{id}")
-    public String deleteOpinion(@RequestParam ("id") long id) {
+    public String deleteOpinion(@RequestParam("id") long id) {
         opinionService.removeOpinionById(id); //TODO usuwanie id z listy place.getOpinions()
         return "redirect:/opinions";
     }
 
     @GetMapping("/new/{placeId}")
-    public String opinionForm(@PathVariable ("placeId") long placeId,  Model model) {
+    public String opinionForm(@PathVariable("placeId") long placeId, Model model) {
         model.addAttribute("opinion", new Opinion());
         model.addAttribute("placeId", placeId);
         return "opinionForm";
@@ -78,11 +78,13 @@ public class OpinionController {
 
     @GetMapping("/{placeId}/random{number}")
     public String randomOpinions(@RequestParam("number") int number,
-                                 @PathVariable("placeId") long placeId, Model model){
-        List opinions= opinionService.randomOpinions(number, placeId);
+                                 @PathVariable("placeId") long placeId, Model model) {
+        List opinions = opinionService.randomOpinions(number, placeId);
         model.addAttribute("opinions", opinions);
         User user = new User();  //TODO poprawa po zdefiniowaniu użytkowników
         model.addAttribute("user", user);
         return "opinions";
     }
+
+
 }

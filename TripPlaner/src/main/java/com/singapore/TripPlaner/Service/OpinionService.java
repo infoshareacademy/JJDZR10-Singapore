@@ -8,6 +8,7 @@ import com.singapore.TripPlaner.Model.User;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.*;
 
@@ -96,12 +97,16 @@ public class OpinionService {
             if (placeByOpinionId.getOpinions().contains(opinionId)) {
                 break;
             }
-            ;
         }
-        // .orElseThrow(() -> new PlaceNotFoundException("Not found places with given id: " + opinionId));
         return placeByOpinionId;
     }
-
+    public void opinionAttributes(Model model, Long id, int number) {
+        model.addAttribute("opinion", new Opinion());
+        model.addAttribute("placeId", id);
+        List opinions = randomOpinions(number, id);
+        model.addAttribute("opinions", opinions);
+        User user = new User();
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

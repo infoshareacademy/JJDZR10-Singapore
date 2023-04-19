@@ -1,6 +1,8 @@
 package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.Opinion;
+import com.singapore.TripPlaner.Model.User;
+import com.singapore.TripPlaner.Service.OpinionService;
 import com.singapore.TripPlaner.Service.PlaceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +15,11 @@ import java.util.List;
 @Controller
 public class PlaceController {
     private final PlaceService placeService;
+    private final OpinionService opinionService;
 
-    public PlaceController(PlaceService placeService) {
+    public PlaceController(PlaceService placeService, OpinionService opinionService) {
         this.placeService = placeService;
+        this.opinionService = opinionService;
     }
 
     @GetMapping("/places")
@@ -29,11 +33,12 @@ public class PlaceController {
         model.addAttribute("places",filtredPlaces);
         return "places";
     }
-    @GetMapping ("/place/{id}")
-    public String placeDetails(@PathVariable Long id, Model model){
+    @GetMapping ("/place/{id}{number}")
+    public String placeDetails(@PathVariable Long id,
+                               @RequestParam(name="number") int number,
+                               Model model){
         model.addAttribute("place", placeService.findById(id));
-        model.addAttribute("opinion", new Opinion());
-        model.addAttribute("placeId", id);
+        opinionService.opinionAttributes(model, id, number);
         return "placeDetails";
     }
 }
