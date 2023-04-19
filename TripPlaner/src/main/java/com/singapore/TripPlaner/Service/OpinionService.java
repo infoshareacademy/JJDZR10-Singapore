@@ -9,7 +9,7 @@ import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class OpinionService {
@@ -46,6 +46,17 @@ public class OpinionService {
     public void removeOpinionById(long id) {
         Persistent opinionToRemove = reader.getObjectById(Opinion.class, id);
         writer.remove(opinionToRemove);
+        Places reducedPlace = getPlaceByOpinionId(id);
+        List opinionsBeforeRemove = reducedPlace.getOpinions();
+        List opinionsAfterRemove = new ArrayList<>();
+        for (int i=0; i<opinionsBeforeRemove.size(); i++) {
+            if (!(opinionsBeforeRemove.get(i).equals((double) id))){
+                opinionsAfterRemove.add(opinionsBeforeRemove.get(i));
+            }
+        }
+        reducedPlace.setOpinions(opinionsAfterRemove);
+        setObjectRate(reducedPlace, new Opinion("", 0, opinion.getUser()));
+        writer.save(reducedPlace);
     }
 
     public void addOpinion(Opinion opinion, long placeId) {
@@ -58,12 +69,51 @@ public class OpinionService {
     }
 
     private Places setObjectRate(Places place, Opinion opinion) {
-        double rate = (place.getOpinions().size() * place.getRate() + opinion.getUserRate()) / (place.getOpinions().size() + 1);
-        place.setRate(rate);
+            double rate = (place.getOpinions().size() * place.getRate() + opinion.getUserRate()) / (place.getOpinions().size() + 1);
+            place.setRate(rate);
         return place;
     }
 
 
+    public List<Opinion> randomOpinions(int numberOfOpinions, long placeId) {
+        Places place = placeService.findById(placeId);
+        List inputList = place.getOpinions();
+        List randomOpinions = Arrays.asList();
+        Random index = new Random();
+        for (int i = 0; i < numberOfOpinions; i++) {
+            int randomInt = index.nextInt(inputList.size() + 1);
+            randomOpinions.add(inputList.get(randomInt));
+            inputList.remove(randomInt);
+        }
+        return randomOpinions;
+    }
+
+    public Places getPlaceByOpinionId(double opinionId) {
+        List<Places> places = reader.getAllPlaces(Places.class);
+        Places placeByOpinionId = null;
+        for (long i = 1; i < places.size(); i++) {
+            placeByOpinionId = (Places) reader.getObjectById(Places.class, i);
+            if (placeByOpinionId.getOpinions().contains(opinionId)) {
+                break;
+            }
+            ;
+        }
+        // .orElseThrow(() -> new PlaceNotFoundException("Not found places with given id: " + opinionId));
+        return placeByOpinionId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OpinionService that = (OpinionService) o;
+        return Objects.equals(opinionsList, that.opinionsList) && Objects.equals(opinion, that.opinion) && Objects.equals(reader, that.reader) && Objects.equals(writer, that.writer) && Objects.equals(placeService, that.placeService);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(opinionsList, opinion, reader, writer, placeService);
+    }
 }
 
 
