@@ -25,18 +25,6 @@ public class PlaceController {
         model.addAttribute("places", placeService.getAllPlaces());
         return "places";
     }
-    @GetMapping("/places/topRate")
-    public String getTopRatePlaces(Model model) {
-        model.addAttribute("places", placeService.getTopRatedPlaces());
-        return "places";
-    }
-    @GetMapping("/places/mostPopular")
-    public String getMostPopularPlaces(Model model) {
-        model.addAttribute("places", placeService.getMostPopularPlaces());
-        return "places";
-    }
-
-
     @GetMapping("/place/type/{type}")
     public String getPlacesByType(@RequestParam(required = true) String type, Model model){
         List filtredPlaces = placeService.filterListByTypeOfPlace(type);
@@ -48,4 +36,16 @@ public class PlaceController {
         model.addAttribute("place", placeService.findById(id));
         return "placeDetails";
     }
+
+    @GetMapping("/places/topRate")
+    public String getTopRatePlaces(Model model) {
+        model.addAttribute("places", placeService.getTopRatedPlaces());
+        return "places";
+    }
+    @GetMapping("/places/mostPopular")
+    public String getMostPopularPlaces(Model model) {
+        model.addAttribute("places", placeService.getMostPopularPlaces());
+        return "places";
+    }
+
 }
