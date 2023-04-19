@@ -3,6 +3,8 @@ package com.singapore.TripPlaner.Service;
 
 import com.singapore.TripPlaner.Exception.PlaceNotFoundException;
 import com.singapore.TripPlaner.Model.*;
+import com.singapore.TripPlaner.Service.comparators.PlacesComparatorBiggestRate;
+import com.singapore.TripPlaner.Service.comparators.PlacesComparatorMostPopular;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.stereotype.Component;
