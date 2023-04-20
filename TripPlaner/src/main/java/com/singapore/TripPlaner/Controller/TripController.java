@@ -39,7 +39,7 @@ public class TripController {
             model.addAttribute("places", placeService.findPlaces());
         }
         else {
-            model.addAttribute("places", placeService.findPlaces(cityId));
+            model.addAttribute("places", placeService.findPlacesByCityId(cityId));
         }
         model.addAttribute("trip", new Trip());
         model.addAttribute("cities", cityService.getCities()) ;
@@ -72,7 +72,7 @@ public class TripController {
             model.addAttribute("places", placeService.findPlaces());
         }
         else {
-            model.addAttribute("places", placeService.findPlaces(cityId));
+            model.addAttribute("places", placeService.findPlacesByCityId(cityId));
         }
         Trip trip = tripService.findById(tripId);
         model.addAttribute("trip", trip);

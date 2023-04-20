@@ -22,7 +22,7 @@ public class PlaceService {
 
     }
 
-    public List<Places> getAllPlaces() {
+    public List<Places> findPlaces() {
 
         List<Places> listOfPlaces = new ArrayList<>();
         List<Persistent> lo = reader.getList(Places.class);
@@ -34,24 +34,22 @@ public class PlaceService {
         return listOfPlaces;
     }
 
-    public List<Places> findPlaces() {
-        return getAllPlaces();
-    }
-    public List<Places> findPlaces(Long cityId) {
+    public List<Places> findPlacesByCityId(Long cityId) {
 
-        List<Places> listOfPlaces = new ArrayList<>();
-        List<Persistent> lo = reader.getList(Places.class);
+        List<Places> allPlaces = findPlaces();
+        List<Places> listPlacesByCity = new ArrayList<>();
 
-        for (Object o : lo) {
-            Places place = (Places) o;
+        for (Places place : allPlaces) {
 
             if(place.getCity().getId()==cityId){
-                listOfPlaces.add(place);
+                listPlacesByCity.add(place);
             }
 
         }
-        return listOfPlaces;
+        return listPlacesByCity;
     }
+
+
 }
 
 
