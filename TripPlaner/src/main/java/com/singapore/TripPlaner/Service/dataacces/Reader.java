@@ -39,6 +39,7 @@ public class Reader {
 
 
 
+
     private Persistent mapJsonToEntity(JSONObject jsonObject, Class c) throws Exception {
         String className = c.getName();
 
