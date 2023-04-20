@@ -33,12 +33,31 @@ public class PlaceController {
         model.addAttribute("places",filtredPlaces);
         return "places";
     }
-    @GetMapping ("/place/{id}{number}")
+    @GetMapping ("/place/{id}")
     public String placeDetails(@PathVariable Long id,
+                               Model model){
+        model.addAttribute("place", placeService.findById(id));
+        opinionService.opinionAttributes(model, id,0);
+        return "placeDetails";
+    }
+    @GetMapping ("/place/{id}{number}")
+    public String placeDetailswithOpinions(@PathVariable Long id,
                                @RequestParam(name="number") int number,
                                Model model){
         model.addAttribute("place", placeService.findById(id));
         opinionService.opinionAttributes(model, id, number);
         return "placeDetails";
     }
+
+    @GetMapping("/places/topRate")
+    public String getTopRatePlaces(Model model) {
+        model.addAttribute("places", placeService.getTopRatedPlaces());
+        return "places";
+    }
+    @GetMapping("/places/mostPopular")
+    public String getMostPopularPlaces(Model model) {
+        model.addAttribute("places", placeService.getMostPopularPlaces());
+        return "places";
+    }
+
 }
