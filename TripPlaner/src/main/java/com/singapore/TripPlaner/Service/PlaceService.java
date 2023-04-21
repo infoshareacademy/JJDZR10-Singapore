@@ -6,12 +6,13 @@ import com.singapore.TripPlaner.Exception.PlaceNotFoundException;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Service
 public class PlaceService {
 
 
@@ -25,29 +26,35 @@ public class PlaceService {
 
     }
 
+    /**
+     *
+     * @return lista wszystkich places
+     */
     public List<Places> findPlaces() {
 
         List<Places> listOfPlaces = new ArrayList<>();
         List<Persistent> lo = reader.getList(Places.class);
 
         for (Object o : lo) {
-            Places place = (Places) o;
-            listOfPlaces.add(place);
+            listOfPlaces.add((Places) o);
         }
         return listOfPlaces;
     }
 
+    /**
+     *
+     * @param cityId
+     * @return lista places danego miasta
+     */
     public List<Places> findPlacesByCityId(Long cityId) {
 
         List<Places> allPlaces = findPlaces();
         List<Places> listPlacesByCity = new ArrayList<>();
 
         for (Places place : allPlaces) {
-
             if (place.getCity().getId() == cityId) {
                 listPlacesByCity.add(place);
             }
-
         }
         return listPlacesByCity;
     }

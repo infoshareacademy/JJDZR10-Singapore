@@ -4,17 +4,10 @@ import com.singapore.TripPlaner.Model.*;
 import com.singapore.TripPlaner.Service.CityService;
 import com.singapore.TripPlaner.Service.PlaceService;
 import com.singapore.TripPlaner.Service.TripService;
-import com.singapore.TripPlaner.Service.dataacces.Reader;
-import com.singapore.TripPlaner.Service.dataacces.Writer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.server.DelegatingServerHttpResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
-import javax.websocket.server.PathParam;
-import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -60,7 +53,7 @@ public class TripController {
 
     @GetMapping("/trips")
     public String getTrips(Model model) {
-        List trips = tripService.getTrips();
+        List trips = tripService.findTrips();
         model.addAttribute("trips", trips);
         return "trips";
     }
@@ -74,7 +67,7 @@ public class TripController {
         else {
             model.addAttribute("places", placeService.findPlacesByCityId(cityId));
         }
-        Trip trip = tripService.findById(tripId);
+        Trip trip = tripService.findTripById(tripId);
         model.addAttribute("trip", trip);
         model.addAttribute("cities", cityService.getCities()) ;
         model.addAttribute("cityId", cityId);
@@ -85,7 +78,7 @@ public class TripController {
     @GetMapping("/trips/{tripId}/delete")
     public String tripDelete(@PathVariable(required = true) long tripId) {
 
-        Trip trip = tripService.findById(tripId);
+        Trip trip = tripService.findTripById(tripId);
         tripService.removeTrip(trip);
 
         return "redirect:/trips";
