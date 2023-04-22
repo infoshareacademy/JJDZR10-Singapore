@@ -17,7 +17,7 @@
                 <path d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
             </svg>
         </a>
-        <a class="navbar-brand" href="#">Planer wycieczek</a>
+        <a class="navbar-brand" href="/">Planer wycieczek</a>
         <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,10 +34,12 @@
                         Menu planer
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Dodaj</a></li>
-                        <li><a class="dropdown-item" href="#">Edytuj</a></li>
-                        <li><a class="dropdown-item" href="#">Usuń</a></li>
-                        <li><a class="dropdown-item" href="#">Losuj</a></li>
+                        <li><a class="dropdown-item" href="cities">Miasta</a></li>
+                        <li><a class="dropdown-item" th:href="@{/place/type/type(type=${momument})}">Zabytki</a></li>
+                        <li><a class="dropdown-item" th:href="@{/place/type/type(type=${nature})}">Natura</a></li>
+                        <li><a class="dropdown-item" th:href="@{/place/type/type(type=*{restaurant})}">Restauracje</a></li>
+                        <li><a class="dropdown-item" th:href="@{/opinions}">Opinie</a></li>
+                        <li><a class="dropdown-item" href="#">Wycieczki</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
