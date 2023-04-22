@@ -78,18 +78,18 @@ public class OpinionService {
     }
 
 
-    public List randomOpinions(int numberOfOpinions, long placeId) {
+    public List randomOpinions(int numberOfOpinions, long placeId){
         Places place = placeService.findById(placeId);
         List inputList =  place.getOpinions();
         List outputList = randomValues.outputList(numberOfOpinions, inputList);
         return outputList;
     }
 
-    public Places getPlaceByOpinionId(double opinionId) {
+    public Places getPlaceByOpinionId(double opinionId) throws NullPointerException {
         List<Places> places = reader.getAllPlaces(Places.class);
         Places placeByOpinionId = null;
-        for (long i = 1; i < places.size(); i++) {
-            placeByOpinionId = (Places) reader.getObjectById(Places.class, i);
+        for (long i = 0; i < places.size(); i++) {
+            placeByOpinionId = places.get((int) i);
             if (placeByOpinionId.getOpinions().contains(opinionId)) {
                 break;
             }

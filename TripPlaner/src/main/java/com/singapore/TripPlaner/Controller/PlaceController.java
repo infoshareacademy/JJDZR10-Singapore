@@ -43,15 +43,6 @@ public class PlaceController {
         model.addAttribute("opinion", new Opinion());
         return "placeDetails";
     }
-    @GetMapping ("/place/{id}{number}")
-    public String placeDetailswithOpinions(@PathVariable Long id,
-                               @RequestParam(name="number") int number,
-                               Model model){
-        model.addAttribute("place", placeService.findById(id));
-        opinionService.opinionAttributes(model, id, number);
-        return "placeDetails";
-    }
-
     @GetMapping("/places/topRate")
     public String getTopRatePlaces(Model model) {
         model.addAttribute("places", placeService.getTopRatedPlaces());

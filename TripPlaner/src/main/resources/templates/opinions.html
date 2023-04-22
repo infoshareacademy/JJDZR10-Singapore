@@ -33,7 +33,7 @@
             <td th:text="${opinion.userRate}"/>
             <td th:text="${opinion.userOpinion}"/>
             <td th:text="${opinion.getUser.getLogin}"/>
-            <td><a th:href="@{/opinions/details/(id=${opinion.getId})}"> Detale </a></td>
+            <td><a th:href="@{/opinions/details/{id}(id=${opinion.getId})}"> Detale </a></td>
             <td><a th:href="@{/opinions/delete/(id=${opinion.getId})}"> Usuń </a></td>
             <td><a th:href="@{/opinions/edit/(id=${opinion.getId})}"> Edytuj </a></td>
         </tr>
