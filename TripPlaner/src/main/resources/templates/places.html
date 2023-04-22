@@ -21,10 +21,9 @@
     <h2> LISTA ATRAKCJI </h2>
     <span><a href="/places/topRate" value="button" class="btn btn-secondary"> Najlepiej Oceniane </a></span>
     <span><a href="/places/mostPopular" value="button" class="btn btn-primary"> Najbardziej Popularne </a></span>
-    <table class="table table-striped" id="sortTable"></span>
+    <table class="table table-striped" id="sortTable">
         <thead>
         <tr>
-<!--            <th>#</th>-->
             <th th:text="#{place.name}"></th>
             <th th:text="#{place.city}"></th>
             <th th:text="#{place.rate}"></th>
@@ -35,7 +34,6 @@
         </thead>
         <tbody>
         <tr th:each="place,iterStat: ${places}">
-<!--            <td th:text="${iterStat.count}"/>-->
             <td th:text="${place.name}"/>
             <td th:text="${place.city.name}"/>
             <td th:text="${place.rate}"/>
