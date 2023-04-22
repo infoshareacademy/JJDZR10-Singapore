@@ -121,32 +121,26 @@
     </style>
 </head>
 <body>
-<nav th:insert="~{/fragments/dashboard :: nav}"></nav>
+
 <div class="container md-3">
     <div class="rating">
-        <input type="radio" name="rating" value="5" id="5" th:field="*{opinion.userRate}"><label for="5">☆</label>
-        <input type="radio" name="rating" value="4" id="4" th:field="*{opinion.userRate}"><label for="4">☆</label>
-        <input type="radio" name="rating" value="3" id="3" th:field="*{opinion.userRate}"><label for="3">☆</label>
-        <input type="radio" name="rating" value="2" id="2" th:field="*{opinion.userRate}"><label for="2">☆</label>
-        <input type="radio" name="rating" value="1" id="1" th:field="*{opinion.userRate}"><label for="1">☆</label>
+        <input type="radio" name="rating" value="5" id="5" th:field="*{opinionDetail.userRate}"><label for="5">☆</label>
+        <input type="radio" name="rating" value="4" id="4" th:field="*{opinionDetail.userRate}"><label for="4">☆</label>
+        <input type="radio" name="rating" value="3" id="3" th:field="*{opinionDetail.userRate}"><label for="3">☆</label>
+        <input type="radio" name="rating" value="2" id="2" th:field="*{opinionDetail.userRate}"><label for="2">☆</label>
+        <input type="radio" name="rating" value="1" id="1" th:field="*{opinionDetail.userRate}"><label for="1">☆</label>
     </div>
     <div class="form-floating">
-        <p class="form-control" id="floatingTextarea2" style="height: 100px" th:text="*{opinion.userOpinion}"></p>
-        <label for="floatingTextarea2"></label>
+        <figure class="text-center">
+            <blockquote class="blockquote">
+                <p th:text="*{opinionDetail.userOpinion}"/>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+                <cite title="Source Title" th:text="*{opinionDetail.getUser().getLogin()}"/>
+            </figcaption>
+        </figure>
     </div>
-    <div class="form-floating">
-        <div>Login:</div>
-        <b>
-            <div th:text="*{opinion.getUser().getLogin()}"></div>
-        </b>
-    </div>
-    <div class="form-floating">
-        <div>Miejsce:</div>
-        <b>
-            <div th:text="*{placeOpinionById.name}"></div>
-        </b>
 
-    </div>
 </div>
 </body>
 </html>

@@ -37,7 +37,10 @@ public class PlaceController {
     public String placeDetails(@PathVariable Long id,
                                Model model){
         model.addAttribute("place", placeService.findById(id));
-        opinionService.opinionAttributes(model, id,0);
+        List opinionsId = opinionService.randomOpinions(1,id);
+        Opinion opinion = (Opinion) opinionService.findById(Double.valueOf((Double) opinionsId.get(0)).longValue());
+        model.addAttribute("opinionDetail", opinion);
+        model.addAttribute("opinion", new Opinion());
         return "placeDetails";
     }
     @GetMapping ("/place/{id}{number}")

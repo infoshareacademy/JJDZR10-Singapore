@@ -29,11 +29,11 @@ public class OpinionController {
         return "opinions";
     }
 
-    @GetMapping("/details{id}")
-    public String getOpinionById(@RequestParam("id") long id, Model model) {
-        Opinion opinion = (Opinion) opinionService.findById(id);
+    @GetMapping("/details/{id}")  //TODO naprawić ścieżki w innych miejscach
+    public String getOpinionById(@PathVariable("id") long id, Model model) {
         Places placeOpinionById = opinionService.getPlaceByOpinionId(id);
-        model.addAttribute("opinion", opinion);
+        Opinion opinion = (Opinion) opinionService.findById(id);
+        model.addAttribute("opinionDetail", opinion);
         model.addAttribute("placeOpinionById", placeOpinionById);
         return "opinionDetails";
     }

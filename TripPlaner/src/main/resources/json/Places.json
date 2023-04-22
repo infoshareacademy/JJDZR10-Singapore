@@ -49,7 +49,6 @@
     "name": "Fontanna Neptuna",
     "description": "Zabytkowa fontanna. Stoi w najbardziej reprezentacyjnej części Gdańska \u2013 na Długim Targu, przed wejściem do Dworu Artusa.",
     "opinions": [
-      0.0,
       11.0,
       12.0,
       13.0
@@ -64,7 +63,6 @@
     "name": "Pierogarnia Mandu",
     "description": "Mieszanka rutyny, młodości, pasji, perfekcjonizmu, elementy polskiej tradycji, powiew kuchni świata, super pierogi. Kilka lokalizacji w Gdańsku",
     "opinions": [
-      0.0,
       14.0,
       15.0,
       16.0
@@ -79,7 +77,6 @@
     "name": "Sea Towers",
     "description": "Dwa wieżowce o charakterze mieszkalnym i biurowo-usługowym zlokalizowane w śródmieściu Gdyni, zbudowane w latach 2006\u20132009. Całkowita wysokość wyższej wieży to 141,6 m, a niższej 91 m.\nW rankingu wysokości wieżowców Polsce wyższa wieża znajduje się na 12. miejscu. Można wjechać na punkt widokowy.",
     "opinions": [
-      0.0,
       17.0,
       18.0
     ],
@@ -93,7 +90,6 @@
     "name": "Molo Orłowo",
     "description": "Drewniane molo znajdujące się w nadmorskiej, południowo-wschodniej dzielnicy Gdyni. Należy do najchętniej odwiedzanych obiektów w mieście.",
     "opinions": [
-      0.0,
       19.0,
       20.0,
       21.0
@@ -108,7 +104,6 @@
     "name": "Klif Orłowski",
     "description": "Długi, szybko ulegający erozji klif poprzecinany leśnymi ścieżkami. Rozciąga się z niego widok na Zatokę Gdańską.",
     "opinions": [
-      0.0,
       22.0,
       23.0,
       24.0,
@@ -124,7 +119,6 @@
     "name": "Statek-muzeum Dar Pomorza",
     "description": "Dar Pomorza \u2013 trzymasztowy żaglowiec szkolny zakupiony przez społeczeństwo Pomorza w 1929 dla Szkoły Morskiej w Gdyni.\nOd 1982 zacumowany w Gdyni jako statek-muzeum, oddział Narodowego Muzeum Morskiego w Gdańsku.",
     "opinions": [
-      0.0,
       26.0,
       27.0
     ],
@@ -138,7 +132,6 @@
     "name": "Neon",
     "description": "NEON to kuchnia z azjatyckim twistem. Wszystkie potrawy są przygotowywane na miejscu. W kuchni rządzi Jan Kilański - laureat polskiego Top Chefa.",
     "opinions": [
-      0.0,
       28.0,
       29.0,
       30.0
@@ -153,7 +146,6 @@
     "name": "Pałac Kultury i Nauki",
     "description": "Pałac Kultury i Nauki \u2013 drugi pod względem wysokości całkowitej budynek w Polsce. Znajduje się w śródmieściu Warszawy, przy placu Defilad 1.\nW 2007 budynek został wpisany do rejestru zabytków. Pałac stanowił \u201Edar narodu radzieckiego dla narodu polskiego\u201D. Możliwośc wjechania na taras widokowy oraz zwiedzenia muzeum.",
     "opinions": [
-      0.0,
       31.0,
       32.0
     ],
@@ -167,7 +159,6 @@
     "name": "Zamek Królewski w Warszawie",
     "description": "Barokowo-klasycystyczny zamek królewski znajdujący się w Warszawie przy placu Zamkowym 4. Pełni funkcje muzealne i reprezentacyjne.\nPierwotnie rezydencja książąt mazowieckich, a od XVI wieku siedziba władz I Rzeczypospolitej: króla i Sejmu.",
     "opinions": [
-      0.0,
       33.0,
       35.0,
       36.0
@@ -182,7 +173,6 @@
     "name": "Ogród Saski w Warszawie",
     "description": "Park miejski w śródmieściu Warszawy, położony między placem marsz. Józefa Piłsudskiego, placem Żelaznej Bramy, ul. Marszałkowską i ul. Królewską, na Osi Saskiej.\nPierwotnie geometryczny ogród francuski założony w latach 1724\u20131748 dla króla Augusta II Mocnego jako ogród pałacu Saskiego.",
     "opinions": [
-      0.0,
       37.0,
       38.0
     ],
@@ -196,7 +186,6 @@
     "name": "Łazienki Królewskie",
     "description": "Zespół pałacowo-ogrodowy w Warszawie założony w XVIII wieku przez Stanisława Augusta Poniatowskiego. Nazwa pochodzi od barokowego pawilonu Łaźni, wzniesionego w latach 80.XVII wieku\nprzez Stanisława Herakliusza Lubomirskiego i przebudowanego przez Stanisława Augusta Poniatowskiego na pałac Na Wyspie.",
     "opinions": [
-      0.0,
       39.0,
       40.0
     ],
@@ -210,7 +199,6 @@
     "name": "Pomnik Syreny nad Wisłą",
     "description": "Monument znajdujący się przy ul. Wybrzeże Kościuszkowskie. Rzeźba przedstawia postać Syreny z uniesionym mieczem i tarczą.\nWzrok ma skierowany na północ, a jej mocny kobiecy korpus osłania trzymana w lewej ręce okrągła, lekko wypukła tarcza.\nNa tarczy znajduje się wizerunek orła w koronie, wokół którego biegnie napis \u201EWarszawa\u201D",
     "opinions": [
-      0.0,
       42.0,
       43.0,
       44.0
@@ -225,7 +213,6 @@
     "name": "Pizzaiolo",
     "description": "Bezpretensjonalna restauracja serwująca koktajle oraz pizzę w stylu neapolitańskim z różnymi dodatkami.",
     "opinions": [
-      0.0,
       45.0,
       46.0,
       47.0
@@ -240,7 +227,6 @@
     "name": "Zamek Królewski na Wawelu",
     "description": "Zamek obronno-rezydencyjny w Krakowie, na wzgórzu Wawelskim.Mają w nim siedzibę Państwowe Zbiory Sztuki - Zamek Królewski na Wawelu, muzeum o powierzchni 7040 m² z 71 salami wystawowymi.",
     "opinions": [
-      0.0,
       49.0,
       50.0,
       51.0,
@@ -256,7 +242,6 @@
     "name": "Sukiennice",
     "description": "Sukiennice \u2013 zabytkowy budynek sukiennic znajdujący się w Krakowie na Starym Mieście, pośrodku Rynku Głównego. ",
     "opinions": [
-      0.0,
       53.0,
       54.0,
       55.0
@@ -271,7 +256,6 @@
     "name": "Planty",
     "description": "Planty \u2013 park miejski w Krakowie otaczający Stare Miasto. Został założony w latach 1822\u20131830, ma powierzchnię 21 ha i ok. 4 km długości.",
     "opinions": [
-      0.0,
       56.0,
       57.0,
       58.0
@@ -286,7 +270,6 @@
     "name": "Kopiec Kościuszki",
     "description": "Kopiec Kościuszki \u2013 jeden z pięciu kopców krakowskich, poświęcony Tadeuszowi Kościuszce, znajduje się na Górze św. Bronisławy w zachodniej części Krakowa na terenie Dzielnicy VII Zwierzyniec.",
     "opinions": [
-      0.0,
       59.0
     ],
     "cityid": 4,
@@ -299,7 +282,6 @@
     "name": "Restauracja Starka Kraków",
     "description": "Kameralna, przytulna restauracja z 2 salami i barem serwująca pożywne nowoczesne dania i szeroki wybór wódek.",
     "opinions": [
-      0.0,
       60.0,
       61.0,
       62.0
@@ -314,7 +296,6 @@
     "name": "Muzeum Panorama Racławicka",
     "description": "Muzeum sztuki we Wrocławiu, założone w 1893 we Lwowie, od 1980 we Wrocławiu; eksponuje cykloramiczny obraz Bitwa pod Racławicami\nnamalowany w latach 1893\u20131894 przez zespół malarzy pod kierunkiem Jana Styki i Wojciecha Kossaka. ",
     "opinions": [
-      0.0,
       63.0,
       64.0
     ],
@@ -328,7 +309,6 @@
     "name": "Ogród Japonski",
     "description": "Znajduje się w Parku Szczytnickim w Śródmieściu Wrocławia. W ogrodzie zgromadzono prawie 270 taksonów roślin drzewiastych. ",
     "opinions": [
-      0.0,
       65.0,
       66.0,
       67.0
@@ -343,7 +323,6 @@
     "name": "Wrocławski Rynek",
     "description": "Średniowieczny plac targowy we Wrocławiu, obecnie centralna część strefy pieszej. Jeden z największych rynków staromiejskich Europy, z największymi ratuszami w Polsce.\nRynek wrocławski, według Olgierda Czernera, obejmuje cały teren placu wraz z wszystkimi elementami architektonicznymi znajdującym się na jego obszarze oraz zabudowę otaczającą plac z czterech stron.",
     "opinions": [
-      0.0,
       68.0,
       69.0
     ],
@@ -357,7 +336,6 @@
     "name": "Most Tumski",
     "description": "Dwuprzęsłowy stalowy, nitowany most we Wrocławiu zbudowany w roku 1889 nad północną odnogą Odry pomiędzy Ostrowem Tumskim a Wyspą Piasek, na miejscu wcześniejszego mostu drewnianego",
     "opinions": [
-      0.0,
       70.0,
       71.0,
       72.0
@@ -372,7 +350,6 @@
     "name": "Pepik PUB",
     "description": "Tradycyjne czeskie potrawy, kawa i piwo w rustykalnym lokalu z tarasem.",
     "opinions": [
-      0.0,
       73.0,
       74.0,
       75

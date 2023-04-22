@@ -19,12 +19,14 @@ public class OpinionService {
     private final Reader reader;
     private final Writer writer;
     private final PlaceService placeService;
+    private final RandomValues randomValues;
 
-    public OpinionService(Opinion opinion, Reader reader, Writer writer, PlaceService placeService) {
+    public OpinionService(Opinion opinion, Reader reader, Writer writer, PlaceService placeService, RandomValues randomValues) {
         this.opinion = opinion;
         this.reader = reader;
         this.writer = writer;
         this.placeService = placeService;
+        this.randomValues = randomValues;
     }
 
     public List<Opinion> getOpinions() {
@@ -76,17 +78,11 @@ public class OpinionService {
     }
 
 
-    public List<Opinion> randomOpinions(int numberOfOpinions, long placeId) {
+    public List randomOpinions(int numberOfOpinions, long placeId) {
         Places place = placeService.findById(placeId);
-        List inputList = place.getOpinions();
-        List randomOpinions = new ArrayList<>();
-        Random index = new Random();
-        for (int i = 0; i < numberOfOpinions; i++) {
-            int randomInt = index.nextInt(inputList.size());
-            randomOpinions.add(findById((long) randomInt));
-            inputList.remove(randomInt);
-        }
-        return randomOpinions;
+        List inputList =  place.getOpinions();
+        List outputList = randomValues.outputList(numberOfOpinions, inputList);
+        return outputList;
     }
 
     public Places getPlaceByOpinionId(double opinionId) {
