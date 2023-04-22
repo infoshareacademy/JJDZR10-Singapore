@@ -12,6 +12,7 @@ public class Places extends PersistentAbstract {
     private double price;
     private double rate;
     private List opinions;
+    private List images;
     private City city;
     private long cityid;
 //    private int type;
@@ -80,6 +81,13 @@ public class Places extends PersistentAbstract {
     public void setOpinions(List opinions) {
         this.opinions = opinions;
     }
+    public List getImages() {
+        return images;
+    }
+
+    public void setImages(List images) {
+        this.images = images;
+    }
 
 
     @Override
@@ -90,6 +98,7 @@ public class Places extends PersistentAbstract {
                 ", price=" + price +
                 ", rate=" + rate +
                 ", opinions=" + opinions +
+                ", images=" + images +
                 ", city=" + city +
                 ", cityid=" + cityid +
                 ", type=" + type +
