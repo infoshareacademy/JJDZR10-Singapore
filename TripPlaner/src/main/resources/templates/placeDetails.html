@@ -23,8 +23,8 @@
 <header class="py-5 bg-light border-bottom mb-4">
     <div class="container">
         <div class="text-center my-5">
-            <h1 class="fw-bolder">Welcome to Trip Planner</h1>
-            <p class="lead mb-0">Grupa Singapore zabierze Cię na niezapomnianą przygodę!</p>
+            <h1 class="fw-bolder" th:text="${place.getCity().name}" ></h1>
+            <p class="lead mb-0" th:text="${place.getCity().description}"></p>
         </div>
     </div>
 </header>
