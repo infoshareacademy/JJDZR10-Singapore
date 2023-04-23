@@ -73,7 +73,7 @@ public class OpinionService {
 
     private Places setObjectRate(Places place, Opinion opinion) {
             double rate = (place.getOpinions().size() * place.getRate() + opinion.getUserRate()) / (place.getOpinions().size() + 1);
-            place.setRate(rate);
+            place.setRate(Math.round(rate*10)/10);
         return place;
     }
 
