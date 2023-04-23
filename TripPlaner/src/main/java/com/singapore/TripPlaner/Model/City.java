@@ -13,7 +13,7 @@ public class City extends PersistentAbstract {
     @NotEmpty(message = "Name cannot be empty")
     private String name;
     @NotBlank(message = "Describe cannot be empty")
-    @Size(min=10, max=55, message = "Describe shuold be betwen from 10 to 55 signs")
+    @Size(min=10, max=55, message = "Describe shuold be fullfill and from 10 to 55 signs")
     private String description;
 
     public String getName() {

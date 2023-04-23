@@ -7,11 +7,13 @@ import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -45,7 +47,10 @@ public class CityController {
 
 
     @PostMapping("/cities")
-    public String createCity(@ModelAttribute City city) {
+    public String createCity(@Valid @ModelAttribute City city, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "cityForm";
+        }
         cityService.createCity(city);
         return "redirect:/cities/";
 
