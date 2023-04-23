@@ -170,6 +170,11 @@ public class Reader {
 
     private Image createImageInstance(JSONObject jsonObject, Object object) {
         Image image = (Image) object;
+        if (jsonObject.containsKey("userid")) {
+            long idUser = (long) jsonObject.get("userid");
+            User user = (User) this.getObjectById(User.class, idUser);
+            image.setUser(user);
+        }
         return image;
     }
 

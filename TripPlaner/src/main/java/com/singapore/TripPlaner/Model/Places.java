@@ -104,4 +104,6 @@ public class Places extends PersistentAbstract {
                 ", type=" + type +
                 '}';
     }
+
+
 }
