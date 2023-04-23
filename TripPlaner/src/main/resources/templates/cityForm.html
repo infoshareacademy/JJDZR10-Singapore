@@ -24,7 +24,7 @@
     <label for="inputCountry" class="form-label">Kraj</label>
     <input type="text" class="form-control" id="inputCountry"/>
   </div>
-  <ul th:if="${#fields.hasErrors(''*'')}" th:text="${err}"/>
+  <ul th:if="${#fields.hasErrors('*')}" th:text="${err}"/>
   <li th:each="err : ${#fields.errors('*')}" th:text="${err}"/>
   </ul>
   <div class="col-12">
