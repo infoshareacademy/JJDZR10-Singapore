@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 @Setter
-@ToString
-@EqualsAndHashCode
-@AllArgsConstructor
+
 public class Image extends PersistentAbstract {
-    String url;
+    private String url;
+
+
 }
