@@ -26,28 +26,31 @@ public class PlaceService extends PersistentAbstract {
         this.placesComparatorBiggestRate = placesComparatorBiggestRate;
         this.placesComparatorMostPopular = placesComparatorMostPopular;
     }
-    public List<Places> getAllPlaces() {
-        List<Places> places = reader.getAllPlaces(Places.class);
+    public List<Place> getAllPlaces() {
+        List<Place> places = reader.getAllPlaces(Place.class);
          return places;
     }
-    public List<Places> getTopRatedPlaces() {
-        List<Places> places = reader.getAllPlaces(Places.class);
+    public List<Place> getTopRatedPlaces() {
+        List<Place> places = reader.getAllPlaces(Place.class);
         Collections.sort(places, placesComparatorBiggestRate);
         return places;
     }
-    public List<Places> getMostPopularPlaces() {
-        List<Places> places = reader.getAllPlaces(Places.class);
+    public List<Place> getMostPopularPlaces() {
+        List<Place> places = reader.getAllPlaces(Place.class);
         Collections.sort(places, placesComparatorMostPopular);
         return places;
     }
 
 
-    public List<Places> filterListByTypeOfPlace(String placeType) {
+    public List<Place> filterListByTypeOfPlace(String placeType) {
         return getAllPlaces().stream().filter(p -> p.getType().getPlaceType().toLowerCase().equals(placeType.toLowerCase())).collect(Collectors.toList());
     }
-    public Places findById(Long id) {
-        return reader.getAllPlaces(Places.class).
+    public Place findById(Long id) {
+        return reader.getAllPlaces(Place.class).
                 stream().filter(places -> places.getId() == id).
                 findFirst().orElseThrow(() -> new PlaceNotFoundException("Not found places with given id: " + id));
+    }
+    public void createNewPlace(Place place){
+        writer.save(place);
     }
 }

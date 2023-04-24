@@ -37,15 +37,15 @@ public class Reader {
         return lo;
     }
 
-    public List<Places> getAllPlaces(Class c) {
+    public List<Place> getAllPlaces(Class c) {
 
-        List<Places> listOfPlaces = new ArrayList<>();
+        List<Place> listOfPlaces = new ArrayList<>();
         JSONArray jsonArray = this.getListInJson(c);
 
         try {
             for (Object o : jsonArray) {
                 JSONObject jsonObject = (JSONObject) o;
-                listOfPlaces.add((Places) this.mapJsonToEntity(jsonObject, c));
+                listOfPlaces.add((Place) this.mapJsonToEntity(jsonObject, c));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -66,10 +66,9 @@ public class Reader {
                 return this.createTripInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.User":
                 return (User) object;
-// Do wyjaśnienia z KB
             case "com.singapore.TripPlaner.Model.City":
                 return (City) object;
-            case "com.singapore.TripPlaner.Model.Places":
+            case "com.singapore.TripPlaner.Model.Place":
                 return this.createPlaceInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.Opinion":
                 return this.createOpinionInstance(jsonObject, object);
@@ -144,8 +143,8 @@ public class Reader {
         return trip;
     }
 
-    private Places createPlaceInstance(JSONObject jsonObject, Object object) {
-        Places place = (Places) object;
+    private Place createPlaceInstance(JSONObject jsonObject, Object object) {
+        Place place = (Place) object;
         if (jsonObject.containsKey("cityid")) {
             long idCity = (long) jsonObject.get("cityid");
             City city = (City) this.getObjectById(City.class, idCity);

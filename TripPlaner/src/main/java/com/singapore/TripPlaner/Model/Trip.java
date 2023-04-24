@@ -1,6 +1,5 @@
 package com.singapore.TripPlaner.Model;
 
-import com.singapore.TripPlaner.Model.Places;
 import org.json.simple.JSONObject;
 
 import java.util.List;
@@ -24,7 +23,7 @@ public class Trip extends PersistentAbstract {
     /**
      * Places to see on the route
      */
-    private List<Places> places;
+    private List<Place> places;
 
     public User getUser() {
         return user;
