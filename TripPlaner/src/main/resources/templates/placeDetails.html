@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -32,9 +32,9 @@
     <div class="row">
         <div class="col-lg-8">
             <div class="card mb-4">
-                <a href="#!"><img class="card-img-top"
-                                  src="https://s-trojmiasto.pl/zdj/c/n/9/2825/999x0/2825085-Bazylika-Mariacka-to-najwiekszy-w-Europie-kosciol-wzniesiony-z-cegly-Jej-budowa-trwala-ok-150-lat-a-dokladnie-odbyla-sie-w-latach-1346-1502.jpg/images/pl-PL/glowne-miasta/gdansk/gdansk_motlawa_1170.jpg"
-                                  alt="..."/></a>
+                <img class="card-img-top"
+                                  th:src="${image.url}"/>
+
                 <div class="card-body">
                     <h2 class="card-title" th:text="${place.name}"></h2>
                     <p class="card-text" th:text="${place.description}"/>

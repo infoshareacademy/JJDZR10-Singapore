@@ -16,11 +16,13 @@ public class ImageService implements ImageInterface {
     private List imagesList;
     private final Reader reader;
     private final Writer writer;
+    private final PlaceService placeService;
 
-    public ImageService(Image image, Reader reader, Writer writer) {
+    public ImageService(Image image, Reader reader, Writer writer, PlaceService placeService) {
         this.image = image;
         this.reader = reader;
         this.writer = writer;
+        this.placeService = placeService;
     }
 
 
@@ -29,17 +31,24 @@ public class ImageService implements ImageInterface {
         return image;
     }
 
-//    public City getPlaceByImageId(double imageId) throws NullPointerException {
-//        List<Persistent> cityList =  reader.getList(City.class);
-//        City cityByImageId = null;
-//        for (int i = 0; i < cityList.size(); i++) {
-//            cityByImageId = (City) cityList.get(i);
-////            if (cityByImageId.getImages().contains(imageId)) {   //TODO
-//                break;
-//            }
-//        }
-//        return cityByImageId;
-//    }
+    public City getPlaceByImageId(double imageId) throws NullPointerException {
+        List<Persistent> cityList =  reader.getList(City.class);
+        City cityByImageId = null;
+        for (int i = 0; i < cityList.size(); i++) {
+            cityByImageId = (City) cityList.get(i);
+            List imagesList = cityByImageId.getImages();
+            if (imagesList.contains(imageId)) {
+                break;
+            }
+        }
+        return cityByImageId;
+    }
+    public List randomImages (int numberOfImages, long placeId){
+        Places place = placeService.findById(placeId);
+        List inputList =  place.getImages();
+        RandomValues randomValues = new RandomValues();
+        return randomValues.outputList(numberOfImages, inputList);
+    }
 
     public void setUrl (String url){
         Image image = new Image();

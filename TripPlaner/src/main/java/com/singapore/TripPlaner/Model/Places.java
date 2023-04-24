@@ -3,7 +3,7 @@ package com.singapore.TripPlaner.Model;
 import org.json.simple.JSONObject;
 
 import java.util.List;
-import java.util.List;
+
 
 public class Places extends PersistentAbstract {
 
@@ -15,7 +15,6 @@ public class Places extends PersistentAbstract {
     private List images;
     private City city;
     private long cityid;
-//    private int type;
     private Type type;
 
     public Type getType() {
