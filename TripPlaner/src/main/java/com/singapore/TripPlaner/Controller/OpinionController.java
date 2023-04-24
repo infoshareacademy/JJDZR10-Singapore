@@ -29,7 +29,7 @@ public class OpinionController {
         return "opinions";
     }
 
-    @GetMapping("/details/{id}")  //TODO naprawić ścieżki w innych miejscach
+    @GetMapping("/details/{id}")
     public String getOpinionById(@PathVariable("id") long id, Model model) {
         Places placeOpinionById = opinionService.getPlaceByOpinionId(id);
         Opinion opinion = (Opinion) opinionService.findById(id);
@@ -56,7 +56,7 @@ public class OpinionController {
 
     @GetMapping("/delete{id}")
     public String deleteOpinion(@RequestParam("id") long id) {
-        opinionService.removeOpinionById(id); //TODO usuwanie id z listy place.getOpinions()
+        opinionService.removeOpinionById(id);
         return "redirect:/opinions";
     }
 
