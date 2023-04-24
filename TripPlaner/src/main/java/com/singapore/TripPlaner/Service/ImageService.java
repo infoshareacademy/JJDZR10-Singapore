@@ -1,8 +1,7 @@
 package com.singapore.TripPlaner.Service;
 
 
-import com.singapore.TripPlaner.Model.Image;
-import com.singapore.TripPlaner.Model.Places;
+import com.singapore.TripPlaner.Model.*;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.stereotype.Service;
@@ -12,7 +11,7 @@ import java.util.List;
 @Service
 
 
-public class ImageService {
+public class ImageService implements ImageInterface {
     private final Image image;
     private List imagesList;
     private final Reader reader;
@@ -24,22 +23,23 @@ public class ImageService {
         this.writer = writer;
     }
 
-    private String findImageById (long id){
+
+    public Image findImageById (long id){
         Image image =  (Image) reader.getObjectById(Image.class, id);
-        return image.getUrl();
+        return image;
     }
 
-    public Places getPlaceByImageId(double imageId) throws NullPointerException {
-        List<Places> places = reader.getAllPlaces(Places.class);
-        Places placeByImageId = null;
-        for (long i = 0; i < places.size(); i++) {
-            placeByImageId = places.get((int) i);
-            if (placeByImageId.getImages().contains(imageId)) {
-                break;
-            }
-        }
-        return placeByImageId;
-    }
+//    public City getPlaceByImageId(double imageId) throws NullPointerException {
+//        List<Persistent> cityList =  reader.getList(City.class);
+//        City cityByImageId = null;
+//        for (int i = 0; i < cityList.size(); i++) {
+//            cityByImageId = (City) cityList.get(i);
+////            if (cityByImageId.getImages().contains(imageId)) {   //TODO
+//                break;
+//            }
+//        }
+//        return cityByImageId;
+//    }
 
     public void setUrl (String url){
         Image image = new Image();
@@ -58,5 +58,10 @@ public class ImageService {
 
     public void setImagesList(List imagesList) {
         this.imagesList = imagesList;
+    }
+
+    @Override
+    public void setListImageId(java.awt.List images) {
+
     }
 }

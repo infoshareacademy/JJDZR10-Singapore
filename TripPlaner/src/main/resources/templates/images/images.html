@@ -24,14 +24,16 @@
         <tr th:each="image, iterStat: ${images}">
             <td th:text="${iterStat.count}"/>
             <td th:text="${image.url}"/>
-            <td th:text="${image.id}"/>
-<!--            <td><a th:href="@{/opinions/details/{id}(id=${opinion.getId})}"> Detale </a></td>-->
+            <td> <img th:src="${image.url}" class="card-img-top" alt="zdjęcie miasta">
+            </td>
+            <!--            <td><a th:href="@{/opinions/details/{id}(id=${opinion.getId})}"> Detale </a></td>-->
 <!--            <td><a th:href="@{/opinions/delete/(id=${opinion.getId})}"> Usuń </a></td>-->
 <!--            <td><a th:href="@{/opinions/edit/(id=${opinion.getId})}"> Edytuj </a></td>-->
         </tr>
         </tbody>
     </table>
 </div>
+
 <script>
     $('#sortTable').DataTable();
 </script>
