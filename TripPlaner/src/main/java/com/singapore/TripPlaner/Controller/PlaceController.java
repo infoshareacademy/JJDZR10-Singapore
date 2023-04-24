@@ -1,11 +1,10 @@
 package com.singapore.TripPlaner.Controller;
 
+import com.singapore.TripPlaner.Model.Place;
 import com.singapore.TripPlaner.Service.PlaceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,6 +32,18 @@ public class PlaceController {
         model.addAttribute("place", placeService.findById(id));
         return "placeDetails";
     }
+    @GetMapping("/places/create")
+    public String createPlace (Model model){
+       model.addAttribute("place", new Place());
+        return "placeForm";
+    }
+    @PostMapping("/places")
+    public String createPlace (@ModelAttribute Place place){
+        placeService.createNewPlace(place);
+        return "redirect:/places";
+    }
+
+
 
     @GetMapping("/places/topRate")
     public String getTopRatePlaces(Model model) {

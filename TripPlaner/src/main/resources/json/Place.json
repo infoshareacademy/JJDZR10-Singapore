@@ -5,7 +5,6 @@
     "description": "Bazylika konkatedralna Wniebowzięcia Najświętszej Maryi Panny, zwana często „Koroną Gdańska” jest największą w Europie świątynią wybudowaną z cegły.\nJej potężne mury i wieże wznoszą się wysoko nad panoramą miasta oraz nad rozległą okolicą.",
     "price": 12,
     "rate": 4,
-    "opinion": "Duża katedra w centrum miasta. Polecamy wejść na wieże.",
     "cityid": 1,
     "type": "MONUMENT",
     "numberOfOpinions": 20
@@ -16,7 +15,6 @@
     "description": "Wzgórze Pachołek z 15 metrową wieżą widokową znajdujące się w Oliwie. Można podziwiać wspaniałą panoramę Gdańska oraz pospacerować lasem.",
     "price": 0,
     "rate": 5,
-    "opinion": "Super miejsce, super widok, polecamy.",
     "cityid": 1,
     "type": "NATURE",
     "numberOfOpinions": 4
@@ -27,7 +25,6 @@
     "description": "Zabytkowy park w dzielnicy Oliwa, nad Potokiem Oliwskim. Powierzchnia parku wynosi 11,3 ha.",
     "price": 0,
     "rate": 4.5,
-    "opinion": "Duży park, można zrobić piknik i napić się kawy.",
     "cityid": 1,
     "type": "NATURE",
     "numberOfOpinions": 5
@@ -38,7 +35,6 @@
     "description": "Zabytkowa fontanna. Stoi w najbardziej reprezentacyjnej części Gdańska – na Długim Targu, przed wejściem do Dworu Artusa.",
     "price": 0,
     "rate": 4,
-    "opinion": "Fajna atrakcja podczas spaceru.",
     "cityid": 1,
     "type": "MONUMENT",
     "numberOfOpinions": 10
@@ -49,7 +45,6 @@
     "description": "Mieszanka rutyny, młodości, pasji, perfekcjonizmu, elementy polskiej tradycji, powiew kuchni świata, super pierogi. Kilka lokalizacji w Gdańsku",
     "price": 0,
     "rate": 4.7,
-    "opinion": "Smaczne pierogi, super obsługa polecamy.",
     "cityid": 1,
     "type": "RESTAURANT",
     "numberOfOpinions": 21
@@ -60,7 +55,6 @@
     "description": "Dwa wieżowce o charakterze mieszkalnym i biurowo-usługowym zlokalizowane w śródmieściu Gdyni, zbudowane w latach 2006–2009. Całkowita wysokość wyższej wieży to 141,6 m, a niższej 91 m.\nW rankingu wysokości wieżowców Polsce wyższa wieża znajduje się na 12. miejscu. Można wjechać na punkt widokowy.",
     "price": 20,
     "rate": 4,
-    "opinion": "Fajny widok na Gdynie i zatokę",
     "cityid": 2,
     "type": "MONUMENT",
     "numberOfOpinions": 5
@@ -71,7 +65,6 @@
     "description": "Drewniane molo znajdujące się w nadmorskiej, południowo-wschodniej dzielnicy Gdyni. Należy do najchętniej odwiedzanych obiektów w mieście.",
     "price": 0,
     "rate": 5,
-    "opinion": "Plaża i molo w orłowie są super",
     "cityid": 2,
     "type": "NATURE",
     "numberOfOpinions": 5
@@ -82,7 +75,6 @@
     "description": "Długi, szybko ulegający erozji klif poprzecinany leśnymi ścieżkami. Rozciąga się z niego widok na Zatokę Gdańską.",
     "price": 0,
     "rate": 5,
-    "opinion": "Bardzo fajne miejsce aby odpocząć, pospacerować po lesie lub plaży. Będąc tam widziałem ludzi z dziećmi, pary acz również osoby stroniące od towarzystwa.",
     "cityid": 2,
     "type": "NATURE",
     "numberOfOpinions": 54
@@ -93,7 +85,6 @@
     "description": "Dar Pomorza – trzymasztowy żaglowiec szkolny zakupiony przez społeczeństwo Pomorza w 1929 dla Szkoły Morskiej w Gdyni.\nOd 1982 zacumowany w Gdyni jako statek-muzeum, oddział Narodowego Muzeum Morskiego w Gdańsku.",
     "price": 25,
     "rate": 3.9,
-    "opinion": "Jeden z moich must see w czasie podróży do Gdyni. Czytałam o nim dużo wcześniej chciałam od zawsze go zobaczyć.",
     "cityid": 2,
     "type": "MONUMENT",
     "numberOfOpinions": 3
@@ -104,7 +95,6 @@
     "description": "NEON to kuchnia z azjatyckim twistem. Wszystkie potrawy są przygotowywane na miejscu. W kuchni rządzi Jan Kilański - laureat polskiego Top Chefa.",
     "price": 0,
     "rate": 4.5,
-    "opinion": "Kultowy lokal warty odwiedzenia podczas wizyty w Gdyni. Wystrój wnętrza idealnie pasuje do azjatyckiej koncepcji lokalu.",
     "cityid": 2,
     "type": "RESTAURANT",
     "numberOfOpinions": 12
@@ -115,7 +105,6 @@
     "description": "Pałac Kultury i Nauki – drugi pod względem wysokości całkowitej budynek w Polsce. Znajduje się w śródmieściu Warszawy, przy placu Defilad 1.\nW 2007 budynek został wpisany do rejestru zabytków. Pałac stanowił „dar narodu radzieckiego dla narodu polskiego”. Możliwośc wjechania na taras widokowy oraz zwiedzenia muzeum.",
     "price": 20,
     "rate": 4.5,
-    "opinion": "Bardzo ładnie widoczna panorama Warszawy.",
     "cityid": 3,
     "type": "MONUMENT",
     "numberOfOpinions": 31
@@ -126,7 +115,6 @@
     "description": "Barokowo-klasycystyczny zamek królewski znajdujący się w Warszawie przy placu Zamkowym 4. Pełni funkcje muzealne i reprezentacyjne.\nPierwotnie rezydencja książąt mazowieckich, a od XVI wieku siedziba władz I Rzeczypospolitej: króla i Sejmu.",
     "price": 15,
     "rate": 4.2,
-    "opinion": "Zamek robi wrażenie.",
     "cityid": 3,
     "type": "MONUMENT",
     "numberOfOpinions": 11
@@ -137,7 +125,6 @@
     "description": "Park miejski w śródmieściu Warszawy, położony między placem marsz. Józefa Piłsudskiego, placem Żelaznej Bramy, ul. Marszałkowską i ul. Królewską, na Osi Saskiej.\nPierwotnie geometryczny ogród francuski założony w latach 1724–1748 dla króla Augusta II Mocnego jako ogród pałacu Saskiego.",
     "price": 0,
     "rate": 4.4,
-    "opinion": "Spokojny park w środku miasta, polecamy",
     "cityid": 3,
     "type": "NATURE",
     "numberOfOpinions": 5
@@ -148,7 +135,6 @@
     "description": "Zespół pałacowo-ogrodowy w Warszawie założony w XVIII wieku przez Stanisława Augusta Poniatowskiego. Nazwa pochodzi od barokowego pawilonu Łaźni, wzniesionego w latach 80.XVII wieku\nprzez Stanisława Herakliusza Lubomirskiego i przebudowanego przez Stanisława Augusta Poniatowskiego na pałac Na Wyspie.",
     "price": 0,
     "rate": 4.6,
-    "opinion": "Duży park i piękne łazienki",
     "cityid": 3,
     "type": "MONUMENT",
     "numberOfOpinions": 13
@@ -159,7 +145,6 @@
     "description": "Monument znajdujący się przy ul. Wybrzeże Kościuszkowskie. Rzeźba przedstawia postać Syreny z uniesionym mieczem i tarczą.\nWzrok ma skierowany na północ, a jej mocny kobiecy korpus osłania trzymana w lewej ręce okrągła, lekko wypukła tarcza.\nNa tarczy znajduje się wizerunek orła w koronie, wokół którego biegnie napis „Warszawa”",
     "price": 0,
     "rate": 4.6,
-    "opinion": "Ładne miejsce na spacer i porobienia zdjęć.",
     "cityid": 3,
     "type": "MONUMENT",
     "numberOfOpinions": 10
@@ -170,7 +155,6 @@
     "description": "Bezpretensjonalna restauracja serwująca koktajle oraz pizzę w stylu neapolitańskim z różnymi dodatkami.",
     "price": 0,
     "rate": 4.6,
-    "opinion": "Zdecydowanie jedna z lepszych pizzerii w  Wawie.",
     "cityid": 3,
     "type": "RESTAURANT",
     "numberOfOpinions": 15
@@ -181,7 +165,6 @@
     "description": "Zamek obronno-rezydencyjny w Krakowie, na wzgórzu Wawelskim.Mają w nim siedzibę Państwowe Zbiory Sztuki - Zamek Królewski na Wawelu, muzeum o powierzchni 7040 m² z 71 salami wystawowymi.",
     "price": 40,
     "rate": 4.7,
-    "opinion": "Piękne miejsce, dużo histori Polski.",
     "cityid": 4,
     "type": "MONUMENT",
     "numberOfOpinions": 10
@@ -192,7 +175,6 @@
     "description": "Sukiennice – zabytkowy budynek sukiennic znajdujący się w Krakowie na Starym Mieście, pośrodku Rynku Głównego. ",
     "price": 0,
     "rate": 4.7,
-    "opinion": "So much fun to walk around and buy souvenirs at.",
     "cityid": 4,
     "type": "MONUMENT",
     "numberOfOpinions": 12
@@ -203,7 +185,6 @@
     "description": "Planty – park miejski w Krakowie otaczający Stare Miasto. Został założony w latach 1822–1830, ma powierzchnię 21 ha i ok. 4 km długości.",
     "price": 0,
     "rate": 4.7,
-    "opinion": "Fajne miejsce na spacer lub do pobiegania",
     "cityid": 4,
     "type": "NATURE",
     "numberOfOpinions": 15
@@ -214,7 +195,6 @@
     "description": "Kopiec Kościuszki – jeden z pięciu kopców krakowskich, poświęcony Tadeuszowi Kościuszce, znajduje się na Górze św. Bronisławy w zachodniej części Krakowa na terenie Dzielnicy VII Zwierzyniec.",
     "price": 0,
     "rate": 4.2,
-    "opinion": "Ładne miejsce na zachód słońca i widok na miasto",
     "cityid": 4,
     "type": "NATURE",
     "numberOfOpinions": 4
@@ -225,7 +205,6 @@
     "description": "Kameralna, przytulna restauracja z 2 salami i barem serwująca pożywne nowoczesne dania i szeroki wybór wódek.",
     "price": 0,
     "rate": 4.5,
-    "opinion": "Jest to jedna z droższych restauracji w których bywam, ale zdecydowanie warta swojej ceny.",
     "cityid": 4,
     "type": "RESTAURANT",
     "numberOfOpinions": 5
@@ -236,7 +215,6 @@
     "description": "Muzeum sztuki we Wrocławiu, założone w 1893 we Lwowie, od 1980 we Wrocławiu; eksponuje cykloramiczny obraz Bitwa pod Racławicami\nnamalowany w latach 1893–1894 przez zespół malarzy pod kierunkiem Jana Styki i Wojciecha Kossaka. ",
     "price": 25,
     "rate": 4.9,
-    "opinion": "Nie tylko wspaniała sztuka ale też dużo historii",
     "cityid": 5,
     "type": "MONUMENT",
     "numberOfOpinions": 12
@@ -247,7 +225,6 @@
     "description": "Znajduje się w Parku Szczytnickim w Śródmieściu Wrocławia. W ogrodzie zgromadzono prawie 270 taksonów roślin drzewiastych. ",
     "price": 0,
     "rate": 4.5,
-    "opinion": "Wspaniały, szczególnie wiosną",
     "cityid": 5,
     "type": "NATURE",
     "numberOfOpinions": 20
@@ -258,7 +235,6 @@
     "description": "Średniowieczny plac targowy we Wrocławiu, obecnie centralna część strefy pieszej. Jeden z największych rynków staromiejskich Europy, z największymi ratuszami w Polsce.\nRynek wrocławski, według Olgierda Czernera, obejmuje cały teren placu wraz z wszystkimi elementami architektonicznymi znajdującym się na jego obszarze oraz zabudowę otaczającą plac z czterech stron.",
     "price": 0,
     "rate": 4.9,
-    "opinion": "Piękne miejsce z dużą ilością restaturacji i pubów.",
     "cityid": 5,
     "type": "NATURE",
     "numberOfOpinions": 34
@@ -269,7 +245,6 @@
     "description": "Dwuprzęsłowy stalowy, nitowany most we Wrocławiu zbudowany w roku 1889 nad północną odnogą Odry pomiędzy Ostrowem Tumskim a Wyspą Piasek, na miejscu wcześniejszego mostu drewnianego",
     "price": 0,
     "rate": 4.2,
-    "opinion": "Czarujący most",
     "cityid": 5,
     "type": "NATURE",
     "numberOfOpinions": 8
@@ -280,7 +255,6 @@
     "description": "Tradycyjne czeskie potrawy, kawa i piwo w rustykalnym lokalu z tarasem.",
     "price": 0,
     "rate": 4.6,
-    "opinion": "Miejsce bardzo klimatyczne z czeską obsługą.",
     "cityid": 5,
     "type": "RESTAURANT",
     "numberOfOpinions": 15

@@ -1,12 +1,14 @@
 package com.singapore.TripPlaner.Model;
 
+import java.util.List;
+
 public class Place extends PersistentAbstract {
 
     private String name;
     private String description;
     private double price;
     private double rate;
-    private String opinion;
+    private List opinions;
     private City city;
     private long cityid;
 
@@ -70,14 +72,6 @@ public class Place extends PersistentAbstract {
         this.rate = rate;
     }
 
-    public String getOpinion() {
-        return opinion;
-    }
-
-    public void setOpinion(String opinion) {
-        this.opinion = opinion;
-    }
-
     public City getCity() {
         return city;
     }
@@ -91,7 +85,6 @@ public class Place extends PersistentAbstract {
         return "Nazwa: " + name +
                 "\nOpis: "+ description+
                 "\nCena: "+price + " zł\nOcena: " + rate +
-                "\nOpinie: " + opinion +
                 "\n******************************\n";
     }
 
