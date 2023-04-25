@@ -1,10 +1,12 @@
 package com.singapore.TripPlaner.Service;
 
 
+import com.singapore.TripPlaner.Exception.ImageNotFoundException;
 import com.singapore.TripPlaner.Model.*;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.List;
 
@@ -17,12 +19,14 @@ public class ImageService implements ImageInterface {
     private final Reader reader;
     private final Writer writer;
     private final PlaceService placeService;
+    private final CityService cityService;
 
-    public ImageService(Image image, Reader reader, Writer writer, PlaceService placeService) {
+    public ImageService(Image image, Reader reader, Writer writer, PlaceService placeService, CityService cityService) {
         this.image = image;
         this.reader = reader;
         this.writer = writer;
         this.placeService = placeService;
+        this.cityService = cityService;
     }
 
 
@@ -31,7 +35,7 @@ public class ImageService implements ImageInterface {
         return image;
     }
 
-    public City getPlaceByImageId(double imageId) throws NullPointerException {
+    public City getObjectByImageId(double imageId) throws NullPointerException {
         List<Persistent> cityList =  reader.getList(City.class);
         City cityByImageId = null;
         for (int i = 0; i < cityList.size(); i++) {
@@ -43,11 +47,22 @@ public class ImageService implements ImageInterface {
         }
         return cityByImageId;
     }
-    public List randomImages (int numberOfImages, long placeId){
+    public List randomPlaceImages(int numberOfImages, long placeId){
         Places place = placeService.findById(placeId);
         List inputList =  place.getImages();
         RandomValues randomValues = new RandomValues();
         return randomValues.outputList(numberOfImages, inputList);
+    }
+
+    public void randomPlaceImageAttributes(Model model, long id, int numberOfRandomImages) {
+        try {
+            List imagesId = randomPlaceImages(numberOfRandomImages, id);
+            Image image = findImageById(Double.valueOf((Double) imagesId.get(0)).longValue());
+            model.addAttribute("image", image);
+        } catch (IllegalArgumentException e) {
+            new ImageNotFoundException("Not found images");
+        }
+
     }
 
     public void setUrl (String url){

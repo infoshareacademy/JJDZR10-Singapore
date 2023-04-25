@@ -41,6 +41,8 @@
             <td th:text="${place.rate}"/>
             <td th:text="${place.getOpinions().size()}"/>
             <td th:text="${place.type}"/>
+            <td> <img th:src="${image.findImageById(place.getImages.get(0)).url}" class="card-img-top" alt="zdjęcie miasta">
+            </td>
             <td><a th:href="@{/place/{placeId}(placeId=${place.id})}" value="button"> Detale </a></td>   <!-- TODO dodanie przycisku z ilością opinii do wyświetlenia-->
         </tr>
         </tbody>

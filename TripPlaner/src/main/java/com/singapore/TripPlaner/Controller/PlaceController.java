@@ -26,25 +26,25 @@ public class PlaceController {
     @GetMapping("/places")
     public String getPlace(Model model) {
         model.addAttribute("places", placeService.getAllPlaces());
+        model.addAttribute("image", imageService);
         return "places";
     }
     @GetMapping("/place/type/{type}")
     public String getPlacesByType(@RequestParam(required = true) String type, Model model){
         List filtredPlaces = placeService.filterListByTypeOfPlace(type);
         model.addAttribute("places",filtredPlaces);
+        model.addAttribute("image", imageService);
         return "places";
     }
     @GetMapping ("/place/{id}")
-    public String placeDetails(@PathVariable Long id,
+    public String placeDetails(@PathVariable long id,
                                Model model){
         model.addAttribute("place", placeService.findById(id));
         List opinionsId = opinionService.randomOpinions(1,id);
         Opinion opinion = (Opinion) opinionService.findById(Double.valueOf((Double) opinionsId.get(0)).longValue());
         model.addAttribute("opinionDetail", opinion);
         model.addAttribute("opinion", new Opinion());
-        List imagesId = imageService.randomImages(1,id);
-        Image image = imageService.findImageById(Double.valueOf((Double) imagesId.get(0)).longValue());
-        model.addAttribute("image", image);
+        imageService.randomPlaceImageAttributes(model, id, 3);
         return "placeDetails";
     }
     @GetMapping("/places/topRate")
