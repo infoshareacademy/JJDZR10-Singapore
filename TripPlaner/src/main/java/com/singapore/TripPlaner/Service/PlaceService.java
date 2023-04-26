@@ -27,7 +27,7 @@ public class PlaceService extends PersistentAbstract {
     public List<Places> filterListByTypeOfPlace(String placeType) {
         return getAllPlaces().stream().filter(p -> p.getType().getPlaceType().toLowerCase().equals(placeType.toLowerCase())).collect(Collectors.toList());
     }
-    public Places findById(Long id) {
+    public Places findById(long id) {
         return reader.getAllPlaces(Places.class).
                 stream().filter(places -> places.getId() == id).
                 findFirst().orElseThrow(() -> new PlaceNotFoundException("Not found places with given id: " + id));

@@ -156,11 +156,6 @@ public class Reader {
 
     private Opinion createOpinionInstance(JSONObject jsonObject, Object object) {
         Opinion opinion = (Opinion) object;
-        if(jsonObject.containsKey("userid")) {
-            long idUser = (long) jsonObject.get("userid");
-            User user = (User) this.getObjectById(User.class, idUser);
-            opinion.setUser(user);
-        }
         return opinion;
     }
 }
