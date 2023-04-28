@@ -16,11 +16,10 @@ import java.util.List;
 
 public class ImageController {
     private final ImageService imageService;
-    private final PlaceService placeService;
 
-    public ImageController(ImageService imageService, PlaceService placeService) {
+
+    public ImageController(ImageService imageService) {
         this.imageService = imageService;
-        this.placeService = placeService;
     }
 
     @GetMapping("")

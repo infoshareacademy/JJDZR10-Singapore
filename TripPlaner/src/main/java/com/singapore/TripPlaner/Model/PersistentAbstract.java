@@ -1,11 +1,13 @@
 package com.singapore.TripPlaner.Model;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.singapore.TripPlaner.Service.dataacces.GsonExclusionStrategy;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public abstract class PersistentAbstract implements Persistent {
+public abstract class PersistentAbstract implements Persistent,Comparable<Persistent> {
 
 
     private long id;
@@ -26,8 +28,12 @@ public abstract class PersistentAbstract implements Persistent {
     @Override
     public JSONObject toJSON() {
 
-        Gson gson = new Gson();
+//        Gson gson = new Gson();
+        Gson gson = new GsonBuilder()
+                .setExclusionStrategies(new GsonExclusionStrategy())
+                .create();
         String jsonString = gson.toJson(this);
+
         JSONParser parser = new JSONParser();
         JSONObject jsonObject = null;
         try {
@@ -36,5 +42,10 @@ public abstract class PersistentAbstract implements Persistent {
             throw new RuntimeException(e);
         }
         return jsonObject;
+    }
+
+    @Override
+    public int compareTo(Persistent o) {
+        return 0;
     }
 }
