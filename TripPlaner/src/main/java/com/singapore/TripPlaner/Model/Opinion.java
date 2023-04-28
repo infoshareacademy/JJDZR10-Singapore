@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Opinion extends PersistentAbstract {
 
     private String userOpinion;
-    private Integer userRate;
+    private int userRate;
     private String user = "Singapore";
 
     public Opinion() {

@@ -17,10 +17,12 @@ public class CityController {
 
     private final CityService cityService;
     private final OpinionService opinionService;
+    private final Writer writer;
 
-    public CityController(CityService cityService, Reader reader, Writer writer, OpinionService opinionService) {
+    public CityController(CityService cityService, Reader reader, Writer writer, OpinionService opinionService, Writer writer1) {
         this.cityService = cityService;
         this.opinionService = opinionService;
+        this.writer = writer;
     }
 
 
@@ -40,6 +42,9 @@ public class CityController {
         model.addAttribute("opinionDetail", opinion);
         Opinion opinionToAdd = new Opinion();
         model.addAttribute("opinion", opinionToAdd);
+        city.getOpinions().add(opinionToAdd.getId());
+        city.setRate(opinionService.setObjectRate(opinionToAdd, city.getOpinions(), city.getRate()));
+        writer.save(city);
         return "cityDetails";
     }
 

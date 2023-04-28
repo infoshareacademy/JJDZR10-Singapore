@@ -49,17 +49,9 @@ public class OpinionService {
     public void removeOpinionById(long id) {
         Persistent opinionToRemove = reader.getObjectById(Opinion.class, id);
         writer.remove(opinionToRemove);
-//        Places reducedPlace = getObjectByOpinionId(id);
-//        List opinionsBeforeRemove = reducedPlace.getOpinions();
-//        List opinionsAfterRemove = new ArrayList<>();
-//        for (int i=0; i<opinionsBeforeRemove.size(); i++) {
-//            if (!(opinionsBeforeRemove.get(i).equals((double) id))){
-//                opinionsAfterRemove.add(opinionsBeforeRemove.get(i));
-//            }
-//        }
-//        reducedPlace.setOpinions(opinionsAfterRemove);
-//        setObjectRate(reducedPlace, new Opinion("", 0, opinion.getUser()));
-//        writer.save(reducedPlace);
+    }
+
+    private void setObjectRate(Persistent objectToReduce, Opinion opinion) {
     }
 
     public void addOpinion(Opinion opinion) {
@@ -69,7 +61,7 @@ public class OpinionService {
     }
 
     public Double setObjectRate(Opinion opinion, List opinionsList, double objectRate) {
-        double rate = (opinionsList.size() * objectRate + opinion.getUserRate()) / (opinionsList.size() + 1);
+        double rate = (opinionsList.size() * objectRate + opinion.getUserRate()) / (opinionsList.size());
         rate = Math.round(rate*10)/10;
         return rate;
     }

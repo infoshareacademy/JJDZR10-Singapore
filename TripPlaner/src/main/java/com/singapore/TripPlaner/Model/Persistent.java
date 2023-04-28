@@ -2,6 +2,8 @@ package com.singapore.TripPlaner.Model;
 
 import org.json.simple.JSONObject;
 
+import java.util.List;
+
 public interface Persistent {
     /**
      *
@@ -20,4 +22,6 @@ public interface Persistent {
      * @return
      */
     public JSONObject toJSON();
+
+
 }

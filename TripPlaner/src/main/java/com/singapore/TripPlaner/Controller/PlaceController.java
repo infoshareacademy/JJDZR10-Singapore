@@ -4,6 +4,7 @@ import com.singapore.TripPlaner.Model.Opinion;
 import com.singapore.TripPlaner.Model.Places;
 import com.singapore.TripPlaner.Service.OpinionService;
 import com.singapore.TripPlaner.Service.PlaceService;
+import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +17,13 @@ import java.util.List;
 public class PlaceController {
     private final PlaceService placeService;
     private final OpinionService opinionService;
+    private final Writer writer;
 
 
-    public PlaceController(PlaceService placeService, OpinionService opinionService) {
+    public PlaceController(PlaceService placeService, OpinionService opinionService, Writer writer) {
         this.placeService = placeService;
         this.opinionService = opinionService;
+        this.writer = writer;
     }
 
     @GetMapping("/places")
@@ -44,7 +47,9 @@ public class PlaceController {
         model.addAttribute("opinionDetail", opinion);
         Opinion opinionToAdd = new Opinion();
         model.addAttribute("opinion", opinionToAdd);
-//        place.setRate(opinionService.setObjectRate(opinionToAdd, place.getOpinions(), place.getRate()));
+        place.getOpinions().add(opinionToAdd.getId());
+        place.setRate(opinionService.setObjectRate(opinionToAdd, place.getOpinions(), place.getRate()));
+        writer.save(place);
         return "placeDetails";
     }
 }
