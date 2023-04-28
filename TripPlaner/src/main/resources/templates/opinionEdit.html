@@ -9,12 +9,12 @@
   <link rel="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"/>
   <link rel="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>
   <link rel="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-  <link href="css/opinions.css" rel="stylesheet"/>
+          <link href="css/opinions.css" rel="stylesheet"/>
 </head>
 <body>
 <nav th:insert="~{/fragments/dashboard :: nav}"></nav>
 <div class="container md-3" >
-  <form action="#" th:action="@{/opinions/edit(id=${opinion.id})}" th:object="${opinion}" method="post">
+  <form action="#" th:action="@{/opinions/edit{id}(id=${opinion.id})}" th:object="${opinion}" method="post">
     <div class="rating">
       <input type="radio" name="rating" value="5" id="5" th:field="*{userRate}"><label for="5">☆</label>
       <input type="radio" name="rating" value="4" id="4" th:field="*{userRate}"><label for="4">☆</label>

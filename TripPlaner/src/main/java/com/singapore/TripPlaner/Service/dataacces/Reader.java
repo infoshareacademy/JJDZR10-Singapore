@@ -73,6 +73,8 @@ public class Reader {
                 return this.createPlaceInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.Opinion":
                 return this.createOpinionInstance(jsonObject, object);
+            case "com.singapore.TripPlaner.Model.OpinionService":
+                return this.createOpinionServiceInstance(jsonObject, object);
         }
         throw (new Exception("No such model entity"));
     }
@@ -157,5 +159,9 @@ public class Reader {
     private Opinion createOpinionInstance(JSONObject jsonObject, Object object) {
         Opinion opinion = (Opinion) object;
         return opinion;
+    }
+    private Persistent createOpinionServiceInstance(JSONObject jsonObject, Object object) {
+        Persistent classInstance = (Persistent) object;
+        return classInstance;
     }
 }

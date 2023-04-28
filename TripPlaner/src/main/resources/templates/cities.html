@@ -13,7 +13,7 @@
     <tr th:each="city: ${cities}">
         <td th:text="${city.id}"/>
         <td th:text="${city.name}"/>
-        <td><a th:href="@{/city/details(id=${city.id})}" value="button"> detale </a> </td>
+        <td><a th:href="@{/city/{id}(id=${city.id})}" value="button"> detale </a> </td>
     </tr>
 </table>
 <div class="col-12">

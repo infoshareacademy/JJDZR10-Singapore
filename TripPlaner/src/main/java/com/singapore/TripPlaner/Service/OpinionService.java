@@ -49,59 +49,46 @@ public class OpinionService {
     public void removeOpinionById(long id) {
         Persistent opinionToRemove = reader.getObjectById(Opinion.class, id);
         writer.remove(opinionToRemove);
-        Places reducedPlace = getPlaceByOpinionId(id);
-        List opinionsBeforeRemove = reducedPlace.getOpinions();
-        List opinionsAfterRemove = new ArrayList<>();
-        for (int i=0; i<opinionsBeforeRemove.size(); i++) {
-            if (!(opinionsBeforeRemove.get(i).equals((double) id))){
-                opinionsAfterRemove.add(opinionsBeforeRemove.get(i));
-            }
-        }
-        reducedPlace.setOpinions(opinionsAfterRemove);
-        setObjectRate(reducedPlace, new Opinion("", 0, opinion.getUser()));
-        writer.save(reducedPlace);
+//        Places reducedPlace = getObjectByOpinionId(id);
+//        List opinionsBeforeRemove = reducedPlace.getOpinions();
+//        List opinionsAfterRemove = new ArrayList<>();
+//        for (int i=0; i<opinionsBeforeRemove.size(); i++) {
+//            if (!(opinionsBeforeRemove.get(i).equals((double) id))){
+//                opinionsAfterRemove.add(opinionsBeforeRemove.get(i));
+//            }
+//        }
+//        reducedPlace.setOpinions(opinionsAfterRemove);
+//        setObjectRate(reducedPlace, new Opinion("", 0, opinion.getUser()));
+//        writer.save(reducedPlace);
     }
 
-    public void addOpinion(Opinion opinion, long placeId) {
+    public void addOpinion(Opinion opinion) {
         opinion.setUser(opinion.getUser());
+        opinion.setUserRate(opinion.getUserRate());
         writer.save(opinion);
-        Places place = placeService.findById(placeId);
-        place.getOpinions().add(opinion.getId());
-        setObjectRate(place, opinion);
-        writer.save(place);
     }
 
-    private Places setObjectRate(Places place, Opinion opinion) {
-        double rate = (place.getOpinions().size() * place.getRate() + opinion.getUserRate()) / (place.getOpinions().size() + 1);
-        place.setRate(Math.round(rate*10)/10);
-        return place;
+    public Double setObjectRate(Opinion opinion, List opinionsList, double objectRate) {
+        double rate = (opinionsList.size() * objectRate + opinion.getUserRate()) / (opinionsList.size() + 1);
+        rate = Math.round(rate*10)/10;
+        return rate;
     }
 
 
-    public List randomOpinions(int numberOfOpinions, long placeId){
-        Places place = placeService.findById(placeId);
-        List inputList =  place.getOpinions();
-        List outputList = randomValues.outputList(numberOfOpinions, inputList);
+    public List randomOpinions(int numberOfOpinions, List opinionsListByObject){
+        List outputList = randomValues.outputList(numberOfOpinions, opinionsListByObject);
         return outputList;
     }
 
-    public Places getPlaceByOpinionId(double opinionId) throws NullPointerException {
-        List<Places> places = reader.getAllPlaces(Places.class);
-        Places placeByOpinionId = null;
-        for (long i = 0; i < places.size(); i++) {
-            placeByOpinionId = places.get((int) i);
-            if (placeByOpinionId.getOpinions().contains(opinionId)) {
+    public Object getObjectByOpinionId(double opinionId, List listToSearch, List opinionsList) throws NullPointerException {
+        Object objectByOpinionId = null;
+        for (long i = 0; i < listToSearch.size(); i++) {
+            objectByOpinionId = listToSearch.get((int) i);
+            if (opinionsList.contains(opinionId)) {
                 break;
             }
         }
-        return placeByOpinionId;
-    }
-    public void opinionAttributes(Model model, long id, int number) {
-        model.addAttribute("opinion", new Opinion());
-        model.addAttribute("placeId", id);
-        List opinions = randomOpinions(number, id);
-        model.addAttribute("opinions", opinions);
-        User user = new User();
+        return objectByOpinionId;
     }
 }
 
