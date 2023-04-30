@@ -73,7 +73,7 @@
     <h1 style="margin-top:1.2cm; margin-bottom:1cm">
         Lista Atrakcji
     </h1>
-    <p>Aby dodać swoje miejsce kliknij nastepujący przycisk: <a th:href="@{/places}">Dodaj miejsce</a></p>
+    <p>Aby dodać swoje miejsce kliknij nastepujący przycisk: <a th:href="@{/place/create}" class="btn btn-primary">Dodaj miejsce</a></p>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
         <div th:each="place: ${places}" class="col mb-4">
             <div class="card">

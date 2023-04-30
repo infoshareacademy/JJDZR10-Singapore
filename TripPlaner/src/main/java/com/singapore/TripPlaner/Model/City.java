@@ -28,4 +28,8 @@ public class City extends PersistentAbstract {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        return  name ;
+    }
 }

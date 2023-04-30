@@ -51,6 +51,18 @@ public class PlaceService extends PersistentAbstract {
                 findFirst().orElseThrow(() -> new PlaceNotFoundException("Not found places with given id: " + id));
     }
     public void createNewPlace(Place place){
-        writer.save(place);
+
+        Writer writer1 = new Writer();
+        writer1.save(place);
+    }
+    public void editPlaceById(Long id, Place place) {
+        Place placeToEdit = findById(id);
+
+        placeToEdit.setName(place.getName());
+        placeToEdit.setDescription(place.getDescription());
+        placeToEdit.setCityid(place.getCityid());
+        placeToEdit.setRate(place.getRate());
+        placeToEdit.setPrice(place.getPrice());
+        placeToEdit.setType(place.getType());
     }
 }
