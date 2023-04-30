@@ -32,6 +32,5 @@ public class CityService extends PersistentAbstract {
     public List getCities () {
         List<Persistent> cities = new ArrayList<>();
         return cities = reader.getList(City.class);
-
     }
 }

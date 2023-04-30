@@ -48,24 +48,15 @@ public class ImageService {
         }
         return cityByImageId;
     }
-    public List randomPlaceImages(int numberOfImages, long placeId){
-        Places place = placeService.findById(placeId);
-        List inputList =  place.getImages();
-        RandomValues randomValues = new RandomValues();
-        return randomValues.outputList(numberOfImages, inputList);
-    }
 
-    public void randomPlaceImageAttributes(Model model, long id, int numberOfRandomImages) {
-        List imagesId = randomPlaceImages(numberOfRandomImages, id);
-        Image image = findImageById(Double.valueOf((Double) imagesId.get(0)).longValue());
-        model.addAttribute("image", image);
-    }
-
-    public Image getRandomImage (){
-       Image image = (Image) randomValues.randomObjectFromList(getImages());
+    public Image getRandomImage (List inputImagesList){
+       Image image = (Image) randomValues.randomObjectFromList(inputImagesList);
         return image;
     }
-
+    public Image randomImageFromIdList(List imagesIdList){
+    double imageId = (double) randomValues.randomObjectFromList(imagesIdList);
+        return findImageById(Double.valueOf(imageId).longValue());
+    }
 
     public void setUrl (String url){
         Image image = new Image();
