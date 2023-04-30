@@ -1,8 +1,6 @@
 package com.singapore.TripPlaner.Controller;
 
-import com.singapore.TripPlaner.Model.Image;
 import com.singapore.TripPlaner.Service.ImageService;
-import com.singapore.TripPlaner.Service.PlaceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

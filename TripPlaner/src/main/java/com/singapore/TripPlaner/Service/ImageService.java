@@ -19,13 +19,15 @@ public class ImageService {
     private final Writer writer;
     private final PlaceService placeService;
     private final CityService cityService;
+    private final RandomValues randomValues;
 
-    public ImageService(Image image, Reader reader, Writer writer, PlaceService placeService, CityService cityService) {
+    public ImageService(Image image, Reader reader, Writer writer, PlaceService placeService, CityService cityService, RandomValues randomValues) {
         this.image = image;
         this.reader = reader;
         this.writer = writer;
         this.placeService = placeService;
         this.cityService = cityService;
+        this.randomValues = randomValues;
     }
 
 
@@ -57,6 +59,11 @@ public class ImageService {
         List imagesId = randomPlaceImages(numberOfRandomImages, id);
         Image image = findImageById(Double.valueOf((Double) imagesId.get(0)).longValue());
         model.addAttribute("image", image);
+    }
+
+    public Image getRandomImage (){
+       Image image = (Image) randomValues.randomObjectFromList(getImages());
+        return image;
     }
 
 

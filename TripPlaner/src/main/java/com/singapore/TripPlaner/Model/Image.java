@@ -4,7 +4,6 @@ package com.singapore.TripPlaner.Model;
 import org.springframework.stereotype.Component;
 
 @Component
-
 public class Image extends PersistentAbstract {
     private String url;
     private User user;
