@@ -22,14 +22,14 @@
             <table class="table table-sm">
                 <thead>
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">No.</th>
                     <th scope="col">NAME</th>
                     <th scope="col">ACTION</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="trip,iterStat: ${trips}">
-                    <td th:text="${trip.id}"/>
+                    <td th:text="${iterStat.index+1}"/>
                     <td th:text="${trip.name}"/>
                     <td><a th:href="@{/trips/{tripId}/edit(tripId=${trip.id})}" class="btn" value="button"> edycja </a></td>
                 </tr>

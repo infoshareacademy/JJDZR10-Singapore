@@ -53,13 +53,14 @@ public class TripController {
 
     @GetMapping("/trips")
     public String getTrips(Model model) {
-        List trips = tripService.findTrips();
-        model.addAttribute("trips", trips);
+
+        model.addAttribute("trips", tripService.findTrips());
+
         return "trips";
     }
 
     @GetMapping("/trips/{tripId}/edit")
-    public String editTrip(@RequestParam(required = false) Long cityId,@PathVariable(required = true) Long tripId, Model model) {
+    public String editTrip(@RequestParam(required = false) Long cityId,@PathVariable long tripId, Model model) {
 
         if(cityId==null){
             model.addAttribute("places", placeService.findPlaces());
@@ -76,7 +77,7 @@ public class TripController {
 
 
     @GetMapping("/trips/{tripId}/delete")
-    public String tripDelete(@PathVariable(required = true) long tripId) {
+    public String tripDelete(@PathVariable long tripId) {
 
         Trip trip = tripService.findTripById(tripId);
         tripService.removeTrip(trip);

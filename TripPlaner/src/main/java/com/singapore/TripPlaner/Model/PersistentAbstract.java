@@ -28,7 +28,6 @@ public abstract class PersistentAbstract implements Persistent,Comparable<Persis
     @Override
     public JSONObject toJSON() {
 
-//        Gson gson = new Gson();
         Gson gson = new GsonBuilder()
                 .setExclusionStrategies(new GsonExclusionStrategy())
                 .create();
