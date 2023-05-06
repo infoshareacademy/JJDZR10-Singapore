@@ -50,7 +50,7 @@ public class PlaceController {
         placeService.createNewPlace(place);
         return "redirect:/places";
     }
-    @GetMapping("/place/edit_place/{id}")
+    @GetMapping("/place/edit-place/{id}")
     public String getCarById(@PathVariable Long id, Model model) {
         Place place = placeService.findById(id);
         model.addAttribute("place", place);

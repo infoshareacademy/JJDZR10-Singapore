@@ -83,6 +83,7 @@
                     <p> <td th:text="${place.city.name}"/></p>
 
                     <a th:href="@{/place/{placeId}(placeId=${place.id})}" class="btn btn-primary"> Detale</a>
+                    <a th:href="@{/place/edit-place/{id}(id=${place.id})}"  class="btn btn-secondary"> Edytuj</a>
                 </div>
             </div>
         </div>
