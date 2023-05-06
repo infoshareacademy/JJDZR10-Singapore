@@ -19,7 +19,7 @@ public class PlaceController {
 
     @GetMapping("/places")
     public String getPlace(Model model) {
-        model.addAttribute("places", placeService.getAllPlaces());
+        model.addAttribute("places", placeService.findPlaces());
         return "places";
     }
     @GetMapping("/place/type/{type}")
