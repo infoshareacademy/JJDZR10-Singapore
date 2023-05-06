@@ -1,6 +1,6 @@
 package com.singapore.TripPlaner.Model;
 
-import com.singapore.TripPlaner.Model.Places;
+import com.singapore.TripPlaner.*;
 import org.json.simple.JSONObject;
 
 import java.util.List;

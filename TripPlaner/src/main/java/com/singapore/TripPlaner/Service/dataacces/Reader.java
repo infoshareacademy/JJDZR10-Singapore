@@ -168,7 +168,7 @@ public class Reader {
         TripPoint tripPoint = (TripPoint) object;
         if(jsonObject.containsKey("placeid")) {
             long idPlace = (long) jsonObject.get("placeid");
-            Places place  = (Places) this.getObjectById(Places.class, idPlace);
+            Place place  = (Place) this.getObjectById(Place.class, idPlace);
             tripPoint.setPlace(place);
         }
         if(jsonObject.containsKey("tripid")) {

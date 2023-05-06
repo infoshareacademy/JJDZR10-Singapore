@@ -21,7 +21,7 @@ public class PlaceService extends PersistentAbstract {
     private final PlacesComparatorBiggestRate placesComparatorBiggestRate;
     private final PlacesComparatorMostPopular placesComparatorMostPopular;
 
-    public PlaceService(Reader reader, Writer writer) {
+    public PlaceService(Reader reader, Writer writer, PlacesComparatorBiggestRate placesComparatorBiggestRate, PlacesComparatorMostPopular placesComparatorMostPopular) {
         this.reader = reader;
         this.writer = writer;
         this.placesComparatorBiggestRate = placesComparatorBiggestRate;
