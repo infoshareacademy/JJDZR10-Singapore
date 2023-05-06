@@ -14,4 +14,9 @@ public enum Type {
     public String getPlaceType() {
         return placeType;
     }
+
+//    @Override
+//    public String toString() {
+//        return placeType;
+//    }
 }

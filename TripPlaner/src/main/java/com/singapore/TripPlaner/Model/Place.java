@@ -1,17 +1,27 @@
 package com.singapore.TripPlaner.Model;
 
-import org.json.simple.JSONObject;
+import java.util.List;
 
-public class Places extends PersistentAbstract {
+public class Place extends PersistentAbstract {
 
     private String name;
     private String description;
     private double price;
     private double rate;
-    private String opinion;
+    private List opinions;
     private City city;
     private long cityid;
-//    private int type;
+
+    private int numberOfOpinions;
+
+    public int getNumberOfOpinions() {
+        return numberOfOpinions;
+    }
+
+    public void setNumberOfOpinions(int numberOfOpinions) {
+        this.numberOfOpinions = numberOfOpinions;
+    }
+
     private Type type;
 
     public Type getType() {
@@ -62,14 +72,6 @@ public class Places extends PersistentAbstract {
         this.rate = rate;
     }
 
-    public String getOpinion() {
-        return opinion;
-    }
-
-    public void setOpinion(String opinion) {
-        this.opinion = opinion;
-    }
-
     public City getCity() {
         return city;
     }
@@ -83,7 +85,6 @@ public class Places extends PersistentAbstract {
         return "Nazwa: " + name +
                 "\nOpis: "+ description+
                 "\nCena: "+price + " zł\nOcena: " + rate +
-                "\nOpinie: " + opinion +
                 "\n******************************\n";
     }
 
