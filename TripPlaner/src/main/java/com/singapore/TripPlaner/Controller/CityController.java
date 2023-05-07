@@ -35,8 +35,8 @@ public class CityController {
     public String cityDetails(@RequestParam(required = true) Long id, Model model) {
         City city = cityService.findById(id);
         model.addAttribute("city", city);
-        double imageId = imageService.getImageIds(city.getImages());
-        model.addAttribute("image", imageService.findImageById(Double.valueOf(imageId).longValue()));
+        List imagesUrls = imageService.getImagesFromIdList(city.getImages());
+        model.addAttribute("images", imagesUrls);
         return "cityDetails";
     }
 

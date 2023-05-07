@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,6 +28,14 @@ public class ImageService {
     public Image findImageById(long id) {
         Image image = (Image) reader.getObjectById(Image.class, id);
         return image;
+    }
+
+    public List getImagesFromIdList (List <Double> imagesList){
+        List <Image> images = new ArrayList<>();
+        for(int i=0; i<imagesList.size(); i++){
+            images.add(findImageById(Double.valueOf(imagesList.get(i)).longValue()));
+        }
+        return images;
     }
 
     public double getImageIds(List imagesList) {
