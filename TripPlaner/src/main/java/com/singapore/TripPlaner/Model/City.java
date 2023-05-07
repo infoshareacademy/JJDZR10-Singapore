@@ -1,8 +1,10 @@
 package com.singapore.TripPlaner.Model;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
-
+@Component
 public class City extends PersistentAbstract {
 
     private String name;

@@ -21,7 +21,7 @@
                 <img src="https://dummyimage.com/600x400/000/fff.jpg" class="card-img-top" alt="zdjęcie miasta">
                 <div class="card-body">
                     <h5 th:text="${city.name}" class="card-title"></h5>
-                    <a th:href="@{/city/details(id=${city.id})}" class="btn btn-primary"> Detale </a>
+                    <a th:href="@{/city/{id}(id=${city.id})}" class="btn btn-primary"> Detale </a>
                 </div>
             </div>
         </div>

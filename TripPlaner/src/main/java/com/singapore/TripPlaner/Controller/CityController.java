@@ -1,9 +1,11 @@
 package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.City;
+import com.singapore.TripPlaner.Model.Image;
 import com.singapore.TripPlaner.Model.Opinion;
-import com.singapore.TripPlaner.Model.Persistent;
 import com.singapore.TripPlaner.Service.CityService;
+import com.singapore.TripPlaner.Service.ImageService;
+import com.singapore.TripPlaner.Service.RandomValues;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.stereotype.Controller;
@@ -16,9 +18,15 @@ import java.util.List;
 public class CityController {
 
     private final CityService cityService;
+    private final RandomValues randomValues;
+    private final City city;
+    private final ImageService imageService;
 
-    public CityController(CityService cityService, Reader reader, Writer writer) {
+    public CityController(CityService cityService, Reader reader, Writer writer, RandomValues randomValues, City city, ImageService imageService) {
         this.cityService = cityService;
+        this.randomValues = randomValues;
+        this.city = city;
+        this.imageService = imageService;
     }
 
 
@@ -34,6 +42,9 @@ public class CityController {
         model.addAttribute("city", cityService.findById(id));
         model.addAttribute("opinion", new Opinion());
         model.addAttribute("placeId", id);
+        City city = cityService.findById(id);
+        double imageId = (double) randomValues.randomObjectFromList(city.getImages());
+        model.addAttribute("image", (Image) imageService.findImageById(Double.valueOf(imageId).longValue()));
         return "cityDetails";
     }
 
