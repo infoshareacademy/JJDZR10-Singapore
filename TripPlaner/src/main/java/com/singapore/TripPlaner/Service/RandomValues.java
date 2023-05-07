@@ -1,11 +1,13 @@
 package com.singapore.TripPlaner.Service;
 
 
+import com.singapore.TripPlaner.Model.Places;
+import com.singapore.TripPlaner.Model.Type;
+import jdk.dynalink.linker.LinkerServices;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 @Service
 public class RandomValues {

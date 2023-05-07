@@ -26,6 +26,4 @@ public class ImageController {
         model.addAttribute("images", images);
         return "images/images";
     }
-
-
 }

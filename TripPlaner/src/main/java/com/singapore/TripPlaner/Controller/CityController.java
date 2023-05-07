@@ -1,10 +1,8 @@
 package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.City;
-import com.singapore.TripPlaner.Model.Persistent;
 import com.singapore.TripPlaner.Service.CityService;
-import com.singapore.TripPlaner.Service.dataacces.Reader;
-import com.singapore.TripPlaner.Service.dataacces.Writer;
+import com.singapore.TripPlaner.Service.ImageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,9 +16,11 @@ import java.util.List;
 public class CityController {
 
     private final CityService cityService;
+    private final ImageService imageService;
 
-    public CityController(CityService cityService, Reader reader, Writer writer) {
+    public CityController(CityService cityService, ImageService imageService) {
         this.cityService = cityService;
+        this.imageService = imageService;
     }
 
 
@@ -33,7 +33,10 @@ public class CityController {
 
     @GetMapping("/city/{id}")
     public String cityDetails(@RequestParam(required = true) Long id, Model model) {
-        model.addAttribute("city", cityService.findById(id));
+        City city = cityService.findById(id);
+        model.addAttribute("city", city);
+        double imageId = imageService.getImageIds(city.getImages());
+        model.addAttribute("image", imageService.findImageById(Double.valueOf(imageId).longValue()));
         return "cityDetails";
     }
 

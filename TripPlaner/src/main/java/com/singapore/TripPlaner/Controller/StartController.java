@@ -2,6 +2,7 @@ package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Model.Places;
+import com.singapore.TripPlaner.Model.Type;
 import com.singapore.TripPlaner.Service.CityService;
 import com.singapore.TripPlaner.Service.ImageService;
 import com.singapore.TripPlaner.Service.PlaceService;
@@ -27,17 +28,21 @@ public class StartController {
 
     @GetMapping("/")
     public String getStart(Model model){
+        model.addAttribute("momument", Type.MONUMENT);
+        model.addAttribute("nature", Type.NATURE);
+        model.addAttribute("restaurant", Type.RESTAURANT);
+
         model.addAttribute("randomImage1",imageService.getRandomImage(imageService.getImages()));
         model.addAttribute("randomImage2",imageService.getRandomImage(imageService.getImages()));
         model.addAttribute("randomImage3",imageService.getRandomImage(imageService.getImages()));
 
-        Places randomNature = (Places) randomValues.randomObjectFromList(placeService.filterListByTypeOfPlace("Natura"));
+        Places randomNature = (Places) randomValues.randomObjectFromList(placeService.filterListByTypeOfPlace(Type.NATURE.getPlaceType()));
         model.addAttribute("randomNatureImage",imageService.randomImageFromIdList(randomNature.getImages()));
 
-        Places randomMonument = (Places) randomValues.randomObjectFromList(placeService.filterListByTypeOfPlace("Zabytki"));
+        Places randomMonument = (Places) randomValues.randomObjectFromList(placeService.filterListByTypeOfPlace(Type.MONUMENT.getPlaceType()));
         model.addAttribute("randomMonumentImage",imageService.randomImageFromIdList(randomMonument.getImages()));
 
-        Places randomRestaurant = (Places) randomValues.randomObjectFromList(placeService.filterListByTypeOfPlace("Jedzenie"));
+        Places randomRestaurant = (Places) randomValues.randomObjectFromList(placeService.filterListByTypeOfPlace(Type.RESTAURANT.getPlaceType()));
         model.addAttribute("randomRestaurantImage",imageService.randomImageFromIdList(randomRestaurant.getImages()));
 
         City randomCity = (City) randomValues.randomObjectFromList(cityService.getCities());
