@@ -12,7 +12,8 @@
     ],
     "cityid": 1,
     "id": 1,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "images": [ 48 ]
   },
   {
     "rate": 4.5,
@@ -26,7 +27,8 @@
     ],
     "cityid": 1,
     "id": 2,
-    "type": "NATURE"
+    "type": "NATURE",
+    "images": [ 33,34,35,36,37,38, 39 ]
   },
   {
     "rate": 3.2,
@@ -41,7 +43,8 @@
     ],
     "cityid": 1,
     "id": 3,
-    "type": "NATURE"
+    "type": "NATURE",
+    "images": [ 49 ]
   },
   {
     "rate": 4.4,
@@ -55,7 +58,8 @@
     ],
     "cityid": 1,
     "id": 4,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "images": [ 50 ]
   },
   {
     "rate": 4.6,
@@ -69,7 +73,8 @@
     ],
     "cityid": 1,
     "id": 5,
-    "type": "RESTAURANT"
+    "type": "RESTAURANT",
+    "images": [ 51 ]
   },
   {
     "rate": 4.0,
@@ -82,7 +87,8 @@
     ],
     "cityid": 2,
     "id": 6,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "images": [ 40,41,42,43 ]
   },
   {
     "rate": 4.8,
@@ -96,10 +102,11 @@
     ],
     "cityid": 2,
     "id": 7,
-    "type": "NATURE"
+    "type": "NATURE",
+    "images": [ 52 ]
   },
   {
-    "rate": 4.833333333333333,
+    "rate": 4.8,
     "price": 0.0,
     "name": "Klif Orłowski",
     "description": "Długi, szybko ulegający erozji klif poprzecinany leśnymi ścieżkami. Rozciąga się z niego widok na Zatokę Gdańską.",
@@ -111,7 +118,8 @@
     ],
     "cityid": 2,
     "id": 8,
-    "type": "NATURE"
+    "type": "NATURE",
+    "images": [ 52 ]
   },
   {
     "rate": 4.5,
@@ -124,7 +132,8 @@
     ],
     "cityid": 2,
     "id": 9,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "images": [ 53 ]
   },
   {
     "rate": 4.4,
@@ -138,7 +147,8 @@
     ],
     "cityid": 2,
     "id": 10,
-    "type": "RESTAURANT"
+    "type": "RESTAURANT",
+    "images": [ 54 ]
   },
   {
     "rate": 4.75,
@@ -151,7 +161,8 @@
     ],
     "cityid": 3,
     "id": 11,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "images": [ 55 ]
   },
   {
     "rate": 3.2,
@@ -165,7 +176,8 @@
     ],
     "cityid": 3,
     "id": 12,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "images": [ 56 ]
   },
   {
     "rate": 5.0,
@@ -178,7 +190,8 @@
     ],
     "cityid": 3,
     "id": 13,
-    "type": "NATURE"
+    "type": "NATURE",
+    "images": [ 57 ]
   },
   {
     "rate": 3.75,
@@ -191,7 +204,8 @@
     ],
     "cityid": 3,
     "id": 14,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "images": [ 58 ]
   },
   {
     "rate": 4.8,
@@ -205,7 +219,8 @@
     ],
     "cityid": 3,
     "id": 15,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "images": [ 59 ]
   },
   {
     "rate": 4.2,
@@ -219,10 +234,11 @@
     ],
     "cityid": 3,
     "id": 16,
-    "type": "RESTAURANT"
+    "type": "RESTAURANT",
+    "images": [ 60 ]
   },
   {
-    "rate": 4.333333333333333,
+    "rate": 4.3,
     "price": 40.0,
     "name": "Zamek Królewski na Wawelu",
     "description": "Zamek obronno-rezydencyjny w Krakowie, na wzgórzu Wawelskim.Mają w nim siedzibę Państwowe Zbiory Sztuki - Zamek Królewski na Wawelu, muzeum o powierzchni 7040 m² z 71 salami wystawowymi.",
@@ -234,7 +250,8 @@
     ],
     "cityid": 4,
     "id": 17,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "images": [ 24,25,26,27 ]
   },
   {
     "rate": 5.0,
@@ -248,7 +265,8 @@
     ],
     "cityid": 4,
     "id": 18,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "images": [ 29,30,31,32 ]
   },
   {
     "rate": 5.0,
@@ -262,7 +280,8 @@
     ],
     "cityid": 5,
     "id": 19,
-    "type": "NATURE"
+    "type": "NATURE",
+    "images": [ 61 ]
   },
   {
     "rate": 4.0,
@@ -274,7 +293,8 @@
     ],
     "cityid": 4,
     "id": 20,
-    "type": "NATURE"
+    "type": "NATURE",
+    "images": [ 28 ]
   },
   {
     "rate": 5.0,
@@ -288,7 +308,8 @@
     ],
     "cityid": 4,
     "id": 21,
-    "type": "RESTAURANT"
+    "type": "RESTAURANT",
+    "images": [ 62 ]
   },
   {
     "rate": 5.0,
@@ -301,7 +322,8 @@
     ],
     "cityid": 5,
     "id": 22,
-    "type": "MONUMENT"
+    "type": "MONUMENT",
+    "images": [ 63 ]
   },
   {
     "rate": 4.8,
@@ -315,7 +337,8 @@
     ],
     "cityid": 5,
     "id": 23,
-    "type": "NATURE"
+    "type": "NATURE",
+    "images": [ 64 ]
   },
   {
     "rate": 5.0,
@@ -328,7 +351,8 @@
     ],
     "cityid": 5,
     "id": 24,
-    "type": "NATURE"
+    "type": "NATURE",
+    "images": [ 44,45,46,47 ]
   },
   {
     "rate": 3.4,
@@ -342,7 +366,8 @@
     ],
     "cityid": 5,
     "id": 25,
-    "type": "NATURE"
+    "type": "NATURE",
+    "images": [ 65 ]
   },
   {
     "rate": 4.6,
@@ -356,6 +381,7 @@
     ],
     "cityid": 5,
     "id": 26,
-    "type": "RESTAURANT"
+    "type": "RESTAURANT",
+    "images": [ 66 ]
   }
 ]

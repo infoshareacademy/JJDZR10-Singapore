@@ -9,9 +9,10 @@ public class Place extends PersistentAbstract {
     private double price;
     private double rate;
     private List opinions;
+    private List images;
     private City city;
     private long cityid;
-
+//    private int type;
     private Type type;
 
     public Type getType() {
@@ -78,6 +79,14 @@ public class Place extends PersistentAbstract {
         this.opinions = opinions;
     }
 
+
+    public List getImages() {
+        return images;
+    }
+
+    public void setImages(List images) {
+        this.images = images;
+    }
 
     @Override
     public String toString() {

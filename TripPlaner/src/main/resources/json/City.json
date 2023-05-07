@@ -2,26 +2,41 @@
   {
     "id": 1,
     "name": "Gdańsk",
-    "description": "Miasto w województwie pomorskim, położone nad Morzem Bałtyckim u ujścia Motławy do Wisły nad Zatoką Gdańską.\nCentrum kulturalne, naukowe i gospodarcze oraz stolica województwa pomorskiego."
+    "description": "Miasto w województwie pomorskim, położone nad Morzem Bałtyckim u ujścia Motławy do Wisły nad Zatoką Gdańską.\nCentrum kulturalne, naukowe i gospodarcze oraz stolica województwa pomorskiego.",
+    "images": [
+      2
+    ]
   },
   {
     "id": 2,
     "name": "Gdynia",
-    "description": "Miasto w województwie pomorskim, położone nad Morzem Bałtyckim. Wchodzi w skład Trójmiasta (wraz z Gdańskiem i Sopotem).\nJest najludniejszym w Polsce miastem niewojewódzkim z wieloma ciekawymi restauracjami i dostępem do plaży."
+    "description": "Miasto w województwie pomorskim, położone nad Morzem Bałtyckim. Wchodzi w skład Trójmiasta (wraz z Gdańskiem i Sopotem).\nJest najludniejszym w Polsce miastem niewojewódzkim z wieloma ciekawymi restauracjami i dostępem do plaży.",
+    "images": [
+      1
+    ]
   },
   {
     "id": 3,
     "name": "Warszawa",
-    "description": "Stolica Polski i województwa mazowieckiego, największe miasto w kraju, położone w jego centralnej części,\nna Nizinie Środkowomazowieckiej, na Mazowszu, nad Wisłą."
+    "description": "Stolica Polski i województwa mazowieckiego, największe miasto w kraju, położone w jego centralnej części,\nna Nizinie Środkowomazowieckiej, na Mazowszu, nad Wisłą.",
+    "images": [
+      3
+    ]
   },
   {
     "id": 4,
     "name": "Kraków",
-    "description": "Miasto położone w południowej Polsce nad Wisłą, drugie co do liczby mieszkańców i powierzchni miasto kraju.\nFormalna stolica Polski do 1795 roku i miasto koronacyjne oraz nekropolia królów Polski. Kraków jest stolicą historycznej Małopolski.\nLeży na obszarze Bramy Krakowskiej, Niecki Nidziańskiej i Pogórza Zachodniobeskidzkiego."
+    "description": "Miasto położone w południowej Polsce nad Wisłą, drugie co do liczby mieszkańców i powierzchni miasto kraju.\nFormalna stolica Polski do 1795 roku i miasto koronacyjne oraz nekropolia królów Polski. Kraków jest stolicą historycznej Małopolski.\nLeży na obszarze Bramy Krakowskiej, Niecki Nidziańskiej i Pogórza Zachodniobeskidzkiego.",
+    "images": [
+      5 ,6 , 8, 10, 12, 13, 15, 16, 17
+    ]
   },
   {
     "id": 5,
     "name": "Wrocław",
-    "description": "Miasto w południowo-zachodniej Polsce. Położone na Nizinie Śląskiej, nad Odrą i czterema jej dopływami.\nJest historyczną stolicą Dolnego Śląska, a także całego Śląska. Jest głównym miastem aglomeracji wrocławskiej.\nTrzecie pod względem liczby ludności miasto w Polsce"
+    "description": "Miasto w południowo-zachodniej Polsce. Położone na Nizinie Śląskiej, nad Odrą i czterema jej dopływami.\nJest historyczną stolicą Dolnego Śląska, a także całego Śląska. Jest głównym miastem aglomeracji wrocławskiej.\nTrzecie pod względem liczby ludności miasto w Polsce",
+    "images": [
+      4, 7, 9, 11, 14, 18, 19, 20 ,21, 22, 23
+    ]
   }
 ]

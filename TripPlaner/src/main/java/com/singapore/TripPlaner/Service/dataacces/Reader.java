@@ -73,6 +73,8 @@ public class Reader {
                 return this.createPlaceInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.Opinion":
                 return this.createOpinionInstance(jsonObject, object);
+            case "com.singapore.TripPlaner.Model.Image":
+                return this.createImageInstance(jsonObject, object);
         }
         throw (new Exception("No such model entity"));
     }
@@ -162,6 +164,11 @@ public class Reader {
             opinion.setUser(user);
         }
         return opinion;
+    }
+
+    private Image createImageInstance(JSONObject jsonObject, Object object) {
+        Image image = (Image) object;
+        return image;
     }
     private TripPoint createTripPointInstance(JSONObject jsonObject, Object object) {
         TripPoint tripPoint = (TripPoint) object;
