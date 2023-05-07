@@ -8,7 +8,7 @@ import java.util.Comparator;
 public class PlacesComparatorMostPopular implements Comparator<Place> {
     @Override
     public int compare(Place o1, Place o2) {
-        int compareResult = Integer.compare(o2.getNumberOfOpinions(),o1.getNumberOfOpinions());
+        int compareResult = Integer.compare(o2.getOpinions().size(),o1.getOpinions().size());
         if (compareResult == 0) {
             compareResult = Double.compare(o2.getRate(), o1.getRate());
         }

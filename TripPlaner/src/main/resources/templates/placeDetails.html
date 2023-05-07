@@ -36,8 +36,9 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="form-floating">
-                        <p>Formularz opinii</p>
-                        <!--                                                <div th:insert="opinionForm"></div>-->
+                        <div class="form-floating">
+                            <div th:insert="opinionForm"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -65,8 +66,9 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-floating">
-<!--                                <div><span th:text="${place.opinion}"> </span></div>-->
-                            </div>
+                                <div class="form-floating">
+                                    <div th:insert="opinionDetails"></div>
+                                </div>                            </div>
                         </div>
                     </div>
                 </div>

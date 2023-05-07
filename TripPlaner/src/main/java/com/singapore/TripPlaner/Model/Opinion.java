@@ -1,20 +1,44 @@
 package com.singapore.TripPlaner.Model;
 
+import org.springframework.stereotype.Component;
 
-import com.singapore.TripPlaner.Service.OpinionService;
-
-import java.util.List;
 import java.util.Objects;
 
-public class Opinion extends PersistentAbstract  {
+@Component
+public class Opinion extends PersistentAbstract {
 
     private String userOpinion;
     private Integer userRate;
-    private Double objectRate;
-    private List<Integer> ratingsList;
+    private User user = new User();
 
-    private Integer id_user;
-    private User user;
+    public Opinion() {
+    }
+
+    public Opinion(String userOpinion, Integer userRate, User user) {
+        this.userOpinion = userOpinion;
+        this.userRate = userRate;
+        this.user = user;
+    }
+
+    public Opinion(Integer userRate) {
+        this.userRate = userRate;
+    }
+
+    public String getUserOpinion() {
+        return userOpinion;
+    }
+
+    public void setUserOpinion(String userOpinion) {
+        this.userOpinion = userOpinion;
+    }
+
+    public Integer getUserRate() {
+        return userRate;
+    }
+
+    public void setUserRate(Integer userRate) {
+        this.userRate = userRate;
+    }
 
     public User getUser() {
         return user;
@@ -24,53 +48,12 @@ public class Opinion extends PersistentAbstract  {
         this.user = user;
     }
 
-
-    OpinionService opinionService = new OpinionService();
-
-    public void setUserOpinion(String userOpinion) {
-        this.userOpinion = opinionService.setUserOpinion();
-    }
-
-    public void setUserRate(Integer userRate) {
-        this.userRate = opinionService.setRate();
-    }
-    public Integer getUserRate() {
-        return userRate;
-    }
-
-
-
-    private Double getObjectRate() {
-        return objectRate;
-    }
-
-    public void setObjectRate(Double objectRate) {
-        this.objectRate = opinionService.objectRate();
-    }
-
-    private List<Integer> getRatingsList() {
-        return ratingsList;
-    }
-
-    public void setRatingsList(List<Integer> ratingsList) {
-        this.ratingsList = opinionService.getRatingsList();
-    }
-
-    public Integer getId_user() {
-        return id_user;
-    }
-
-    public void setId_user(Integer id_user) {
-        this.id_user = id_user;
-    }
-
     @Override
     public String toString() {
         return "Opinion{" +
                 "userOpinion='" + userOpinion + '\'' +
-                ", objectRate=" + objectRate +
-                ", ratingsList=" + ratingsList +
-                ", id_user=" + id_user +
+                ", userRate=" + userRate +
+                ", user=" + user +
                 '}';
     }
 
@@ -78,23 +61,12 @@ public class Opinion extends PersistentAbstract  {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Opinion opinion = (Opinion) o;
-
-        if (getId() != opinion.getId()) return false;
-        if (!Objects.equals(userOpinion, opinion.userOpinion)) return false;
-        if (!Objects.equals(objectRate, opinion.objectRate)) return false;
-        if (!Objects.equals(ratingsList, opinion.ratingsList)) return false;
-        return Objects.equals(id_user, opinion.id_user);
+        return Objects.equals(userOpinion, opinion.userOpinion) && Objects.equals(userRate, opinion.userRate) && Objects.equals(user, opinion.user);
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (getId() ^ (getId() >>> 32));
-        result = 31 * result + (userOpinion != null ? userOpinion.hashCode() : 0);
-        result = 31 * result + (objectRate != null ? objectRate.hashCode() : 0);
-        result = 31 * result + (ratingsList != null ? ratingsList.hashCode() : 0);
-        result = 31 * result + (id_user != null ? id_user.hashCode() : 0);
-        return result;
+        return Objects.hash(userOpinion, userRate, user);
     }
 }

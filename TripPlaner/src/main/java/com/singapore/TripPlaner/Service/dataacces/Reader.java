@@ -66,14 +66,13 @@ public class Reader {
                 return this.createTripInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.User":
                 return (User) object;
+// Do wyjaśnienia z KB
             case "com.singapore.TripPlaner.Model.City":
                 return (City) object;
             case "com.singapore.TripPlaner.Model.Place":
                 return this.createPlaceInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.Opinion":
                 return this.createOpinionInstance(jsonObject, object);
-            case "com.singapore.TripPlaner.Model.TripPoint":
-                return this.createTripPointInstance(jsonObject, object);
         }
         throw (new Exception("No such model entity"));
     }

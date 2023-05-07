@@ -12,16 +12,6 @@ public class Place extends PersistentAbstract {
     private City city;
     private long cityid;
 
-    private int numberOfOpinions;
-
-    public int getNumberOfOpinions() {
-        return numberOfOpinions;
-    }
-
-    public void setNumberOfOpinions(int numberOfOpinions) {
-        this.numberOfOpinions = numberOfOpinions;
-    }
-
     private Type type;
 
     public Type getType() {
@@ -80,12 +70,27 @@ public class Place extends PersistentAbstract {
         this.city = city;
     }
 
+    public List getOpinions() {
+        return opinions;
+    }
+
+    public void setOpinions(List opinions) {
+        this.opinions = opinions;
+    }
+
+
     @Override
     public String toString() {
-        return "Nazwa: " + name +
-                "\nOpis: "+ description+
-                "\nCena: "+price + " zł\nOcena: " + rate +
-                "\n******************************\n";
+        return "Places{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", rate=" + rate +
+                ", opinions=" + opinions +
+                ", city=" + city +
+                ", cityid=" + cityid +
+                ", type=" + type +
+                '}';
     }
 
 

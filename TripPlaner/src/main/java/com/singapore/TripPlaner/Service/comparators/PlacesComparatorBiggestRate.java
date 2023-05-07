@@ -10,7 +10,7 @@ public class PlacesComparatorBiggestRate implements Comparator<Place> {
     public int compare(Place o1, Place o2) {
         int compareResult = Double.compare(o2.getRate(), o1.getRate());
         if (compareResult == 0) {
-            compareResult = Integer.compare(o2.getNumberOfOpinions(),o1.getNumberOfOpinions());
+            compareResult = Integer.compare(o2.getOpinions().size(),o1.getOpinions().size());
         }
         if (compareResult == 0) {
             compareResult = o1.getName().compareToIgnoreCase(o2.getName());

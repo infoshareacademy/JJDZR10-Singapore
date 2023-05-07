@@ -1,88 +1,120 @@
 package com.singapore.TripPlaner.Service;
 
 
+import com.singapore.TripPlaner.Model.Opinion;
 import com.singapore.TripPlaner.Model.Persistent;
+import com.singapore.TripPlaner.Model.Place;
 import com.singapore.TripPlaner.Model.User;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
-import org.json.simple.JSONObject;
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
+@Service
+public class OpinionService {
+    private List opinionsList;
+    private Opinion opinion;
+    private final Reader reader;
+    private final Writer writer;
+    private final PlaceService placeService;
+    private final RandomValues randomValues;
 
-public class OpinionService extends ValidatorService {
-    private long id_user;
-    private String userOpinion;
-    private Double objectRate;
-    private List<Integer> ratingsList = new ArrayList<>();
-    private Integer userRate;
-    private User user;
-
-    private User scanUsers() {
-        Reader reader = new Reader();
-        Writer writer = new Writer();
-        return user = (User)  reader.getObjectById(User.class, id_user);
+    public OpinionService(Opinion opinion, Reader reader, Writer writer, PlaceService placeService, RandomValues randomValues) {
+        this.opinion = opinion;
+        this.reader = reader;
+        this.writer = writer;
+        this.placeService = placeService;
+        this.randomValues = randomValues;
     }
 
-    public String setUserOpinion() {
-        scanUserString("Napisz komentarz.", "Nic nie napisałeś, podaj swoją opinię");
-        return userOpinion = getUserScanString();
-
+    public List<Opinion> getOpinions() {
+        return opinionsList = reader.getList(Opinion.class);
     }
 
-    public Integer setRate() {
-        userScanInteger("Podaj swoją ocenę w skali 1-10", "Podałeś liczbę spoza zakresu", 1, 10);
-        ratingsList.add(getUserScanInteger());
-        setObjectRate();
-        return userRate = getUserScanInteger();
+    public Persistent findById(long id) {
+        Persistent opinion = reader.getObjectById(Opinion.class, id);
+        return opinion;
     }
 
+    public void editOpinionById(long id, Opinion opinion) {
+        Opinion opinionToEdit = (Opinion) reader.getObjectById(Opinion.class, id);
+        opinionToEdit.setUserOpinion(opinion.getUserOpinion());
+        opinionToEdit.setUserRate(opinion.getUserRate());
+        opinionToEdit.setUser(opinion.getUser());
+        writer.save(opinionToEdit);
+    }
 
-    private Double setObjectRate() {
-        Double sum = 0d;
-        for (int i = 0; i < ratingsList.size(); i++) {
-            sum += (double) ratingsList.get(i);
+    public void removeOpinionById(long id) {
+        Persistent opinionToRemove = reader.getObjectById(Opinion.class, id);
+        writer.remove(opinionToRemove);
+       Place reducedPlace = getPlaceByOpinionId(id);
+        List opinionsBeforeRemove = reducedPlace.getOpinions();
+        List opinionsAfterRemove = new ArrayList<>();
+        for (int i=0; i<opinionsBeforeRemove.size(); i++) {
+            if (!(opinionsBeforeRemove.get(i).equals((double) id))){
+                opinionsAfterRemove.add(opinionsBeforeRemove.get(i));
+            }
         }
-        return objectRate = (double) (sum / ratingsList.size());
+        reducedPlace.setOpinions(opinionsAfterRemove);
+        setObjectRate(reducedPlace, new Opinion("", 0, opinion.getUser()));
+        writer.save(reducedPlace);
     }
 
-//    public void opinionFilter (){
-//
-//        Reader reader = new Reader();
-//        List opinionList = reader.getList(OpinionService.class);
-//
-//        Integer rate = userScanInteger("Podaj minimalną ocenę komentarza", "Podałeś liczbę spoza zakresu. Wprowadź ją ponownie", 1, 10);
-//        List<String> reducedList = opinionList.stream()
-//                .filter(o -> o.getUserRate() > rate)
-//                .map(o->o.getUserOpinion()).collect(Collectors.toList());
-//
-//        Integer opinionsToShow = userScanInteger("Podaj ilość opinii do wyświetlenie", "Nie mamy tylu opinii", 1, reducedList.size());
-//        for (int i=0; i<opinionsToShow; i++){
-//                System.out.println(reducedList.get(i));
-//                System.out.println();
-//            }
-//        }
-
-
-    public String getUserOpinion() {
-        return userOpinion;
+    public void addOpinion(Opinion opinion, long placeId) {
+        opinion.setUser(new User());
+        writer.save(opinion);
+        Place place = placeService.findById(placeId);
+        place.getOpinions().add(opinion.getId());
+        setObjectRate(place, opinion);
+        writer.save(place);
     }
 
-    public List<Integer> getRatingsList() {
-        return ratingsList;
+    private Place setObjectRate(Place place, Opinion opinion) {
+            double rate = (place.getOpinions().size() * place.getRate() + opinion.getUserRate()) / (place.getOpinions().size() + 1);
+            place.setRate(Math.round(rate*10)/10);
+        return place;
     }
 
-    public Integer getUserRate() {
-        return userRate;
+
+    public List randomOpinions(int numberOfOpinions, long placeId){
+        Place place = placeService.findById(placeId);
+        List inputList =  place.getOpinions();
+        List outputList = randomValues.outputList(numberOfOpinions, inputList);
+        return outputList;
     }
 
-    public Double objectRate() {
-        System.out.println("\nŚrednia ocena " + ratingsList.size() + " użytkowników to " + objectRate + ".");
-        return objectRate;
+    public Place getPlaceByOpinionId(double opinionId) throws NullPointerException {
+        List<Place> places = reader.getAllPlaces(Place.class);
+        Place placeByOpinionId = null;
+        for (long i = 0; i < places.size(); i++) {
+            placeByOpinionId = places.get((int) i);
+            if (placeByOpinionId.getOpinions().contains(opinionId)) {
+                break;
+            }
+        }
+        return placeByOpinionId;
+    }
+    public void opinionAttributes(Model model, Long id, int number) {
+        model.addAttribute("opinion", new Opinion());
+        model.addAttribute("placeId", id);
+        List opinions = randomOpinions(number, id);
+        model.addAttribute("opinions", opinions);
+        User user = new User();
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OpinionService that = (OpinionService) o;
+        return Objects.equals(opinionsList, that.opinionsList) && Objects.equals(opinion, that.opinion) && Objects.equals(reader, that.reader) && Objects.equals(writer, that.writer) && Objects.equals(placeService, that.placeService);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(opinionsList, opinion, reader, writer, placeService);
+    }
 }
 
 
