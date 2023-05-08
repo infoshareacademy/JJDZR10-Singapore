@@ -22,34 +22,39 @@ public class PlaceController {
 
     @GetMapping("/places")
     public String getPlace(Model model) {
-        Place newPlace = new Place();
-        model.addAttribute("place", newPlace);
+        Place emptyPlace = new Place();
+        model.addAttribute("place", emptyPlace);
 
         model.addAttribute("places", placeService.getAllPlaces());
         return "places";
     }
+
     @GetMapping("/place/type/{type}")
-    public String getPlacesByType(@RequestParam(required = true) String type, Model model){
+    public String getPlacesByType(@RequestParam(required = true) String type, Model model) {
         List filtredPlaces = placeService.filterListByTypeOfPlace(type);
-        model.addAttribute("places",filtredPlaces);
+        model.addAttribute("places", filtredPlaces);
         return "places";
     }
-    @GetMapping ("/place/{id}")
-    public String placeDetails(@PathVariable Long id, Model model){
+
+    @GetMapping("/place/{id}")
+    public String placeDetails(@PathVariable Long id, Model model) {
         model.addAttribute("place", placeService.findById(id));
         return "placeDetails";
     }
+
     @GetMapping("/place/create")
-    public String createPlace (Model model){
-       model.addAttribute("place", new Place());
-       model.addAttribute("cities", cityService.getCities());
+    public String createPlace(Model model) {
+        model.addAttribute("place", new Place());
+        model.addAttribute("cities", cityService.getCities());
         return "placeForm";
     }
+
     @PostMapping("/places")
-    public String createPlace (@ModelAttribute Place place){
+    public String createPlace(@ModelAttribute Place place) {
         placeService.createNewPlace(place);
         return "redirect:/places";
     }
+
     @GetMapping("/place/edit-place/{id}")
     public String getCarById(@PathVariable Long id, Model model) {
         Place place = placeService.findById(id);
@@ -57,6 +62,7 @@ public class PlaceController {
         model.addAttribute("cities", cityService.getCities());
         return "edit-place";
     }
+
     @PostMapping("/place/edit/{id}")
     public String editPlace(@PathVariable Long id, @ModelAttribute Place place, Model model) {
         placeService.editPlaceById(id, place);
@@ -68,6 +74,7 @@ public class PlaceController {
         model.addAttribute("places", placeService.getTopRatedPlaces());
         return "places";
     }
+
     @GetMapping("/places/mostPopular")
     public String getMostPopularPlaces(Model model) {
         model.addAttribute("places", placeService.getMostPopularPlaces());

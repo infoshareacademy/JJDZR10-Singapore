@@ -20,7 +20,6 @@ public class Writer {
 
     public void save(Persistent entity) {
 
-
         Reader reader = new Reader();
         List<Persistent> list = reader.getList(entity.getClass());
         JSONArray listJson = new JSONArray();
@@ -53,8 +52,26 @@ public class Writer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    public void remove(Persistent entityObject) {
 
+        Reader reader = new Reader();
+        List<Persistent> list = reader.getList(entityObject.getClass());
+        JSONArray listJson = new JSONArray();
+
+        // zapisanie listy bez przekazanego obiektu
+        for (Persistent o : list) {
+            if (o.getId() != entityObject.getId()) {
+                listJson.add(o.toJSON());
+            }
+        }
+
+        try (FileWriter file = new FileWriter(getResourcePath(entityObject.getClass()))) {
+            listJson.writeJSONString(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -65,9 +82,7 @@ public class Writer {
      */
     private String getResourcePath(Class c) {
 
-
-        return c.getResource(".").getFile()+"../../../../json/"
-
+        return c.getResource(".").getFile() + "../../../../json/"
 //                + c.getPackageName()
                 + "/" + c.getSimpleName() + ".json";
 

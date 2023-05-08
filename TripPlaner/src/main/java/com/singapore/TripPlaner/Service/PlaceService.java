@@ -57,7 +57,6 @@ public class PlaceService extends PersistentAbstract {
     }
     public void editPlaceById(Long id, Place place) {
         Place placeToEdit = findById(id);
-
         placeToEdit.setName(place.getName());
         placeToEdit.setDescription(place.getDescription());
         placeToEdit.setCityid(place.getCityid());
