@@ -3,7 +3,6 @@ package com.singapore.TripPlaner.Controller;
 import com.singapore.TripPlaner.Model.Places;
 import com.singapore.TripPlaner.Service.ImageService;
 import com.singapore.TripPlaner.Service.PlaceService;
-import jdk.dynalink.linker.LinkerServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +37,7 @@ public class PlaceController {
     public String placeDetails(@PathVariable Long id, Model model){
         Places place = placeService.findById(id);
         model.addAttribute("place", place);
-        List imagesUrls = imageService.getImagesFromIdList(place.getImages());
+        List imagesUrls = imageService.getImagesFromList(place.getImages());
         model.addAttribute("images", imagesUrls);
         return "placeDetails";
     }

@@ -26,7 +26,7 @@ public class CityController {
 
     @GetMapping("/cities")
     public String getCity(Model model) {
-        List cities = cityService.getCities();
+        List cities = cityService.getAllCities();
         model.addAttribute("cities", cities);
         return "cities";
     }
@@ -35,7 +35,7 @@ public class CityController {
     public String cityDetails(@RequestParam(required = true) Long id, Model model) {
         City city = cityService.findById(id);
         model.addAttribute("city", city);
-        List imagesUrls = imageService.getImagesFromIdList(city.getImages());
+        List imagesUrls = imageService.getImagesFromList(city.getImages());
         model.addAttribute("images", imagesUrls);
         return "cityDetails";
     }
