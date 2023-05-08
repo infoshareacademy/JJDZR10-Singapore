@@ -31,6 +31,7 @@ public class PlaceController {
     public String getPlacesByType(@RequestParam(required = true) String type, Model model){
         List filtredPlaces = placeService.filterListByTypeOfPlace(type);
         model.addAttribute("places",filtredPlaces);
+        model.addAttribute("images", imageService.getAllImages());
         return "places";
     }
     @GetMapping ("/place/{id}")

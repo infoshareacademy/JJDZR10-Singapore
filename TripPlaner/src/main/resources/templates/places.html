@@ -18,7 +18,7 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
         <div th:each="place,iterStat: ${places}" class="col mb-4">
             <div class="card">
-                <img src="https://dummyimage.com/600x400/000/fff.jpg" class="card-img-top" alt="zdjęcie miasta">
+                <img th:src="${images.get(place.images.get(0)).url}" class="card-img-top" alt="card" width="390" height="250">
                 <div class="card-body">
                     <h5 th:text="${place.city.name}" class="card-title"></h5>
                     <p><td th:text="${iterStat.count}"/>. <td th:text="${place.name}"/></p>

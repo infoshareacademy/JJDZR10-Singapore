@@ -28,6 +28,7 @@ public class CityController {
     public String getCity(Model model) {
         List cities = cityService.getAllCities();
         model.addAttribute("cities", cities);
+        model.addAttribute("images", imageService.getAllImages());
         return "cities";
     }
 

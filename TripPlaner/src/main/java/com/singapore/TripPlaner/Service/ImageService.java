@@ -56,7 +56,7 @@ public class ImageService {
         return randomValues.randomObjectFromList(inputImagesList);
     }
 
-    private Image randomImage(List <Long> imagesId) {
+    public Image randomImage(List <Long> imagesId) {
         return findImageById(randomValues.randomObjectFromList(imagesId));
     }
     public List getAllImages(){
