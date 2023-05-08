@@ -6,12 +6,14 @@ import com.singapore.TripPlaner.Model.*;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Service
 public class PlaceService extends PersistentAbstract {
     private final Reader reader;
     private final Writer writer;
@@ -36,6 +38,11 @@ public class PlaceService extends PersistentAbstract {
     public List<Places> getMostPopularPlaces() {
         List<Places> places = reader.getAllPlaces(Places.class);
         Collections.sort(places, placesComparatorMostPopular);
+        return places;
+    }
+    public List <Places> getSorted(Comparator placesComparator){
+        List<Places> places = reader.getAllPlaces(Places.class);
+        Collections.sort(places, placesComparator);
         return places;
     }
 

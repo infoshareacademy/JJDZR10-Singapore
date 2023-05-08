@@ -3,6 +3,7 @@ package com.singapore.TripPlaner.Controller;
 import com.singapore.TripPlaner.Model.Places;
 import com.singapore.TripPlaner.Service.PlaceService;
 import com.singapore.TripPlaner.Service.PlacesComparatorBiggestRate;
+import com.singapore.TripPlaner.Service.PlacesComparatorMostPopular;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,14 +26,24 @@ public class PlaceController {
         model.addAttribute("places", placeService.getAllPlaces());
         return "places";
     }
+//    @GetMapping("/places/topRate")
+//    public String getTopRatePlaces(Model model) {
+//        model.addAttribute("places", placeService.getTopRatedPlaces());
+//        return "places";
+//    }
+//    @GetMapping("/places/mostPopular")
+//    public String getMostPopularPlaces(Model model) {
+//        model.addAttribute("places", placeService.getMostPopularPlaces());
+//        return "places";
+//    }
     @GetMapping("/places/topRate")
     public String getTopRatePlaces(Model model) {
-        model.addAttribute("places", placeService.getTopRatedPlaces());
+        model.addAttribute("places", placeService.getSorted(new PlacesComparatorBiggestRate()));
         return "places";
     }
     @GetMapping("/places/mostPopular")
     public String getMostPopularPlaces(Model model) {
-        model.addAttribute("places", placeService.getMostPopularPlaces());
+        model.addAttribute("places", placeService.getSorted(new PlacesComparatorMostPopular()));
         return "places";
     }
 
