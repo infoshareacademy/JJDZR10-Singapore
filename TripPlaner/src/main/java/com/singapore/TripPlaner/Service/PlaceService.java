@@ -7,13 +7,13 @@ import com.singapore.TripPlaner.Service.comparators.PlacesComparatorBiggestRate;
 import com.singapore.TripPlaner.Service.comparators.PlacesComparatorMostPopular;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Service
 public class PlaceService extends PersistentAbstract {
     private final Reader reader;
     private final Writer writer;
@@ -27,34 +27,41 @@ public class PlaceService extends PersistentAbstract {
         this.placesComparatorMostPopular = placesComparatorMostPopular;
     }
     public List<Place> getAllPlaces() {
-        List<Place> places = reader.getAllPlaces(Place.class);
-         return places;
+        List<Place> places = reader.getList(Place.class).stream().
+                map(object -> (Place) object).
+                collect(Collectors.toList());
+        return places;
     }
+
     public List<Place> getTopRatedPlaces() {
-        List<Place> places = reader.getAllPlaces(Place.class);
+        List<Place> places = getAllPlaces();
         Collections.sort(places, placesComparatorBiggestRate);
         return places;
     }
+
     public List<Place> getMostPopularPlaces() {
-        List<Place> places = reader.getAllPlaces(Place.class);
+        List<Place> places = getAllPlaces();
         Collections.sort(places, placesComparatorMostPopular);
         return places;
     }
 
 
     public List<Place> filterListByTypeOfPlace(String placeType) {
-        return getAllPlaces().stream().filter(p -> p.getType().getPlaceType().toLowerCase().equals(placeType.toLowerCase())).collect(Collectors.toList());
+        return getAllPlaces().stream().
+                filter(p -> p.getType().getPlaceType().toLowerCase().equals(placeType.toLowerCase())).
+                collect(Collectors.toList());
     }
+
     public Place findById(Long id) {
-        return reader.getAllPlaces(Place.class).
+        return getAllPlaces().
                 stream().filter(places -> places.getId() == id).
                 findFirst().orElseThrow(() -> new PlaceNotFoundException("Not found places with given id: " + id));
     }
-    public void createNewPlace(Place place){
 
-        Writer writer1 = new Writer();
-        writer1.save(place);
+    public void createNewPlace(Place place) {
+        writer.save(place);
     }
+
     public void editPlaceById(Long id, Place place) {
         Place placeToEdit = findById(id);
         placeToEdit.setName(place.getName());

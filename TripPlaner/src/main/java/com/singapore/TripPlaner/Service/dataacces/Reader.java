@@ -37,22 +37,6 @@ public class Reader {
         return lo;
     }
 
-    public List<Place> getAllPlaces(Class c) {
-
-        List<Place> listOfPlaces = new ArrayList<>();
-        JSONArray jsonArray = this.getListInJson(c);
-
-        try {
-            for (Object o : jsonArray) {
-                JSONObject jsonObject = (JSONObject) o;
-                listOfPlaces.add((Place) this.mapJsonToEntity(jsonObject, c));
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return listOfPlaces;
-    }
-
     private Persistent mapJsonToEntity(JSONObject jsonObject, Class c) throws Exception {
         String className = c.getName();
 
