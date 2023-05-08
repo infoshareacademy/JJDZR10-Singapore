@@ -1,9 +1,6 @@
 package com.singapore.TripPlaner.Service;
 
 
-import com.singapore.TripPlaner.Model.Places;
-import com.singapore.TripPlaner.Model.Type;
-import jdk.dynalink.linker.LinkerServices;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,10 +24,9 @@ public class RandomValues {
         return outputList;
     }
 
-    public Object randomObjectFromList(List inputList){
-        Object randomObject;
+    public <T> T randomObjectFromList(List <T> inputList){
         Random index = new Random();
         int randomInt = index.nextInt(inputList.size());
-        return randomObject = (Object) inputList.get(randomInt);
+        return (T) inputList.get(randomInt);
     }
 }

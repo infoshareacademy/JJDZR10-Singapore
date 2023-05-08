@@ -33,16 +33,16 @@ public class ImageService {
                 .orElseThrow(()-> new ImageNotFindException("Not found Image with given id: " + id));
     }
 
-    public List getImagesFromList(List <Double> imagesId){
+    public List getImagesFromList(List <Long> imagesId){
         List <Image> images = new ArrayList<>();
         for(int i=0; i<imagesId.size(); i++){
-            images.add(findImageById(Double.valueOf(imagesId.get(i)).longValue()));
+            images.add(findImageById(imagesId.get(i)));
         }
         return images;
     }
 
     public String getRandomPlaceImage(String placeType){
-        Places randomPlace= (Places) randomValues.randomObjectFromList(placeService.filterListByTypeOfPlace(placeType));
+        Places randomPlace= randomValues.randomObjectFromList(placeService.filterListByTypeOfPlace(placeType));
         return randomImage(randomPlace.getImages()).getUrl();
     }
 
@@ -52,14 +52,12 @@ public class ImageService {
 
     }
 
-    public Image getRandomImage(List inputImagesList) {
-        Image image = (Image) randomValues.randomObjectFromList(inputImagesList);
-        return image;
+    public Image getRandomImage(List <Image> inputImagesList) {
+        return randomValues.randomObjectFromList(inputImagesList);
     }
 
-    private Image randomImage(List imagesId) {
-        double imageId = (double) randomValues.randomObjectFromList(imagesId);
-        return findImageById(Double.valueOf(imageId).longValue());
+    private Image randomImage(List <Long> imagesId) {
+        return findImageById(randomValues.randomObjectFromList(imagesId));
     }
     public List getAllImages(){
         return reader.getList(Image.class);

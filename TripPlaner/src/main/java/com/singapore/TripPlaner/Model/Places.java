@@ -11,7 +11,7 @@ public class Places extends PersistentAbstract {
     private double price;
     private double rate;
     private String opinion;
-    private List images;
+    private List <Long> images;
     private City city;
     private long cityid;
     private Type type;

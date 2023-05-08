@@ -7,7 +7,7 @@ public class City extends PersistentAbstract {
 
     private String name;
     private String description;
-    private List images;
+    private List <Long> images;
 
     public List getImages() {
         return images;
