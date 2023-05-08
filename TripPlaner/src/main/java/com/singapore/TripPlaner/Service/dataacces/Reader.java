@@ -159,7 +159,6 @@ public class Reader {
         Image image = (Image) object;
         return image;
     }
-}
 
     private TripPoint createTripPointInstance(JSONObject jsonObject, Object object) {
         TripPoint tripPoint = (TripPoint) object;
