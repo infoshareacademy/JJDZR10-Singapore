@@ -9,6 +9,7 @@ import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -60,6 +61,9 @@ public class PlaceService extends PersistentAbstract {
 
     public void createNewPlace(Place place) {
         writer.save(place);
+    }
+    public void removePlace(Long id){
+        writer.remove(findById(id));
     }
 
     public void editPlaceById(Long id, Place place) {

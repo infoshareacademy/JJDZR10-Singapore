@@ -1,6 +1,7 @@
 package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.Place;
+import com.singapore.TripPlaner.Model.Trip;
 import com.singapore.TripPlaner.Service.CityService;
 import com.singapore.TripPlaner.Service.PlaceService;
 import org.springframework.stereotype.Controller;
@@ -22,9 +23,6 @@ public class PlaceController {
 
     @GetMapping("/places")
     public String getPlace(Model model) {
-        Place emptyPlace = new Place();
-        model.addAttribute("place", emptyPlace);
-
         model.addAttribute("places", placeService.getAllPlaces());
         return "places";
     }
@@ -66,6 +64,12 @@ public class PlaceController {
     @PostMapping("/place/edit/{id}")
     public String editPlace(@PathVariable Long id, @ModelAttribute Place place, Model model) {
         placeService.editPlaceById(id, place);
+        return "redirect:/places";
+    }
+
+    @GetMapping("/place/{id}/delete")
+    public String placeDelete(@PathVariable Long id) {
+        placeService.removePlace(id);
         return "redirect:/places";
     }
 
