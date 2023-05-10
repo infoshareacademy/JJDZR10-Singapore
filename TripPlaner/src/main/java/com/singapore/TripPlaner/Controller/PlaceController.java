@@ -72,17 +72,4 @@ public class PlaceController {
         placeService.removePlace(id);
         return "redirect:/places";
     }
-
-    @GetMapping("/places/topRate")
-    public String getTopRatePlaces(Model model) {
-        model.addAttribute("places", placeService.getTopRatedPlaces());
-        return "places";
-    }
-
-    @GetMapping("/places/mostPopular")
-    public String getMostPopularPlaces(Model model) {
-        model.addAttribute("places", placeService.getMostPopularPlaces());
-        return "places";
-    }
-
 }

@@ -33,13 +33,13 @@ public class PlaceService extends PersistentAbstract {
                 collect(Collectors.toList());
         return places;
     }
-
+    //TODO sortowanie wg najlepszej oceny dla miejsca, zrobić kontroler po dodaniu serwis opinii
     public List<Place> getTopRatedPlaces() {
         List<Place> places = getAllPlaces();
         Collections.sort(places, placesComparatorBiggestRate);
         return places;
     }
-
+    //TODO sortowanie wg najwiekszej ilosci komentarzy dla miejsca, zrobić kontroler po dodaniu serwis opinii
     public List<Place> getMostPopularPlaces() {
         List<Place> places = getAllPlaces();
         Collections.sort(places, placesComparatorMostPopular);
