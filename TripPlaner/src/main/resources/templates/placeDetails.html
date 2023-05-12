@@ -28,9 +28,6 @@
                         <span th:if="${place.price==0}"></span>
                         <span th:unless="${place.price==0}"><span>Cena: <span><span th:text="${place.price}"></span> zł </span>
                     </div>
-                    <!--                                                <span th:text="${place.rate}"></span></p>-->
-                    <!--                                            <p class="card-text"><span th:unless="${place.price==0}"><span>Cena: <span><span-->
-                    <!--                                                    th:text="${place.price}"></span> zł </span></span></span>-->
                     </p>
                     <button onclick="goBack()">Powrót</button>
                 </div>
@@ -41,7 +38,7 @@
                 <div class="card-body">
                     <div class="form-floating">
                         <p>Formularz opinii</p>
-                        <!--                                                <div th:insert="opinionForm"></div>-->
+                        <!--<div th:insert="opinionForm"></div>-->
                     </div>
                 </div>
             </div>
@@ -70,6 +67,7 @@
                         <div class="col-sm-12">
                             <div class="form-floating">
 <!--                                <div><span th:text="${place.opinion}"> </span></div>-->
+
                             </div>
                         </div>
                     </div>

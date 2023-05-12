@@ -56,6 +56,8 @@ public class Reader {
                 return this.createPlaceInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.Opinion":
                 return this.createOpinionInstance(jsonObject, object);
+            case "com.singapore.TripPlaner.Model.TripPoint":
+                return this.createTripPointInstance(jsonObject, object);
         }
         throw (new Exception("No such model entity"));
     }
@@ -146,4 +148,20 @@ public class Reader {
         }
         return opinion;
     }
+    private TripPoint createTripPointInstance(JSONObject jsonObject, Object object) {
+        TripPoint tripPoint = (TripPoint) object;
+        if(jsonObject.containsKey("placeid")) {
+            long idPlace = (long) jsonObject.get("placeid");
+            Place place  = (Place) this.getObjectById(Place.class, idPlace);
+            tripPoint.setPlace(place);
+        }
+        if(jsonObject.containsKey("tripid")) {
+            long idTrip = (long) jsonObject.get("tripid");
+            Trip trip  = (Trip) this.getObjectById(Trip.class, idTrip);
+            tripPoint.setTrip(trip);
+        }
+        return tripPoint;
+    }
+
+
 }

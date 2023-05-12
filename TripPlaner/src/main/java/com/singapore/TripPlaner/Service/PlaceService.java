@@ -1,6 +1,7 @@
 package com.singapore.TripPlaner.Service;
 
-
+import com.singapore.TripPlaner.Model.Persistent;
+import com.singapore.TripPlaner.Model.Places;
 import com.singapore.TripPlaner.Exception.PlaceNotFoundException;
 import com.singapore.TripPlaner.Model.*;
 import com.singapore.TripPlaner.Service.comparators.PlacesComparatorBiggestRate;
@@ -15,7 +16,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class PlaceService extends PersistentAbstract {
+
+public class PlaceService {
     private final Reader reader;
     private final Writer writer;
     private final PlacesComparatorBiggestRate placesComparatorBiggestRate;
@@ -27,11 +29,28 @@ public class PlaceService extends PersistentAbstract {
         this.placesComparatorBiggestRate = placesComparatorBiggestRate;
         this.placesComparatorMostPopular = placesComparatorMostPopular;
     }
+  
     public List<Place> getAllPlaces() {
         List<Place> places = reader.getList(Place.class).stream().
                 map(object -> (Place) object).
                 collect(Collectors.toList());
         return places;
+    }
+
+    /**
+     *
+     * @return lista wszystkich places
+     */
+    public List<Place> findPlaces() {
+
+        List<Place> listOfPlaces = new ArrayList<>();
+        List<Persistent> lo = reader.getList(Places.class);
+
+        for (Object o : lo) {
+            listOfPlaces.add((Places) o);
+        }
+        return listOfPlaces;
+
     }
     //TODO sortowanie wg najlepszej oceny dla miejsca, zrobić kontroler po dodaniu serwis opinii
     public List<Place> getTopRatedPlaces() {
@@ -45,15 +64,31 @@ public class PlaceService extends PersistentAbstract {
         Collections.sort(places, placesComparatorMostPopular);
         return places;
     }
-
-
     public List<Place> filterListByTypeOfPlace(String placeType) {
         return getAllPlaces().stream().
                 filter(p -> p.getType().getPlaceType().toLowerCase().equals(placeType.toLowerCase())).
                 collect(Collectors.toList());
     }
+    /**
+     *
+     * @param cityId
+     * @return lista places danego miasta
+     */
+    public List<Place> findPlacesByCityId(Long cityId) {
 
-    public Place findById(Long id) {
+        List<Place> allPlaces = findPlaces();
+        List<Place> listPlacesByCity = new ArrayList<>();
+
+        for (Place place : allPlaces) {
+            if (place.getCity().getId() == cityId) {
+                listPlacesByCity.add(place);
+            }
+        }
+        return listPlacesByCity;
+    }
+
+
+     public Place findById(Long id) {
         return getAllPlaces().
                 stream().filter(places -> places.getId() == id).
                 findFirst().orElseThrow(() -> new PlaceNotFoundException("Not found places with given id: " + id));
@@ -76,3 +111,4 @@ public class PlaceService extends PersistentAbstract {
         placeToEdit.setType(place.getType());
     }
 }
+
