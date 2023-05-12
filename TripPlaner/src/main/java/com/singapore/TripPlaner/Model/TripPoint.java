@@ -3,7 +3,7 @@ package com.singapore.TripPlaner.Model;
 import org.json.simple.JSONObject;
 
 public class TripPoint extends PersistentAbstract{
-    private Places place;
+    private Place place;
     private Trip trip;
     private long position;
 
@@ -23,11 +23,11 @@ public class TripPoint extends PersistentAbstract{
         this.trip = trip;
     }
 
-    public Places getPlace() {
+    public Place getPlace() {
         return place;
     }
 
-    public void setPlace(Places place) {
+    public void setPlace(Place place) {
         this.place = place;
     }
 
