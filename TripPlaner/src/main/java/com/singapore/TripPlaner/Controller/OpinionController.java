@@ -2,6 +2,7 @@ package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.Opinion;
 import com.singapore.TripPlaner.Service.OpinionService;
+import com.singapore.TripPlaner.Service.PlaceService;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,19 +14,19 @@ import java.util.List;
 public class OpinionController {
 
     private final OpinionService opinionService;
-    private final Opinion opinion;
+    private final PlaceService placeService;
     private final Reader reader;
 
-    public OpinionController(OpinionService opinionService, Opinion opinion, Reader reader) {
+    public OpinionController(OpinionService opinionService, PlaceService placeService, Reader reader) {
         this.opinionService = opinionService;
-        this.opinion = opinion;
+        this.placeService = placeService;
         this.reader = reader;
     }
 
 
     @GetMapping("")
     public String getOpinions(Model model) {
-        List opinions = opinionService.getOpinions();
+        List opinions = opinionService.getAllOpinions();
         model.addAttribute("opinions", opinions);
         model.addAttribute("user", "Singapore");
         return "opinions";
@@ -47,22 +48,24 @@ public class OpinionController {
         return "redirect:/opinions";
     }
 
-
     @GetMapping("/delete{id}")
     public String deleteOpinion(@PathVariable("id") long id) {
         opinionService.removeOpinionById(id);
         return "redirect:/opinions";
     }
 
-    @GetMapping("/new")
-    public String opinionForm(Model model) {
+    @GetMapping("/place/{id}")
+    public String opinionForm(@PathVariable("id") long id,
+                              Model model) {
+        model.addAttribute("place", placeService.findById(id));
         model.addAttribute("opinion", new Opinion());
         return "opinionForm";
     }
 
-    @PostMapping("/new")
-    public String addOpinion(@ModelAttribute Opinion opinion, Model model) {
-        opinionService.addOpinion(opinion);
-        return "opinionDetails";
+    @PostMapping("/place/{id}")
+    public String addOpinion (@ModelAttribute Opinion opinion,
+                             @PathVariable("id") long id)  {
+        opinionService.addOpinionToPlace(opinion, placeService.findById(id));
+        return "redirect:/place/{id}";
     }
 }

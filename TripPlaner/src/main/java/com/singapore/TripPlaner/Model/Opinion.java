@@ -1,10 +1,5 @@
 package com.singapore.TripPlaner.Model;
 
-import org.springframework.stereotype.Component;
-
-import java.util.Objects;
-
-@Component
 public class Opinion extends PersistentAbstract {
 
     private String userOpinion;
@@ -13,15 +8,10 @@ public class Opinion extends PersistentAbstract {
 
     public Opinion() {
     }
-
     public Opinion(String userOpinion, Integer userRate, String user) {
         this.userOpinion = userOpinion;
         this.userRate = userRate;
         this.user = user;
-    }
-
-    public Opinion(Integer userRate) {
-        this.userRate = userRate;
     }
 
     public String getUserOpinion() {
@@ -32,11 +22,11 @@ public class Opinion extends PersistentAbstract {
         this.userOpinion = userOpinion;
     }
 
-    public Integer getUserRate() {
+    public int getUserRate() {
         return userRate;
     }
 
-    public void setUserRate(Integer userRate) {
+    public void setUserRate(int userRate) {
         this.userRate = userRate;
     }
 
@@ -46,14 +36,5 @@ public class Opinion extends PersistentAbstract {
 
     public void setUser(String user) {
         this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "Opinion{" +
-                "userOpinion='" + userOpinion + '\'' +
-                ", userRate=" + userRate +
-                ", user=" + user +
-                '}';
     }
 }

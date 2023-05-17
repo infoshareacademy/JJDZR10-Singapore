@@ -17,39 +17,39 @@
 </head>
 <body>
 <nav th:insert="~{/fragments/dashboard :: nav}"></nav>
-<header class="py-5 bg-light border-bottom mb-4">
-    <div class="container">
-        <div class="text-center my-5">
-            <h1 class="fw-bolder" th:text="${place.getCity().name}" ></h1>
-            <p class="lead mb-0" th:text="${place.getCity().description}"></p>
-        </div>
-    </div>
-</header>
+<h1 style="margin-top:1.2cm; margin-bottom:1cm">
+</h1>
+
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
             <div class="card mb-4">
                 <a href="#!"><img class="card-img-top"
-                                  src="https://s-trojmiasto.pl/zdj/c/n/9/2825/999x0/2825085-Bazylika-Mariacka-to-najwiekszy-w-Europie-kosciol-wzniesiony-z-cegly-Jej-budowa-trwala-ok-150-lat-a-dokladnie-odbyla-sie-w-latach-1346-1502.jpg/images/pl-PL/glowne-miasta/gdansk/gdansk_motlawa_1170.jpg"
-                                  alt="..."/></a>
+                                  src="https://dummyimage.com/600x400/000/fff.jpg"
+                                  alt="zdjęcie miejsca"/></a>
                 <div class="card-body">
                     <h2 class="card-title" th:text="${place.name}"></h2>
                     <p class="card-text" th:text="${place.description}"/>
-                    <p class="card-text" >Ocena:
-                        <span th:text="${place.rate}"></span></p>
-                    <p class="card-text"><span th:unless="${place.price==0}"><span>Cena: <span><span
-                            th:text="${place.price}"></span> zł </span></span></span>
+
+                    <div><span>Ocena: </span><span th:text="${place.rate}"> </span><span>/5</span></div>
+                    <div>
+                        <span th:if="${place.price==0}"></span>
+                        <span th:unless="${place.price==0}"></span><span>Cena: </span><span th:text="${place.price}"></span><span> zł </span>
+                    </div>
+                    <!--                                                <span th:text="${place.rate}"></span></p>-->
+                    <!--                                            <p class="card-text"><span th:unless="${place.price==0}"><span>Cena: <span><span-->
+                    <!--                                                    th:text="${place.price}"></span> zł </span></span></span>-->
                     </p>
-                    <a class="btn btn-primary" th:href="@{/places}">Znajdź inne atrakcje →</a>
+                    <button onclick="goBack()">Powrót</button>
                 </div>
             </div>
-
+        </div>
         </div>
         <div class="col-lg-4">
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="form-floating">
-                        <div th:insert="opinionForm"></div>
+                        <a th:href="@{/opinions/place/{placeId}(placeId=${place.id})}"> Dodaj Opinię</a>
                     </div>
                 </div>
             </div>

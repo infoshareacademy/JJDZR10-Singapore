@@ -37,14 +37,11 @@ public class CityController {
     public String cityDetails(@PathVariable long id, Model model) {
         City city = cityService.findById(id);
         model.addAttribute("city", city);
-        List opinions = opinionService.randomOpinions(1, city.getOpinions());
-        Opinion opinion = (Opinion) opinionService.findById(Double.valueOf((Double)opinions.get(0)).longValue());
+        Opinion opinion = (Opinion) opinionService.randomOpinions(1, city.getOpinions()).get(0);
         model.addAttribute("opinionDetail", opinion);
         Opinion opinionToAdd = new Opinion();
+//        opinionService.extendOpinionsAtCity(city, opinionToAdd);
         model.addAttribute("opinion", opinionToAdd);
-        city.getOpinions().add(opinionToAdd.getId());
-        city.setRate(opinionService.setObjectRate(opinionToAdd, city.getOpinions(), city.getRate()));
-        writer.save(city);
         return "cityDetails";
     }
 

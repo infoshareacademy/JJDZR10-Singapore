@@ -1,41 +1,38 @@
 package com.singapore.TripPlaner.Service;
 
 
-import com.singapore.TripPlaner.Model.Opinion;
-import com.singapore.TripPlaner.Model.Persistent;
-import com.singapore.TripPlaner.Model.Places;
-import com.singapore.TripPlaner.Model.User;
+import com.singapore.TripPlaner.Controller.PlaceController;
+import com.singapore.TripPlaner.Model.*;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
+import com.singapore.TripPlaner.Exception.OpinionNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
-import java.util.*;
+import java.util.List;
 
 @Service
-public class OpinionService {
-    private List opinionsList;
-    private Opinion opinion;
+public class OpinionService extends PersistentAbstract {
     private final Reader reader;
     private final Writer writer;
     private final PlaceService placeService;
     private final RandomValues randomValues;
 
-    public OpinionService(Opinion opinion, Reader reader, Writer writer, PlaceService placeService, RandomValues randomValues) {
-        this.opinion = opinion;
+    public OpinionService(Reader reader, Writer writer, PlaceService placeService, RandomValues randomValues) {
         this.reader = reader;
         this.writer = writer;
         this.placeService = placeService;
         this.randomValues = randomValues;
     }
 
-    public List<Opinion> getOpinions() {
-        return opinionsList = reader.getList(Opinion.class);
+    public List getAllOpinions() {
+            return reader.getList(Opinion.class);
     }
 
-    public Persistent findById(long id) {
-        Persistent opinion = reader.getObjectById(Opinion.class, id);
-        return opinion;
+    public Opinion findById(long id) {
+        return (Opinion) reader.getList(Opinion.class).stream()
+                .filter(s->s.getId()==id)
+                .findFirst()
+                .orElseThrow(()-> new OpinionNotFoundException("Not found Opinion with given id: " + id));
     }
 
     public void editOpinionById(long id, Opinion opinion) {
@@ -47,40 +44,31 @@ public class OpinionService {
     }
 
     public void removeOpinionById(long id) {
-        Persistent opinionToRemove = reader.getObjectById(Opinion.class, id);
-        writer.remove(opinionToRemove);
+        writer.remove(findById(id));
     }
 
-    private void setObjectRate(Persistent objectToReduce, Opinion opinion) {
-    }
-
-    public void addOpinion(Opinion opinion) {
-        opinion.setUser(opinion.getUser());
-        opinion.setUserRate(opinion.getUserRate());
+    public void addOpinionToPlace(Opinion opinion, Places place) {
         writer.save(opinion);
+        place.getOpinions().add(opinion.getId());
+        setPlaceRate(opinion,place);
+        writer.save(place);
     }
 
-    public Double setObjectRate(Opinion opinion, List opinionsList, double objectRate) {
-        double rate = (opinionsList.size() * objectRate + opinion.getUserRate()) / (opinionsList.size());
-        rate = Math.round(rate*10)/10;
-        return rate;
+    public void setPlaceRate(Opinion opinion, Places place) {
+        double rate = ((place.getOpinions().size()-1) * place.getRate() + opinion.getUserRate()) /(place.getOpinions().size());
+        rate *= 10;
+        rate =  Math.round(rate)/10;
+        place.setRate(rate);
     }
-
 
     public List randomOpinions(int numberOfOpinions, List opinionsListByObject){
         List outputList = randomValues.outputList(numberOfOpinions, opinionsListByObject);
         return outputList;
     }
 
-    public Object getObjectByOpinionId(double opinionId, List listToSearch, List opinionsList) throws NullPointerException {
-        Object objectByOpinionId = null;
-        for (long i = 0; i < listToSearch.size(); i++) {
-            objectByOpinionId = listToSearch.get((int) i);
-            if (opinionsList.contains(opinionId)) {
-                break;
-            }
-        }
-        return objectByOpinionId;
+    public Opinion getRandomOpinionFromPlace(Places place) {
+        long opinionId= (long) randomOpinions(1, place.getOpinions()).get(0);
+        return findById(opinionId);
     }
 }
 

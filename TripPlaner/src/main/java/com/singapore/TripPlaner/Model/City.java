@@ -1,17 +1,13 @@
 package com.singapore.TripPlaner.Model;
 
-import jdk.jfr.Description;
-import org.springframework.stereotype.Service;
-
-import javax.validation.Valid;
-import java.util.*;
+import java.util.List;
 
 
 public class City extends PersistentAbstract {
 
     private String name;
     private String description;
-    private List opinions;
+    private List <Long> opinions;
     private double rate;
 
     public List getOpinions() {

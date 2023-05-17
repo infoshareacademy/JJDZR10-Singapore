@@ -1,8 +1,5 @@
 package com.singapore.TripPlaner.Model;
 
-import org.json.simple.JSONObject;
-
-import java.util.List;
 import java.util.List;
 
 public class Places extends PersistentAbstract {
@@ -11,7 +8,7 @@ public class Places extends PersistentAbstract {
     private String description;
     private double price;
     private double rate;
-    private List opinions;
+    private List <Long> opinions;
     private City city;
     private long cityid;
     private Type type;
@@ -72,14 +69,9 @@ public class Places extends PersistentAbstract {
         this.city = city;
     }
 
-    public List getOpinions() {
+    public List<Long> getOpinions() {
         return opinions;
     }
-
-    public void setOpinions(List opinions) {
-        this.opinions = opinions;
-    }
-
 
     @Override
     public String toString() {
