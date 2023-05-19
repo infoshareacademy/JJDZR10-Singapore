@@ -1,14 +1,12 @@
 package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.Place;
-import com.singapore.TripPlaner.Model.Trip;
 import com.singapore.TripPlaner.Service.CityService;
 import com.singapore.TripPlaner.Service.PlaceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -23,7 +21,7 @@ public class PlaceController {
 
     @GetMapping("/places")
     public String getPlace(Model model) {
-        model.addAttribute("places", placeService.findPlaces());
+        model.addAttribute("places", placeService.findAllPlaces());
         return "places";
     }
 
@@ -49,12 +47,18 @@ public class PlaceController {
 
     @PostMapping("/places")
     public String createPlace(@ModelAttribute Place place) {
-        placeService.createNewPlace(place);
+        placeService.save(place);
         return "redirect:/places";
     }
 
+//    @PostMapping("/places")
+//    public String createPlace(@ModelAttribute Place place) {
+//        placeService.createNewPlace(place);
+//        return "redirect:/places";
+//    }
+
     @GetMapping("/place/edit-place/{id}")
-    public String getCarById(@PathVariable Long id, Model model) {
+    public String getPlaceById(@PathVariable Long id, Model model) {
         Place place = placeService.findById(id);
         model.addAttribute("place", place);
         model.addAttribute("cities", cityService.getCities());
@@ -67,9 +71,9 @@ public class PlaceController {
         return "redirect:/places";
     }
 
-    @GetMapping("/place/{id}/delete")
-    public String placeDelete(@PathVariable Long id) {
-        placeService.removePlace(id);
-        return "redirect:/places";
-    }
+//    @GetMapping("/place/{id}/delete")
+//    public String placeDelete(@PathVariable Long id) {
+//        placeService.removePlace(id);
+//        return "redirect:/places";
+//    }
 }

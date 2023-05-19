@@ -50,10 +50,10 @@ public class Reader {
                 return this.createTripInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.User":
                 return (User) object;
-            case "com.singapore.TripPlaner.Model.City":
-                return (City) object;
-            case "com.singapore.TripPlaner.Model.Place":
-                return this.createPlaceInstance(jsonObject, object);
+//            case "com.singapore.TripPlaner.Model.City":
+//                return (City) object;
+//            case "com.singapore.TripPlaner.Model.Place":
+//                return this.createPlaceInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.Opinion":
                 return this.createOpinionInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.TripPoint":
@@ -131,11 +131,11 @@ public class Reader {
 
     private Place createPlaceInstance(JSONObject jsonObject, Object object) {
         Place place = (Place) object;
-        if (jsonObject.containsKey("cityid")) {
-            long idCity = (long) jsonObject.get("cityid");
-            City city = (City) this.getObjectById(City.class, idCity);
-            place.setCity(city);
-        }
+//        if (jsonObject.containsKey("cityid")) {
+//            long idCity = (long) jsonObject.get("cityid");
+//            City city = (City) this.getObjectById(City.class, idCity);
+//            place.setCity(city);
+//        }
         return place;
     }
 

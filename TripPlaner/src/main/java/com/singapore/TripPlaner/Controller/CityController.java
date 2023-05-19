@@ -1,16 +1,12 @@
 package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.City;
-import com.singapore.TripPlaner.Model.Persistent;
 import com.singapore.TripPlaner.Service.CityService;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,12 +19,16 @@ public class CityController {
         this.cityService = cityService;
     }
 
-
     @GetMapping("/cities")
     public String getCity(Model model) {
         List cities = cityService.getCities();
         model.addAttribute("cities", cities);
         return "cities";
+    }
+        @PostMapping("/cities")
+    public String createCity(@ModelAttribute City city) {
+        cityService.createCity(city);
+        return "redirect:/cities/";
     }
 
     @GetMapping("/city/{id}")
@@ -42,13 +42,15 @@ public class CityController {
         model.addAttribute("city", new City());
         return "cityForm";
     }
-
-
-    @PostMapping("/cities")
-    public String createCity(@ModelAttribute City city) {
-        cityService.createCity(city);
-        return "redirect:/cities/";
-
+    @GetMapping("/city/edit-city/{id}")
+    public String getCityById(@PathVariable Long id, Model model){
+        City city = cityService.findById(id);
+        model.addAttribute("city", city);
+        return "edit-city";
     }
-
+    @PutMapping("/city/edit/{id}")
+    public String editCity(@PathVariable Long id, @ModelAttribute City city){
+        cityService.editCityById(city,id);
+        return "redirect:/cites";
+    }
 }

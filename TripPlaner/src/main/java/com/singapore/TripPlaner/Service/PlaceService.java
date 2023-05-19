@@ -1,14 +1,14 @@
 package com.singapore.TripPlaner.Service;
 
 import com.singapore.TripPlaner.Model.Place;
-import com.singapore.TripPlaner.Exception.PlaceNotFoundException;
+import com.singapore.TripPlaner.Exception.ObjectNotFoundException;
+import com.singapore.TripPlaner.Repository.PlaceRepository;
 import com.singapore.TripPlaner.Service.comparators.PlacesComparatorBiggestRate;
 import com.singapore.TripPlaner.Service.comparators.PlacesComparatorMostPopular;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,13 +20,31 @@ public class PlaceService {
     private final Writer writer;
     private final PlacesComparatorBiggestRate placesComparatorBiggestRate;
     private final PlacesComparatorMostPopular placesComparatorMostPopular;
+    private final PlaceRepository placeRepository;
 
-    public PlaceService(Reader reader, Writer writer, PlacesComparatorBiggestRate placesComparatorBiggestRate, PlacesComparatorMostPopular placesComparatorMostPopular) {
+    public PlaceService(Reader reader, Writer writer, PlacesComparatorBiggestRate placesComparatorBiggestRate, PlacesComparatorMostPopular placesComparatorMostPopular, PlaceRepository placeRepository) {
         this.reader = reader;
         this.writer = writer;
         this.placesComparatorBiggestRate = placesComparatorBiggestRate;
         this.placesComparatorMostPopular = placesComparatorMostPopular;
+        this.placeRepository = placeRepository;
     }
+
+    public Place save(Place place){
+        return placeRepository.save(place);
+    }
+//    public Place update(Place place) {
+//        Optional<Place> findById = placeRepository.findById(place.getId());
+//        if(findById.isPresent()){
+//
+//        }
+//        return placeRepository.save(findById);
+//    }
+
+    public List<Place> findAllPlaces(){
+        return placeRepository.findAll();
+    }
+
 
     public List<Place> findPlaces() {
         List<Place> places = reader.getList(Place.class).stream().
@@ -70,22 +88,23 @@ public class PlaceService {
     public Place findById(Long id) {
         return findPlaces().
                 stream().filter(places -> places.getId() == id).
-                findFirst().orElseThrow(() -> new PlaceNotFoundException("Not found places with given id: " + id));
+                findFirst().orElseThrow(() -> new ObjectNotFoundException("Not found places with given id: " + id));
     }
 
-    public void createNewPlace(Place place) {
-        writer.save(place);
-    }
+//    public void createNewPlace(Place place) {
+//        writer.save(place);
+//    }
 
-    public void removePlace(Long id) {
-        writer.remove(findById(id));
-    }
+//
+//    public void removePlace(Long id) {
+//        writer.remove(findById(id));
+//    }
 
     public void editPlaceById(Long id, Place place) {
         Place placeToEdit = findById(id);
         placeToEdit.setName(place.getName());
         placeToEdit.setDescription(place.getDescription());
-        placeToEdit.setCityid(place.getCityid());
+//        placeToEdit.setCityid(place.getCityid());
         placeToEdit.setRate(place.getRate());
         placeToEdit.setPrice(place.getPrice());
         placeToEdit.setType(place.getType());
