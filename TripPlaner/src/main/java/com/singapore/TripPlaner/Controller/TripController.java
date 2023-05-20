@@ -35,7 +35,7 @@ public class TripController {
             model.addAttribute("places", placeService.findPlacesByCityId(cityId));
         }
         model.addAttribute("trip", new Trip());
-        model.addAttribute("cities", cityService.getCities()) ;
+        model.addAttribute("cities", cityService.getAllCities()) ;
         model.addAttribute("cityId", cityId);
 
         return "trip";
@@ -70,7 +70,7 @@ public class TripController {
         }
         Trip trip = tripService.findTripById(tripId);
         model.addAttribute("trip", trip);
-        model.addAttribute("cities", cityService.getCities()) ;
+        model.addAttribute("cities", cityService.getAllCities()) ;
         model.addAttribute("cityId", cityId);
         return "trip";
     }

@@ -1,16 +1,21 @@
 package com.singapore.TripPlaner.Model;
 
-import jdk.jfr.Description;
-import org.springframework.stereotype.Service;
-
-import javax.validation.Valid;
-
+import java.util.List;
 
 
 public class City extends PersistentAbstract {
 
     private String name;
     private String description;
+    private List <Long> images;
+
+    public List getImages() {
+        return images;
+    }
+
+    public void setImages(List images) {
+        this.images = images;
+    }
 
     public String getName() {
         return name;

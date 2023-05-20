@@ -1,5 +1,7 @@
 package com.singapore.TripPlaner.Controller;
 
+import com.singapore.TripPlaner.Model.Places;
+import com.singapore.TripPlaner.Service.ImageService;
 import com.singapore.TripPlaner.Service.PlaceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,9 +14,12 @@ import java.util.List;
 @Controller
 public class PlaceController {
     private final PlaceService placeService;
+    private final ImageService imageService;
 
-    public PlaceController(PlaceService placeService) {
+
+    public PlaceController(PlaceService placeService, ImageService imageService) {
         this.placeService = placeService;
+        this.imageService = imageService;
     }
 
     @GetMapping("/places")
@@ -26,11 +31,17 @@ public class PlaceController {
     public String getPlacesByType(@RequestParam(required = true) String type, Model model){
         List filtredPlaces = placeService.filterListByTypeOfPlace(type);
         model.addAttribute("places",filtredPlaces);
+        model.addAttribute("images", imageService.getAllImages());
         return "places";
     }
     @GetMapping ("/place/{id}")
     public String placeDetails(@PathVariable Long id, Model model){
-        model.addAttribute("place", placeService.findById(id));
+        Places place = placeService.findById(id);
+        model.addAttribute("place", place);
+        List imagesUrls = imageService.getImagesFromList(place.getImages());
+        model.addAttribute("images", imagesUrls);
         return "placeDetails";
     }
+
+
 }

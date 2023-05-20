@@ -29,9 +29,8 @@ public class CityService extends PersistentAbstract {
         return city = (City) reader.getObjectById(City.class, id);
     }
 
-    public List getCities () {
+    public List getAllCities() {
         List<Persistent> cities = new ArrayList<>();
         return cities = reader.getList(City.class);
-
     }
 }
