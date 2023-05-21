@@ -55,7 +55,7 @@ public class CityController {
     @GetMapping("/city/edit-city/{id}")
     public String getCityById(@PathVariable Long id, Model model) {
         City city = cityService.findById(id);
-        model.addAttribute("cities", city);
+        model.addAttribute("city", city);
         return "edit-city";
     }
 

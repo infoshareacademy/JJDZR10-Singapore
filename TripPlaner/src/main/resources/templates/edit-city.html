@@ -13,15 +13,15 @@
 <body>
 <nav th:insert="~{/fragments/dashboard :: nav}"></nav>
 <div class="p-3 m-0 border-0 bd-example">
-<form class="row g-3" action="#" th:action="@{/cities/edit/{id}(id=${cities.id})}" th:object="${city}" method="post" style="margin-top:0.5cm; margin-left:0.5cm">
+<form class="row g-3" action="#" th:action="@{/city/edit/{id}(id=${city.id})}" th:object="${city}" method="post" style="margin-top:0.5cm; margin-left:0.5cm">
   <div class="col-md-6">
     <label for="inputCityName" class="form-label">Nazwa miasta:</label>
-    <input type="text" class="form-control" id="inputCityName" required th:field="*{name}"/>
+    <input type="text" class="form-control" id="inputCityName" required th:field="*{city.name}"/>
   </div>
 
   <div class="col-12">
     <label for="Textarea" class="form-label">Opis miasta:</label>
-      <input type="text" class="form-control" id="Textarea" required th:field="*{description}"/>
+      <input type="text" class="form-control" id="Textarea" required th:field="*{city.description}"/>
   </div>
   <div class="col-md-4">
     <label for="inputCountry" class="form-label">Kraj</label>
