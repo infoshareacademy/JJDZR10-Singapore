@@ -52,14 +52,14 @@ public class CityController {
 
     }
 
-    @GetMapping("/cities/edit-city/{id}")
+    @GetMapping("/city/edit-city/{id}")
     public String getCityById(@PathVariable Long id, Model model) {
         City city = cityService.findById(id);
         model.addAttribute("cities", city);
         return "edit-city";
     }
 
-    @PostMapping("/cities/edit/{id}")
+    @PostMapping("/city/edit/{id}")
     public String editCity(@PathVariable Long id, @ModelAttribute City city, Model model) {
         cityService.editCityById(id, city);
         return "redirect:/cities";
