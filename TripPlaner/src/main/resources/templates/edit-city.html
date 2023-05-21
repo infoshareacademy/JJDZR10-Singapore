@@ -19,9 +19,9 @@
     <input type="text" class="form-control" id="inputCityName" required th:field="*{name}"/>
   </div>
 
-  <div class="col-12">
+  <div class="col-mb-6">
     <label for="Textarea" class="form-label">Opis miasta:</label>
-      <input type="text" class="form-control" id="Textarea" required th:field="*{description}"/>
+      <textarea class="form-control" id="Textarea" rows="3" type="text" th:field="*{description}" ></textarea>
   </div>
   <div class="col-md-4">
     <label for="inputCountry" class="form-label">Kraj</label>
