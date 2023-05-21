@@ -60,8 +60,8 @@ public class CityController {
     }
 
     @PostMapping("/city/edit/{id}")
-    public String editCity(@PathVariable Long id, @ModelAttribute City city, Model model) {
-        cityService.editCityById(id, city);
+    public String editCity(@PathVariable long id, @ModelAttribute City city) {
+        cityService.editCityById(city);
         return "redirect:/cities";
     }
 
