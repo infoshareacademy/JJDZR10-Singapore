@@ -1,9 +1,9 @@
 package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.Opinion;
+import com.singapore.TripPlaner.Service.CityService;
 import com.singapore.TripPlaner.Service.OpinionService;
 import com.singapore.TripPlaner.Service.PlaceService;
-import com.singapore.TripPlaner.Service.dataacces.Reader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +15,12 @@ public class OpinionController {
 
     private final OpinionService opinionService;
     private final PlaceService placeService;
-    private final Reader reader;
+    private final CityService cityService;
 
-    public OpinionController(OpinionService opinionService, PlaceService placeService, Reader reader) {
+    public OpinionController(OpinionService opinionService, PlaceService placeService, CityService cityService) {
         this.opinionService = opinionService;
         this.placeService = placeService;
-        this.reader = reader;
+        this.cityService = cityService;
     }
 
 
@@ -54,18 +54,19 @@ public class OpinionController {
         return "redirect:/opinions";
     }
 
-    @GetMapping("/place/{id}")
+    @GetMapping("/{place}/{id}")
     public String opinionForm(@PathVariable("id") long id,
+                              @PathVariable("place")
                               Model model) {
         model.addAttribute("place", placeService.findById(id));
         model.addAttribute("opinion", new Opinion());
         return "opinionForm";
     }
 
-    @PostMapping("/place/{id}")
+    @PostMapping("/{place}/{id}")
     public String addOpinion (@ModelAttribute Opinion opinion,
                              @PathVariable("id") long id)  {
-        opinionService.addOpinionToPlace(opinion, placeService.findById(id));
+        opinionService.addOpinion(opinion, placeService.findById(id));
         return "redirect:/place/{id}";
     }
 }

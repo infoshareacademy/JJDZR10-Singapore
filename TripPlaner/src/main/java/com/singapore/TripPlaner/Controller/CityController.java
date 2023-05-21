@@ -17,12 +17,10 @@ public class CityController {
 
     private final CityService cityService;
     private final OpinionService opinionService;
-    private final Writer writer;
 
-    public CityController(CityService cityService, Reader reader, Writer writer, OpinionService opinionService, Writer writer1) {
+    public CityController(CityService cityService, OpinionService opinionService) {
         this.cityService = cityService;
         this.opinionService = opinionService;
-        this.writer = writer;
     }
 
 
@@ -34,14 +32,10 @@ public class CityController {
     }
 
     @GetMapping("/city/{id}")
-    public String cityDetails(@PathVariable long id, Model model) {
+    public String cityDetails(@RequestParam(required = true) Long id, Model model) {
         City city = cityService.findById(id);
         model.addAttribute("city", city);
-        Opinion opinion = (Opinion) opinionService.randomOpinions(1, city.getOpinions()).get(0);
-        model.addAttribute("opinionDetail", opinion);
-        Opinion opinionToAdd = new Opinion();
-//        opinionService.extendOpinionsAtCity(city, opinionToAdd);
-        model.addAttribute("opinion", opinionToAdd);
+        model.addAttribute("opinionDetail", opinionService.getRandomOpinion(city));
         return "cityDetails";
     }
 

@@ -1,8 +1,10 @@
 package com.singapore.TripPlaner.Model;
 
+import com.singapore.TripPlaner.Service.IOpinions;
+
 import java.util.List;
 
-public class Places extends PersistentAbstract {
+public class Places extends PersistentAbstract implements IOpinions {
 
     private String name;
     private String description;

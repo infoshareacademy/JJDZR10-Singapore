@@ -1,26 +1,23 @@
 package com.singapore.TripPlaner.Service;
 
 
-import com.singapore.TripPlaner.Controller.PlaceController;
+import com.singapore.TripPlaner.Exception.OpinionNotFoundException;
 import com.singapore.TripPlaner.Model.*;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
-import com.singapore.TripPlaner.Exception.OpinionNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class OpinionService extends PersistentAbstract {
+public class OpinionService <T extends IOpinions> extends PersistentAbstract {
     private final Reader reader;
     private final Writer writer;
-    private final PlaceService placeService;
     private final RandomValues randomValues;
 
-    public OpinionService(Reader reader, Writer writer, PlaceService placeService, RandomValues randomValues) {
+    public OpinionService(Reader reader, Writer writer, RandomValues randomValues) {
         this.reader = reader;
         this.writer = writer;
-        this.placeService = placeService;
         this.randomValues = randomValues;
     }
 
@@ -47,27 +44,28 @@ public class OpinionService extends PersistentAbstract {
         writer.remove(findById(id));
     }
 
-    public void addOpinionToPlace(Opinion opinion, Places place) {
+    public void addOpinion(Opinion opinion, T t) {
         writer.save(opinion);
-        place.getOpinions().add(opinion.getId());
-        setPlaceRate(opinion,place);
-        writer.save(place);
+        t.getOpinions().add(opinion.getId());
+        setRate(opinion,t);
+        writer.save((Persistent) t);
     }
 
-    public void setPlaceRate(Opinion opinion, Places place) {
-        double rate = ((place.getOpinions().size()-1) * place.getRate() + opinion.getUserRate()) /(place.getOpinions().size());
+    public void setRate(Opinion opinion, T t) {
+        double rate = ((t.getOpinions().size()-1) * t.getRate() + opinion.getUserRate()) /(t.getOpinions().size());
         rate *= 10;
         rate =  Math.round(rate)/10;
-        place.setRate(rate);
+        t.setRate(rate);
     }
+
 
     public List randomOpinions(int numberOfOpinions, List opinionsListByObject){
         List outputList = randomValues.outputList(numberOfOpinions, opinionsListByObject);
         return outputList;
     }
 
-    public Opinion getRandomOpinionFromPlace(Places place) {
-        long opinionId= (long) randomOpinions(1, place.getOpinions()).get(0);
+    public Opinion getRandomOpinion(T t) {
+        long opinionId= (long) randomOpinions(1, t.getOpinions()).get(0);
         return findById(opinionId);
     }
 }

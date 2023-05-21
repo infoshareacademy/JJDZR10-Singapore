@@ -7,6 +7,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.singapore.TripPlaner.Model.*;
+import com.singapore.TripPlaner.Service.IOpinions;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -37,21 +38,6 @@ public class Reader {
         return lo;
     }
 
-    public List<Places> getAllPlaces(Class c) {
-
-        List<Places> listOfPlaces = new ArrayList<>();
-        JSONArray jsonArray = this.getListInJson(c);
-
-        try {
-            for (Object o : jsonArray) {
-                JSONObject jsonObject = (JSONObject) o;
-                listOfPlaces.add((Places) this.mapJsonToEntity(jsonObject, c));
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return listOfPlaces;
-    }
 
     private Persistent mapJsonToEntity(JSONObject jsonObject, Class c) throws Exception {
         String className = c.getName();
@@ -73,8 +59,8 @@ public class Reader {
                 return this.createPlaceInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.Opinion":
                 return this.createOpinionInstance(jsonObject, object);
-            case "com.singapore.TripPlaner.Model.OpinionService":
-                return this.createOpinionServiceInstance(jsonObject, object);
+            case "com.singapore.TripPlaner.Model.IOpinions":
+                return this.createAbstractInstance(jsonObject, object);
         }
         throw (new Exception("No such model entity"));
     }
@@ -138,7 +124,7 @@ public class Reader {
 
     private Trip createTripInstance(JSONObject jsonObject, Object object) {
         Trip trip = (Trip) object;
-        if(jsonObject.containsKey("userid")) {
+        if (jsonObject.containsKey("userid")) {
             long idUser = (long) jsonObject.get("userid");
             User user = (User) this.getObjectById(User.class, idUser);
             trip.setUser(user);
@@ -160,8 +146,5 @@ public class Reader {
         Opinion opinion = (Opinion) object;
         return opinion;
     }
-    private Persistent createOpinionServiceInstance(JSONObject jsonObject, Object object) {
-        Persistent classInstance = (Persistent) object;
-        return classInstance;
-    }
+
 }

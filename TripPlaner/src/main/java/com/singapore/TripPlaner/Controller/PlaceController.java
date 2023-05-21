@@ -24,7 +24,7 @@ public class PlaceController {
 
     @GetMapping("/places")
     public String getPlace(Model model) {
-        model.addAttribute("places", placeService.getAllPlaces());
+        model.addAttribute("places", placeService.findPlaces());
         return "places";
     }
     @GetMapping("/place/type/{type}")
@@ -38,7 +38,7 @@ public class PlaceController {
                                Model model){
         Places place = placeService.findById(id);
         model.addAttribute("place", place);
-        model.addAttribute("opinionDetail", opinionService.getRandomOpinionFromPlace(place));
+        model.addAttribute("opinionDetail", opinionService.getRandomOpinion(place));
         return "placeDetails";
     }
 
