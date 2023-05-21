@@ -5,10 +5,7 @@ import com.singapore.TripPlaner.Service.CityService;
 import com.singapore.TripPlaner.Service.ImageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -53,6 +50,19 @@ public class CityController {
         cityService.createCity(city);
         return "redirect:/cities/";
 
+    }
+
+    @GetMapping("/cities/edit-city/{id}")
+    public String getCityById(@PathVariable Long id, Model model) {
+        City city = cityService.findById(id);
+        model.addAttribute("cities", city);
+        return "edit-city";
+    }
+
+    @PostMapping("/cities/edit/{id}")
+    public String editCity(@PathVariable Long id, @ModelAttribute City city, Model model) {
+        cityService.editCityById(id, city);
+        return "redirect:/cities";
     }
 
 }

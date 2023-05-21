@@ -33,4 +33,12 @@ public class CityService extends PersistentAbstract {
         List<Persistent> cities = new ArrayList<>();
         return cities = reader.getList(City.class);
     }
+
+    public void editCityById(Long id, City city) {
+        City cityToEdit = findById(id);
+
+        cityToEdit.setName(city.getName());
+        cityToEdit.setDescription(city.getDescription());
+    }
+
 }
