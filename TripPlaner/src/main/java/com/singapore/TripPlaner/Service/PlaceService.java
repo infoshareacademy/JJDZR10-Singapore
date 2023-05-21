@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,28 +31,37 @@ public class PlaceService {
         this.placeRepository = placeRepository;
     }
 
-    public Place save(Place place){
+    public Place createPlace(Place place) {
         return placeRepository.save(place);
     }
-//    public Place update(Place place) {
-//        Optional<Place> findById = placeRepository.findById(place.getId());
-//        if(findById.isPresent()){
-//
-//        }
-//        return placeRepository.save(findById);
-//    }
 
-    public List<Place> findAllPlaces(){
+    public List<Place> findPlaces() {
         return placeRepository.findAll();
     }
 
-
-    public List<Place> findPlaces() {
-        List<Place> places = reader.getList(Place.class).stream().
-                map(object -> (Place) object).
-                collect(Collectors.toList());
-        return places;
+    public Place findById(Long id) {
+        Optional<Place> placeById = placeRepository.findById(id);
+        return placeById.orElseThrow(() -> new ObjectNotFoundException("Not found place with given id:" + id));
     }
+
+    public void deletePlace(Long id) {
+        placeRepository.findById(id).orElseThrow(
+                () -> new ObjectNotFoundException("Not found place with given id: " + id));
+    }
+
+
+    public Place editPlaceById(Place place, Long id) {
+        Place placeToEdit = placeRepository.findById(id).orElseThrow(
+                () -> new ObjectNotFoundException("Not found place with given id: " + id));
+        placeToEdit.setName(place.getName());
+        placeToEdit.setDescription(place.getDescription());
+        placeToEdit.setRate(place.getRate());
+        placeToEdit.setPrice(place.getPrice());
+        placeToEdit.setType(place.getType());
+        placeRepository.save(placeToEdit);
+        return placeToEdit;
+    }
+
 
     //TODO sortowanie wg najlepszej oceny dla miejsca, zrobić kontroler po dodaniu serwis opinii
     public List<Place> getTopRatedPlaces() {
@@ -84,30 +94,10 @@ public class PlaceService {
                 .collect(Collectors.toList());
     }
 
-
-    public Place findById(Long id) {
-        return findPlaces().
-                stream().filter(places -> places.getId() == id).
-                findFirst().orElseThrow(() -> new ObjectNotFoundException("Not found places with given id: " + id));
-    }
-
-//    public void createNewPlace(Place place) {
-//        writer.save(place);
+//    public Place findById(Long id) {
+//        return findPlaces().
+//                stream().filter(places -> places.getId() == id).
+//                findFirst().orElseThrow(() -> new ObjectNotFoundException("Not found places with given id: " + id));
 //    }
-
-//
-//    public void removePlace(Long id) {
-//        writer.remove(findById(id));
-//    }
-
-    public void editPlaceById(Long id, Place place) {
-        Place placeToEdit = findById(id);
-        placeToEdit.setName(place.getName());
-        placeToEdit.setDescription(place.getDescription());
-//        placeToEdit.setCityid(place.getCityid());
-        placeToEdit.setRate(place.getRate());
-        placeToEdit.setPrice(place.getPrice());
-        placeToEdit.setType(place.getType());
-    }
 }
 

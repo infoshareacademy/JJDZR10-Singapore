@@ -36,14 +36,10 @@ public class Place {
     private double rate;
 
 
-//    @ManyToOne
-//    @JoinColumn(name = "city_id", nullable = false)
-@Transient
+    @ManyToOne
+    @JoinColumn(name = "city_id", nullable = false)
+//@Transient
     private City city;
-
-//    @Column(name = "cityid")
-//    private long cityid;
-
 
     @Column(name = "numberOfOpinions")
     private int numberOfOpinions;
@@ -51,14 +47,12 @@ public class Place {
     @Enumerated(value = EnumType.STRING)
     private Type type;
 
-
-    @Override
-    public String toString() {
-        return "Nazwa: " + name +
-                "\nOpis: "+ description+
-                "\nCena: "+price + " zł\nOcena: " + rate +
-                "\n******************************\n";
+    public Place(String name, String description, double price, double rate, int numberOfOpinions, Type type) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.rate = rate;
+        this.numberOfOpinions = numberOfOpinions;
+        this.type = type;
     }
-
-
 }

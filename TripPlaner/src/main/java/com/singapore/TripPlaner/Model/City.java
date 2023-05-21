@@ -35,11 +35,21 @@ public class City {
     @Column(name = "description", nullable = false)
     private String description;
 
-//    @OneToMany(mappedBy = "place")
-//    private List<Place> places = new ArrayList<>();
+    @OneToMany(mappedBy = "city")
+    private List<Place> places = new ArrayList<>();
 
-    @Override
-    public String toString() {
-        return  name ;
+    public City(String name, String description, List<Place> places) {
+        this.name = name;
+        this.description = description;
+        this.addPlaces(places);
+    }
+    public void addPlaces(List<Place> places){
+        for (Place place : places){
+            this.addPlace(place);
+        }
+    }
+    public void addPlace(Place place){
+        place.setCity(this);
+        this.places.add(place);
     }
 }

@@ -1,5 +1,6 @@
 package com.singapore.TripPlaner.Controller;
 
+import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Model.Place;
 import com.singapore.TripPlaner.Service.CityService;
 import com.singapore.TripPlaner.Service.PlaceService;
@@ -21,7 +22,7 @@ public class PlaceController {
 
     @GetMapping("/places")
     public String getPlace(Model model) {
-        model.addAttribute("places", placeService.findAllPlaces());
+        model.addAttribute("places", placeService.findPlaces());
         return "places";
     }
 
@@ -47,15 +48,10 @@ public class PlaceController {
 
     @PostMapping("/places")
     public String createPlace(@ModelAttribute Place place) {
-        placeService.save(place);
+        placeService.createPlace(place);
+
         return "redirect:/places";
     }
-
-//    @PostMapping("/places")
-//    public String createPlace(@ModelAttribute Place place) {
-//        placeService.createNewPlace(place);
-//        return "redirect:/places";
-//    }
 
     @GetMapping("/place/edit-place/{id}")
     public String getPlaceById(@PathVariable Long id, Model model) {
@@ -67,13 +63,13 @@ public class PlaceController {
 
     @PostMapping("/place/edit/{id}")
     public String editPlace(@PathVariable Long id, @ModelAttribute Place place, Model model) {
-        placeService.editPlaceById(id, place);
+        placeService.editPlaceById(place,id);
         return "redirect:/places";
     }
 
-//    @GetMapping("/place/{id}/delete")
-//    public String placeDelete(@PathVariable Long id) {
-//        placeService.removePlace(id);
-//        return "redirect:/places";
-//    }
+    @GetMapping("/place/{id}/delete")
+    public String placeDelete(@PathVariable Long id) {
+        placeService.deletePlace(id);
+        return "redirect:/places";
+    }
 }

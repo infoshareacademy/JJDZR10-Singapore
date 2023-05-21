@@ -6,7 +6,6 @@ import com.singapore.TripPlaner.Repository.CityRepository;
 import com.singapore.TripPlaner.Service.dataacces.*;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +21,7 @@ public class CityService {
         this.cityRepository = cityRepository;
     }
 
-    public City saveCity(City city){
+    public City createCity(City city){
         return cityRepository.save(city);
     }
     public List<City> getCities(){
@@ -34,15 +33,17 @@ public class CityService {
                 ()->new ObjectNotFoundException("Not found city with given id: " + id));
     }
 
-    public City editCityById(City city, Long id){
-        City cityToEdit = cityRepository.findById(id).orElseThrow(()->new ObjectNotFoundException("Not found city with given id: "+ id));
+    public City editCityById(City city){
+        City cityToEdit = cityRepository.findById(city.getId()).orElseThrow(
+                ()->new ObjectNotFoundException("Not found city with given id: "+ city.getId()));
         cityToEdit.setName(city.getName());
         cityToEdit.setDescription(city.getDescription());
         cityRepository.save(cityToEdit);
         return cityToEdit;
     }
     public void deleteCity(Long id){
-        cityRepository.findById(id).orElseThrow(()->new ObjectNotFoundException("Not found city with given id: "+ id));
+        cityRepository.findById(id).orElseThrow(
+                ()->new ObjectNotFoundException("Not found city with given id: "+ id));
         cityRepository.deleteById(id);
     }
 }

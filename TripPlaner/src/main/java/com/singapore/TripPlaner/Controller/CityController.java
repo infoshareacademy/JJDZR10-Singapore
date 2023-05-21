@@ -27,7 +27,7 @@ public class CityController {
     }
         @PostMapping("/cities")
     public String createCity(@ModelAttribute City city) {
-        cityService.saveCity(city);
+        cityService.createCity(city);
         return "redirect:/cities/";
     }
 
@@ -48,9 +48,9 @@ public class CityController {
         model.addAttribute("city", city);
         return "edit-city";
     }
-    @PutMapping("/city/edit/{id}")
+    @PostMapping("/city/edit/{id}")
     public String editCity(@PathVariable Long id, @ModelAttribute City city){
-        cityService.editCityById(city,id);
+        cityService.editCityById(city);
         return "redirect:/cites";
     }
     @GetMapping("/city/{id}/delete")
