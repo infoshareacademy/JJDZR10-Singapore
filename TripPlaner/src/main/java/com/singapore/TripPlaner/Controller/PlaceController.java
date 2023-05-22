@@ -1,7 +1,7 @@
 package com.singapore.TripPlaner.Controller;
 
-import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Model.Place;
+import com.singapore.TripPlaner.Service.ImageService;
 import com.singapore.TripPlaner.Service.CityService;
 import com.singapore.TripPlaner.Service.PlaceService;
 import org.springframework.stereotype.Controller;
@@ -14,10 +14,12 @@ import java.util.List;
 public class PlaceController {
     private final PlaceService placeService;
     private final CityService cityService;
+    private final ImageService imageService;
 
-    public PlaceController(PlaceService placeService, CityService cityService) {
+    public PlaceController(PlaceService placeService, CityService cityService, ImageService imageService) {
         this.placeService = placeService;
         this.cityService = cityService;
+        this.imageService = imageService;
     }
 
     @GetMapping("/places")
@@ -25,17 +27,19 @@ public class PlaceController {
         model.addAttribute("places", placeService.findPlaces());
         return "places";
     }
-
     @GetMapping("/place/type/{type}")
     public String getPlacesByType(@RequestParam(required = true) String type, Model model) {
         List filtredPlaces = placeService.filterListByTypeOfPlace(type);
         model.addAttribute("places", filtredPlaces);
+        model.addAttribute("images", imageService.getAllImages());
         return "places";
     }
-
-    @GetMapping("/place/{id}")
-    public String placeDetails(@PathVariable Long id, Model model) {
-        model.addAttribute("place", placeService.findById(id));
+    @GetMapping ("/place/{id}")
+    public String placeDetails(@PathVariable Long id, Model model){
+        Place place = placeService.findById(id);
+        model.addAttribute("place", place);
+//        List imagesUrls = imageService.getImagesFromList(place.getImages());
+//        model.addAttribute("images", imagesUrls);
         return "placeDetails";
     }
 

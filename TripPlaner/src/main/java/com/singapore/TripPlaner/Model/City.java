@@ -1,13 +1,9 @@
 package com.singapore.TripPlaner.Model;
 
-import jdk.jfr.Description;
+import java.util.List;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.stereotype.Service;
-
 import javax.persistence.*;
-
 import lombok.*;
-
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +33,9 @@ public class City {
 
     @OneToMany(mappedBy = "city")
     private List<Place> places = new ArrayList<>();
+//    @OneToMany(mappedBy = "city")
+//    private List <Image> images;
+
 
     public City(String name, String description, List<Place> places) {
         this.name = name;
