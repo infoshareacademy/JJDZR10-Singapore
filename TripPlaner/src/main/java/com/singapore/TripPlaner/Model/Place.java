@@ -21,7 +21,7 @@ public class Place {
     private Long id;
 
 
-    @Length(min = 2, max = 25)
+    @Length(min = 2, max = 50)
     @Column(name = "name", nullable = false)
     private String name;
 

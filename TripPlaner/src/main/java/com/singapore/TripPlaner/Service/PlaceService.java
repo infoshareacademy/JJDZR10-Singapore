@@ -45,8 +45,8 @@ public class PlaceService {
     }
 
     public void deletePlace(Long id) {
-        placeRepository.findById(id).orElseThrow(
-                () -> new ObjectNotFoundException("Not found place with given id: " + id));
+       findById(id);
+       placeRepository.deleteById(id);
     }
 
 

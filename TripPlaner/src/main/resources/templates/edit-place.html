@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             <label for="selectCity">Miasto</label>
-            <select class="form-control" id="selectCity" th:field="*{cityid}" type="text">
+            <select class="form-control" id="selectCity" th:field="*{city}" type="text">
                 <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}"/>
             </select>
         </div>
