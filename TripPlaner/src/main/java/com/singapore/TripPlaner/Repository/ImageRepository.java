@@ -2,6 +2,8 @@ package com.singapore.TripPlaner.Repository;
 
 import com.singapore.TripPlaner.Model.Image;
 import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.*;
 
-public class ImageRepository extends JpaRepository<Image, Long> {
+public interface ImageRepository extends JpaRepository<Image, Long> {
+
 }

@@ -23,6 +23,7 @@ public class Image {
     @ManyToOne
     @JoinColumn(name = "place_id", nullable = false)
     private Place place;
+
 //    @ManyToOne
 //    @JoinColumn(name = "city_id",nullable = false)
 //    private City city;

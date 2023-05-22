@@ -10,12 +10,6 @@ import java.util.Optional;
 
 public interface PlaceRepository extends JpaRepository<Place, Long> {
 
-//    @Query("SELECT p FROM Place p")
-//    List<Place> findAll();
-//
-//    @Query("SELECT p FROM Place p WHERE p.id = ?1 ")
-//    Optional<Place> findById(Long id);
-//
 
 
 

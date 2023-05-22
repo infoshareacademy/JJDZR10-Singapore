@@ -65,7 +65,7 @@ public class Place {
     }
     public void addImage(Image image){
         image.setPlace(this);
-        this.images.add(image)
+        this.images.add(image);
     }
     public Place(String name, String description, double price, double rate, int numberOfOpinions, Type type, List<Image> images) {
         this.name = name;

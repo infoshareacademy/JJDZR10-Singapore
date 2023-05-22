@@ -18,7 +18,7 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
         <div th:each="place: ${places}" class="col mb-4">
             <div class="card">
-<!--                <img th:src="${images.get(place.images.get(0)).url}" class="card-img-top" alt="card" width="390" height="150">-->
+                <img th:src="${place.images.get(0).url}" class="card-img-top" alt="card" width="390" height="150">
                 <div class="card-body">
                     <h5 th:text="${place.name}" class="card-title"></h5>
                     <p> <td th:text="${place.city.name}"/></p>

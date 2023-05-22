@@ -25,6 +25,7 @@ public class PlaceController {
     @GetMapping("/places")
     public String getPlace(Model model) {
         model.addAttribute("places", placeService.findPlaces());
+        model.addAttribute("images", imageService.getAllImages());
         return "places";
     }
     @GetMapping("/place/type/{type}")
@@ -39,7 +40,7 @@ public class PlaceController {
         Place place = placeService.findById(id);
         model.addAttribute("place", place);
 //        List imagesUrls = imageService.getImagesFromList(place.getImages());
-//        model.addAttribute("images", imagesUrls);
+        model.addAttribute("images", place.getImages());
         return "placeDetails";
     }
 
