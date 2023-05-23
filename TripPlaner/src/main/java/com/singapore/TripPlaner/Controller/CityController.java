@@ -27,7 +27,8 @@ public class CityController {
         model.addAttribute("images", imageService.getAllImages());
         return "cities";
     }
-        @PostMapping("/cities")
+
+    @PostMapping("/cities")
     public String createCity(@ModelAttribute City city) {
         cityService.createCity(city);
         return "redirect:/cities/";
@@ -37,8 +38,8 @@ public class CityController {
     public String cityDetails(@RequestParam(required = true) Long id, Model model) {
         City city = cityService.findById(id);
         model.addAttribute("city", city);
-//        List imagesUrls = imageService.getImagesFromList(city.getImages());
-//        model.addAttribute("images", imagesUrls);
+        List imageList = imageService.getAllImageForCity(city);
+        model.addAttribute("images", imageList);
         return "cityDetails";
     }
 
@@ -47,19 +48,22 @@ public class CityController {
         model.addAttribute("city", new City());
         return "cityForm";
     }
+
     @GetMapping("/city/edit-city/{id}")
-    public String getCityById(@PathVariable Long id, Model model){
+    public String getCityById(@PathVariable Long id, Model model) {
         City city = cityService.findById(id);
         model.addAttribute("city", city);
         return "edit-city";
     }
+
     @PostMapping("/city/edit/{id}")
-    public String editCity(@PathVariable Long id, @ModelAttribute City city){
+    public String editCity(@PathVariable Long id, @ModelAttribute City city) {
         cityService.editCityById(city);
         return "redirect:/cites";
     }
+
     @GetMapping("/city/{id}/delete")
-    public String cityDelete(@PathVariable Long id){
+    public String cityDelete(@PathVariable Long id) {
         cityService.deleteCity(id);
         return "redirect:/cities";
     }

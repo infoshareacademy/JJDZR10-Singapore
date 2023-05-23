@@ -17,19 +17,18 @@ import java.util.stream.Collectors;
 @Service
 
 public class PlaceService {
-    private final Reader reader;
-    private final Writer writer;
     private final PlacesComparatorBiggestRate placesComparatorBiggestRate;
     private final PlacesComparatorMostPopular placesComparatorMostPopular;
     private final PlaceRepository placeRepository;
+    private final RandomValues randomValues;
 
-    public PlaceService(Reader reader, Writer writer, PlacesComparatorBiggestRate placesComparatorBiggestRate, PlacesComparatorMostPopular placesComparatorMostPopular, PlaceRepository placeRepository) {
-        this.reader = reader;
-        this.writer = writer;
+    public PlaceService(PlacesComparatorBiggestRate placesComparatorBiggestRate, PlacesComparatorMostPopular placesComparatorMostPopular, PlaceRepository placeRepository, RandomValues randomValues) {
         this.placesComparatorBiggestRate = placesComparatorBiggestRate;
         this.placesComparatorMostPopular = placesComparatorMostPopular;
         this.placeRepository = placeRepository;
+        this.randomValues = randomValues;
     }
+
 
     public Place createPlace(Place place) {
         return placeRepository.save(place);
@@ -45,8 +44,8 @@ public class PlaceService {
     }
 
     public void deletePlace(Long id) {
-       findById(id);
-       placeRepository.deleteById(id);
+        findById(id);
+        placeRepository.deleteById(id);
     }
 
 
@@ -93,11 +92,5 @@ public class PlaceService {
                 .filter(place -> place.getCity().getId() == cityId)
                 .collect(Collectors.toList());
     }
-
-//    public Place findById(Long id) {
-//        return findPlaces().
-//                stream().filter(places -> places.getId() == id).
-//                findFirst().orElseThrow(() -> new ObjectNotFoundException("Not found places with given id: " + id));
-//    }
 }
 

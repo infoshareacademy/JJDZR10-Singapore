@@ -10,37 +10,49 @@
 <nav th:insert="~{/fragments/dashboard :: nav}"></nav>
 <div class="container">
     <form action="#" th:action="@{/places}" th:object="${place}" method="post">
-        <div class="form-group">
-            <label for="name">Nazwa:</label>
-            <input type="text" class="form-control" id="name"  th:field="*{name}" placeholder="Wpisz nazwę miejsca">
-        </div>
-        <div class="form-group">
-            <label for="description">Opis miejsca</label>
-            <textarea class="form-control" id="description" rows="3" type="text" th:field="*{description}" ></textarea>
-        </div>
-        <div class="form-group">
-            <label for="selectCity">Miasto</label>
-            <select class="form-control" id="selectCity" th:field="*{city}" type="text">
-                <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}"/>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="rate">Ocena:</label>
-            <input type="text" class="form-control" id="rate"  th:field="*{rate}" placeholder="Twoja ocena">
-        </div>
-        <div class="form-group">
-            <label for="price">Cena:</label>
-            <input type="text" class="form-control" id="price"  th:field="*{price}" placeholder="Cena atrakcji">
-            <small id="addMsg" class="form-text text-muted">*Jeśli atrakcja jest darmowa pozostaw 0</small>
-        </div>
-        <div class="form-group">
-            <label for="selectType">Rodzaj:</label>
-            <select class="form-control"  id="selectType" th:field="*{type}" >
-                <option th:each="typeE : ${T(com.singapore.TripPlaner.Model.Type).values()}" th:value="${typeE}" th:text="${typeE.getPlaceType()}"/>
-            </select>
-        </div>
-       <p> <button type="submit" class="btn btn-primary">Wyślij</button> <input type="reset" class="btn btn-primary" value="Reset"/></p>
+        <div th:object="${image}">
+            <div class="form-group">
+                <label for="name">Nazwa:</label>
+                <input type="text" class="form-control" id="name" th:field="${place.name}" placeholder="Wpisz nazwę miejsca">
+            </div>
+            <div class="form-group">
+                <label for="description">Opis miejsca</label>
+                <textarea class="form-control" id="description" rows="3" type="text"
+                          th:field="${place.description}"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="selectCity">Miasto</label>
+                <select class="form-control" id="selectCity" th:field="${place.city}" type="text">
+                    <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}"/>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="rate">Ocena:</label>
+                <input type="text" class="form-control" id="rate" th:field="${place.rate}" placeholder="Twoja ocena">
+            </div>
+            <div class="form-group">
+                <label for="price">Cena:</label>
+                <input type="text" class="form-control" id="price" th:field="${place.price}" placeholder="Cena atrakcji">
+                <small id="addMsg" class="form-text text-muted">*Jeśli atrakcja jest darmowa pozostaw 0</small>
+            </div>
+            <div class="form-group">
+                <label for="url">Url zdjęcia:</label>
+                <input type="text" class="form-control" id="url" th:field="${image.url}" placeholder="url zjęcia">
 
+<!--                <input type="text" class="form-control" id="url" th:field="${image.place=${place.id}}" placeholder="url zjęcia">-->
+                <!--            <small id="addMsg" class="form-text text-muted"></small>-->
+            </div>
+            <div class="form-group">
+                <label for="selectType">Rodzaj:</label>
+                <select class="form-control" id="selectType" th:field="${place.type}">
+                    <option th:each="typeE : ${T(com.singapore.TripPlaner.Model.Type).values()}" th:value="${typeE}"
+                            th:text="${typeE.getPlaceType()}"/>
+                </select>
+            </div>
+            <p>
+                <button type="submit" class="btn btn-primary">Wyślij</button>
+                <input type="reset" class="btn btn-primary" value="Reset"/></p>
+        </div>
     </form>
 </body>
 </html>

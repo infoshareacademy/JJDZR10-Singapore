@@ -21,7 +21,7 @@ public class Image {
 
 
     @ManyToOne
-    @JoinColumn(name = "place_id", nullable = false)
+    @JoinColumn(name = "place_id")
     private Place place;
 
 //    @ManyToOne
@@ -31,4 +31,7 @@ public class Image {
     @Transient
     private User user;
 
+    public Image(String url) {
+        this.url = url;
+    }
 }

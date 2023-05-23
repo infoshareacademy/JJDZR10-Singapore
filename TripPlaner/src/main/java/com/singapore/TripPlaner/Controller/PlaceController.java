@@ -1,5 +1,6 @@
 package com.singapore.TripPlaner.Controller;
 
+import com.singapore.TripPlaner.Model.Image;
 import com.singapore.TripPlaner.Model.Place;
 import com.singapore.TripPlaner.Service.ImageService;
 import com.singapore.TripPlaner.Service.CityService;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -28,6 +30,7 @@ public class PlaceController {
         model.addAttribute("images", imageService.getAllImages());
         return "places";
     }
+
     @GetMapping("/place/type/{type}")
     public String getPlacesByType(@RequestParam(required = true) String type, Model model) {
         List filtredPlaces = placeService.filterListByTypeOfPlace(type);
@@ -35,8 +38,9 @@ public class PlaceController {
         model.addAttribute("images", imageService.getAllImages());
         return "places";
     }
-    @GetMapping ("/place/{id}")
-    public String placeDetails(@PathVariable Long id, Model model){
+
+    @GetMapping("/place/{id}")
+    public String placeDetails(@PathVariable Long id, Model model) {
         Place place = placeService.findById(id);
         model.addAttribute("place", place);
 //        List imagesUrls = imageService.getImagesFromList(place.getImages());
@@ -48,12 +52,16 @@ public class PlaceController {
     public String createPlace(Model model) {
         model.addAttribute("place", new Place());
         model.addAttribute("cities", cityService.getCities());
+        model.addAttribute("image", new Image());
         return "placeForm";
     }
 
     @PostMapping("/places")
-    public String createPlace(@ModelAttribute Place place) {
+    public String createPlace(@ModelAttribute Place place, @ModelAttribute Image image) {
+        place.getId();
         placeService.createPlace(place);
+        imageService.saveImage(image);
+        imageService.savePlaceForImage(image, place);
 
         return "redirect:/places";
     }
@@ -68,7 +76,7 @@ public class PlaceController {
 
     @PostMapping("/place/edit/{id}")
     public String editPlace(@PathVariable Long id, @ModelAttribute Place place, Model model) {
-        placeService.editPlaceById(place,id);
+        placeService.editPlaceById(place, id);
         return "redirect:/places";
     }
 

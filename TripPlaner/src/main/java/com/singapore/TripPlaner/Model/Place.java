@@ -1,5 +1,6 @@
 package com.singapore.TripPlaner.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
@@ -37,7 +38,7 @@ public class Place {
 
 //    @Transient
     @OneToMany (mappedBy = "place")
-    private List <Image> images;
+    private List <Image> images = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "city_id", nullable = false)

@@ -32,7 +32,7 @@ public class City {
     private String description;
 
     @OneToMany(mappedBy = "city")
-    private List<Place> places;
+    private List<Place> places = new ArrayList<>();
 //    @OneToMany(mappedBy = "city")
 //    private List <Image> images;
 
