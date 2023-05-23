@@ -28,6 +28,11 @@ public class City extends PersistentAbstract implements IOpinions {
         this.rate = rate;
     }
 
+    @Override
+    public Object findById(long id) {
+        return null;
+    }
+
     public String getName() {
         return name;
     }

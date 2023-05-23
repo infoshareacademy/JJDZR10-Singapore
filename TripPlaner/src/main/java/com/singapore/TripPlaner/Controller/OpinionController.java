@@ -1,26 +1,22 @@
 package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.Opinion;
-import com.singapore.TripPlaner.Service.CityService;
+import com.singapore.TripPlaner.Service.IOpinions;
 import com.singapore.TripPlaner.Service.OpinionService;
-import com.singapore.TripPlaner.Service.PlaceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @Controller
 @RequestMapping("/opinions")
-public class OpinionController {
+public class OpinionController<T extends IOpinions> {
 
-    private final OpinionService opinionService;
-    private final PlaceService placeService;
-    private final CityService cityService;
+    private final OpinionService<T> opinionService;
 
-    public OpinionController(OpinionService opinionService, PlaceService placeService, CityService cityService) {
+    public OpinionController(OpinionService<T> opinionService) {
         this.opinionService = opinionService;
-        this.placeService = placeService;
-        this.cityService = cityService;
     }
 
 
@@ -33,14 +29,14 @@ public class OpinionController {
     }
 
     @GetMapping("/edit{id}")
-    public String editOpinionById(@PathVariable("id") long id, Model model) {
+    public String editOpinionById(@PathVariable long id, Model model) {
         Opinion opinion = (Opinion) opinionService.findById(id);
         model.addAttribute("opinion", opinion);
         return "opinionEdit";
     }
 
     @PostMapping("/edit{id}")
-    public String editOpinion(@PathVariable("id") long id,
+    public String editOpinion(@PathVariable long id,
                               @ModelAttribute Opinion opinion,
                               Model model) {
         model.addAttribute("opinion", opinion);
@@ -49,24 +45,25 @@ public class OpinionController {
     }
 
     @GetMapping("/delete{id}")
-    public String deleteOpinion(@PathVariable("id") long id) {
+    public String deleteOpinion(@PathVariable long id) {
         opinionService.removeOpinionById(id);
         return "redirect:/opinions";
     }
 
-    @GetMapping("/{place}/{id}")
-    public String opinionForm(@PathVariable("id") long id,
-                              @PathVariable("place")
+    @GetMapping("/{t}/{id}")
+    public String opinionForm(@PathVariable long id,
+                              @PathVariable T t,
                               Model model) {
-        model.addAttribute("place", placeService.findById(id));
+        model.addAttribute("t", t.findById(id));
         model.addAttribute("opinion", new Opinion());
         return "opinionForm";
     }
 
-    @PostMapping("/{place}/{id}")
-    public String addOpinion (@ModelAttribute Opinion opinion,
-                             @PathVariable("id") long id)  {
-        opinionService.addOpinion(opinion, placeService.findById(id));
+    @PostMapping("/{t}/{id}")
+    public String addOpinion(@ModelAttribute Opinion opinion,
+                             @PathVariable("id") long id,
+                             @PathVariable T t) {
+        opinionService.addOpinion(opinion, (T) t.findById(id));
         return "redirect:/place/{id}";
     }
 }

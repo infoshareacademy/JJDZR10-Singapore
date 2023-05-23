@@ -59,8 +59,6 @@ public class Reader {
                 return this.createPlaceInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.Opinion":
                 return this.createOpinionInstance(jsonObject, object);
-            case "com.singapore.TripPlaner.Model.IOpinions":
-                return this.createAbstractInstance(jsonObject, object);
         }
         throw (new Exception("No such model entity"));
     }

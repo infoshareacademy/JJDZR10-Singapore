@@ -6,4 +6,5 @@ public interface IOpinions {
     List<Long> getOpinions();
     double getRate();
     void setRate(double d);
+    Object findById(long id);
 }

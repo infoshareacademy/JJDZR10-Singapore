@@ -23,6 +23,7 @@
     </div>
 </header>
 <form action="#" th:action="@{/opinions/place/{id}(id=${place.id})}" th:object="${opinion}" method="post">
+    <input type="hidden" th:field="*{id}">0</input>
     <div class="container d-flex justify-content-center lg-12">
         <div class="card text-center lg-6">
             <div class="container">
