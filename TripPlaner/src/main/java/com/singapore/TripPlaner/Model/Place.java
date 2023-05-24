@@ -27,6 +27,7 @@ public class Place {
     private String name;
 
 
+    @Length(min = 2, max = 1000)
     @Column(name = "description", nullable = false)
     private String description;
 
@@ -48,7 +49,7 @@ public class Place {
     @Column(name = "numberOfOpinions")
     private int numberOfOpinions;
 
-    @Enumerated(value = EnumType.STRING)
+   @Enumerated(value = EnumType.STRING)
     private Type type;
 
     public Place(String name, String description, double price, double rate, int numberOfOpinions, Type type) {
