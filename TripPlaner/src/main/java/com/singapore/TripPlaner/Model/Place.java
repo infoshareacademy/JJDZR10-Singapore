@@ -51,32 +51,4 @@ public class Place {
 
    @Enumerated(value = EnumType.STRING)
     private Type type;
-
-    public Place(String name, String description, double price, double rate, int numberOfOpinions, Type type) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.rate = rate;
-        this.numberOfOpinions = numberOfOpinions;
-        this.type = type;
-    }
-    public void addImages(List<Image> images){
-        for (Image image : images){
-            this.addImage(image);
-        }
-    }
-    public void addImage(Image image){
-        image.setPlace(this);
-        this.images.add(image);
-    }
-    public Place(String name, String description, double price, double rate, int numberOfOpinions, Type type, List<Image> images) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.rate = rate;
-        this.numberOfOpinions = numberOfOpinions;
-        this.type = type;
-        this.addImages(images);
-    }
-
 }

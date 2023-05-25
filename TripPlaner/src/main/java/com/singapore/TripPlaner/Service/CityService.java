@@ -30,13 +30,12 @@ public class CityService {
                 () -> new ObjectNotFoundException("Not found city with given id: " + id));
     }
 
-    public City editCityById(City city) {
+    public void editCityById(City city) {
         City cityToEdit = cityRepository.findById(city.getId()).orElseThrow(
                 () -> new ObjectNotFoundException("Not found city with given id: " + city.getId()));
         cityToEdit.setName(city.getName());
         cityToEdit.setDescription(city.getDescription());
         cityRepository.save(cityToEdit);
-        return cityToEdit;
     }
 
     public void deleteCity(Long id) {

@@ -26,7 +26,7 @@ public class TripController {
     }
 
     @GetMapping("/trips/new")
-    public String tripCreateForm(@RequestParam(required = false) Long cityId, Model model) {
+    public String tripCreateForm(@RequestParam(required = false) Long cityId,  Model model) {
 
         if(cityId==null){
             model.addAttribute("places", placeService.findPlaces());

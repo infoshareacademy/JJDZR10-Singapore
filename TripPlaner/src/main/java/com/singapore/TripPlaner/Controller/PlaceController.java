@@ -43,16 +43,17 @@ public class PlaceController {
     public String placeDetails(@PathVariable Long id, Model model) {
         Place place = placeService.findById(id);
         model.addAttribute("place", place);
-//        List imagesUrls = imageService.getImagesFromList(place.getImages());
         model.addAttribute("images", place.getImages());
         return "placeDetails";
     }
 
     @GetMapping("/place/create")
     public String createPlace(Model model) {
-        model.addAttribute("place", new Place());
+        Place place = new Place();
+        model.addAttribute("place", place);
         model.addAttribute("cities", cityService.getCities());
         model.addAttribute("image", new Image());
+
         return "placeForm";
     }
 

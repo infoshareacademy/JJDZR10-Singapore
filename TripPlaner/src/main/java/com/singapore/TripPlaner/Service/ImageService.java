@@ -32,26 +32,16 @@ public class ImageService {
         return imageById.orElseThrow(
                 ()->new ImageNotFindException("Not found Image with given id: " + id));
     }
-//    public List getImagesFromList(List <Image> imagesId){
-//        List <Image> images = new ArrayList<>();
-//        for(int i=0; i<imagesId.size(); i++){
-//            images.add(findImageById(imagesId.get(i)));
-//        }
-//        return images;
-//    }
 
     public List<Image> getAllImageForCity(City city){
         List <Place> placeListForCity = city.getPlaces();
-        List <Image> allImagesForCity = new ArrayList<>();
+        List <Image> allImagesForCityFromPlaces = new ArrayList<>();
         for (Place place : placeListForCity) {
             for (Image image : place.getImages()) {
-                allImagesForCity.add(image);
+                allImagesForCityFromPlaces.add(image);
             }
         }
-//       Place randomPlaceForCity =  getRandomPlaceForCity(city);
-//       List<Image> imagesForPlace = randomPlaceForCity.getImages();
-//       List <String> urlList = placeListForCity.stream().map(Image::getUrl).collect(Collectors.toList());
-        return allImagesForCity;
+        return allImagesForCityFromPlaces;
     }
 
 
@@ -84,8 +74,8 @@ public class ImageService {
     public Image saveImage(Image image){
         return imageRepository.save(image);
     }
-    public Image savePlaceForImage(Image image, Place place){
+    public void savePlaceForImage(Image image, Place place){
         image.setPlace(place);
-        return saveImage(image);
+        saveImage(image);
     }
 }

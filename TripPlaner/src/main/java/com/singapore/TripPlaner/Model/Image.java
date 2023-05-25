@@ -24,9 +24,6 @@ public class Image {
     @JoinColumn(name = "place_id")
     private Place place;
 
-//    @ManyToOne
-//    @JoinColumn(name = "city_id",nullable = false)
-//    private City city;
 
     @Transient
     private User user;

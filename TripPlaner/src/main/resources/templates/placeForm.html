@@ -10,6 +10,7 @@
 <nav th:insert="~{/fragments/dashboard :: nav}"></nav>
 <div class="container">
     <form action="#" th:action="@{/places}" th:object="${place}" method="post">
+<!--    <form action="#"  th:object="${place}" th:action="@{/place/type/type(type=${placeType})}" method="post">-->
         <div th:object="${image}">
             <div class="form-group">
                 <label for="name">Nazwa:</label>
