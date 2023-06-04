@@ -5,8 +5,6 @@ import com.singapore.TripPlaner.Model.Place;
 import com.singapore.TripPlaner.Exception.ObjectNotFoundException;
 
 import com.singapore.TripPlaner.Repository.PlaceRepository;
-import com.singapore.TripPlaner.Service.comparators.PlacesComparatorBiggestRate;
-import com.singapore.TripPlaner.Service.comparators.PlacesComparatorMostPopular;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,14 +14,12 @@ import java.util.stream.Collectors;
 @Service
 
 public class PlaceService {
-    private final PlacesComparatorBiggestRate placesComparatorBiggestRate;
-    private final PlacesComparatorMostPopular placesComparatorMostPopular;
+
     private final PlaceRepository placeRepository;
 
 
-    public PlaceService(PlacesComparatorBiggestRate placesComparatorBiggestRate, PlacesComparatorMostPopular placesComparatorMostPopular, PlaceRepository placeRepository) {
-        this.placesComparatorBiggestRate = placesComparatorBiggestRate;
-        this.placesComparatorMostPopular = placesComparatorMostPopular;
+    public PlaceService(PlaceRepository placeRepository) {
+
         this.placeRepository = placeRepository;
 
     }
@@ -64,17 +60,20 @@ public class PlaceService {
                 .filter(p -> p.getType().getPlaceType().toLowerCase().equals(placeType.toLowerCase()))
                 .collect(Collectors.toList());
     }
+
     public List<Place> findPlacesByCityId(Long cityId) {
         List<Place> allPlaces = findPlaces();
-        allPlaces.stream().filter(place -> place.getCity().getId()==cityId).findAny().orElseThrow(()->new ObjectNotFoundException("Not found place with given city_id: " + cityId));
+        allPlaces.stream().filter(place -> place.getCity().getId() == cityId).findAny().orElseThrow(() -> new ObjectNotFoundException("Not found place with given city_id: " + cityId));
         return allPlaces.stream()
                 .filter(place -> place.getCity().getId() == cityId)
                 .collect(Collectors.toList());
     }
-    public List <Place> findPlacesByCity(City city){
+
+    public List<Place> findPlacesByCity(City city) {
         return placeRepository.findAllByCity(city);
     }
-    public String getTypeOfPlace(Place place){
+
+    public String getTypeOfPlace(Place place) {
         return place.getType().getPlaceType();
     }
 }
