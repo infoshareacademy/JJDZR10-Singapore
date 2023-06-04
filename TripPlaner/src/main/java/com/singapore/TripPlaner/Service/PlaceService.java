@@ -71,6 +71,7 @@ public class PlaceService {
 
     public List<Place> findPlacesByCity(City city) {
         return placeRepository.findAllByCity(city);
+
     }
 
     public String getTypeOfPlace(Place place) {
