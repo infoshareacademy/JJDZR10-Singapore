@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Singapore</title>
-
-    <link th:rel="stylesheet" th:href="@{assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.css}"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+  <title>Singapore - edit place</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<nav th:replace="~{/fragments/dashboard :: nav}"></nav>
-<div class="container">
-    <div class="p-3 m-0 border-0 bd-example">
-        <form class="row g-3" action="#" th:action="@{/cities}" th:object="${city}" method="post"
-              style="margin-top:0.5cm; margin-left:0.5cm">
-            <div class="col-md-6">
-                <label for="inputCityName" class="form-label">Nazwa miasta:</label>
-                <input type="text" class="form-control" id="inputCityName" required th:field="*{name}"/>
-            </div>
+<nav th:insert="~{/fragments/dashboard :: nav}"></nav>
+<div class="p-3 m-0 border-0 bd-example">
+<form class="row g-3" action="#" th:action="@{/city/edit/{id}(id=${city.id})}" th:object="${city}" method="post" style="margin-top:0.5cm; margin-left:0.5cm">
+  <div class="col-md-6">
+    <label for="inputCityName" class="form-label">Nazwa miasta:</label>
+    <input type="text" class="form-control" id="inputCityName" required th:field="*{name}"/>
+  </div>
 
-            <div class="col-12">
-                <label for="Textarea" class="form-label">Opis miasta:</label>
-                <input type="text" class="form-control" id="Textarea" required th:field="*{description}"/>
-            </div>
-            <p>
-                <button type="submit" class="btn btn-primary">Wyślij</button>
-                <input type="reset" class="btn btn-primary" value="Reset"/></p>
-        </form>
-    </div>
+  <div class="col-mb-6">
+    <label for="Textarea" class="form-label">Opis miasta:</label>
+      <textarea class="form-control" id="Textarea" rows="3" type="text" th:field="*{description}" ></textarea>
+  </div>
+  <div class="col-md-4">
+    <label for="inputCountry" class="form-label">Kraj</label>
+    <input type="text" class="form-control" id="inputCountry"/>
+  </div>
+
+  <div class="col-12">
+    <p> <button type="submit" class="btn btn-primary">Zmień</button> <input type="reset" class="btn btn-primary" value="Reset"/></p>
+    <p><button onclick="goBack()">Powrót</button></p>
+  </div>
+</form>
 </div>
+<script>
+  function goBack() {
+    window.history.go(-1);
+  }
+</script>
 </body>
 </html>
