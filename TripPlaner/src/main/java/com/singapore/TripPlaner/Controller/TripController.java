@@ -26,7 +26,7 @@ public class TripController {
     }
 
     @GetMapping("/trips/new")
-    public String tripCreateForm(@RequestParam(required = false) Long cityId, Model model) {
+    public String tripCreateForm(@RequestParam(required = false) Long cityId,  Model model) {
 
         if(cityId==null){
             model.addAttribute("places", placeService.findPlaces());
@@ -35,7 +35,7 @@ public class TripController {
             model.addAttribute("places", placeService.findPlacesByCityId(cityId));
         }
         model.addAttribute("trip", new Trip());
-        model.addAttribute("cities", cityService.getAllCities()) ;
+        model.addAttribute("cities", cityService.getCities()) ;
         model.addAttribute("cityId", cityId);
 
         return "trip";
@@ -70,7 +70,7 @@ public class TripController {
         }
         Trip trip = tripService.findTripById(tripId);
         model.addAttribute("trip", trip);
-        model.addAttribute("cities", cityService.getAllCities()) ;
+        model.addAttribute("cities", cityService.getCities()) ;
         model.addAttribute("cityId", cityId);
         return "trip";
     }

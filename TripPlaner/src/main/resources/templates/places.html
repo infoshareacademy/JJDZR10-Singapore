@@ -12,18 +12,19 @@
 
 <div class="container">
     <h1 style="margin-top:1.2cm; margin-bottom:1cm">
-        Miejsca w Polsce
+        Lista Atrakcji
     </h1>
-    <p>Aby dodać swoje miejsce kliknij nastepujący przycisk: <a th:href="@{/places}">Dodaj miejsce</a></p>
+    <p>Aby dodać swoje miejsce kliknij nastepujący przycisk: <a th:href="@{/place/create}" class="btn btn-primary">Dodaj miejsce</a></p>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
-        <div th:each="place,iterStat: ${places}" class="col mb-4">
+        <div th:each="place: ${places}" class="col mb-4">
             <div class="card">
-                <img th:src="${images.get(place.images.get(0)).url}" class="card-img-top" alt="card" width="390" height="150">
+                <img th:src="${place.images.get(0).url}" class="card-img-top" alt="card" width="390" height="150">
                 <div class="card-body">
-                    <h5 th:text="${place.city.name}" class="card-title"></h5>
-                    <p><td th:text="${iterStat.count}"/>. <td th:text="${place.name}"/></p>
+                    <h5 th:text="${place.name}" class="card-title"></h5>
+                    <p> <td th:text="${place.city.name}"/></p>
 
                     <a th:href="@{/place/{placeId}(placeId=${place.id})}" class="btn btn-primary"> Detale</a>
+                    <a th:href="@{/place/edit-place/{id}(id=${place.id})}"  class="btn btn-secondary"> Edytuj</a>
                 </div>
             </div>
         </div>

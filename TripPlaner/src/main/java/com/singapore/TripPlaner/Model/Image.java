@@ -1,23 +1,34 @@
 package com.singapore.TripPlaner.Model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public class Image extends PersistentAbstract {
+import javax.persistence.*;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+public class Image {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
     private String url;
+
+
+    @ManyToOne
+    @JoinColumn(name = "place_id")
+    private Place place;
+
+
+    @Transient
     private User user;
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
+    public Image(String url) {
         this.url = url;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

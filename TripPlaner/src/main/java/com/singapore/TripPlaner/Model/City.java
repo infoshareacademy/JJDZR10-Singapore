@@ -1,36 +1,37 @@
 package com.singapore.TripPlaner.Model;
 
 import java.util.List;
+import org.hibernate.validator.constraints.Length;
+import javax.persistence.*;
+import lombok.*;
+import java.util.ArrayList;
 
 
-public class City extends PersistentAbstract {
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = City.TABLE_NAME)
 
+public class City {
+    public static final String TABLE_NAME = "city";
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Length(min = 2, max = 50)
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "description", nullable = false)
+    @Length(min = 2, max = 1000)
     private String description;
-    private List <Long> images;
 
-    public List getImages() {
-        return images;
-    }
-
-    public void setImages(List images) {
-        this.images = images;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    @OneToMany(mappedBy = "city")
+    private List<Place> places = new ArrayList<>();
 
 }
