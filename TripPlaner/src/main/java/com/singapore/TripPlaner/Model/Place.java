@@ -1,6 +1,7 @@
 package com.singapore.TripPlaner.Model;
 
-import java.util.List;
+
+import java.util.*;
 
 public class Place extends PersistentAbstract {
 
@@ -8,6 +9,8 @@ public class Place extends PersistentAbstract {
     private String description;
     private double price;
     private double rate;
+    private String opinion;
+    private List <Long> images;
     private List opinions;
     private City city;
     private long cityid;
@@ -72,12 +75,28 @@ public class Place extends PersistentAbstract {
         this.rate = rate;
     }
 
+    public String getOpinion() {
+        return opinion;
+    }
+
+    public void setOpinion(String opinion) {
+        this.opinion = opinion;
+    }
+
     public City getCity() {
         return city;
     }
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public List getImages() {
+        return images;
+    }
+
+    public void setImages(List images) {
+        this.images = images;
     }
 
     @Override

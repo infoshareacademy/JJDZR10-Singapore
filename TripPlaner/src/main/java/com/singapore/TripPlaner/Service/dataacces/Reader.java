@@ -56,6 +56,8 @@ public class Reader {
                 return this.createPlaceInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.Opinion":
                 return this.createOpinionInstance(jsonObject, object);
+            case "com.singapore.TripPlaner.Model.Image":
+                return this.createImageInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.TripPoint":
                 return this.createTripPointInstance(jsonObject, object);
         }
@@ -121,7 +123,7 @@ public class Reader {
 
     private Trip createTripInstance(JSONObject jsonObject, Object object) {
         Trip trip = (Trip) object;
-        if(jsonObject.containsKey("userid")) {
+        if (jsonObject.containsKey("userid")) {
             long idUser = (long) jsonObject.get("userid");
             User user = (User) this.getObjectById(User.class, idUser);
             trip.setUser(user);
@@ -141,13 +143,19 @@ public class Reader {
 
     private Opinion createOpinionInstance(JSONObject jsonObject, Object object) {
         Opinion opinion = (Opinion) object;
-        if(jsonObject.containsKey("userid")) {
+        if (jsonObject.containsKey("userid")) {
             long idUser = (long) jsonObject.get("userid");
             User user = (User) this.getObjectById(User.class, idUser);
             opinion.setUser(user);
         }
         return opinion;
     }
+
+    private Image createImageInstance(JSONObject jsonObject, Object object) {
+        Image image = (Image) object;
+        return image;
+    }
+
     private TripPoint createTripPointInstance(JSONObject jsonObject, Object object) {
         TripPoint tripPoint = (TripPoint) object;
         if(jsonObject.containsKey("placeid")) {
@@ -165,3 +173,4 @@ public class Reader {
 
 
 }
+
