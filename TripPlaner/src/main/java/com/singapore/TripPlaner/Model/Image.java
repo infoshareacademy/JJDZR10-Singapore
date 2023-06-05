@@ -21,7 +21,6 @@ public class Image {
     private Long id;
 
     @Length(min = 2, max = 1000)
-    @NonNull
     private String url;
 
     @ManyToOne

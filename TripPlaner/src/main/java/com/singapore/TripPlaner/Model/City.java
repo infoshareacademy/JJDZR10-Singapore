@@ -24,7 +24,6 @@ public class City {
     private String name;
 
     @Length(min = 2, max = 1000)
-    @NonNull
     private String description;
 
     @OneToMany(mappedBy = "city")
