@@ -1,15 +1,16 @@
 package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.Image;
+import com.singapore.TripPlaner.Model.Opinion;
 import com.singapore.TripPlaner.Model.Place;
 import com.singapore.TripPlaner.Service.ImageService;
 import com.singapore.TripPlaner.Service.CityService;
+import com.singapore.TripPlaner.Service.OpinionService;
 import com.singapore.TripPlaner.Service.PlaceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -17,11 +18,13 @@ public class PlaceController {
     private final PlaceService placeService;
     private final CityService cityService;
     private final ImageService imageService;
+    private final OpinionService opinionService;
 
-    public PlaceController(PlaceService placeService, CityService cityService, ImageService imageService) {
+    public PlaceController(PlaceService placeService, CityService cityService, ImageService imageService, OpinionService opinionService) {
         this.placeService = placeService;
         this.cityService = cityService;
         this.imageService = imageService;
+        this.opinionService = opinionService;
     }
 
     @GetMapping("/places")
@@ -44,6 +47,8 @@ public class PlaceController {
         Place place = placeService.findById(id);
         model.addAttribute("place", place);
         model.addAttribute("images", place.getImages());
+        model.addAttribute("opinionDetail", opinionService.getRandomOpinion(place));
+        model.addAttribute("opinions", new Opinion());
         return "placeDetails";
     }
 

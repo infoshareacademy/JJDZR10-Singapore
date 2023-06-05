@@ -2,6 +2,7 @@ package com.singapore.TripPlaner.Model;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -37,18 +38,19 @@ public class Place {
     @Column(name = "rate", nullable = false)
     private double rate;
 
-//    @Transient
-    @OneToMany (mappedBy = "place")
-    private List <Image> images = new ArrayList<>();
+    //    @Transient
+    @OneToMany(mappedBy = "place")
+    private List<Image> images = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "city_id", nullable = false)
 //@Transient
     private City city;
 
-    @Column(name = "numberOfOpinions")
-    private int numberOfOpinions;
+    @OneToMany (mappedBy = "place", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List <Opinion> opinions = new ArrayList<>();
 
-   @Enumerated(value = EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     private Type type;
+
 }
