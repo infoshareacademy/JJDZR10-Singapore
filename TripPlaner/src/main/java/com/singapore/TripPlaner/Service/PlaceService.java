@@ -1,11 +1,12 @@
 package com.singapore.TripPlaner.Service;
 
-import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Model.Place;
 import com.singapore.TripPlaner.Exception.ObjectNotFoundException;
 import com.singapore.TripPlaner.Repository.PlaceRepository;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,8 +31,11 @@ public class PlaceService {
     }
 
     public void deletePlace(Place place) {
-        findById(place.getId());
-        placeRepository.deleteById(place.getId());
+        try {
+            placeRepository.deleteById(place.getId());
+        } catch (NoSuchElementException e) {
+            throw new ObjectNotFoundException("Not found place with given id:" + place.getId());
+        }
     }
 
     public void editPlaceById(Place place) {
@@ -55,10 +59,6 @@ public class PlaceService {
                 .findAny().orElseThrow(() -> new ObjectNotFoundException("Not found place with given city_id: " + cityId));
         return findPlaces().stream().filter(place -> place.getCity().getId() == cityId)
                 .collect(Collectors.toList());
-    }
-
-    public List<Place> findPlacesByCity(City city) {
-        return placeRepository.findAllByCity(city);
     }
 }
 

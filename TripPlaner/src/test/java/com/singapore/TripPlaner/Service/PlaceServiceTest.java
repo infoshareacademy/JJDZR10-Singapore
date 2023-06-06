@@ -1,5 +1,6 @@
 package com.singapore.TripPlaner.Service;
 
+import com.singapore.TripPlaner.Exception.ObjectNotFoundException;
 import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Model.Place;
 import com.singapore.TripPlaner.Model.Type;
@@ -9,13 +10,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.util.List;
-
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,11 +27,10 @@ class PlaceServiceTest {
     private PlaceRepository placeRepositoryMock;
     @InjectMocks
     private PlaceService placeService;
-    private final City gdansk = new City(1L, "Gdańsk" );
+    private final City gdansk = new City(1L, "Gdańsk");
     private final Place parkOliwski = new Place(1L, "Park Oliwski", gdansk, Type.NATURE);
     private final Place katedraOliwska = new Place(2L, "Katedra Oliwski", gdansk, Type.MONUMENT);
     private final Place mandu = new Place(3L, "Pierogarnia Mandu", gdansk, Type.RESTAURANT);
-
 
     @Test
     void shouldCreatePlace() {
@@ -54,17 +53,28 @@ class PlaceServiceTest {
         //then
         assertThat(resultPlaceList).hasSize(3);
     }
+
     @Test
-    void shouldFindPlaceById(){
+    void shouldFindPlaceById() {
         //given
         when(placeRepositoryMock.findById(anyLong())).thenReturn(Optional.of(katedraOliwska));
         //when
         Place myPlace = placeService.findById(2L);
         //then
-        assertEquals(myPlace.getId(),2);
+        assertEquals(myPlace.getId(), 2);
     }
+
     @Test
-    void shouldFindListByTypeOfPlace(){
+    void shouldThrowExceptionWhenDeletingNonExistingPlace() {
+        //given
+        doThrow(new NoSuchElementException()).when(placeRepositoryMock).deleteById(any());
+        //when & then
+        assertThatThrownBy(() -> placeService.deletePlace(new Place()))
+                .isInstanceOf(ObjectNotFoundException.class);
+    }
+
+    @Test
+    void shouldFindListByTypeOfPlace() {
         //given
         when(placeRepositoryMock.findAll()).thenReturn(Arrays.asList(parkOliwski, katedraOliwska, mandu));
         //when
@@ -72,8 +82,9 @@ class PlaceServiceTest {
         //then
         assertThat(resultPlaceList).hasSize(1);
     }
+
     @Test
-    void shouldFindPlacesByCityId(){
+    void shouldFindPlacesByCityId() {
         //given
         when(placeRepositoryMock.findAll()).thenReturn(Arrays.asList(parkOliwski, katedraOliwska, mandu));
         //when
@@ -81,6 +92,4 @@ class PlaceServiceTest {
         //then
         assertThat(resultPlaceList).hasSize(3);
     }
-
-
 }

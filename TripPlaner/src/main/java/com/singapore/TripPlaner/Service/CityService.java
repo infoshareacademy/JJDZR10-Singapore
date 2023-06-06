@@ -5,7 +5,6 @@ import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Repository.CityRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CityService {
@@ -24,8 +23,7 @@ public class CityService {
     }
 
     public City findById(Long id) {
-        Optional<City> cityById = cityRepository.findById(id);
-        return cityById.orElseThrow(
+        return cityRepository.findById(id).orElseThrow(
                 () -> new ObjectNotFoundException("Not found city with given id: " + id));
     }
 
