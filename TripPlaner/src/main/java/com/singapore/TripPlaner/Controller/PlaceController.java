@@ -71,14 +71,14 @@ public class PlaceController {
     }
 
     @PostMapping("/place/edit/{id}")
-    public String editPlace(@PathVariable Long id, @ModelAttribute Place place, Model model) {
-        placeService.editPlaceById(place, id);
+    public String editPlace(@ModelAttribute Place place) {
+        placeService.editPlaceById(place);
         return "redirect:/places";
     }
 
     @GetMapping("/place/{id}/delete")
-    public String placeDelete(@PathVariable Long id) {
-        placeService.deletePlace(id);
+    public String placeDelete(@ModelAttribute Place place) {
+        placeService.deletePlace(place);
         return "redirect:/places";
     }
 }

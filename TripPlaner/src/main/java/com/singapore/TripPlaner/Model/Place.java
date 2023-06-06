@@ -41,4 +41,11 @@ public class Place {
 
     @Enumerated(value = EnumType.STRING)
     private Type type;
+
+    public Place(Long id, String name, City city, Type type) {
+        this.id = id;
+        this.name = name;
+        this.city = city;
+        this.type = type;
+    }
 }

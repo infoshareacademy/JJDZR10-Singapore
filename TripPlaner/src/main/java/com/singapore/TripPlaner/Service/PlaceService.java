@@ -29,13 +29,13 @@ public class PlaceService {
                 .orElseThrow(() -> new ObjectNotFoundException("Not found place with given id:" + id));
     }
 
-    public void deletePlace(Long id) {
-        findById(id);
-        placeRepository.deleteById(id);
+    public void deletePlace(Place place) {
+        findById(place.getId());
+        placeRepository.deleteById(place.getId());
     }
 
-    public void editPlaceById(Place place, Long id) {
-        Place placeToEdit = placeRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Not found place with given id: " + id));
+    public void editPlaceById(Place place) {
+        Place placeToEdit = placeRepository.findById(place.getId()).orElseThrow(() -> new ObjectNotFoundException("Not found place with given id: " + place.getId()));
         placeToEdit.setName(place.getName());
         placeToEdit.setDescription(place.getDescription());
         placeToEdit.setRate(place.getRate());
