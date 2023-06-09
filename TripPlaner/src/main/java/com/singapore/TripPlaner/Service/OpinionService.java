@@ -1,14 +1,11 @@
 package com.singapore.TripPlaner.Service;
 
 
-import com.singapore.TripPlaner.Model.Persistent;
-import com.singapore.TripPlaner.Model.User;
+import com.singapore.TripPlaner.Model.User.User;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
-import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 

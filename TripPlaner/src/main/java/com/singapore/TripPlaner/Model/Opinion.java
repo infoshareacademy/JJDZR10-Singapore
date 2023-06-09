@@ -1,6 +1,7 @@
 package com.singapore.TripPlaner.Model;
 
 
+import com.singapore.TripPlaner.Model.User.User;
 import com.singapore.TripPlaner.Service.OpinionService;
 
 import java.util.List;

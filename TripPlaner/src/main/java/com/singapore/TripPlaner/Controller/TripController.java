@@ -1,14 +1,13 @@
 package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.*;
+import com.singapore.TripPlaner.Model.User.User;
 import com.singapore.TripPlaner.Service.CityService;
 import com.singapore.TripPlaner.Service.PlaceService;
 import com.singapore.TripPlaner.Service.TripService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 public class TripController {

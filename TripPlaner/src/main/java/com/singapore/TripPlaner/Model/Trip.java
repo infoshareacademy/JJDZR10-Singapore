@@ -1,8 +1,7 @@
 package com.singapore.TripPlaner.Model;
 
+import com.singapore.TripPlaner.Model.User.User;
 import org.json.simple.JSONObject;
-
-import java.util.List;
 
 public class Trip extends PersistentAbstract {
 
@@ -88,7 +87,7 @@ public class Trip extends PersistentAbstract {
     }
 
     public void userSentence() {
-        System.out.println("To jest wycieczka " + this.getName() + " utworzona przez użytkownika " + this.getUser().getFirstName() + " " + this.getUser().getLastName());
+        System.out.println("To jest wycieczka " + this.getName() + " utworzona przez użytkownika " + this.getUser().getUsername());
     }
 
     @Override

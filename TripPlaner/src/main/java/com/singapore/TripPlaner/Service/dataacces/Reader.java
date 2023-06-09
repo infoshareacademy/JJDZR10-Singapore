@@ -7,6 +7,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.singapore.TripPlaner.Model.*;
+import com.singapore.TripPlaner.Model.User.User;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -48,8 +49,8 @@ public class Reader {
         switch (className) {
             case "com.singapore.TripPlaner.Model.Trip":
                 return this.createTripInstance(jsonObject, object);
-            case "com.singapore.TripPlaner.Model.User":
-                return (User) object;
+//            case "com.singapore.TripPlaner.Model.User.User":
+//                return (User) object;
 //            case "com.singapore.TripPlaner.Model.City":
 //                return (City) object;
 //            case "com.singapore.TripPlaner.Model.Place":

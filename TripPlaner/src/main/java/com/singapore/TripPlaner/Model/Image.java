@@ -1,5 +1,6 @@
 package com.singapore.TripPlaner.Model;
 
+import com.singapore.TripPlaner.Model.User.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
