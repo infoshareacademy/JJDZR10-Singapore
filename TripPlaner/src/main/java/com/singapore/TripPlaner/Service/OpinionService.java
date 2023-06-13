@@ -5,22 +5,27 @@ import com.singapore.TripPlaner.Exception.OpinionNotFoundException;
 import com.singapore.TripPlaner.Model.Opinion;
 import com.singapore.TripPlaner.Model.Place;
 import com.singapore.TripPlaner.Repository.OpinionRepository;
+import com.singapore.TripPlaner.Repository.PlaceRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class OpinionService {
     private final RandomValues randomValues;
     private final OpinionRepository opinionRepository;
+    private final PlaceRepository placeRepository;
 
-    public OpinionService(RandomValues randomValues, OpinionRepository opinionRepository) {
+    public OpinionService(RandomValues randomValues, OpinionRepository opinionRepository, PlaceRepository placeRepository) {
         this.randomValues = randomValues;
         this.opinionRepository = opinionRepository;
+        this.placeRepository = placeRepository;
     }
 
-    public List getAllOpinions() {
+    public List <Opinion> getAllOpinions() {
         return opinionRepository.findAll();
     }
 
@@ -44,13 +49,17 @@ public class OpinionService {
 
     @Transactional
     public void addOpinionToPlace(Opinion opinion, Place place) {
-        opinionRepository.save(opinion);
-        place.setRate(setPlaceRateThenAddOpinion(opinion, place));
+        place.setRate(setPlaceRateWithOpinionRate(opinion, place));
         opinion.setPlace(place);
-        place.getOpinions().add(opinion);
+        List <Opinion> opinions = new ArrayList<>(place.getOpinions());
+        opinions.add(opinion);
+        place.setOpinions(opinions);
+        placeRepository.save(place);
+        opinionRepository.save(opinion);
+
     }
 
-    private double setPlaceRateThenAddOpinion(Opinion opinion, Place place) {
+    private double setPlaceRateWithOpinionRate(Opinion opinion, Place place) {
         long opinionCounts = opinionRepository.findAllOpinionByPlace(place).size();
         double rate = (place.getRate() + opinion.getRate()) / opinionCounts;
         rate *= 10;

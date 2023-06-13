@@ -13,6 +13,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Table(name = Place.TABLE_NAME)
+@AllArgsConstructor
 public class Place {
     public static final String TABLE_NAME = "place";
 
