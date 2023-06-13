@@ -12,7 +12,6 @@ VALUES ("Gdańsk",
        ("Wrocław",
         "Miasto w południowo-zachodniej Polsce. Położone na Nizinie Śląskiej, nad Odrą i czterema jej dopływami.\nJest historyczną stolicą Dolnego Śląska, a także całego Śląska. Jest głównym miastem aglomeracji wrocławskiej.\nTrzecie pod względem liczby ludności miasto w Polsce");
 
-
 INSERT INTO place (description, name, price, rate, type, city_id)
 VALUES ("Bazylika konkatedralna Wniebowzięcia Najświętszej Maryi Panny, zwana często „Koroną Gdańska” jest największą w Europie świątynią wybudowaną z cegły.Jej potężne mury i wieże wznoszą się wysoko nad panoramą miasta oraz nad rozległą okolicą.",
         "Bazylika Mariacka",
@@ -170,8 +169,6 @@ VALUES ("Bazylika konkatedralna Wniebowzięcia Najświętszej Maryi Panny, zwana
         4.7,
         "RESTAURANT",
         5);
-
-
 
 INSERT INTO image (url, place_id)
 VALUES ("https://s-trojmiasto.pl/zdj/c/n/9/2825/999x0/2825085-Bazylika-Mariacka-to-najwiekszy-w-Europie-kosciol-wzniesiony-z-cegly-Jej-budowa-trwala-ok-150-lat-a-dokladnie-odbyla-sie-w-latach-1346-1502.jpg",

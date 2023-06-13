@@ -22,7 +22,7 @@ public class Opinion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long opinionId;
-    @Length(max = 1000)
+    @Length(max = 2000)
     @NotNull
     private String opinion;
     @NotNull
