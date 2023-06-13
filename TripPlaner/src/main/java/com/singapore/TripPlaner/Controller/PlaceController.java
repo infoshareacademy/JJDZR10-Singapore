@@ -48,7 +48,7 @@ public class PlaceController {
         model.addAttribute("place", place);
         model.addAttribute("images", place.getImages());
         model.addAttribute("opinionDetail", opinionService.getRandomOpinion(place));
-        model.addAttribute("opinions", new Opinion());
+        model.addAttribute("opinion", new Opinion());
         return "placeDetails";
     }
 

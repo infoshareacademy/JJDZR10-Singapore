@@ -11,22 +11,22 @@
   <link href="css/opinions.css" rel="stylesheet"/>
 </head>
 <body>
-<form action="#" th:action="@{/opinions/place/{id}(id=${place.id})}"  method="post">
+<form action="#" th:action="@{/opinions/place/{id}(id=${place.id})}" th:object="${opinion}" method="post">
   <div class="container d-flex justify-content-center lg-12">
     <div class="card text-center lg-6">
       <div class="container">
         <label for="exampleFormControlTextarea1" class="form-label"></label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"
-                  for="floatingTextarea" th:field="*{opinions.opinion}" required>Twoja Opinia</textarea>
+                  for="floatingTextarea" th:field="*{opinion}" required>Twoja Opinia</textarea>
       </div>
       <div class="rate bg-success py-3 text-white lg-6">
         <h6 class="mb-0">Dodaj ocenę</h6>
         <div class="rating">
-          <input type="radio" name="rating" value="5" id="5" th:field="*{opinions.rate}"><label for="5">☆</label>
-          <input type="radio" name="rating" value="4" id="4" th:field="*{opinions.rate}"><label for="4">☆</label>
-          <input type="radio" name="rating" value="3" id="3" th:field="*{opinions.rate}"><label for="3">☆</label>
-          <input type="radio" name="rating" value="2" id="2" th:field="*{opinions.rate}"><label for="2">☆</label>
-          <input type="radio" name="rating" value="1" id="1" th:field="*{opinions.rate}"><label for="1">☆</label>
+          <input type="radio" name="rating" value="5" id="5" th:field="*{rate}"><label for="5">☆</label>
+          <input type="radio" name="rating" value="4" id="4" th:field="*{rate}"><label for="4">☆</label>
+          <input type="radio" name="rating" value="3" id="3" th:field="*{rate}"><label for="3">☆</label>
+          <input type="radio" name="rating" value="2" id="2" th:field="*{rate}"><label for="2">☆</label>
+          <input type="radio" name="rating" value="1" id="1" th:field="*{rate}"><label for="1">☆</label>
         </div>
         <div class="buttons px-4 mt-0">
           <button class="btn btn-warning btn-block rating-submit">Dodaj</button>

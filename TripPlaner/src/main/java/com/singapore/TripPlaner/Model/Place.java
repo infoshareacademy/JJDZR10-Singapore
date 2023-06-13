@@ -48,7 +48,7 @@ public class Place {
 //@Transient
     private City city;
 
-    @OneToMany (mappedBy = "place", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany (mappedBy = "place", cascade = CascadeType.ALL)
     private List <Opinion> opinions = new ArrayList<>();
 
     @Enumerated(value = EnumType.STRING)
