@@ -1,48 +1,20 @@
 package com.singapore.TripPlaner.Service;
 
-import com.singapore.TripPlaner.Model.User.User;
+import com.singapore.TripPlaner.Repository.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.provisioning.UserDetailsManager;
+import org.springframework.stereotype.Service;
 
-public class UserService implements UserDetailsManager {
+@Service
+@AllArgsConstructor
+public class UserService implements UserDetailsService {
 
-    private final User user;
-
-    public UserService(User user) {
-        this.user = user;
-    }
-
-
-
-
-    @Override
-    public void createUser(UserDetails user) {
-
-    }
-
-    @Override
-    public void updateUser(UserDetails user) {
-
-    }
-
-    @Override
-    public void deleteUser(String username) {
-
-    }
-
-    @Override
-    public void changePassword(String oldPassword, String newPassword) {
-
-    }
-
-    @Override
-    public boolean userExists(String username) {
-        return false;
-    }
-
+private final UserRepository userRepository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+        return userRepository.findUserByLogin(username)
+                .orElseThrow(()-> new UsernameNotFoundException("User not found"));
     }
 }
