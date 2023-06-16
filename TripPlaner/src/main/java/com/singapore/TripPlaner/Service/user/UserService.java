@@ -1,4 +1,4 @@
-package com.singapore.TripPlaner.Service;
+package com.singapore.TripPlaner.Service.user;
 
 import com.singapore.TripPlaner.Repository.UserRepository;
 import lombok.AllArgsConstructor;
