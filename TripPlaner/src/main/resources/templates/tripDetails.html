@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Singapore - Trip Planner</title>
+    <link href="css/styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+</head>
+<body>
+<nav th:insert="~{/fragments/dashboard :: nav}"></nav>
+<header class="py-5 bg-light border-bottom mb-4">
+    <div class="container">
+        <div class="text-center my-5">
+            <h1 class="fw-bolder" th:text="${trip.name}"></h1>
+
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <a href="#!"><img class="card-img-top"
+                                  src="https://s-trojmiasto.pl/zdj/c/n/9/2825/999x0/2825085-Bazylika-Mariacka-to-najwiekszy-w-Europie-kosciol-wzniesiony-z-cegly-Jej-budowa-trwala-ok-150-lat-a-dokladnie-odbyla-sie-w-latach-1346-1502.jpg/images/pl-PL/glowne-miasta/gdansk/gdansk_motlawa_1170.jpg"
+                                  alt="..."/></a>
+                <div class="card-body">
+                    <h2 class="card-title" th:text="${trip.name}"></h2>
+                    <p class="card-text" >Super wycieczka-sprawdż czy Ci się podoba</p>
+                    <a class="btn btn-primary" th:href="@{/trips}">←Znajdź inną wycieczkę </a>
+                </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-header">Dystans wycieczki</div>
+                <h3 class="card-title" th:text="${trip.distance}"></h3>
+                <div class="card-header">Orientacyjny czas wycieczki</div>
+                <h3 class="card-title" th:text="${trip.time_for_trip}"></h3>
+                 <div class="card-header">Krótki opis wycieczki</div>
+                 <h4 class="card-title" th:text="${trip.description}"></h4>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card mb-12">
+                <div class="card-header">Punkty wycieczki:</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div th:each="place: ${places}"
+                                 th:text="${place.city.name}+' - '+${place.name}"/>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="js/scripts.js"></script>
+</body>
+</html>
