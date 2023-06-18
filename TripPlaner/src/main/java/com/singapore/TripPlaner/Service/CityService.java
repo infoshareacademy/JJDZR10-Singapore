@@ -44,13 +44,13 @@ public class CityService {
         cityRepository.deleteById(id);
     }
 
-    public void editCityById(City city) {
-        City cityToEdit = findById(city.getId());
-
-        cityToEdit.setName(city.getName());
-        cityToEdit.setDescription(city.getDescription());
-
-        writer.save(cityToEdit);
-    }
+//    public void editCityById(City city) {
+//        City cityToEdit = findById(city.getId());
+//
+//        cityToEdit.setName(city.getName());
+//        cityToEdit.setDescription(city.getDescription());
+//
+////        writer.save(cityToEdit);
+//    }
 
 }
