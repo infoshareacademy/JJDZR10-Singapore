@@ -23,25 +23,18 @@ public class HomeController {
         this.cityService = cityService;
     }
 
-
     @GetMapping("/")
     public String getStart(Model model){
         model.addAttribute("momument", Type.MONUMENT);
         model.addAttribute("nature", Type.NATURE);
         model.addAttribute("restaurant", Type.RESTAURANT);
-
         model.addAttribute("randomImage1",imageService.randomImage(imageService.getAllImages()));
         model.addAttribute("randomImage2",imageService.randomImage(imageService.getAllImages()));
         model.addAttribute("randomImage3",imageService.randomImage(imageService.getAllImages()));
-
         model.addAttribute("randomNatureImage",imageService.getRandomPlaceImage(Type.NATURE.getPlaceType()));
         model.addAttribute("randomMonumentImage",imageService.getRandomPlaceImage(Type.MONUMENT.getPlaceType()));
         model.addAttribute("randomRestaurantImage",imageService.getRandomPlaceImage(Type.RESTAURANT.getPlaceType()));
-        model.addAttribute("randomCityImage", imageService.getRandomCityImage());
+        model.addAttribute("randomCityImage", imageService.randomImage(imageService.getAllImages()));
         return "home";
     }
-
-
-
-
 }

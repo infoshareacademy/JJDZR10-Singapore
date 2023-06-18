@@ -10,7 +10,6 @@ import java.util.Random;
 @Service
 public class RandomValues {
 
-
     public List outputList(int outputElements, List inputList) {
         List outputList = new ArrayList<>();
         Random index = new Random();

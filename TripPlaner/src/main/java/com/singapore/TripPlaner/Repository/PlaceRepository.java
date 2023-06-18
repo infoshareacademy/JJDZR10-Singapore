@@ -9,6 +9,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface PlaceRepository extends JpaRepository<Place, Long> {
-    List <Place> findAllByType(Type type);
     List <Place> findAllByCity (City city);
 }

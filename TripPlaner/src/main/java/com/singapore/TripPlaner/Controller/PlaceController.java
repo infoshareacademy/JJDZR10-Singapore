@@ -54,21 +54,18 @@ public class PlaceController {
 
     @GetMapping("/place/create")
     public String createPlace(Model model) {
-        Place place = new Place();
-        model.addAttribute("place", place);
+        model.addAttribute("place", new Place());
         model.addAttribute("cities", cityService.getCities());
         model.addAttribute("image", new Image());
-
         return "placeForm";
     }
 
     @PostMapping("/places")
     public String createPlace(@ModelAttribute Place place, @ModelAttribute Image image) {
-        place.getId();
         placeService.createPlace(place);
         imageService.saveImage(image);
         imageService.savePlaceForImage(image, place);
-
+        imageService.saveCityForImage(image, place.getCity());
         return "redirect:/places";
     }
 

@@ -4,7 +4,6 @@ import com.singapore.TripPlaner.Exception.ObjectNotFoundException;
 import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Repository.CityRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -43,5 +42,4 @@ public class CityService {
                 () -> new ObjectNotFoundException("Not found city with given id: " + id));
         cityRepository.deleteById(id);
     }
-
 }
