@@ -1,0 +1,38 @@
+<html>
+<body>
+<h1>Formularz rejestracji</h1>
+<form action="/" th:object="${user}" method="POST">
+  <div>
+    <label >Imię i nazwisko</label>
+    <input th:field="*{name}"/>
+<!--    <p th:each="error: ${#fields.errors('firstName')}"-->
+<!--       th:text="${error}">Validation error</p>-->
+  </div>
+  <div>
+    <label>Login</label>
+    <input th:field="*{login}"/>
+<!--    <p th:each="error : ${#fields.errors('lastName')}"-->
+<!--       th:text="${error}">Validation error</p>-->
+  </div>
+  <div>
+    <label>Adres email</label>
+    <input type="email" th:field="*{email}"/>
+<!--    <p th:each="error : ${#fields.errors('email')}"-->
+<!--       th:text="${error}">Validation error</p>-->
+  </div>
+  <div>
+    <label>Hasło</label>
+    <input type="password" th:field="*{password}"/>
+<!--    <p th:each="error : ${#fields.errors('password')}"-->
+<!--       th:text="${error}">Validation error</p>-->
+  </div>
+  <div>
+    <label>Powtórz hasło:</label>
+    <input type="password" th:field="*{matchingPassword}"/>
+  </div>
+  <button type="submit">Zarejestruj</button>
+</form>
+
+<a th:href="@{/login}">Zaloguj się</a>
+</body>
+</html>

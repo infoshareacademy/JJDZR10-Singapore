@@ -256,7 +256,12 @@ VALUES ("https://s-trojmiasto.pl/zdj/c/n/9/2825/999x0/2825085-Bazylika-Mariacka-
        ("https://mapy.emiejsca.pl/zdjecia/wroclaw-klodki-most-tumski-32.jpg", 25),
        ("https://wroclawskiejedzenie.pl/wp-content/uploads/2015/05/Pepik-10-765x1024.jpg", 26);
 
-
-
-
-
+-- # INSERT INTO user (login, name, email, password, role, locked, enabled)
+-- # VALUES ("singapore",
+-- #         "Trip",
+-- #         "singapore@gmail.com",
+-- #         password,
+-- #         null,
+-- #         null,
+-- #         null
+-- #         )

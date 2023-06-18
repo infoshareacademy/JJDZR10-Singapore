@@ -1,19 +1,17 @@
 package com.singapore.TripPlaner.Model.User;
 
+import com.singapore.TripPlaner.Service.Email.ValidEmail;
+import com.singapore.TripPlaner.Service.user.PasswordMatches;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -22,6 +20,7 @@ import java.util.Collections;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode
+@PasswordMatches
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,26 +30,33 @@ public class User implements UserDetails {
     @Min(3)
     @Max(20)
     @NotNull
-    private String userName;
+    @NotEmpty
+    @Column(name = "name")
+    private String name;
+//    @ValidEmail
     @Email
     @NotNull
+    @NotEmpty
     private String email;
     @NotNull
     @Min(5)
+    @NotEmpty
     private String password;
+    private String matchingPassword;
     @Enumerated(EnumType.STRING)
+    @Column(name = "role")
     private UserRole userRole;
     private Boolean locked;
     private Boolean enabled;
 
-    public User(String login, String userName, String email, String password, UserRole userRole, Boolean locked, Boolean enabled) {
+    public User(String login, String name, String email, String password, UserRole userRole, Boolean locked, Boolean enabled) {
         this.login = login;
-        this.userName = userName;
+        this.name = name;
         this.email = email;
         this.password = password;
         this.userRole = userRole;
-        this.locked = locked;
-        this.enabled = enabled;
+        this.locked = false;
+        this.enabled = true;
     }
 
     @Override
@@ -66,7 +72,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return userName;
+        return name;
     }
 
     @Override
