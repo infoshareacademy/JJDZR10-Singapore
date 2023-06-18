@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -22,9 +21,9 @@ public class Opinion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long opinionId;
-    @Column(columnDefinition="VARCHAR(2000)")
+    @Column(columnDefinition = "VARCHAR(2000)")
     @NotNull
-    private String opinion;
+    private String comment;
     @NotNull
     private Integer rate;
     private String user = "Singapore";

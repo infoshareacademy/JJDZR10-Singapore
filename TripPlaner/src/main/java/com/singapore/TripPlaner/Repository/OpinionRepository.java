@@ -14,4 +14,6 @@ public interface OpinionRepository extends JpaRepository <Opinion, Long> {
     List <Opinion> findAllOpinionByPlace(Place place);
     List <Opinion> findOpinionByPlaceRate(Place place);
 
+    
+
 }

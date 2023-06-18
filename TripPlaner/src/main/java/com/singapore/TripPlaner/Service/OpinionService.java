@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -36,7 +35,7 @@ public class OpinionService {
 
     public void editPlaceOpinionById(long id, Opinion opinion, Place place) {
         Opinion opinionToEdit = findById(id);
-        opinionToEdit.setOpinion(opinion.getOpinion());
+        opinionToEdit.setComment(opinion.getComment());
         opinionToEdit.setRate(opinion.getRate());
         opinionRepository.save(opinionToEdit);
     }
@@ -51,12 +50,11 @@ public class OpinionService {
     public void addOpinionToPlace(Opinion opinion, Place place) {
         place.setRate(setPlaceRateWithOpinionRate(opinion, place));
         opinion.setPlace(place);
+        opinionRepository.save(opinion);
         List <Opinion> opinions = new ArrayList<>(place.getOpinions());
         opinions.add(opinion);
         place.setOpinions(opinions);
         placeRepository.save(place);
-        opinionRepository.save(opinion);
-
     }
 
     private double setPlaceRateWithOpinionRate(Opinion opinion, Place place) {

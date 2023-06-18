@@ -228,7 +228,7 @@ VALUES ("https://s-trojmiasto.pl/zdj/c/n/9/2825/999x0/2825085-Bazylika-Mariacka-
        ("https://mapy.emiejsca.pl/zdjecia/wroclaw-klodki-most-tumski-32.jpg", 25),
        ("https://wroclawskiejedzenie.pl/wp-content/uploads/2015/05/Pepik-10-765x1024.jpg", 26);
 
-INSERT INTO opinions (rate, opinion, place_id)
+INSERT INTO opinions (rate, comment, place_id)
 VALUES (5,
         "Bazylika monumentalna, wielkość robi ogromne wrażenie a wewnątrz nieomal muzeum - mnóstwo fantastycznych zabytków. Rzeźb, obrazów, malowideł. Przepiękna rzeźba Madonny, zegar astronomiczny, kopia ołtarza Memlinga (oryginał w Muzeum Narodowym w Gdańsku) przepiękne ołtarze w bocznych kaplicach. Gdyby się chciało zobaczyć każde dzieło sztuki trzeba by w bazylice spędzić cały dzień. Jest to także miejsce kultu, więc w trakcie zwiedzania należy zachować powagę i przestrzegać godzin nabożeństw podczas których zwiedzać nie należy.",
         1),
