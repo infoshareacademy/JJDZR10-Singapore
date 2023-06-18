@@ -3,27 +3,18 @@ package com.singapore.TripPlaner.Service;
 import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Model.Place;
 import com.singapore.TripPlaner.Exception.ObjectNotFoundException;
-
 import com.singapore.TripPlaner.Repository.PlaceRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-
 public class PlaceService {
-
     private final PlaceRepository placeRepository;
 
-
     public PlaceService(PlaceRepository placeRepository) {
-
         this.placeRepository = placeRepository;
-
     }
-
 
     public Place createPlace(Place place) {
         return placeRepository.save(place);
@@ -34,8 +25,8 @@ public class PlaceService {
     }
 
     public Place findById(Long id) {
-        Optional<Place> placeById = placeRepository.findById(id);
-        return placeById.orElseThrow(() -> new ObjectNotFoundException("Not found place with given id:" + id));
+        return placeRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFoundException("Not found place with given id:" + id));
     }
 
     public void deletePlace(Long id) {
@@ -43,10 +34,8 @@ public class PlaceService {
         placeRepository.deleteById(id);
     }
 
-
     public void editPlaceById(Place place, Long id) {
-        Place placeToEdit = placeRepository.findById(id).orElseThrow(
-                () -> new ObjectNotFoundException("Not found place with given id: " + id));
+        Place placeToEdit = placeRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Not found place with given id: " + id));
         placeToEdit.setName(place.getName());
         placeToEdit.setDescription(place.getDescription());
         placeToEdit.setRate(place.getRate());
@@ -62,20 +51,14 @@ public class PlaceService {
     }
 
     public List<Place> findPlacesByCityId(Long cityId) {
-        List<Place> allPlaces = findPlaces();
-        allPlaces.stream().filter(place -> place.getCity().getId() == cityId).findAny().orElseThrow(() -> new ObjectNotFoundException("Not found place with given city_id: " + cityId));
-        return allPlaces.stream()
-                .filter(place -> place.getCity().getId() == cityId)
+        findPlaces().stream().filter(place -> place.getCity().getId() == cityId)
+                .findAny().orElseThrow(() -> new ObjectNotFoundException("Not found place with given city_id: " + cityId));
+        return findPlaces().stream().filter(place -> place.getCity().getId() == cityId)
                 .collect(Collectors.toList());
     }
 
     public List<Place> findPlacesByCity(City city) {
         return placeRepository.findAllByCity(city);
-
-    }
-
-    public String getTypeOfPlace(Place place) {
-        return place.getType().getPlaceType();
     }
 }
 

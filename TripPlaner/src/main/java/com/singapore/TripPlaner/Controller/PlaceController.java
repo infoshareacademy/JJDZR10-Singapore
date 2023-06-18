@@ -8,8 +8,6 @@ import com.singapore.TripPlaner.Service.PlaceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -49,21 +47,18 @@ public class PlaceController {
 
     @GetMapping("/place/create")
     public String createPlace(Model model) {
-        Place place = new Place();
-        model.addAttribute("place", place);
+        model.addAttribute("place", new Place());
         model.addAttribute("cities", cityService.getCities());
         model.addAttribute("image", new Image());
-
         return "placeForm";
     }
 
     @PostMapping("/places")
     public String createPlace(@ModelAttribute Place place, @ModelAttribute Image image) {
-        place.getId();
         placeService.createPlace(place);
         imageService.saveImage(image);
         imageService.savePlaceForImage(image, place);
-
+        imageService.saveCityForImage(image, place.getCity());
         return "redirect:/places";
     }
 

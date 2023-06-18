@@ -1,17 +1,16 @@
 package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.City;
+import com.singapore.TripPlaner.Model.Image;
 import com.singapore.TripPlaner.Service.CityService;
 import com.singapore.TripPlaner.Service.ImageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
 public class CityController {
-
     private final CityService cityService;
     private final ImageService imageService;
 
@@ -29,8 +28,10 @@ public class CityController {
     }
 
     @PostMapping("/cities")
-    public String createCity(@ModelAttribute City city) {
+    public String createCity(@ModelAttribute City city, @ModelAttribute Image image) {
         cityService.createCity(city);
+        imageService.saveImage(image);
+        imageService.saveCityForImage(image,city);
         return "redirect:/cities/";
     }
 
@@ -38,14 +39,14 @@ public class CityController {
     public String cityDetails(@RequestParam(required = true) Long id, Model model) {
         City city = cityService.findById(id);
         model.addAttribute("city", city);
-        List imageList = imageService.getAllImageForCity(city);
-        model.addAttribute("images", imageList);
+        model.addAttribute("images", city.getImages());
         return "cityDetails";
     }
 
-    @GetMapping("/city")
+    @GetMapping("/city/create")
     public String cityForm(Model model) {
         model.addAttribute("city", new City());
+        model.addAttribute("image", new Image());
         return "cityForm";
     }
 
@@ -67,5 +68,4 @@ public class CityController {
         cityService.deleteCity(id);
         return "redirect:/cities";
     }
-
 }

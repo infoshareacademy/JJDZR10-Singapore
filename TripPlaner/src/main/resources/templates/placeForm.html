@@ -10,7 +10,6 @@
 <nav th:insert="~{/fragments/dashboard :: nav}"></nav>
 <div class="container">
     <form action="#" th:action="@{/places}" th:object="${place}" method="post">
-<!--    <form action="#"  th:object="${place}" th:action="@{/place/type/type(type=${placeType})}" method="post">-->
         <div th:object="${image}">
             <div class="form-group">
                 <label for="name">Nazwa:</label>
@@ -39,9 +38,6 @@
             <div class="form-group">
                 <label for="url">Url zdjęcia:</label>
                 <input type="text" class="form-control" id="url" th:field="${image.url}" placeholder="url zjęcia">
-
-<!--                <input type="text" class="form-control" id="url" th:field="${image.place=${place.id}}" placeholder="url zjęcia">-->
-                <!--            <small id="addMsg" class="form-text text-muted"></small>-->
             </div>
             <div class="form-group">
                 <label for="selectType">Rodzaj:</label>
@@ -51,8 +47,8 @@
                 </select>
             </div>
             <p>
-                <button type="submit" class="btn btn-primary">Wyślij</button>
-                <input type="reset" class="btn btn-primary" value="Reset"/></p>
+                <button type="submit" class="btn btn-primary ">Wyślij</button>
+                <input type="reset" class="btn btn-secondary " value="Reset"/></p>
         </div>
     </form>
 </body>

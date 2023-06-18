@@ -11,6 +11,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PlaceRepository extends JpaRepository<Place, Long> {
-    List <Place> findAllByType(Type type);
     List <Place> findAllByCity (City city);
 }
