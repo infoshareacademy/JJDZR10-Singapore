@@ -1,4 +1,4 @@
-package com.singapore.TripPlaner.Security;
+package com.singapore.TripPlaner.Configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

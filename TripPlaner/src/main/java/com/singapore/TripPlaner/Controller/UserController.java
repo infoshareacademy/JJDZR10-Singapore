@@ -49,11 +49,11 @@ public class UserController {
 
     @PostMapping("user/registration")
     public String registrationUserAccount(@ModelAttribute User user){
-//        try {
+        try {
             userService.registerNewUser(user);
-//        } catch (UsernameNotFoundException u){
-//            return "/invalidMail";
-//        }
+        } catch (UsernameNotFoundException u){
+            return "/user/invalidMail";
+        }
         return "home";
     }
 
