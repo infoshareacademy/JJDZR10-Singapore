@@ -30,26 +30,26 @@ public class OpinionController {
         return "opinions/opinionList";
     }
 
-    @GetMapping("/opinions/edit{id}")
+    @GetMapping("/opinions/edit/{id}")
     public String editOpinionById(@PathVariable long id, Model model) {
         Opinion opinion = opinionService.findById(id);
         model.addAttribute("opinion", opinion);
         return "opinions/opinionForm";  //TODO sprawdzić
     }
 
-    @PostMapping("/opinions/edit{id}")
+    @PostMapping("/opinions/edit/{id}")
     public String editOpinion(@PathVariable long id,
                               @ModelAttribute Opinion opinion, Place place,
                               Model model) {
         model.addAttribute("opinion", opinion);
         opinionService.editPlaceOpinionById(id, opinion, place);
-        return "redirect:/opinions/opinionList";
+        return "redirect:/opinions";
     }
 
-    @GetMapping("/opinions/delete{id}")
+    @GetMapping("/opinions/delete/{id}")
     public String deleteOpinion(@PathVariable long id, Place place) {
         opinionService.removePlaceOpinionById(id, place);
-        return "redirect:opinions/opinionList";
+        return "redirect:/opinions";
     }
 
     @GetMapping("/opinions/place/{id}")
