@@ -1,7 +1,7 @@
 <html>
 <body>
 <h1>Formularz rejestracji</h1>
-<form action="user/registration" th:object="${user}" method="POST">
+<form action="/user/registration" th:object="${user}" method="POST">
   <div>
     <label >Imię i nazwisko</label>
     <input th:field="*{name}"/>

@@ -1,5 +1,6 @@
 package com.singapore.TripPlaner.Service.user;
 
+import com.singapore.TripPlaner.Configuration.PasswordEncoder;
 import com.singapore.TripPlaner.Model.User.User;
 import com.singapore.TripPlaner.Model.User.UserRole;
 import com.singapore.TripPlaner.Repository.UserRepository;
@@ -23,18 +24,16 @@ private final UserRepository userRepository;
 
     @Transactional
     public User registerNewUser(User user){
-        if(emailExist(user.getEmail())){
-            throw new UsernameNotFoundException("There is an account with that email: " + user.getEmail());
-        } else if (!user.getPassword().equals(user.getMatchingPassword())) {
-            throw new UsernameNotFoundException("Passwords are not matching");
-        }
+//        if(emailExist(user.getEmail())){
+//            throw new UsernameNotFoundException("There is an account with that email: " + user.getEmail());
+//        }
         user.setUserRole(UserRole.USER);
         userRepository.save(user);
         return user;
     }
 
     private boolean emailExist(String email){
-        return userRepository.findUserByEmail(email).isPresent();
+        return userRepository.findUserByEmail(email).isEmpty();
     }
 
 }

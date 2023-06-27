@@ -1,6 +1,7 @@
 package com.singapore.TripPlaner.Configuration;
 
-import lombok.AllArgsConstructor;
+import com.singapore.TripPlaner.Model.User.User;
+import com.singapore.TripPlaner.Repository.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -9,9 +10,10 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import java.util.Properties;
+import java.util.Optional;
 
 
 @Configuration
@@ -20,20 +22,12 @@ import java.util.Properties;
         prePostEnabled = true,
         securedEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(inMemoryUserDetailsManager());
-    }
-
-    @Bean
-    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
-        final Properties users = new Properties();
-        users.put("user", "{noop}user,ROLE_USER,enabled");
-        users.put("superAdmin", "{noop}manager,ROLE_MANAGER, enabled");
-        users.put("admin", "{noop}admin,ROLE_ADMIN,enabled");
-        return new InMemoryUserDetailsManager(users);
+    public SecurityConfiguration(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -54,5 +48,30 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .csrf().disable();
+    }
+
+    protected void configurationGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .userDetailsService(userDetailsService())
+                .passwordEncoder(passwordEncoder.bCryptPasswordEncoder());
+    }
+
+    public UserDetails loadUserByEmail(String email)
+            throws UsernameNotFoundException {
+
+        Optional<User> user = userRepository.findUserByEmail(email);
+
+        if (user.isEmpty())
+            throw new UsernameNotFoundException("Bad credentials");
+
+        return new User(
+                user.get().getLogin(),
+                user.get().getUsername(),
+                user.get().getEmail(),
+                user.get().getPassword(),
+                user.get().getUserRole(),
+                user.get().getLocked(),
+                user.get().getEnabled()
+        );
     }
 }

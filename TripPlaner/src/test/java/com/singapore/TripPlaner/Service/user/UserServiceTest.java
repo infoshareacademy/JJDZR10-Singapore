@@ -21,7 +21,7 @@ class UserServiceTest {
     @InjectMocks
     private UserService userService;
     private User user = new User(
-            "testingUser",
+            "testUser",
             "Mockito",
             "test@wp.pl",
             "password",
@@ -32,9 +32,9 @@ class UserServiceTest {
 
     @Test
     void shouldReturnUserByUsername() {
-        when(userRepositoryMock.findUserByLogin("testingUser")).thenReturn(Optional.of(user));
+        when(userRepositoryMock.findUserByLogin("testUser")).thenReturn(Optional.of(user));
 
-        User testingUser = userService.loadUserByUsername("testingUser");
+        User testingUser = userService.loadUserByUsername("testUser");
 
         assertThat(testingUser).isEqualTo(user);
     }

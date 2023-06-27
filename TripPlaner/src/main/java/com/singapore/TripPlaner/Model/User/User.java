@@ -1,7 +1,5 @@
 package com.singapore.TripPlaner.Model.User;
 
-import com.singapore.TripPlaner.Service.Email.ValidEmail;
-import com.singapore.TripPlaner.Service.user.PasswordMatches;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,26 +18,23 @@ import java.util.Collections;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode
-@PasswordMatches
+//@PasswordMatches
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, unique = true)
     private String login;
-    @Min(3)
-    @Max(20)
+
     @NotNull
     @NotEmpty
     @Column(name = "name")
     private String name;
-//    @ValidEmail
-    @Email
+//    @Email
     @NotNull
     @NotEmpty
     private String email;
     @NotNull
-    @Min(5)
     @NotEmpty
     private String password;
     private String matchingPassword;
