@@ -55,8 +55,6 @@ public class Reader {
 //                return (City) object;
 //            case "com.singapore.TripPlaner.Model.Place":
 //                return this.createPlaceInstance(jsonObject, object);
-            case "com.singapore.TripPlaner.Model.Opinion":
-                return this.createOpinionInstance(jsonObject, object);
 //            case "com.singapore.TripPlaner.Model.Image":
 //                return this.createImageInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.TripPoint":
@@ -147,7 +145,7 @@ public class Reader {
         if (jsonObject.containsKey("userid")) {
             long idUser = (long) jsonObject.get("userid");
             User user = (User) this.getObjectById(User.class, idUser);
-            opinion.setUser(user);
+//            opinion.setUser(user);
         }
         return opinion;
     }

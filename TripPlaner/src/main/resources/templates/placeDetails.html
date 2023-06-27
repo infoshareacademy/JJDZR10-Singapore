@@ -35,11 +35,13 @@
                             </div>
 
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                           data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                           data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
@@ -60,14 +62,15 @@
             </div>
         </div>
         <div class="col-lg-4">
-            <div class="card mb-4">
+            <div class="mb-4">
                 <div class="card-body">
                     <div class="form-floating">
-                        <p>Formularz opinii</p>
-                        <!--<div th:insert="opinionForm"></div>-->
+                        <div th:insert="opinions/opinionForm"></div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-lg-4">
             <div class="card mb-4">
                 <div class="card-header">POGODA</div>
                 <div class="card-body">
@@ -87,13 +90,12 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card mb-12">
-                <div class="card-header">Opinie:</div>
+                <div class="card-header">OPINIE:</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-floating">
-<!--                                <div><span th:text="${place.opinion}"> </span></div>-->
-
+                                <div th:insert="opinions/opinionDetail"></div>
                             </div>
                         </div>
                     </div>
