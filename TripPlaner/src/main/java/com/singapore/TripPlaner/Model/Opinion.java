@@ -31,4 +31,7 @@ public class Opinion {
     @JoinColumn(name = "place_id")
     private Place place;
 
+    public Opinion(String comment) {
+        this.comment = comment;
+    }
 }

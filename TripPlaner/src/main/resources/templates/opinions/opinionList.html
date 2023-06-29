@@ -10,19 +10,17 @@
 
 <body>
 <nav th:insert="~{/fragments/dashboard :: nav}"></nav>
-<table class="table table-sm">
 
-    <tr th:each="opinion,iterStat: ${opinions}">
-        <td th:text="${iterStat.count}"/>
-        <td th:text="${opinion.userOpinion}"/>
-        <td th:text="${opinion.userRate}"/>
-        <td><a th:href="@{/opinions/edit{id}(id=${opinion.id})}" value="button"> Edytuj </a> </td>
-        <td><a th:href="@{/opinions/delete{id}(id=${opinion.id})}" value="button"> Usuń </a> </td>
-    </tr>
-</table>
-
-<div class="col-12">
-    <a th:href="@{/places}">Dodaj miejsce</a>
+<div class="container">
+    <table class="table table-sm">
+        <tr th:each="opinion,iterStat: ${opinions}">
+            <td th:text="${iterStat.count}"/>
+            <td th:text="${opinion.comment}"/>
+            <td th:text="${opinion.rate}"/>
+            <td><a th:href="@{/opinions/edit/{id}(id=${opinion.opinionId})}" value="button"> Edytuj </a></td>
+            <td><a th:href="@{/opinions/delete/{id}(id=${opinion.opinionId})}" value="button"> Usuń </a></td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>
