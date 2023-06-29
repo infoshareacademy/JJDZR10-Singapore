@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
+
 @Component
 public class WeatherClient {
     @Value("${WEATHER_URL}")
@@ -13,17 +15,20 @@ public class WeatherClient {
     @Value("${weatherClient.API_KEY}")
     public String API_KEY;
     private final RestTemplate restTemplate = new RestTemplate();
-
     public Weather getWeatherForCity(City city) {
-        OpenWeatherMainDto response = restTemplate.getForObject(WEATHER_URL + "weather?q={city}&appid={apiKey}&units=metric&lang=pl",
-                OpenWeatherMainDto.class,
+        OpenWeatherDto response = restTemplate.getForObject(WEATHER_URL + "weather?q={city}&appid={apiKey}&units=metric&lang=pl",
+                OpenWeatherDto.class,
                 city.getName(),
                 API_KEY);
         return Weather.builder()
                 .id(response.getId())
+                .tempMin(response.getMain().getTemp_min())
+                .tempMax(response.getMain().getTemp_max())
                 .temp(response.getMain().getTemp())
                 .pressure(response.getMain().getPressure())
                 .humidity(response.getMain().getHumidity())
+                .icon(Arrays.stream(response.getWeather()).toList().get(0).getIcon())
+                .description(Arrays.stream(response.getWeather()).toList().get(0).getDescription())
                 .build();
     }
 }

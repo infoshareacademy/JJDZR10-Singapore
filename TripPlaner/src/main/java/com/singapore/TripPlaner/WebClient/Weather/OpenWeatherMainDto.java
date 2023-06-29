@@ -1,13 +1,13 @@
 package com.singapore.TripPlaner.WebClient.Weather;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
-@AllArgsConstructor
-@NoArgsConstructor
 public class OpenWeatherMainDto {
-    private OpenWeatherDto main;
-    private long id;
+    private int temp;
+    private int pressure;
+    private int humidity;
+    private int temp_min;
+    private int temp_max;
+
 }

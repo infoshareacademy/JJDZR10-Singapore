@@ -3,7 +3,6 @@ package com.singapore.TripPlaner.Model;
 import lombok.*;
 
 @Getter
-@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,4 +11,8 @@ public class Weather {
     private int temp;
     private int pressure;
     private int humidity;
+    private String description;
+    private String icon;
+    private int tempMin;
+    private int tempMax;
 }

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
-    <link href="css/styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <nav th:insert="~{/fragments/dashboard :: nav}"></nav>
@@ -73,45 +73,108 @@
                             <div class="form-floating">
                                 <div>
                                     <div id="openweathermap-widget-22"></div>
-                                    <script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
-                                    window.myWidgetParam.push({id: 22,cityid: '7531926',appid: '2d4f83a0e00c8dd54b72e3d391eeb12e',units: 'metric',containerid: 'openweathermap-widget-22',  });
-                                    (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";
-                                        cript.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
-                                        var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);
-                                    })();</script>
-
+                                    <p class="card-text" th:text="${city.name}"/>
                                     <p class="card-text" th:text="${weather.id}"/>
                                     <p class="card-text" th:text="${weather.temp}"/>
                                     <p class="card-text" th:text="${weather.humidity}"/>
                                     <p class="card-text" th:text="${weather.pressure}"/>
+                                    <p class="card-text" th:text="${weather.description}"/>
+                                    <p class="card-text" th:text="${weather.icon}"/>
+                                    <p class="card-text" th:text="${weather.tempMax}"/>
+                                    <p class="card-text" th:text="${weather.tempMin}"/>
                                 </div>
-                                <div>
-                                    <!-- weather widget start -->
-                                    <div id="m-booked-vertical-one-prime-89099">
-                                        <div class="weather-customize weather-booked-vertical-one-prime" style="width:253px;" >
-                                            <div class="booked-vertical-prime-in"> <div class="booked-vertical-prime">
-                                                <div class="bwop-city">Warszawa</div>
-                                                <div class="bwop-icon wm06 "></div>
-                                                <div class="booked-bwop-today"> <div class="booked-bwop-today-temperature">
-                                                    <div class="booked-wzs-bwop-val"> <div class="booked-bwop-number"><span class="plus">+
-                                                        </span>23</div> <div class="booked-bwop-dergee">
-                                                        <div class="booked-wzs-bwop-dergee-val">&deg;</div>
-                                                        <div class="booked-wzs-bwop-dergee-name">C</div>
-                                                     </div> </div> </div> <div class="booked-bwop-today-extreme">
-                                                        <div class="booked-bwop booked-pd-h">
-                                                        <span>Max.:</span>
-                                                        <span class="plus">+
-                                                         </span>26</div>
-                                                    <div class="booked-bwop booked-pd-l">
-                                                        <span>Min.:</span><span class="plus">+
-                                                    </span>14</div>
-                                                </div> </div> <div class="bwop-state"> Zachmurzenie duże </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- weather widget end -->
-                                </div>
+                                <!--                                <div>-->
+                                <!--                                    &lt;!&ndash; weather widget start &ndash;&gt;-->
+                                <!--                                    <div id="m-booked-vertical-one-prime-89099">-->
+                                <!--                                        <div class="weather-customize weather-booked-vertical-one-prime" style="width:253px;" >-->
+                                <!--                                            <div class="booked-vertical-prime-in">-->
+                                <!--                                                <div class="booked-vertical-prime">-->
+                                <!--&lt;!&ndash;                                                <div class="bwop-city" th:text="${city.name}></div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                                <div class="bwop-icon wm06 "></div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                                <div class="booked-bwop-today">&ndash;&gt;-->
+                                <!--                                                    <div class="booked-bwop-today-temperature">-->
+                                <!--                                                    <div class="booked-wzs-bwop-val">-->
+                                <!--                                                        <div class="booked-bwop-number">-->
+                                <!--&lt;!&ndash;                                                            <span class="plus" th:text="${weather.temp}>+</span>&deg;C</div> <div class="booked-bwop-dergee">&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                                        <div class="booked-wzs-bwop-dergee-val">&deg;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                                        <div class="booked-wzs-bwop-dergee-name">C</div>&ndash;&gt;-->
+                                <!--                                                     </div> </div> </div> <div class="booked-bwop-today-extreme">-->
+                                <!--                                                        <div class="booked-bwop booked-pd-h">-->
+                                <!--                                                        <span>Max.:</span>-->
+                                <!--                                                        <span class="plus">+-->
+                                <!--                                                         </span>26</div>-->
+                                <!--                                                    <div class="booked-bwop booked-pd-l">-->
+                                <!--                                                        <span>Min.:</span><span class="plus">+-->
+                                <!--                                                    </span>14</div>-->
+                                <!--                                                </div> </div> <div class="bwop-state"> Zachmurzenie duże </div>-->
+                                <!--                                            </div>-->
+                                <!--                                            </div>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                    <style>-->
+                                <!--                                        #demo {-->
+                                <!--                                            position: relative;-->
+                                <!--                                            overflow: hidden;-->
+                                <!--                                            max-width: 500px;-->
+                                <!--                                            margin: 15px auto 0 auto;-->
+                                <!--                                        }-->
+                                <!--                                    </style>-->
+
+                                <!--                                    <section id="demo">-->
+                                <!--                                        <div class="ow-widget">-->
+                                <!--                                            <div class="ow-row">-->
+                                <!--                                                <span class="ow-city-name"></span>-->
+                                <!--                                            </div>-->
+                                <!--                                            <div class="ow-row">-->
+                                <!--                                                <div class="wi ow-ico ow-ico-current pull-left"></div>-->
+                                <!--                                                <div class="ow-temp-current pull-left"></div>-->
+                                <!--                                                <div class="ow-current-desc pull-left">-->
+                                <!--                                                    <div>Pressure: <span class="ow-pressure"></span></div>-->
+                                <!--                                                    <div>Humidity: <span class="ow-humidity"></span></div>-->
+                                <!--                                                    <div>Wind: <span class="ow-wind"></span></div>-->
+                                <!--                                                </div>-->
+                                <!--                                            </div>-->
+                                <!--                                            <div class="ow-row ow-forecast">-->
+                                <!--                                                <div class="ow-forecast-item">-->
+                                <!--                                                    <div class="ow-day"></div>-->
+                                <!--                                                    <div class="wi ow-ico ow-ico-forecast"></div>-->
+                                <!--                                                    <div class="ow-forecast-temp">-->
+                                <!--                                                        <span class="max"></span>-->
+                                <!--                                                        <span class="min"></span>-->
+                                <!--                                                    </div>-->
+                                <!--                                                </div>-->
+
+                                <!--                                                <div class="ow-forecast-item">-->
+                                <!--                                                    <div class="ow-day"></div>-->
+                                <!--                                                    <div class="wi ow-ico ow-ico-forecast"></div>-->
+                                <!--                                                    <div class="ow-forecast-temp">-->
+                                <!--                                                        <span class="max"></span>-->
+                                <!--                                                        <span class="min"></span>-->
+                                <!--                                                    </div>-->
+                                <!--                                                </div>-->
+
+                                <!--                                                <div class="ow-forecast-item">-->
+                                <!--                                                    <div class="ow-day"></div>-->
+                                <!--                                                    <div class="wi ow-ico ow-ico-forecast"></div>-->
+                                <!--                                                    <div class="ow-forecast-temp">-->
+                                <!--                                                        <span class="max"></span>-->
+                                <!--                                                        <span class="min"></span>-->
+                                <!--                                                    </div>-->
+                                <!--                                                </div>-->
+
+                                <!--                                                <div class="ow-forecast-item">-->
+                                <!--                                                    <div class="ow-day"></div>-->
+                                <!--                                                    <div class="wi ow-ico ow-ico-forecast"></div>-->
+                                <!--                                                    <div class="ow-forecast-temp">-->
+                                <!--                                                        <span class="max"></span>-->
+                                <!--                                                        <span class="min"></span>-->
+                                <!--                                                    </div>-->
+                                <!--                                                </div>-->
+
+                                <!--                                            </div>-->
+                                <!--                                        </div>-->
+                                <!--                                    </section>-->
+                                <!--                                    &lt;!&ndash; weather widget end &ndash;&gt;-->
                             </div>
                         </div>
                     </div>
@@ -119,6 +182,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <div class="container">
     <div class="row">

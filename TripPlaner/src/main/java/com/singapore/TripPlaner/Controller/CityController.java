@@ -9,6 +9,7 @@ import com.singapore.TripPlaner.Service.WeatherService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @Controller
@@ -35,7 +36,7 @@ public class CityController {
     public String createCity(@ModelAttribute City city, @ModelAttribute Image image) {
         cityService.createCity(city);
         imageService.saveImage(image);
-        imageService.saveCityForImage(image,city);
+        imageService.saveCityForImage(image, city);
         return "redirect:/cities/";
     }
 
