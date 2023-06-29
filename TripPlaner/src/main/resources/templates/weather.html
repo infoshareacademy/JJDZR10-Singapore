@@ -47,7 +47,7 @@
 
         .temp-details > p > span, .grey {
             color: #585A65FF;
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .fa {
@@ -78,7 +78,7 @@
                     <div class="temp-details flex-grow-1">
                         <p class="my-1">
                             <!--                            <img src="https://i.imgur.com/B9kqOzp.png" height="19px">-->
-                            <span>Prędkość wiatru:  4 m/s  </span>
+                            <span th:text="'Prędkość wiatru: ' + ${weather.speed}+' m/s'"> </span>
                         </p>
                         <p class="my-1">
                             <i class="fa fa-tint mr-2" aria-hidden="true"></i>

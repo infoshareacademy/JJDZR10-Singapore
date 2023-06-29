@@ -50,134 +50,37 @@
                 <div class="card-body">
                     <h2 class="card-title" th:text="${city.name}"></h2>
                     <p class="card-text" th:text="${city.description}"/>
-                    <p class="card-text">Ocena:
-                    </p>
                     <button onclick="goBack()">Powrót</button>
                 </div>
             </div>
         </div>
         <div class="col-lg-4">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div class="form-floating">
-                        <p>Formularz opinii</p>
-                        <!--                        <div th:insert="opinionForm"></div>-->
-                    </div>
-                </div>
-            </div>
+            <!--            <div class="card mb-4">-->
+            <!--                <div class="card-body">-->
+            <!--                    <div class="form-floating">-->
+            <!--                        <p>Formularz opinii</p>-->
+            <!--                        <div th:insert="opinionForm"></div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
             <div class="card mb-4">
                 <div class="card-header">POGODA</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-floating">
-                                <div>
-                                    <div id="openweathermap-widget-22"></div>
-                                    <p class="card-text" th:text="${city.name}"/>
-                                    <p class="card-text" th:text="${weather.id}"/>
-                                    <p class="card-text" th:text="${weather.temp}"/>
-                                    <p class="card-text" th:text="${weather.humidity}"/>
-                                    <p class="card-text" th:text="${weather.pressure}"/>
-                                    <p class="card-text" th:text="${weather.description}"/>
-                                    <p class="card-text" th:text="${weather.icon}"/>
-                                    <p class="card-text" th:text="${weather.tempMax}"/>
-                                    <p class="card-text" th:text="${weather.tempMin}"/>
+                                    <!--                                    TUTAJ POGODA -->
+
+
+                                    <!--                                    <div id="openweathermap-widget-22"></div>-->
+                                    <!--                                    <p class="card-text" th:text="${city.name}"/>-->
+                                    <!--                                    <p class="card-text" th:text="${weather.id}"/>-->
+                                    <!--                                    <p class="card-text" th:text="${weather.temp}"/>-->
+                                    <!--                                    <p class="card-text" th:text="${weather.humidity}"/>-->
+                                    <!--                                    <p class="card-text" th:text="${weather.pressure}"/>-->
+                                    <!--                                    <p class="card-text" th:text="${weather.description}"/>-->
+                                    <!--                                    <p class="card-text" th:text="${weather.icon}"/>-->
                                 </div>
-                                <div>
-                                    <div th:insert="~{/fragments/weather :: div.another}"></div>
-                                </div>
-                                <!--                                <div>-->
-                                <!--                                    &lt;!&ndash; weather widget start &ndash;&gt;-->
-                                <!--                                    <div id="m-booked-vertical-one-prime-89099">-->
-                                <!--                                        <div class="weather-customize weather-booked-vertical-one-prime" style="width:253px;" >-->
-<!--                                                                            <div class="booked-vertical-prime-in">-->
-<!--                                                                                <div class="booked-vertical-prime">-->
-<!--                                                                                <div class="bwop-city" th:text="${city.name}></div>-->
-<!--                                                                                <div class="bwop-icon wm06 "></div>-->
-<!--                                                                                <div class="booked-bwop-today">-->
-<!--                                                                                    <div class="booked-bwop-today-temperature">-->
-<!--                                                                                    <div class="booked-wzs-bwop-val">-->
-<!--                                                                                        <div class="booked-bwop-number">-->
-<!--                                                                                            <span class="plus" th:text="${weather.temp}>+</span>&deg;C</div> <div class="booked-bwop-dergee">-->
-                                <!--                                                        <div class="booked-wzs-bwop-dergee-val">&deg;</div>-->
-                                <!--                                                        <div class="booked-wzs-bwop-dergee-name">C</div>-->
-<!--                                                                                     </div> </div> </div> <div class="booked-bwop-today-extreme">-->
-                                <!--                                                        <div class="booked-bwop booked-pd-h">-->
-                                <!--                                                        <span>Max.:</span>-->
-                                <!--                                                        <span class="plus">+-->
-                                <!--                                                         </span>26</div>-->
-                                <!--                                                    <div class="booked-bwop booked-pd-l">-->
-                                <!--                                                        <span>Min.:</span><span class="plus">+-->
-                                <!--                                                    </span>14</div>-->
-                                <!--                                                </div> </div> <div class="bwop-state"> Zachmurzenie duże </div>-->
-                                <!--                                            </div>-->
-                                <!--                                            </div>-->
-                                <!--                                        </div>-->
-                                <!--                                    </div>-->
-                                <!--                                    <style>-->
-                                <!--                                        #demo {-->
-                                <!--                                            position: relative;-->
-                                <!--                                            overflow: hidden;-->
-                                <!--                                            max-width: 500px;-->
-                                <!--                                            margin: 15px auto 0 auto;-->
-                                <!--                                        }-->
-                                <!--                                    </style>-->
-
-                                <!--                                    <section id="demo">-->
-                                <!--                                        <div class="ow-widget">-->
-                                <!--                                            <div class="ow-row">-->
-                                <!--                                                <span class="ow-city-name"></span>-->
-                                <!--                                            </div>-->
-                                <!--                                            <div class="ow-row">-->
-                                <!--                                                <div class="wi ow-ico ow-ico-current pull-left"></div>-->
-                                <!--                                                <div class="ow-temp-current pull-left"></div>-->
-                                <!--                                                <div class="ow-current-desc pull-left">-->
-                                <!--                                                    <div>Pressure: <span class="ow-pressure"></span></div>-->
-                                <!--                                                    <div>Humidity: <span class="ow-humidity"></span></div>-->
-                                <!--                                                    <div>Wind: <span class="ow-wind"></span></div>-->
-                                <!--                                                </div>-->
-                                <!--                                            </div>-->
-                                <!--                                            <div class="ow-row ow-forecast">-->
-                                <!--                                                <div class="ow-forecast-item">-->
-                                <!--                                                    <div class="ow-day"></div>-->
-                                <!--                                                    <div class="wi ow-ico ow-ico-forecast"></div>-->
-                                <!--                                                    <div class="ow-forecast-temp">-->
-                                <!--                                                        <span class="max"></span>-->
-                                <!--                                                        <span class="min"></span>-->
-                                <!--                                                    </div>-->
-                                <!--                                                </div>-->
-
-                                <!--                                                <div class="ow-forecast-item">-->
-                                <!--                                                    <div class="ow-day"></div>-->
-                                <!--                                                    <div class="wi ow-ico ow-ico-forecast"></div>-->
-                                <!--                                                    <div class="ow-forecast-temp">-->
-                                <!--                                                        <span class="max"></span>-->
-                                <!--                                                        <span class="min"></span>-->
-                                <!--                                                    </div>-->
-                                <!--                                                </div>-->
-
-                                <!--                                                <div class="ow-forecast-item">-->
-                                <!--                                                    <div class="ow-day"></div>-->
-                                <!--                                                    <div class="wi ow-ico ow-ico-forecast"></div>-->
-                                <!--                                                    <div class="ow-forecast-temp">-->
-                                <!--                                                        <span class="max"></span>-->
-                                <!--                                                        <span class="min"></span>-->
-                                <!--                                                    </div>-->
-                                <!--                                                </div>-->
-
-                                <!--                                                <div class="ow-forecast-item">-->
-                                <!--                                                    <div class="ow-day"></div>-->
-                                <!--                                                    <div class="wi ow-ico ow-ico-forecast"></div>-->
-                                <!--                                                    <div class="ow-forecast-temp">-->
-                                <!--                                                        <span class="max"></span>-->
-                                <!--                                                        <span class="min"></span>-->
-                                <!--                                                    </div>-->
-                                <!--                                                </div>-->
-
-                                <!--                                            </div>-->
-                                <!--                                        </div>-->
-                                <!--                                    </section>-->
-                                <!--                                    &lt;!&ndash; weather widget end &ndash;&gt;-->
                             </div>
                         </div>
                     </div>
@@ -186,25 +89,25 @@
         </div>
     </div>
 </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card mb-12">
-                <div class="card-header">Opinie:</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-floating">
-                                <!--                                <div th:insert="opinionDetails"></div>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!--</div>-->
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-lg-12">-->
+<!--            <div class="card mb-12">-->
+<!--                <div class="card-header">Opinie:</div>-->
+<!--                <div class="card-body">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-sm-12">-->
+<!--                            <div class="form-floating">-->
+<!--                                &lt;!&ndash;                                <div th:insert="opinionDetails"></div>&ndash;&gt;-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <script>
     function goBack() {

@@ -218,6 +218,8 @@ VALUES ("https://s-trojmiasto.pl/zdj/c/n/9/2825/999x0/2825085-Bazylika-Mariacka-
        ("https://meteor-turystyka.pl/images/places/0/28.jpg", 18,4),
        ("https://www.national-geographic.pl/media/cache/big/uploads/media/default/0014/39/krakow.jpeg", 18,4),
        ("https://www.morizon.pl/blog/wp-content/uploads/2015/06/krakow-4439817_640.jpg", 18,4),
+       ("https://krakowmonamour.com/wp-content/uploads/2020/12/Planty-Park-Krakow.jpg", 19,4),
+       ("https://orlegniazda.pl/Media/Default/.MainStorage/ContentItemDocumentTypeRecord/0mpzsjha.fn1/planty.JPG", 19,4),
        ("https://krakow.wiki/wp-content/uploads/2016/10/planty.jpg", 19,4),
        ("https://cdn.getyourguide.com/img/tour/a2568e7d9fc18e02.jpeg/145.jpg", 20,4),
        ("https://jura.slaskie.travel/Media/Default/.MainStorage/ContentItemDocumentTypeRecord/oyd0r1it.bso/starka1.jpg",

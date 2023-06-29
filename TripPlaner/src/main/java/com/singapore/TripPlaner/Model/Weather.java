@@ -13,7 +13,5 @@ public class Weather {
     private int humidity;
     private String description;
     private String icon;
-    private int tempMin;
-    private int tempMax;
-    private int wind;
+    private double speed;
 }

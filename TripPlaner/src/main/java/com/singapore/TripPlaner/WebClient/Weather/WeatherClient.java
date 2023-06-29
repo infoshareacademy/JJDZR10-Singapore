@@ -25,8 +25,7 @@ public class WeatherClient {
 
         return Weather.builder()
                 .id(response.getId())
-                .tempMin(response.getMain().getTemp_min())
-                .tempMax(response.getMain().getTemp_max())
+                .speed(response.getWind().getSpeed())
                 .temp(response.getMain().getTemp())
                 .pressure(response.getMain().getPressure())
                 .humidity(response.getMain().getHumidity())

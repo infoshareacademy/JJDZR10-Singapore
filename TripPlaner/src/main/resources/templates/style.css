@@ -1,100 +1,66 @@
-/*@media (max-width: 576px) {*/
-/*    .xs {color:red;font-weight:bold;}*/
-/*}*/
-
-/*@media (min-width: 576px) and (max-width:768px) {*/
-/*    .sm {color:red;font-weight:bold;}*/
-/*}*/
-
-/*@media (min-width: 768px) and (max-width:992px) {*/
-/*    .md {color:red;font-weight:bold;}*/
-/*}*/
-
-/*@media (min-width: 992px) and (max-width:1200px) {*/
-/*    .lg {color:red;font-weight:bold;}*/
-/*}*/
-
-/*@media (min-width: 1200px) {*/
-/*    .xl {color:red;font-weight:bold;}*/
-/*}*/
-
-$background-color: #44b2e2;
-$text-color: #ffffff;
-
-@mixin heading {
-    letter-spacing: 1px;
-    line-height: 1.111em;
-    font-weight: bold;
+@media (max-width: 576px) {
+    .xs {color:red;font-weight:bold;}
 }
 
-.ow-row {
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 4%;
-
-&:last-child {
-     margin-bottom: 0;
- }
+@media (min-width: 576px) and (max-width:768px) {
+    .sm {color:red;font-weight:bold;}
 }
 
-.ow-ico {
-    line-height: 1.1em;
+@media (min-width: 768px) and (max-width:992px) {
+    .md {color:red;font-weight:bold;}
 }
 
-.ow-widget {
-    background-color: $background-color;
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 16px;
-    color: $text-color;
-    padding: 2%;
-
-.pull-left {
-    float: left;
+@media (min-width: 992px) and (max-width:1200px) {
+    .lg {color:red;font-weight:bold;}
 }
 
-.pull-right {
-    float: right;
-}
-}
-
-.ow-city-name {
-    @include heading;
-    font-size: 24px;
+@media (min-width: 1200px) {
+    .xl {color:red;font-weight:bold;}
 }
 
-.ow-ico-current {
-    font-size: 80px;
-    width: 1.1em;
-    padding-top: 13px;
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+
+html, body {
+    height: 100%;
 }
 
-.ow-temp-current {
-    font-size:60px;
-    margin: 0 10%;
+* {
+    padding: 0px;
+    margin: 0px;
 }
 
-.ow-current-desc {
-    line-height: 1.5em;
+body {
+    background-color: #a5a5b1;
+    display: grid;
+    place-items: center;
+
 }
 
-.ow-forecast-item {
-    float: left;
-    width: calc(25% - 1px);
-    text-align: center;
-    border-right:1px solid white;
-
-&:last-child {
-     border-right: 0;
- }
-
-.ow-ico-forecast {
-    font-size: 30px;
-    position: relative;
-    margin: 10px 0;
+.card {
+    background-color: #ffffff;
+    border-radius: 50px;
+    color: #6f707d;
+    font-family: 'Marcellus', serif;
 }
 
-.ow-forecast-temp span {
-    display: inline-block;
-    margin: 0 5px;
+#heading {
+    font-size: 55px;
+    color: #2b304d;
 }
+
+.temp {
+    place-items: center;
+}
+
+.temp-details > p > span, .grey {
+    color: #a3acc1;
+    font-size: 12px;
+}
+
+.fa {
+    color: #a5a5b1
+}
+
+*:focus {
+    outline: none;
 }

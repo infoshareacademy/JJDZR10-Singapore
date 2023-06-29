@@ -49,7 +49,7 @@ public class CityController {
         model.addAttribute("images", cityByID.getImages());
         model.addAttribute("weather", weather);
         model.addAttribute("localDateTime", LocalDateTime.now());
-        return "weather";
+        return "cityDetails";
     }
 
     @GetMapping("/city/create")
