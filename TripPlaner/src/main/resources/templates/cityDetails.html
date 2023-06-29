@@ -70,16 +70,14 @@
                         <div class="col-sm-6">
                             <div class="form-floating">
                                     <!--                                    TUTAJ POGODA -->
-
-
-                                    <!--                                    <div id="openweathermap-widget-22"></div>-->
-                                    <!--                                    <p class="card-text" th:text="${city.name}"/>-->
-                                    <!--                                    <p class="card-text" th:text="${weather.id}"/>-->
-                                    <!--                                    <p class="card-text" th:text="${weather.temp}"/>-->
-                                    <!--                                    <p class="card-text" th:text="${weather.humidity}"/>-->
-                                    <!--                                    <p class="card-text" th:text="${weather.pressure}"/>-->
-                                    <!--                                    <p class="card-text" th:text="${weather.description}"/>-->
-                                    <!--                                    <p class="card-text" th:text="${weather.icon}"/>-->
+                                <div th:insert="weather.html::
+                                weather (cityName=${city.name},
+                                weatherTemp=${weather.temp},
+                                weatherDesc=${weather.description},
+                                weatherSpeed=${weather.speed},
+                                weatherHum=${weather.humidity},
+                                weatherPres=${weather.pressure},
+                                weatherIcon=${weather.icon})">
                                 </div>
                             </div>
                         </div>
