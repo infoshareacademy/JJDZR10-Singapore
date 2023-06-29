@@ -1,48 +1,47 @@
 package com.singapore.TripPlaner.Model.User;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.singapore.TripPlaner.Model.Opinion;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode
-//@PasswordMatches
+@ToString
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, unique = true)
     private String login;
-
     @NotNull
     @NotEmpty
     @Column(name = "name")
     private String name;
-//    @Email
-    @NotNull
-    @NotEmpty
+    @Email
+    @Column(nullable = false, unique = true)
     private String email;
     @NotNull
     @NotEmpty
     private String password;
-    private String matchingPassword;
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private UserRole userRole;
     private Boolean locked;
     private Boolean enabled;
+    @OneToMany (mappedBy = "place", cascade = CascadeType.ALL)
+    private List<Opinion> opinions = new ArrayList<>();
 
     public User(String login, String name, String email, String password, UserRole userRole, Boolean locked, Boolean enabled) {
         this.login = login;

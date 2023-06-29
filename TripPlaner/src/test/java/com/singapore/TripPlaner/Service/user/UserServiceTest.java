@@ -3,6 +3,7 @@ package com.singapore.TripPlaner.Service.user;
 import com.singapore.TripPlaner.Model.User.User;
 import com.singapore.TripPlaner.Model.User.UserRole;
 import com.singapore.TripPlaner.Repository.UserRepository;
+import com.singapore.TripPlaner.Service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

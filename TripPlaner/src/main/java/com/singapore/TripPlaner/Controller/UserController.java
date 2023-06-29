@@ -2,8 +2,7 @@ package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Configuration.PasswordEncoder;
 import com.singapore.TripPlaner.Model.User.User;
-import com.singapore.TripPlaner.Service.user.UserService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import com.singapore.TripPlaner.Service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,17 +19,16 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/user/registration")
+    @GetMapping("/register")
     public String registration (Model model){
         User user = new User();
         model.addAttribute("user", user);
         return "user/registration";
     }
 
-    @PostMapping("/user/registration")
+    @PostMapping("/register")
     public String registrationUserAccount(@ModelAttribute User user){
             user.setPassword(passwordEncoder.bCryptPasswordEncoder().encode(user.getPassword()));
-            user.setMatchingPassword(passwordEncoder.bCryptPasswordEncoder().encode(user.getMatchingPassword()));
             userService.registerNewUser(user);
         return "redirect:/";
     }
