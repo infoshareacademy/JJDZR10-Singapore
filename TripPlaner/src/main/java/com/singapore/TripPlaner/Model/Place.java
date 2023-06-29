@@ -2,6 +2,7 @@ package com.singapore.TripPlaner.Model;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Table(name = Place.TABLE_NAME)
+@AllArgsConstructor
 public class Place {
     public static final String TABLE_NAME = "place";
 
@@ -36,8 +38,8 @@ public class Place {
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
-    @Column(name = "numberOfOpinions")
-    private int numberOfOpinions;
+    @OneToMany (mappedBy = "place", cascade = CascadeType.ALL)
+    private List <Opinion> opinions = new ArrayList<>();
 
     @Enumerated(value = EnumType.STRING)
     private Type type;

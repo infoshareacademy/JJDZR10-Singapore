@@ -9,80 +9,7 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-primary sticky-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                 class="bi bi-briefcase-fill" viewBox="0 0 16 16">
-                <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"/>
-                <path d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
-            </svg>
-        </a>
-        <a class="navbar-brand" href="#">Planer wycieczek</a>
-        <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarScroll">
-            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 1">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Strona główna</a>
-                </li>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Menu planer
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Dodaj</a></li>
-                        <li><a class="dropdown-item" href="#">Edytuj</a></li>
-                        <li><a class="dropdown-item" href="#">Usuń</a></li>
-                        <li><a class="dropdown-item" href="#">Losuj</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Wyszukaj</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle me-2" data-bs-toggle="dropdown"
-                        aria-expanded="false" data-bs-auto-close="outside">
-                    Zaloguj
-                </button>
-                <form class="dropdown-menu p-4">
-                    <div class="mb-3">
-                        <label for="exampleDropdownFormEmail2" class="form-label">Adres email</label>
-                        <input type="email" class="form-control" id="exampleDropdownFormEmail2"
-                               placeholder="Adres e-mail">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleDropdownFormPassword2" class="form-label">Hasło</label>
-                        <input type="password" class="form-control" id="exampleDropdownFormPassword2"
-                               placeholder="Hasło">
-                    </div>
-                    <div class="mb-3">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-                            <label class="form-check-label" for="dropdownCheck2">
-                                Pamiętaj mnie
-                            </label>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Zaloguj</button>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Nowy tutaj? Zarejestruj się!</a>
-                    <a class="dropdown-item" href="#">Zapomniałeś hasła? Przypomnij!</a>
-                </form>
-            </div>
-            <form class="d-flex" role="search">
-                <input class="form-control me-1" type="search" placeholder="Szukaj" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Szukaj</button>
-            </form>
-        </div>
-    </div>
-</nav>
+<nav th:insert="~{/fragments/dashboard :: nav}"></nav>
 <div class="container text-center my-5">
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
         <div class="carousel-indicators">
@@ -181,7 +108,7 @@
                     <h5 class="card-title">Opinie</h5>
                     <p class="card-text">Opinia to subiektywna ocena, zdanie lub wrażenie, na przykład na temat danej
                         wycieczki, miasta czy miejsca. Może pomóc innym podjąć właściwe decyzje.</p>
-                    <a href="#" class="btn btn-primary">Zobacz</a>
+                    <a href="/opinions" class="btn btn-primary">Zobacz</a>
                 </div>
             </div>
         </div>
