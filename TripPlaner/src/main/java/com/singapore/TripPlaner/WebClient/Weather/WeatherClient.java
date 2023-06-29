@@ -3,6 +3,8 @@ package com.singapore.TripPlaner.WebClient.Weather;
 import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Model.Weather;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,6 +22,7 @@ public class WeatherClient {
                 OpenWeatherDto.class,
                 city.getName(),
                 API_KEY);
+
         return Weather.builder()
                 .id(response.getId())
                 .tempMin(response.getMain().getTemp_min())

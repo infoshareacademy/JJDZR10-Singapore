@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -47,7 +48,8 @@ public class CityController {
         model.addAttribute("city", cityByID);
         model.addAttribute("images", cityByID.getImages());
         model.addAttribute("weather", weather);
-        return "cityDetails";
+        model.addAttribute("localDateTime", LocalDateTime.now());
+        return "weather";
     }
 
     @GetMapping("/city/create")

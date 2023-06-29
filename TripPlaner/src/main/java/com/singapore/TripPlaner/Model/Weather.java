@@ -15,4 +15,5 @@ public class Weather {
     private String icon;
     private int tempMin;
     private int tempMax;
+    private int wind;
 }

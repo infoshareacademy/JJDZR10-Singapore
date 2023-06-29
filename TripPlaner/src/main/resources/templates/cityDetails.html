@@ -83,22 +83,25 @@
                                     <p class="card-text" th:text="${weather.tempMax}"/>
                                     <p class="card-text" th:text="${weather.tempMin}"/>
                                 </div>
+                                <div>
+                                    <div th:insert="~{/fragments/weather :: div.another}"></div>
+                                </div>
                                 <!--                                <div>-->
                                 <!--                                    &lt;!&ndash; weather widget start &ndash;&gt;-->
                                 <!--                                    <div id="m-booked-vertical-one-prime-89099">-->
                                 <!--                                        <div class="weather-customize weather-booked-vertical-one-prime" style="width:253px;" >-->
-                                <!--                                            <div class="booked-vertical-prime-in">-->
-                                <!--                                                <div class="booked-vertical-prime">-->
-                                <!--&lt;!&ndash;                                                <div class="bwop-city" th:text="${city.name}></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                                <div class="bwop-icon wm06 "></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                                <div class="booked-bwop-today">&ndash;&gt;-->
-                                <!--                                                    <div class="booked-bwop-today-temperature">-->
-                                <!--                                                    <div class="booked-wzs-bwop-val">-->
-                                <!--                                                        <div class="booked-bwop-number">-->
-                                <!--&lt;!&ndash;                                                            <span class="plus" th:text="${weather.temp}>+</span>&deg;C</div> <div class="booked-bwop-dergee">&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                                        <div class="booked-wzs-bwop-dergee-val">&deg;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                                        <div class="booked-wzs-bwop-dergee-name">C</div>&ndash;&gt;-->
-                                <!--                                                     </div> </div> </div> <div class="booked-bwop-today-extreme">-->
+<!--                                                                            <div class="booked-vertical-prime-in">-->
+<!--                                                                                <div class="booked-vertical-prime">-->
+<!--                                                                                <div class="bwop-city" th:text="${city.name}></div>-->
+<!--                                                                                <div class="bwop-icon wm06 "></div>-->
+<!--                                                                                <div class="booked-bwop-today">-->
+<!--                                                                                    <div class="booked-bwop-today-temperature">-->
+<!--                                                                                    <div class="booked-wzs-bwop-val">-->
+<!--                                                                                        <div class="booked-bwop-number">-->
+<!--                                                                                            <span class="plus" th:text="${weather.temp}>+</span>&deg;C</div> <div class="booked-bwop-dergee">-->
+                                <!--                                                        <div class="booked-wzs-bwop-dergee-val">&deg;</div>-->
+                                <!--                                                        <div class="booked-wzs-bwop-dergee-name">C</div>-->
+<!--                                                                                     </div> </div> </div> <div class="booked-bwop-today-extreme">-->
                                 <!--                                                        <div class="booked-bwop booked-pd-h">-->
                                 <!--                                                        <span>Max.:</span>-->
                                 <!--                                                        <span class="plus">+-->
