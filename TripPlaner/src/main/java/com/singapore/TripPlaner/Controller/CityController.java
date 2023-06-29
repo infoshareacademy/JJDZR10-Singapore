@@ -2,8 +2,10 @@ package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Model.Image;
+import com.singapore.TripPlaner.Model.Weather;
 import com.singapore.TripPlaner.Service.CityService;
 import com.singapore.TripPlaner.Service.ImageService;
+import com.singapore.TripPlaner.Service.WeatherService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +15,12 @@ import java.util.List;
 public class CityController {
     private final CityService cityService;
     private final ImageService imageService;
+    private final WeatherService weatherService;
 
-    public CityController(CityService cityService, ImageService imageService) {
+    public CityController(CityService cityService, ImageService imageService, WeatherService weatherService) {
         this.cityService = cityService;
         this.imageService = imageService;
+        this.weatherService = weatherService;
     }
 
     @GetMapping("/cities")
@@ -37,9 +41,11 @@ public class CityController {
 
     @GetMapping("/city/{id}")
     public String cityDetails(@RequestParam(required = true) Long id, Model model) {
-        City city = cityService.findById(id);
-        model.addAttribute("city", city);
-        model.addAttribute("images", city.getImages());
+        City cityByID = cityService.findById(id);
+        Weather weather = weatherService.getWeather(cityByID);
+        model.addAttribute("city", cityByID);
+        model.addAttribute("images", cityByID.getImages());
+        model.addAttribute("weather", weather);
         return "cityDetails";
     }
 
