@@ -3,12 +3,11 @@ package com.singapore.TripPlaner.Controller;
 import com.singapore.TripPlaner.Model.Image;
 import com.singapore.TripPlaner.Model.Opinion;
 import com.singapore.TripPlaner.Model.Place;
-import com.singapore.TripPlaner.Model.Weather;
 import com.singapore.TripPlaner.Service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -50,6 +49,7 @@ public class PlaceController {
         model.addAttribute("opinionDetail", opinionService.getRandomOpinion(place));
         model.addAttribute("opinion", new Opinion());
         model.addAttribute("weather", weatherService.getWeather(place.getCity()));
+        model.addAttribute("localDateTime", LocalDateTime.now());
         return "placeDetails";
     }
 

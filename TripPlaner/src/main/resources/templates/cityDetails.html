@@ -63,7 +63,6 @@
             <!--            </div>-->
             <div class="card mb-0">
                 <div class="card-header">POGODA</div>
-                <!--                                    TUTAJ POGODA -->
                 <div th:insert="weather.html::
                                 weather (cityName=${city.name},
                                 weatherTemp=${weather.temp},
@@ -71,6 +70,7 @@
                                 weatherSpeed=${weather.speed},
                                 weatherHum=${weather.humidity},
                                 weatherPres=${weather.pressure},
+                                localDateTime=${localDateTime},
                                 weatherIcon=${weather.icon})">
                 </div>
             </div>

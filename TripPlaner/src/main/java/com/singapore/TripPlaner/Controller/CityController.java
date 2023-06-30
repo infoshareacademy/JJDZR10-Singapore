@@ -2,14 +2,12 @@ package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Model.Image;
-import com.singapore.TripPlaner.Model.Weather;
 import com.singapore.TripPlaner.Service.CityService;
 import com.singapore.TripPlaner.Service.ImageService;
 import com.singapore.TripPlaner.Service.WeatherService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -47,6 +45,7 @@ public class CityController {
         model.addAttribute("city", cityByID);
         model.addAttribute("images", cityByID.getImages());
         model.addAttribute("weather", weatherService.getWeather(cityByID));
+        model.addAttribute("localDateTime", LocalDateTime.now());
         return "cityDetails";
     }
 
