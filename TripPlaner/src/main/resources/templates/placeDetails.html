@@ -19,7 +19,6 @@
 <nav th:insert="~{/fragments/dashboard :: nav}"></nav>
 <h1 style="margin-top:1.2cm; margin-bottom:1cm">
 </h1>
-
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
@@ -33,7 +32,6 @@
                             <div class="carousel-item" th:each="image : ${images}">
                                 <img class="d-block w-100" th:src="${image.url}">
                             </div>
-
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
                            data-slide="prev">
@@ -50,7 +48,6 @@
                 <div class="card-body">
                     <h2 class="card-title" th:text="${place.name}"></h2>
                     <p class="card-text" th:text="${place.description}"/>
-
                     <div><span>Ocena: </span><span th:text="${place.rate}"> </span><span>/5</span></div>
                     <div>
                         <span th:if="${place.price==0}"></span>
@@ -68,23 +65,20 @@
                         <div th:insert="opinions/opinionForm"></div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="card mb-4">
-                <div class="card-header">POGODA</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-floating">
-                                <div> TODO aktualna pogoda</div>
-                            </div>
-                        </div>
+                <div class="card mb-0">
+                    <div class="card-header">POGODA</div>
+                    <div th:insert="weather.html::
+                                weather (cityName=${place.getCity().getName()},
+                                weatherTemp=${weather.temp},
+                                weatherDesc=${weather.description},
+                                weatherSpeed=${weather.speed},
+                                weatherHum=${weather.humidity},
+                                weatherPres=${weather.pressure},
+                                weatherIcon=${weather.icon})">
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </div>
 <div class="container">
     <div class="row">

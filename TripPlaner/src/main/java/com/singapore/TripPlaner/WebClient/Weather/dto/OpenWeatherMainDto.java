@@ -1,4 +1,4 @@
-package com.singapore.TripPlaner.WebClient.Weather;
+package com.singapore.TripPlaner.WebClient.Weather.dto;
 
 import lombok.Getter;
 

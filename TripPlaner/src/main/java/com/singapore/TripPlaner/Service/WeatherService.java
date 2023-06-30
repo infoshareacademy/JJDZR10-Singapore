@@ -2,7 +2,7 @@ package com.singapore.TripPlaner.Service;
 
 import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Model.Weather;
-import com.singapore.TripPlaner.WebClient.Weather.WeatherClient;
+import com.singapore.TripPlaner.WebClient.Weather.client.WeatherClient;
 import org.springframework.stereotype.Service;
 
     @Service

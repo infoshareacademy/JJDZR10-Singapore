@@ -64,13 +64,9 @@
             <!--                </div>-->
             <!--            </div>-->
             <div class="card mb-0">
-<!--                <div class="card-header">POGODA</div>-->
-<!--                <div class="card-body">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-sm-6">-->
-<!--                            <div class="form-floating">-->
-                                    <!--                                    TUTAJ POGODA -->
-                                <div th:insert="weather.html::
+                <div class="card-header">POGODA</div>
+                <!--                                    TUTAJ POGODA -->
+                <div th:insert="weather.html::
                                 weather (cityName=${city.name},
                                 weatherTemp=${weather.temp},
                                 weatherDesc=${weather.description},
@@ -78,35 +74,11 @@
                                 weatherHum=${weather.humidity},
                                 weatherPres=${weather.pressure},
                                 weatherIcon=${weather.icon})">
-                                </div>
-                            </div>
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<!--</div>-->
-<!--<div class="container">-->
-<!--    <div class="row">-->
-<!--        <div class="col-lg-12">-->
-<!--            <div class="card mb-12">-->
-<!--                <div class="card-header">Opinie:</div>-->
-<!--                <div class="card-body">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-sm-12">-->
-<!--                            <div class="form-floating">-->
-<!--                                &lt;!&ndash;                                <div th:insert="opinionDetails"></div>&ndash;&gt;-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
 <script>
     function goBack() {
         window.history.go(-1);

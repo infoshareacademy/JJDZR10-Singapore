@@ -10,7 +10,9 @@ VALUES ("Gdańsk",
        ("Kraków",
         "Miasto położone w południowej Polsce nad Wisłą, drugie co do liczby mieszkańców i powierzchni miasto kraju.\nFormalna stolica Polski do 1795 roku i miasto koronacyjne oraz nekropolia królów Polski. Kraków jest stolicą historycznej Małopolski.\nLeży na obszarze Bramy Krakowskiej, Niecki Nidziańskiej i Pogórza Zachodniobeskidzkiego."),
        ("Wrocław",
-        "Miasto w południowo-zachodniej Polsce. Położone na Nizinie Śląskiej, nad Odrą i czterema jej dopływami.\nJest historyczną stolicą Dolnego Śląska, a także całego Śląska. Jest głównym miastem aglomeracji wrocławskiej.\nTrzecie pod względem liczby ludności miasto w Polsce");
+        "Miasto w południowo-zachodniej Polsce. Położone na Nizinie Śląskiej, nad Odrą i czterema jej dopływami.\nJest historyczną stolicą Dolnego Śląska, a także całego Śląska. Jest głównym miastem aglomeracji wrocławskiej.\nTrzecie pod względem liczby ludności miasto w Polsce"),
+        ("Sopot",
+        "Sopot (kaszub. Sopòt lub też Sopòtë, Copòtë, Copòt, niem. Zoppot)– miasto na prawach powiatu w północnej Polsce nad Zatoką Gdańską (Morze Bałtyckie), położone na Pobrzeżu Gdańskim, między Gdańskiem a Gdynią, z którymi tworzy Trójmiasto, w obrębie aglomeracji trójmiejskiej. Jest najmniejszym pod względem liczby ludności miastem na prawach powiatu w Polsce oraz najmniejszym pod tym samym względem miastem, którego organem władzy wykonawczej jest prezydent (a nie burmistrz).");
 
 INSERT INTO place (description, name, price, rate, type, city_id)
 VALUES ("Bazylika konkatedralna Wniebowzięcia Najświętszej Maryi Panny, zwana często „Koroną Gdańska” jest największą w Europie świątynią wybudowaną z cegły.Jej potężne mury i wieże wznoszą się wysoko nad panoramą miasta oraz nad rozległą okolicą.",
@@ -168,7 +170,13 @@ VALUES ("Bazylika konkatedralna Wniebowzięcia Najświętszej Maryi Panny, zwana
         0,
         4.7,
         "RESTAURANT",
-        5);
+        5),
+       ("Molo w Sopocie im. Jana Pawła II – najdłuższe molo nad Morzem Bałtyckim[1]. Ma około pół kilometra długości – część spacerowa ma 511,5 m, z czego 458 m wchodzi w głąb Zatoki Gdańskiej. Jest jedną z największych atrakcji miasta. W głowicy mola jest zlokalizowana przystań morska „Molo” w Sopocie.",
+        "Molo w Sopocie",
+        12,
+        4.2,
+        "NATURE",
+        6);
 
 
 
@@ -233,7 +241,10 @@ VALUES ("https://s-trojmiasto.pl/zdj/c/n/9/2825/999x0/2825085-Bazylika-Mariacka-
        ("https://explorista.nl/wp-content/uploads/2019/04/Wroclaw2.jpg", 24,5),
        ("https://www.geogr.uni.wroc.pl/ts1/r=w:2000%7Ch:1500&img=tourism_and_hospitality_blog/14/lib-01.jpg", 24,5),
        ("https://mapy.emiejsca.pl/zdjecia/wroclaw-klodki-most-tumski-32.jpg", 25,5),
-       ("http://pepik.pl/wp-content/uploads/2012/09/pub-5.jpg", 26,5);
+       ("http://pepik.pl/wp-content/uploads/2012/09/pub-5.jpg", 26,5),
+       ("https://www.worldisbeautiful.eu/up_files/1910-Sopockie-molo-noca.jpg", 27,6),
+       ("https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Muelle_de_Sopot%2C_Polonia%2C_2013-05-22%2C_DD_21.jpg/800px-Muelle_de_Sopot%2C_Polonia%2C_2013-05-22%2C_DD_21.jpg", 27,6),
+       ("https://pomorskie.travel/wp-content/uploads/2020/04/SOPOT-MOLO-1110x670.jpg", 27,6);
 
 INSERT INTO opinions (rate, comment, place_id)
 VALUES (5,

@@ -62,44 +62,38 @@
 <body>
 <div th:fragment="weather (cityName, weatherTemp, weatherDesc,weatherSpeed,weatherHum,weatherPres,weatherIcon)">
     <div class="container-fluid">
-<!--        <div class="bg-info border border-info rounded">-->
         <div class="row">
             <div class="col-lg-12">
-
-<!--                <div class="card mb-4">-->
-                <div class="d-flex flex-column temp mt-5 mb-3">
-                        <h2 class="mb-0 font-weight-bold" id="heading" th:text="${cityName}"></h2>
-                        <p class="text-md-left text-muted" th:text="${#execInfo.now.time}"></p>
+                <div class="d-flex flex-column temp mt-3 mb-1">
+                    <h2 class="mb-0 font-weight-bold" id="heading" th:text="${cityName}"></h2>
+                    <p class="text-md-left text-muted" th:text="${#execInfo.now.time}"></p>
                 </div>
-
-                    <div class="d-flex flex-column temp mt-5 mb-3">
-                        <h1 class="mb-0 font-weight-bold" id="heading" th:text="${weatherTemp} + '&deg;C'"></h1>
-                        <span class="small grey" th:text="${weatherDesc}"></span>
+                <div class="d-flex flex-column temp mt-0 mb-0">
+                    <h1 class="mb-0 font-weight-bold text-center" id="heading" th:text="${weatherTemp} + '&deg;C'"></h1>
+                    <span class="small grey text-center" th:text="${weatherDesc}"></span>
+                </div>
+                <div class="d-flex">
+                    <div class="temp-details flex-grow-1">
+                        <p class="my-1">
+                            <!--                            <img src="https://i.imgur.com/B9kqOzp.png" height="19px">-->
+                            <span th:text="'Prędkość wiatru: ' + ${weatherSpeed}+' m/s'"> </span>
+                        </p>
+                        <p class="my-1">
+                            <i class="fa fa-tint mr-0" aria-hidden="true"></i>
+                            <!--                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUzWtc0lhvGUC_tC2BSv7m0Kaq6Hxpa9nwJlyp4xNBkw&s" height="19px">-->
+                            <span th:text="'Wilgotność: ' + ${weatherHum}+' %'"> </span>
+                        </p>
+                        <p class="my-1">
+                            <i class="fa fa-tint mr-0" aria-hidden="true"></i>
+                            <span th:text="'Cisnienie: ' + ${weatherPres} + ' hPa'"> </span>
+                        </p>
                     </div>
-                    <div class="d-flex">
-                        <div class="temp-details flex-grow-1">
-                            <p class="my-1">
-                                <!--                            <img src="https://i.imgur.com/B9kqOzp.png" height="19px">-->
-                                <span th:text="'Prędkość wiatru: ' + ${weatherSpeed}+' m/s'"> </span>
-                            </p>
-                            <p class="my-1">
-                                <i class="fa fa-tint mr-2" aria-hidden="true"></i>
-                                <!--                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUzWtc0lhvGUC_tC2BSv7m0Kaq6Hxpa9nwJlyp4xNBkw&s" height="19px">-->
-                                <span th:text="'Wilgotność: ' + ${weatherHum}+' %'"> </span>
-                            </p>
-                            <p class="my-1">
-                                <i class="fa fa-tint mr-2" aria-hidden="true"></i>
-                                <span th:text="'Cisnienie: ' + ${weatherPres} + ' hPa'"> </span>
-                            </p>
-                        </div>
-                        <div>
-<!--                            <img th:src="'https://openweathermap.org/img/wn/'+${weatherIcon}+'@2x.png'" width="150px"-->
-<!--                                 height="150px">-->
-                            <img src="https://i.imgur.com/Qw7npIg.png" width="140px">
-                        </div>
+                    <div>
+                        <!--                            <img th:src="'https://openweathermap.org/img/wn/'+${weatherIcon}+'@2x.png'" width="150px"-->
+                        <img src="https://cdn-icons-png.flaticon.com/128/3934/3934996.png" width="120px">
                     </div>
                 </div>
-<!--            </div>-->
+            </div>
         </div>
     </div>
 </div>

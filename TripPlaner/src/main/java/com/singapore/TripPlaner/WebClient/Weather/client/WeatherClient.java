@@ -1,13 +1,11 @@
-package com.singapore.TripPlaner.WebClient.Weather;
+package com.singapore.TripPlaner.WebClient.Weather.client;
 
 import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Model.Weather;
+import com.singapore.TripPlaner.WebClient.Weather.dto.OpenWeatherDto;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-
 import java.util.Arrays;
 
 @Component
@@ -22,7 +20,6 @@ public class WeatherClient {
                 OpenWeatherDto.class,
                 city.getName(),
                 API_KEY);
-
         return Weather.builder()
                 .id(response.getId())
                 .speed(response.getWind().getSpeed())

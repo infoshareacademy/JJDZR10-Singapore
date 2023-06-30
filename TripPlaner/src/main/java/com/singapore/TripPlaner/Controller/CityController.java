@@ -44,11 +44,9 @@ public class CityController {
     @GetMapping("/city/{id}")
     public String cityDetails(@RequestParam(required = true) Long id, Model model) {
         City cityByID = cityService.findById(id);
-        Weather weather = weatherService.getWeather(cityByID);
         model.addAttribute("city", cityByID);
         model.addAttribute("images", cityByID.getImages());
-        model.addAttribute("weather", weather);
-        model.addAttribute("localDateTime", LocalDateTime.now());
+        model.addAttribute("weather", weatherService.getWeather(cityByID));
         return "cityDetails";
     }
 

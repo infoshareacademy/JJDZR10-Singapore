@@ -4,8 +4,6 @@ import lombok.*;
 
 @Getter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class Weather {
     private long id;
     private int temp;
