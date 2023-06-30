@@ -84,4 +84,6 @@ public class TripController {
 
         return "redirect:/trips";
     }
+
+
 }
