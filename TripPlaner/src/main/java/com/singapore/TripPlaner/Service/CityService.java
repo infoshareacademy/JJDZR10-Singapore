@@ -1,37 +1,43 @@
 package com.singapore.TripPlaner.Service;
 
+import com.singapore.TripPlaner.Exception.ObjectNotFoundException;
 import com.singapore.TripPlaner.Model.City;
-import com.singapore.TripPlaner.Model.Persistent;
-import com.singapore.TripPlaner.Model.PersistentAbstract;
-import com.singapore.TripPlaner.Service.dataacces.*;
-import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
+import com.singapore.TripPlaner.Repository.CityRepository;
+import org.springframework.stereotype.Service;
 import java.util.List;
 
-@Component
-public class CityService extends PersistentAbstract {
-    private final Reader reader;
-    private final Writer writer;
+@Service
+public class CityService {
+    private final CityRepository cityRepository;
 
-    public CityService(Reader reader, Writer writer) {
-        this.reader = reader;
-        this.writer = writer;
+    public CityService(CityRepository cityRepository) {
+        this.cityRepository = cityRepository;
     }
 
-    public void createCity(City city) {
-        Writer writer = new Writer();
-        writer.save(city);
-    }
-    public City findById(Long id){
-        Reader reader = new Reader();
-        City city = new City();
-        return city = (City) reader.getObjectById(City.class, id);
+    public City createCity(City city) {
+        return cityRepository.save(city);
     }
 
-    public List getCities () {
-        List<Persistent> cities = new ArrayList<>();
-        return cities = reader.getList(City.class);
+    public List<City> getCities() {
+        return cityRepository.findAll();
+    }
 
+    public City findById(Long id) {
+        return cityRepository.findById(id).orElseThrow(
+                () -> new ObjectNotFoundException("Not found city with given id: " + id));
+    }
+
+    public void editCityById(City city) {
+        City cityToEdit = cityRepository.findById(city.getId()).orElseThrow(
+                () -> new ObjectNotFoundException("Not found city with given id: " + city.getId()));
+        cityToEdit.setName(city.getName());
+        cityToEdit.setDescription(city.getDescription());
+        cityRepository.save(cityToEdit);
+    }
+
+    public void deleteCity(Long id) {
+        cityRepository.findById(id).orElseThrow(
+                () -> new ObjectNotFoundException("Not found city with given id: " + id));
+        cityRepository.deleteById(id);
     }
 }
