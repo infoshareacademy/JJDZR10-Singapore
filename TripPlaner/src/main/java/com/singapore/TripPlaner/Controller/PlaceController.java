@@ -3,14 +3,11 @@ package com.singapore.TripPlaner.Controller;
 import com.singapore.TripPlaner.Model.Image;
 import com.singapore.TripPlaner.Model.Opinion;
 import com.singapore.TripPlaner.Model.Place;
-import com.singapore.TripPlaner.Service.ImageService;
-import com.singapore.TripPlaner.Service.CityService;
-import com.singapore.TripPlaner.Service.OpinionService;
-import com.singapore.TripPlaner.Service.PlaceService;
+import com.singapore.TripPlaner.Service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -19,12 +16,14 @@ public class PlaceController {
     private final CityService cityService;
     private final ImageService imageService;
     private final OpinionService opinionService;
+    private final WeatherService weatherService;
 
-    public PlaceController(PlaceService placeService, CityService cityService, ImageService imageService, OpinionService opinionService) {
+    public PlaceController(PlaceService placeService, CityService cityService, ImageService imageService, OpinionService opinionService, WeatherService weatherService) {
         this.placeService = placeService;
         this.cityService = cityService;
         this.imageService = imageService;
         this.opinionService = opinionService;
+        this.weatherService = weatherService;
     }
 
     @GetMapping("/places")
@@ -49,6 +48,8 @@ public class PlaceController {
         model.addAttribute("images", place.getImages());
         model.addAttribute("opinionDetail", opinionService.getRandomOpinion(place));
         model.addAttribute("opinion", new Opinion());
+        model.addAttribute("weather", weatherService.getWeather(place.getCity()));
+        model.addAttribute("localDateTime", LocalDateTime.now());
         return "placeDetails";
     }
 

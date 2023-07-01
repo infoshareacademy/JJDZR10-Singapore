@@ -4,19 +4,23 @@ import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Model.Image;
 import com.singapore.TripPlaner.Service.CityService;
 import com.singapore.TripPlaner.Service.ImageService;
+import com.singapore.TripPlaner.Service.WeatherService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
 public class CityController {
     private final CityService cityService;
     private final ImageService imageService;
+    private final WeatherService weatherService;
 
-    public CityController(CityService cityService, ImageService imageService) {
+    public CityController(CityService cityService, ImageService imageService, WeatherService weatherService) {
         this.cityService = cityService;
         this.imageService = imageService;
+        this.weatherService = weatherService;
     }
 
     @GetMapping("/cities")
@@ -31,15 +35,17 @@ public class CityController {
     public String createCity(@ModelAttribute City city, @ModelAttribute Image image) {
         cityService.createCity(city);
         imageService.saveImage(image);
-        imageService.saveCityForImage(image,city);
+        imageService.saveCityForImage(image, city);
         return "redirect:/cities/";
     }
 
     @GetMapping("/city/{id}")
     public String cityDetails(@RequestParam(required = true) Long id, Model model) {
-        City city = cityService.findById(id);
-        model.addAttribute("city", city);
-        model.addAttribute("images", city.getImages());
+        City cityByID = cityService.findById(id);
+        model.addAttribute("city", cityByID);
+        model.addAttribute("images", cityByID.getImages());
+        model.addAttribute("weather", weatherService.getWeather(cityByID));
+        model.addAttribute("localDateTime", LocalDateTime.now());
         return "cityDetails";
     }
 

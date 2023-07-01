@@ -30,7 +30,6 @@ public class ImageService {
     }
 
     public String getRandomPlaceImage(String placeType){
-
         Place randomPlace= randomValues.randomObjectFromList(placeService.filterListByTypeOfPlace(placeType));
         List<Image> images = randomPlace.getImages();
         if(images.isEmpty()) {
