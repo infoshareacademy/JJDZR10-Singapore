@@ -75,6 +75,14 @@ public class TripController {
         return "trip";
     }
 
+    @GetMapping("/trips/{tripId}/show")
+    public String editTrip(@PathVariable long tripId, Model model) {
+
+        Trip trip = tripService.findTripById(tripId);
+        model.addAttribute("trip", trip);
+        return "tripDetails";
+    }
+
 
     @GetMapping("/trips/{tripId}/delete")
     public String tripDelete(@PathVariable long tripId) {

@@ -40,14 +40,17 @@
           </div>
         </div>
         <div class="col-lg-4">
-            <div class="card mb-4">
-                <div class="card-header">Dystans wycieczki</div>
-                <h3 class="card-title" th:text="${trip.distance}"></h3>
-                <div class="card-header">Orientacyjny czas wycieczki</div>
-                <h3 class="card-title" th:text="${trip.time_for_trip}"></h3>
-                 <div class="card-header">Krótki opis wycieczki</div>
-                 <h4 class="card-title" th:text="${trip.description}"></h4>
-                <div class="card-body">
+                <div class="card mb-4">
+                    <div class="card-header">Dystans wycieczki</div>
+                    <h3 class="card-title" th:text="${trip.distance}"></h3>
+                </div>
+                <div class="card mb-4" th:if="${trip.getTimeForTrip()} != null">
+                    <div class="card-header" >Orientacyjny czas wycieczki</div>
+                    <h3 class="card-title" th:text="${trip.time_for_trip}"></h3>
+                </div>
+                <div class="card mb-4"  th:if="${trip.getDescription()} != null">
+                    <div class="card-header">Krótki opis wycieczki</div>
+                    <div class="card-body" th:text="${trip.description}"></div>
                 </div>
             </div>
         </div>

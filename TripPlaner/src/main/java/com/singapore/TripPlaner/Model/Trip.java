@@ -20,6 +20,8 @@ public class Trip extends PersistentAbstract {
      */
     private Double time_for_trip;
 
+    private String description;
+    
     private User user;
     /**
      * Places to see on the route
@@ -36,6 +38,14 @@ public class Trip extends PersistentAbstract {
 
     public User getUser() {
         return user;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 
     public void setUser(User user) {
@@ -58,7 +68,7 @@ public class Trip extends PersistentAbstract {
         this.distance = distance;
     }
 
-    public double getTimeForTrip() {
+    public Double getTimeForTrip() {
         return time_for_trip;
     }
 

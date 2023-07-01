@@ -31,7 +31,10 @@
                 <tr th:each="trip,iterStat: ${trips}">
                     <td th:text="${iterStat.index+1}"/>
                     <td th:text="${trip.name}"/>
-                    <td><a th:href="@{/trips/{tripId}/edit(tripId=${trip.id})}" class="btn" value="button"> edycja </a></td>
+                    <td>
+                        <a th:href="@{/trips/{tripId}/edit(tripId=${trip.id})}" class="btn" value="button"> edycja </a>
+                        <a th:href="@{/trips/{tripId}/show(tripId=${trip.id})}" class="btn" value="button"> pokaż </a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
