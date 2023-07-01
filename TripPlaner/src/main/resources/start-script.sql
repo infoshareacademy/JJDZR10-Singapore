@@ -12,7 +12,9 @@ VALUES ("Gdańsk",
        ("Wrocław",
         "Miasto w południowo-zachodniej Polsce. Położone na Nizinie Śląskiej, nad Odrą i czterema jej dopływami.\nJest historyczną stolicą Dolnego Śląska, a także całego Śląska. Jest głównym miastem aglomeracji wrocławskiej.\nTrzecie pod względem liczby ludności miasto w Polsce"),
         ("Sopot",
-        "Sopot (kaszub. Sopòt lub też Sopòtë, Copòtë, Copòt, niem. Zoppot)– miasto na prawach powiatu w północnej Polsce nad Zatoką Gdańską (Morze Bałtyckie), położone na Pobrzeżu Gdańskim, między Gdańskiem a Gdynią, z którymi tworzy Trójmiasto, w obrębie aglomeracji trójmiejskiej. Jest najmniejszym pod względem liczby ludności miastem na prawach powiatu w Polsce oraz najmniejszym pod tym samym względem miastem, którego organem władzy wykonawczej jest prezydent (a nie burmistrz).");
+        "Sopot (kaszub. Sopòt lub też Sopòtë, Copòtë, Copòt, niem. Zoppot)– miasto na prawach powiatu w północnej Polsce nad Zatoką Gdańską (Morze Bałtyckie), położone na Pobrzeżu Gdańskim, między Gdańskiem a Gdynią, z którymi tworzy Trójmiasto, w obrębie aglomeracji trójmiejskiej. Jest najmniejszym pod względem liczby ludności miastem na prawach powiatu w Polsce oraz najmniejszym pod tym samym względem miastem, którego organem władzy wykonawczej jest prezydent (a nie burmistrz)."),
+        ("Poznań",
+        "Poznań, Stołeczne Miasto Poznań – miasto na prawach powiatu w zachodniej Polsce, położone na Pojezierzu Wielkopolskim, nad rzeką Wartą, u ujścia Cybiny. Historyczna stolica Wielkopolski, od 1999 r. siedziba władz województwa wielkopolskiego i powiatu poznańskiego. Piąte pod względem liczby ludności miasto w Polsce i ósme pod względem powierzchni (261,9 km²). Poznań wraz z powiatem poznańskim i gminami Oborniki, Skoki, Szamotuły i Śrem tworzy aglomerację poznańską, zamieszkałą przez ponad 1,2 mln osób. W 2018 think tank Globalization and World Cities (GaWC), badający wzajemne stosunki pomiędzy miastami świata w kontekście globalizacji, uznał Poznań za metropolię globalną (Gamma-). Poznań często plasuje się w czołówce miast o bardzo wysokiej jakości edukacji i bardzo wysokim standardzie życia. Zajmuje również wysokie miejsce pod względem bezpieczeństwa i jakości opieki zdrowotnej. Miasto Poznań wielokrotnie zdobyło także nagrodę „Superbrands” za markę miasta bardzo wysokiej jakości.");
 
 INSERT INTO place (description, name, price, rate, type, city_id)
 VALUES ("Bazylika konkatedralna Wniebowzięcia Najświętszej Maryi Panny, zwana często „Koroną Gdańska” jest największą w Europie świątynią wybudowaną z cegły.Jej potężne mury i wieże wznoszą się wysoko nad panoramą miasta oraz nad rozległą okolicą.",
@@ -171,12 +173,19 @@ VALUES ("Bazylika konkatedralna Wniebowzięcia Najświętszej Maryi Panny, zwana
         4.7,
         "RESTAURANT",
         5),
-       ("Molo w Sopocie im. Jana Pawła II – najdłuższe molo nad Morzem Bałtyckim[1]. Ma około pół kilometra długości – część spacerowa ma 511,5 m, z czego 458 m wchodzi w głąb Zatoki Gdańskiej. Jest jedną z największych atrakcji miasta. W głowicy mola jest zlokalizowana przystań morska „Molo” w Sopocie.",
+       ("Molo w Sopocie im. Jana Pawła II – najdłuższe molo nad Morzem Bałtyckim. Ma około pół kilometra długości – część spacerowa ma 511,5 m, z czego 458 m wchodzi w głąb Zatoki Gdańskiej. Jest jedną z największych atrakcji miasta. W głowicy mola jest zlokalizowana przystań morska „Molo” w Sopocie.",
         "Molo w Sopocie",
         12,
         4.2,
         "NATURE",
-        6);
+        6),
+            ("Nazwa jeziora pochodzi od kawalerów maltańskich, czyli rycerzy z zakonu joannitów, którzy mieli tu swoją siedzibę, kościół i hospicjum. Jezioro, na którym odbywa się wiele ważnych regat kajakarskich i wioślarskich, powstało w 1952 r. poprzez spiętrzenie wód rzeki Cybiny i ma powierzchnię 64 ha. Tor regatowy (jeden z najlepszych w Europie) ma 2190 m długości i 170-400 m szerokości. W zachodniej części jeziora znajduje się największa w Poznaniu fontanna, ufundowana dla upamiętnienia 750. rocznicy założenia miasta. Wzdłuż północnego brzegu jeziora przebiega trasa wąskotorowej Kolejki Parkowej Maltanka, której końcowa stacja - Zwierzyniec - usytuowana jest w pobliżu wejścia do Wielkopolskiego Parku Zoologicznego (Nowe Zoo). Na południowym brzegu - na kopcu Wolności - znajduje się sztuczny, całoroczny stok narciarski oraz letni tor saneczkowy. U stóp kopca czynne jest pole do nauki gry w golfa oraz tor do minigolfa. W pobliżu jest także kąpielisko.",
+            "Jeziora Maltańske w Poznaniu",
+             0,
+             4.6,
+             "NATURE",
+             7);
+
 
 
 
@@ -244,7 +253,9 @@ VALUES ("https://s-trojmiasto.pl/zdj/c/n/9/2825/999x0/2825085-Bazylika-Mariacka-
        ("http://pepik.pl/wp-content/uploads/2012/09/pub-5.jpg", 26,5),
        ("https://www.worldisbeautiful.eu/up_files/1910-Sopockie-molo-noca.jpg", 27,6),
        ("https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Muelle_de_Sopot%2C_Polonia%2C_2013-05-22%2C_DD_21.jpg/800px-Muelle_de_Sopot%2C_Polonia%2C_2013-05-22%2C_DD_21.jpg", 27,6),
-       ("https://pomorskie.travel/wp-content/uploads/2020/04/SOPOT-MOLO-1110x670.jpg", 27,6);
+       ("https://pomorskie.travel/wp-content/uploads/2020/04/SOPOT-MOLO-1110x670.jpg", 27,6),
+       ("https://bi.im-g.pl/im/73/5a/19/z26583923IEG,Jezioro-Maltanskie-z-lotu-ptaka.jpg", 28,7),
+       ("https://radiopoznan.fm/uploads/assets/fcwtee5f0u89f8s_jezioro-malta-plywanie.jpg", 28,7);
 
 INSERT INTO opinions (rate, comment, place_id)
 VALUES (5,
