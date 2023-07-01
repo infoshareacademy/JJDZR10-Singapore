@@ -42,11 +42,11 @@
         <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-header">Dystans wycieczki</div>
-                    <h3 class="card-title" th:text="${trip.distance}"></h3>
+                    <div class="card-title py-2 px-3" th:text="${trip.distance}"></div>
                 </div>
                 <div class="card mb-4" th:if="${trip.getTimeForTrip()} != null">
                     <div class="card-header" >Orientacyjny czas wycieczki</div>
-                    <h3 class="card-title" th:text="${trip.time_for_trip}"></h3>
+                    <div class="card-title py-2 px-3" th:text="${trip.getTimeForTrip()}"></div>
                 </div>
                 <div class="card mb-4"  th:if="${trip.getDescription()} != null">
                     <div class="card-header">Krótki opis wycieczki</div>
@@ -58,7 +58,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container" th:if="${trip.places.length} > 0">
     <div class="row">
         <div class="col-lg-12">
             <div class="card mb-12">
@@ -67,7 +67,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div th:each="place: ${places}"
-                                 th:text="${place.city.name}+' - '+${place.name}"/>
+                                 th:text="${place.name}"/>
 
                         </div>
                     </div>

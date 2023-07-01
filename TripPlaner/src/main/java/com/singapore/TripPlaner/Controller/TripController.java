@@ -80,6 +80,7 @@ public class TripController {
 
         Trip trip = tripService.findTripById(tripId);
         model.addAttribute("trip", trip);
+        model.addAttribute("places", placeService.findPlaces());
         return "tripDetails";
     }
 
