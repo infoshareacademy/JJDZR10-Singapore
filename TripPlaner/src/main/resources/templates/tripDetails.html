@@ -30,7 +30,7 @@
         <div class="col-lg-8">
             <div class="card mb-4">
                 <a href="#!"><img class="card-img-top"
-                                  src="https://s-trojmiasto.pl/zdj/c/n/9/2825/999x0/2825085-Bazylika-Mariacka-to-najwiekszy-w-Europie-kosciol-wzniesiony-z-cegly-Jej-budowa-trwala-ok-150-lat-a-dokladnie-odbyla-sie-w-latach-1346-1502.jpg/images/pl-PL/glowne-miasta/gdansk/gdansk_motlawa_1170.jpg"
+                                  th:src="${randomPlaceImgUrl}"
                                   alt="..."/></a>
                 <div class="card-body">
                     <h2 class="card-title" th:text="${trip.name}"></h2>
@@ -40,36 +40,67 @@
           </div>
         </div>
         <div class="col-lg-4">
-                <div class="card mb-4">
-                    <div class="card-header">Dystans wycieczki</div>
-                    <div class="card-title py-2 px-3" th:text="${trip.distance}"></div>
-                </div>
-                <div class="card mb-4" th:if="${trip.getTimeForTrip()} != null">
-                    <div class="card-header" >Orientacyjny czas wycieczki</div>
-                    <div class="card-title py-2 px-3" th:text="${trip.getTimeForTrip()}"></div>
-                </div>
-                <div class="card mb-4"  th:if="${trip.getDescription()} != null">
-                    <div class="card-header">Krótki opis wycieczki</div>
-                    <div class="card-body" th:text="${trip.description}"></div>
+            <div class="card mb-4">
+                <div class="card-header">Parametry wycieczki</div>
+                <div class="card-body">
+                    <div th:if="${trip.distance} != null">
+                        <span> Dystans: </span>
+                        <span th:text="|${trip.distance} km|"></span>
+                    </div>
+                    <div th:if="${trip.time_for_trip} != null">
+                        <span> Czas: </span>
+                        <span th:text="|${trip.time_for_trip} h|"></span>
+                    </div>
+                    
                 </div>
             </div>
-        </div>
+            <div class="card mb-4"  th:if="${trip.getDescription()} != null">
+                <div class="card-header">Krótki opis wycieczki</div>
+                <div class="card-body" th:text="${trip.description}"></div>
+            </div>
+            <div class="card mb-4" th:if="${trip.time_for_trip} != null">
+                <div class="card-header" >Pogoda</div>
+                <div class="card-body" >
+                    <div th:insert="weather.html::
+                            weather (cityName=${trip.places.get(0).getCity().getName()},
+                            weatherTemp=${weather.temp},
+                            weatherDesc=${weather.description},
+                            weatherSpeed=${weather.speed},
+                            weatherHum=${weather.humidity},
+                            weatherPres=${weather.pressure},
+                            localDateTime=${localDateTime},
+                            weatherIcon=${weather.icon})">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="container" th:if="${trip.places.length} > 0">
+<div class="container" th:if="${trip.getPlaces.size()} > 0">
     <div class="row">
         <div class="col-lg-12">
             <div class="card mb-12">
                 <div class="card-header">Punkty wycieczki:</div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-sm-12">
-                            <div th:each="place: ${places}"
-                                 th:text="${place.name}"/>
 
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+                            <div th:each="place: ${trip.places}" class="col mb-4">
+                                <div class="card">
+                                    <img th:src="${place.images.get(0).url}" class="card-img-top" alt="card" width="390" height="150">
+                                    <div class="card-body">
+                                        <h5 th:text="${place.name}" class="card-title"></h5>
+                                        <p> <td th:text="${place.city.name}"/></p>
+
+                                        <a th:href="@{/place/{placeId}(placeId=${place.id})}" class="btn btn-primary"> Detale</a>
+                                        <a th:href="@{/place/edit-place/{id}(id=${place.id})}"  class="btn btn-secondary"> Edytuj</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>

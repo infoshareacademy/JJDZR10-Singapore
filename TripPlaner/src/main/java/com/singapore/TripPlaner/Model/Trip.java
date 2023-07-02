@@ -1,12 +1,42 @@
 package com.singapore.TripPlaner.Model;
 
+import org.hibernate.validator.constraints.Length;
 import org.json.simple.JSONObject;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class Trip extends PersistentAbstract {
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@Table(name = Trip.TABLE_NAME)
+@AllArgsConstructor
+public class Trip implements Comparable<Trip>  {
 
+    public static final String TABLE_NAME = "trip";
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Length(min = 1, max = 100)
     private String name;
 
     /**
@@ -19,71 +49,17 @@ public class Trip extends PersistentAbstract {
      */
     private Double time_for_trip;
 
+    @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL)
+    private List<Image> images = new ArrayList<>();
+    
+    @Length(min = 2, max = 1000)
     private String description;
     
-    private User user;
     /**
      * Places to see on the route
      */
-
-    private Long[] places;
-
-    public Long[] getPlaces() {
-        return places;
-    }
-
-    public void setPlaces(Long[] places) {
-        this.places = places;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getDistance() {
-        return distance;
-    }
-
-    public void setDistance(Double distance) {
-        this.distance = distance;
-    }
-
-    public Double getTimeForTrip() {
-        return time_for_trip;
-    }
-
-    public void setTimeForTrip(double time_for_trip) {
-        this.time_for_trip = time_for_trip;
-    }
-
-    @Override
-    public JSONObject toJSON() {
-        JSONObject jsonObject = super.toJSON();
-        if(user != null){
-            jsonObject.put("userid", user.getId());
-        }
-        return jsonObject;
-    }
+    @ManyToMany
+    private List<Place> places;
 
     @Override
     public String toString() {
@@ -92,17 +68,16 @@ public class Trip extends PersistentAbstract {
                 ", name='" + name + '\'' +
                 ", distance=" + distance +
                 ", time_for_trip=" + time_for_trip +
-                ", created_by_user=" + user +
                 ", places=" + places +
                 '}';
     }
 
     public void userSentence() {
-        System.out.println("To jest wycieczka " + this.getName() + " utworzona przez użytkownika " + this.getUser().getFirstName() + " " + this.getUser().getLastName());
+        // System.out.println("To jest wycieczka " + this.getName() + " utworzona przez użytkownika " + this.getUser().getFirstName() + " " + this.getUser().getLastName());
     }
 
     @Override
-    public int compareTo(Persistent o) {
+    public int compareTo(Trip o) {
 
         if(getId() == o.getId()) {
             return 0;
