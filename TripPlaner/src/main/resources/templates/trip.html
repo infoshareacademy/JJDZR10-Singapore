@@ -16,6 +16,7 @@
     <div class="row ">
         <div class="mt-4 mb-3">
             <h1 th:text="${trip.id} != null ? 'Edytuj wycieczkę' : 'Utwórz wycieczkę'"></h1>
+            <a class="btn btn-primary" th:href="@{/trips}">← Powrót </a>
         </div>
     </div>
     <div class="row ">

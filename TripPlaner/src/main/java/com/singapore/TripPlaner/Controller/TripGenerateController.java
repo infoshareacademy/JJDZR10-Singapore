@@ -1,5 +1,6 @@
 package com.singapore.TripPlaner.Controller;
 
+import com.singapore.TripPlaner.Model.Trip;
 import com.singapore.TripPlaner.Model.TripGenerateCriteria;
 import com.singapore.TripPlaner.Service.TripGenerateService;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,9 @@ public class TripGenerateController {
     public String createGeneratedTrip(@ModelAttribute TripGenerateCriteria tgc) {
 
         System.out.println(tgc);
+        Trip trip = tripGenerateService.generateTrip(tgc);
 
-        return "redirect:/cosczegojeszczeniema";
+
+        return "redirect:/trips/"+trip.getId()+"/show" ;
     }
 }
