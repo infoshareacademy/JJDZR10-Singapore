@@ -12,6 +12,7 @@
 </head>
 <body>
 <nav th:insert="~{/fragments/dashboard :: nav}"></nav>
+
 <div class="p-3 m-0 border-0 bd-example">
 <form class="row g-3" action="#" th:action="@{/city/edit/{id}(id=${city.id})}" th:object="${city}" method="post" style="margin-top:0.5cm; margin-left:0.5cm">
   <div class="col-md-6">
@@ -33,6 +34,10 @@
   function goBack() {
     window.history.go(-1);
   }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous">
 </script>
 </body>
 </html>

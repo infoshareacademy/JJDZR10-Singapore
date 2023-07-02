@@ -35,6 +35,7 @@ public class HomeController {
         model.addAttribute("randomMonumentImage",imageService.getRandomPlaceImage(Type.MONUMENT.getPlaceType()));
         model.addAttribute("randomRestaurantImage",imageService.getRandomPlaceImage(Type.RESTAURANT.getPlaceType()));
         model.addAttribute("randomCityImage", imageService.randomImage(imageService.getAllImages()));
+
         return "home";
     }
 }

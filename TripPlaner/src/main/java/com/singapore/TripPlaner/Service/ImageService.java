@@ -31,7 +31,12 @@ public class ImageService {
 
     public String getRandomPlaceImage(String placeType){
         Place randomPlace= randomValues.randomObjectFromList(placeService.filterListByTypeOfPlace(placeType));
-        return randomImage(randomPlace.getImages()).getUrl();
+        List<Image> images = randomPlace.getImages();
+        if(images.isEmpty()) {
+            return "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwRvkNkCk8LG-MgmgYtJ3n5dGakK-idcI61uvQH1pqBQ&s";
+        } else {
+            return randomImage(images).getUrl();
+        }
     }
 
     public Image randomImage(List <Image> imagesId) {

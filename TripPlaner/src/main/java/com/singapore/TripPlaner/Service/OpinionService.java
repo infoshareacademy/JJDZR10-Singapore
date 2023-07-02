@@ -74,7 +74,12 @@ public class OpinionService {
         return rate;
     }
 
-    public Opinion getRandomOpinion(Place place) {
-        return randomValues.randomObjectFromList(opinionRepository.findAllOpinionByPlace(place));
+    public Opinion getRandomOpinion(Place place) throws OpinionNotFoundException{
+        List<Opinion> opinionByPlace = opinionRepository.findAllOpinionByPlace(place);
+        if(opinionByPlace.isEmpty()){
+            return new Opinion("Dodaj pierwszą opinią");
+        }
+        return randomValues.randomObjectFromList(opinionByPlace);
+
     }
 }

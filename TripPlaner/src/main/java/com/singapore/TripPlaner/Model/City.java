@@ -31,4 +31,9 @@ public class City {
 
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
     private List<Image> images = new ArrayList<>();
+
+    public City(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
