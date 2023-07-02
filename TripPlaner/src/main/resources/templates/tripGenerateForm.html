@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Singapore-TripPlaner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+<nav th:insert="~{/fragments/dashboard :: nav}"></nav>
+<form action="#" th:action="@{/tripgenerate}" th:object="${tgc}" method="post">
+
+<div class="container">
+        <div class="mt-4 mb-3">
+            <h1>Generator wycieczek</h1>
+        </div>
+    <div class="mb-3">
+        <label for="cities" class="form-label">Wybierz miasto</label>
+        <select  class="form-control selectpicker" th:field="*{city}" id="cities" >
+            <option th:each="city: ${cities}"
+                    th:value="${city.id}"
+                    th:text="${city.name}"/>
+        </select>
+    </div>
+
+    <div class="col-md-6">
+        <label for="Textarea" class="form-label">Podaj ilość punktów wycieczki:</label>
+        <input type="text" class="form-control" id="Textarea" required th:field="*{numberOfStops}"/>
+    </div>
+
+    <div class="col-md-6">
+        <label for="Textarea1" class="form-label">Podaj czas trwania wycieczki w dniach:</label>
+        <input type="text" class="form-control" id="Textarea1" required th:field="*{timeToGo}"/>
+    </div>
+
+    <div class="col-12">
+        <p><input type="submit" value="Submit"/></p>
+    </div>
+
+</div>
+</form>
+</body>
+</html>
