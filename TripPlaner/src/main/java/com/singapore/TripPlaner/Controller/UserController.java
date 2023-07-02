@@ -39,6 +39,6 @@ public class UserController {
 
         emailService.sendConfirmationEmail(recipientEmail, confirmationCode, user.getName(), user.getPassword());
 
-        return "redirect:/confirmation-page";
+        return "redirect:/";
     }
 }
