@@ -15,7 +15,7 @@ import java.util.Random;
 public class TripGenerateService {
 
     //miasta do wyboru
-    private List<City> cities;
+    private final List<City> cities;
 
     public final TripGenerateCriteria tgc;
     private final TripService tripService;
@@ -23,17 +23,12 @@ public class TripGenerateService {
 
     public TripGenerateService(TripGenerateCriteria tgc, CityService cityService, TripService tripService, PlaceService placeService) {
         this.tgc = tgc;
-        this.cities = cityService.getCities();
         this.tripService = tripService;
         this.placeService = placeService;
+        this.cities = cityService.getCities();
     }
     public List<City> getCities() {
-        return cities;
-    }
-
-    public void setCities(List<City> cities) {
-        this.cities = cities;
-
+        return this.cities;
     }
 
     public Trip generateTrip(TripGenerateCriteria tgc) {
