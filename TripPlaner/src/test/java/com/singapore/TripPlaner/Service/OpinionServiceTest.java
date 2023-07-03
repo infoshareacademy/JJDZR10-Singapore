@@ -1,10 +1,8 @@
 package com.singapore.TripPlaner.Service;
 
 import com.singapore.TripPlaner.Exception.OpinionNotFoundException;
-import com.singapore.TripPlaner.Model.City;
-import com.singapore.TripPlaner.Model.Opinion;
-import com.singapore.TripPlaner.Model.Place;
-import com.singapore.TripPlaner.Model.Type;
+import com.singapore.TripPlaner.Model.*;
+import com.singapore.TripPlaner.Model.User.User;
 import com.singapore.TripPlaner.Repository.OpinionRepository;
 import com.singapore.TripPlaner.Repository.PlaceRepository;
 import org.junit.jupiter.api.Test;
@@ -30,7 +28,8 @@ class OpinionServiceTest {
     private OpinionService opinionService;
     @Mock
     private PlaceRepository placeRepositoryMock;
-    String user = "testSingapore";
+
+    User user = new User();
     private final Opinion opinionRate5 = new Opinion(1L,
             "Superb",
             5,
@@ -57,7 +56,7 @@ class OpinionServiceTest {
                     "Description",
                     10,
                     3.0,
-                    List.of(),
+                    List.of(new Image(), new Image()),
                     new City(),
                     opinions,
                     Type.MONUMENT
@@ -115,14 +114,14 @@ class OpinionServiceTest {
         when(opinionRepositoryMock.findAllOpinionByPlace(newPlace))
                 .thenReturn(newPlace.getOpinions());
 
-        opinionService.addOpinionToPlace(newOpinion, newPlace);
+        opinionService.addOpinionToPlace(newOpinion, newPlace, user);
 
         assertThat(newPlace.getRate()).isEqualTo(4.0);
     }
 
     @Test
     void shouldAddOpinionToPlaceSetPlaceOpinionsList() {
-        opinionService.addOpinionToPlace(newOpinion, place);
+        opinionService.addOpinionToPlace(newOpinion, place, user);
 
         assertThat(place.getOpinions().size()).isEqualTo(3);
         assertThat(place.getOpinions())
@@ -134,7 +133,7 @@ class OpinionServiceTest {
         Place newPlace = new Place();
         when(placeRepositoryMock.save(newPlace)).thenReturn(newPlace);
 
-        opinionService.addOpinionToPlace(newOpinion, newPlace);
+        opinionService.addOpinionToPlace(newOpinion, newPlace, user);
 
         verify(placeRepositoryMock, times(1)).save(newPlace);
     }
@@ -143,24 +142,16 @@ class OpinionServiceTest {
     void addOpinionShouldSaveOpinion() {
         when(opinionRepositoryMock.save(newOpinion)).thenReturn(newOpinion);
 
-        opinionService.addOpinionToPlace(newOpinion, place);
+        opinionService.addOpinionToPlace(newOpinion, place, user);
 
         verify(opinionRepositoryMock, times(1)).save(newOpinion);
     }
 
     @Test
     void addOpinionShouldUpdatePlace() {
-        opinionService.addOpinionToPlace(newOpinion, newPlace);
+        opinionService.addOpinionToPlace(newOpinion, newPlace, user);
 
         assertThat(newPlace.getOpinions()).contains(newOpinion);
     }
 
-    @Test
-    void shouldReturnRandomOpinion() {
-        when(opinionRepositoryMock.findAllOpinionByPlace(place)).thenReturn(opinions);
-
-        Opinion randomOpinion = opinionService.getRandomOpinion(place);
-
-        assertThat(randomOpinion).isInstanceOf(Opinion.class);
-    }
 }

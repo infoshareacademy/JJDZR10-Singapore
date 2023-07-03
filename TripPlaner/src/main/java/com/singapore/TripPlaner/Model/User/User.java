@@ -2,9 +2,11 @@ package com.singapore.TripPlaner.Model.User;
 
 import com.singapore.TripPlaner.Model.Opinion;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -19,6 +21,7 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
+@Component
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,9 +41,11 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private UserRole userRole;
+    @ColumnDefault("false")
     private Boolean locked;
+    @ColumnDefault("true")
     private Boolean enabled;
-    @OneToMany (mappedBy = "place", cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "place", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Opinion> opinions = new ArrayList<>();
 
     public User(String login, String name, String email, String password, UserRole userRole, Boolean locked, Boolean enabled) {

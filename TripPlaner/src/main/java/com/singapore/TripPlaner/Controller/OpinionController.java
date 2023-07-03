@@ -2,8 +2,10 @@ package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.Opinion;
 import com.singapore.TripPlaner.Model.Place;
+import com.singapore.TripPlaner.Model.User.User;
 import com.singapore.TripPlaner.Service.OpinionService;
 import com.singapore.TripPlaner.Service.PlaceService;
+import com.singapore.TripPlaner.Service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,10 +17,11 @@ public class OpinionController {
 
     private final OpinionService opinionService;
     private final PlaceService placeService;
-
-    public OpinionController(OpinionService opinionService, PlaceService placeService) {
+    private final UserService userService;
+    public OpinionController(OpinionService opinionService, PlaceService placeService, UserService userService) {
         this.opinionService = opinionService;
         this.placeService = placeService;
+        this.userService = userService;
     }
 
 
@@ -26,7 +29,6 @@ public class OpinionController {
     public String getOpinions(Model model) {
         List opinions = opinionService.getAllOpinions();
         model.addAttribute("opinions", opinions);
-        model.addAttribute("user", "Singapore"); //TODO USER
         return "opinions/opinionList";
     }
 
@@ -34,7 +36,7 @@ public class OpinionController {
     public String editOpinionById(@PathVariable long id, Model model) {
         Opinion opinion = opinionService.findById(id);
         model.addAttribute("opinion", opinion);
-        return "opinions/opinionForm";  //TODO sprawdzić
+        return "opinions/opinionForm";
     }
 
     @PostMapping("/opinions/edit/{id}")
@@ -62,7 +64,8 @@ public class OpinionController {
     @PostMapping("opinions/place/{id}")
     public String addOpinion(@ModelAttribute Opinion opinion,
                              @PathVariable long id) {
-        opinionService.addOpinionToPlace(opinion, placeService.findById(id));
+        User user = userService.getCurrentUser();
+        opinionService.addOpinionToPlace(opinion, placeService.findById(id), user);
         return "redirect:/place/{id}";
     }
 }

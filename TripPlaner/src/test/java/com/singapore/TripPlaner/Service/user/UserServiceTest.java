@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Optional;
 
@@ -35,7 +36,7 @@ class UserServiceTest {
     void shouldReturnUserByUsername() {
         when(userRepositoryMock.findUserByLogin("testUser")).thenReturn(Optional.of(user));
 
-        User testingUser = userService.loadUserByUsername("testUser");
+        UserDetails testingUser = userService.loadUserByUsername("testUser");
 
         assertThat(testingUser).isEqualTo(user);
     }

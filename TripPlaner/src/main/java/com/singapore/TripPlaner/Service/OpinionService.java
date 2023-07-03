@@ -4,13 +4,14 @@ package com.singapore.TripPlaner.Service;
 import com.singapore.TripPlaner.Exception.OpinionNotFoundException;
 import com.singapore.TripPlaner.Model.Opinion;
 import com.singapore.TripPlaner.Model.Place;
+import com.singapore.TripPlaner.Model.User.User;
 import com.singapore.TripPlaner.Repository.OpinionRepository;
 import com.singapore.TripPlaner.Repository.PlaceRepository;
+import com.singapore.TripPlaner.Repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -18,11 +19,13 @@ public class OpinionService {
     private final RandomValues randomValues;
     private final OpinionRepository opinionRepository;
     private final PlaceRepository placeRepository;
+    private final UserRepository userRepository;
 
-    public OpinionService(RandomValues randomValues, OpinionRepository opinionRepository, PlaceRepository placeRepository) {
+    public OpinionService(RandomValues randomValues, OpinionRepository opinionRepository, PlaceRepository placeRepository, UserRepository userRepository) {
         this.randomValues = randomValues;
         this.opinionRepository = opinionRepository;
         this.placeRepository = placeRepository;
+        this.userRepository = userRepository;
     }
 
     public List <Opinion> getAllOpinions() {
@@ -48,9 +51,13 @@ public class OpinionService {
     }
 
     @Transactional
-    public void addOpinionToPlace(Opinion opinion, Place place) {
+    public void addOpinionToPlace(Opinion opinion, Place place, User user) {
+        List <Opinion> userOpinions = new ArrayList<>(opinionRepository.findAllByUser(user));
+        userOpinions.add(opinion);
+        userRepository.save(user);
         place.setRate(setPlaceRateWithOpinionRate(opinion, place));
         opinion.setPlace(place);
+        opinion.setUser(user);
         opinionRepository.save(opinion);
         List <Opinion> opinions = new ArrayList<>(place.getOpinions());
         opinions.add(opinion);
