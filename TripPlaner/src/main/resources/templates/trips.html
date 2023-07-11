@@ -24,7 +24,12 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
                 <div th:each="trip,iterStat: ${trips}" class="col mb-4">
                     <div class="card">
-                        <img th:src="${trip.places.get(0).images.get(0).url}" class="card-img-top" alt="card" width="390" height="150">
+                        <img th:src="${trip.places.get(0).images.get(0).url}"
+                             class="card-img-top"
+                             alt="card"
+                             width="390"
+                             height="150">
+<!--                        <img th:src="${trip.places.get(0).images.get(0).url}" class="card-img-top" alt="card" width="390" height="150">-->
                         <div class="card-body">
                             <h5 th:text="${trip.name}" class="card-title"></h5>
                             <p> <td th:text="${trip.places.get(0).city.name}"/></p>

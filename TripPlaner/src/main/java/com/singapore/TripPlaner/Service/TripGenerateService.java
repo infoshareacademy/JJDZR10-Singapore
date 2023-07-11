@@ -32,12 +32,10 @@ public class TripGenerateService {
     }
 
     public Trip generateTrip(TripGenerateCriteria tgc) {
-
         Trip trip = new Trip();
         trip.setPlaces(new ArrayList<Place>());
         trip.setTime_for_trip(tgc.getTimeToGo());
         trip.setDescription("Wycieczka generowana losowo dla miasta: " + tgc.getCity().getName());
-
         Random rand = new Random();
         List<Long> addedPlaces = new ArrayList<>();
         List<Long> remainingPlaces = new ArrayList<>();
@@ -49,18 +47,12 @@ public class TripGenerateService {
                 remainingPlaces = placeService.getAllIds(tgc.getCity());
             }
             if (remainingPlaces.size() > 0) {
-                
                 int randomPlaceIndex = rand.nextInt(remainingPlaces.size());
-                Place randomPlace = placeService.findById(remainingPlaces.get(randomPlaceIndex));
                 addedPlaces.add(remainingPlaces.get(randomPlaceIndex));
-                trip.getPlaces().add(randomPlace);
+                trip.getPlaces().add(placeService.findById(remainingPlaces.get(randomPlaceIndex)));
             }
         }
-        
-
-
         tripService.save(trip);
-
         return trip;
     }
     

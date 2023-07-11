@@ -14,14 +14,14 @@ services:
 #    command: mvn spring-boot:run
 #    stdin_open: true
 #    tty: true
-  mysqldb:
-    image: mysql:5.7
-    platform: linux/amd64
-    ports:
-      - 3307:3306
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=planer
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=password
+#  mysqldb:
+#    image: mysql:5.7
+#    platform: linux/amd64
+#    ports:
+#      - 3307:3306
+#    restart: always
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=password
+#      - MYSQL_DATABASE=planer
+#      - MYSQL_USER=root
+#      - MYSQL_PASSWORD=password

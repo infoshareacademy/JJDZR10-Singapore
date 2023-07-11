@@ -23,7 +23,7 @@ public class TripService {
     }
 
     public Trip findTripById(Long id) {
-        return tripRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Not found trip with id: "+id));
+        return tripRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Not found trip with id: " + id));
     }
 
     public void removeTrip(Trip trip) {
@@ -42,24 +42,21 @@ public class TripService {
     public Trip save(Trip trip) {
         return tripRepository.save(trip);
     }
-    
+
     private int getRandomPlaceIndex(int size) {
         Random rand = new Random();
         int intRandom = rand.nextInt(size);
         return intRandom;
-
     }
-    
+
     public String getRandomPlaceImgUrl(Trip trip) {
         String url = "";
         if (trip.getPlaces() != null) {
-
             int randomPlaceIndex = this.getRandomPlaceIndex(trip.getPlaces().size());
             url = trip.getPlaces().get(randomPlaceIndex).getImages().get(0).getUrl();
         }
         return url;
     }
-
 
 
 }
