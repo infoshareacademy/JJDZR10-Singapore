@@ -16,7 +16,6 @@ public class TripGenerateService {
 
     //miasta do wyboru
     private final List<City> cities;
-
     public final TripGenerateCriteria tgc;
     private final TripService tripService;
     private final PlaceService placeService;
@@ -40,7 +39,6 @@ public class TripGenerateService {
         List<Long> addedPlaces = new ArrayList<>();
         List<Long> remainingPlaces = new ArrayList<>();
         for (int i = 0; i < tgc.getNumberOfStops(); i++) {
-            
             if (addedPlaces.size() > 0) {
                 remainingPlaces = placeService.getIdsExept(addedPlaces, tgc.getCity());
             } else {
@@ -55,5 +53,4 @@ public class TripGenerateService {
         tripService.save(trip);
         return trip;
     }
-    
 }

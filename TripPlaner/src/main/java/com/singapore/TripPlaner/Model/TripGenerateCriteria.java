@@ -10,6 +10,7 @@ public class TripGenerateCriteria {
     public int getNumberOfStops() {
         return numberOfStops;
     }
+
     private City city;
 
     public City getCity() {
@@ -32,11 +33,8 @@ public class TripGenerateCriteria {
         this.timeToGo = timeToGo;
     }
 
-
     public TripGenerateCriteria() {
         this.numberOfStops = 7;
         this.timeToGo = 5.5;
     }
-
-
 }
