@@ -5,12 +5,15 @@ import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Model.Image;
 import com.singapore.TripPlaner.Model.Place;
 import com.singapore.TripPlaner.Repository.ImageRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ImageService {
+    private static final Logger logger = LoggerFactory.getLogger(ImageService.class);
     private final RandomValues randomValues;
     private final PlaceService placeService;
     private final CityService cityService;
@@ -48,15 +51,18 @@ public class ImageService {
     }
 
     public Image saveImage(Image image){
+        logger.info("Image saved with url: {}",image.getUrl());
         return imageRepository.save(image);
     }
 
     public void savePlaceForImage(Image image, Place place){
+        logger.info("Image saved with url: {} for place with id {}",image.getUrl(),place.getId());
         image.setPlace(place);
         saveImage(image);
     }
 
     public void saveCityForImage(Image image, City city){
+        logger.info("Image saved with url: {} for city with id {}",image.getUrl(),city.getId());
         image.setCity(city);
         saveImage(image);
     }
