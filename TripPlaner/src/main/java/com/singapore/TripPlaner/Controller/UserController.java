@@ -4,6 +4,7 @@ import com.singapore.TripPlaner.Configuration.PasswordEncoder;
 import com.singapore.TripPlaner.Model.User.User;
 import com.singapore.TripPlaner.Service.UserService;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -22,9 +23,10 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String registration(Model model) {
+    public String registration(Model model, Authentication authentication) {
         User user = new User();
         model.addAttribute("user", user);
+        userService.displayUsername(model, authentication);
         return "user/registration";
     }
 
@@ -40,8 +42,9 @@ public class UserController {
     }
 
     @GetMapping("/error")
-    public String dataValidation(Model model) {
+    public String dataValidation(Model model, Authentication authentication) {
         model.addAttribute("errorMessage", "Podane dane istnieją w naszej bazie");
+        userService.displayUsername(model, authentication);
         return "user/invalidMail";
     }
 
