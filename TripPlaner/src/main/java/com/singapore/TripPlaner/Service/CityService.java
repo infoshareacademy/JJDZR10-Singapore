@@ -4,10 +4,13 @@ import com.singapore.TripPlaner.Exception.ObjectNotFoundException;
 import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Repository.CityRepository;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.List;
 
 @Service
 public class CityService {
+    private static final Logger logger = LoggerFactory.getLogger(CityService.class);
     private final CityRepository cityRepository;
 
     public CityService(CityRepository cityRepository) {
@@ -15,6 +18,7 @@ public class CityService {
     }
 
     public City createCity(City city) {
+        logger.info("City created: {}",city);
         return cityRepository.save(city);
     }
 
