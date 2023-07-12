@@ -41,7 +41,7 @@ public class CityService {
     }
 
     public void deleteCity(Long id) {
-        logger.info("Removing city with id: {}", id);
+        logger.info("Removed city with id: {}", id);
         cityRepository.findById(id).orElseThrow(
                 () -> new ObjectNotFoundException("Not found city with given id: " + id));
         cityRepository.deleteById(id);

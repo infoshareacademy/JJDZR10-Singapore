@@ -4,6 +4,8 @@ import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Model.Place;
 import com.singapore.TripPlaner.Exception.ObjectNotFoundException;
 import com.singapore.TripPlaner.Repository.PlaceRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +14,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class PlaceService {
+    private static final Logger logger = LoggerFactory.getLogger(PlaceService.class);
+
     private final PlaceRepository placeRepository;
 
     public PlaceService(PlaceRepository placeRepository) {
@@ -19,6 +23,7 @@ public class PlaceService {
     }
 
     public Place createPlace(Place place) {
+        logger.info("Place created: {}",place.getName());
         return placeRepository.save(place);
     }
 
@@ -32,6 +37,7 @@ public class PlaceService {
     }
 
     public void deletePlace(Place place) {
+        logger.info("Removed place with id: {}", place.getId());
         try {
             placeRepository.deleteById(place.getId());
         } catch (NoSuchElementException e) {
@@ -40,6 +46,7 @@ public class PlaceService {
     }
 
     public void editPlaceById(Place place) {
+        logger.info("Edited city with id: {} ", place.getId());
         Place placeToEdit = placeRepository.findById(place.getId()).orElseThrow(() -> new ObjectNotFoundException("Not found place with given id: " + place.getId()));
         placeToEdit.setName(place.getName());
         placeToEdit.setDescription(place.getDescription());
@@ -62,7 +69,6 @@ public class PlaceService {
         return findPlaces().stream().filter(place -> place.getCity().getId() == cityId)
                 .collect(Collectors.toList());
     }
-    
 
     public List<Long> getIdsExept(List<Long> listOfIds, City city) {
         return placeRepository.getIdsInCityExept(listOfIds, city);
