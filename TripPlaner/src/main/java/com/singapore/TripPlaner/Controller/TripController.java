@@ -1,17 +1,14 @@
 package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.*;
-import com.singapore.TripPlaner.Service.CityService;
-import com.singapore.TripPlaner.Service.PlaceService;
-import com.singapore.TripPlaner.Service.TripService;
-import com.singapore.TripPlaner.Service.WeatherService;
+import com.singapore.TripPlaner.Service.*;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Controller
 public class TripController {
@@ -19,17 +16,19 @@ public class TripController {
     private final PlaceService placeService;
     private final CityService cityService;
     private final WeatherService weatherService;
+    private final UserService userService;
 
 
-    public TripController(TripService tripService, PlaceService placeService, CityService cityService, WeatherService weatherService) {
+    public TripController(TripService tripService, PlaceService placeService, CityService cityService, WeatherService weatherService, UserService userService) {
         this.tripService = tripService;
         this.placeService = placeService;
         this.cityService = cityService;
         this.weatherService = weatherService;
+        this.userService = userService;
     }
 
     @GetMapping("/trips/new")
-    public String tripCreateForm(@RequestParam(required = false) Long cityId, Model model) {
+    public String tripCreateForm(@RequestParam(required = false) Long cityId, Model model, Authentication authentication) {
 
         if (cityId == null) {
             model.addAttribute("places", placeService.findPlaces());
@@ -39,6 +38,7 @@ public class TripController {
         model.addAttribute("trip", new Trip());
         model.addAttribute("cities", cityService.getCities());
         model.addAttribute("cityId", cityId);
+        userService.displayUsername(model, authentication);
         return "trip";
     }
 
@@ -51,13 +51,16 @@ public class TripController {
     }
 
     @GetMapping("/trips")
-    public String getTrips(Model model) {
+    public String getTrips(Model model, Authentication authentication) {
         model.addAttribute("trips", tripService.findTrips());
+        userService.displayUsername(model, authentication);
         return "trips";
     }
 
     @GetMapping("/trips/{tripId}/edit")
-    public String editTrip(@RequestParam(required = false) Long cityId, @PathVariable long tripId, Model model) {
+    public String editTrip(@RequestParam(required = false) Long cityId,
+                           @PathVariable long tripId,
+                           Model model, Authentication authentication) {
 
         if (cityId == null) {
             model.addAttribute("places", placeService.findPlaces());
@@ -68,16 +71,18 @@ public class TripController {
         model.addAttribute("trip", trip);
         model.addAttribute("cities", cityService.getCities());
         model.addAttribute("cityId", cityId);
+        userService.displayUsername(model, authentication);
         return "trip";
     }
 
     @GetMapping("/trips/{tripId}/show")
-    public String editTrip(@PathVariable long tripId, Model model) {
+    public String editTrip(@PathVariable long tripId, Model model, Authentication authentication) {
         Trip trip = tripService.findTripById(tripId);
         model.addAttribute("trip", trip);
         model.addAttribute("weather", weatherService.getWeather(trip.getPlaces().get(0).getCity()));
         model.addAttribute("localDateTime", LocalDateTime.now());
         model.addAttribute("randomPlaceImgUrl", tripService.getRandomPlaceImgUrl(trip));
+        userService.displayUsername(model, authentication);
         return "tripDetails";
     }
 

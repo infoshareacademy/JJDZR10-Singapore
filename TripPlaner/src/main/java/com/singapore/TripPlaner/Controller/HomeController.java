@@ -1,10 +1,9 @@
 package com.singapore.TripPlaner.Controller;
 
 import com.singapore.TripPlaner.Model.Type;
-import com.singapore.TripPlaner.Service.CityService;
 import com.singapore.TripPlaner.Service.ImageService;
-import com.singapore.TripPlaner.Service.PlaceService;
-import com.singapore.TripPlaner.Service.RandomValues;
+import com.singapore.TripPlaner.Service.UserService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,19 +11,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
     private final ImageService imageService;
-    private final RandomValues randomValues;
-    private final PlaceService placeService;
-    private final CityService cityService;
+    private final UserService userService;
 
-    public HomeController(ImageService imageService, RandomValues randomValues, PlaceService placeService, CityService cityService) {
+    public HomeController(ImageService imageService, UserService userService) {
         this.imageService = imageService;
-        this.randomValues = randomValues;
-        this.placeService = placeService;
-        this.cityService = cityService;
+        this.userService = userService;
     }
 
     @GetMapping("/")
-    public String getStart(Model model){
+    public String getStart(Model model, Authentication authentication){
         model.addAttribute("momument", Type.MONUMENT);
         model.addAttribute("nature", Type.NATURE);
         model.addAttribute("restaurant", Type.RESTAURANT);
@@ -35,7 +30,7 @@ public class HomeController {
         model.addAttribute("randomMonumentImage",imageService.getRandomPlaceImage(Type.MONUMENT.getPlaceType()));
         model.addAttribute("randomRestaurantImage",imageService.getRandomPlaceImage(Type.RESTAURANT.getPlaceType()));
         model.addAttribute("randomCityImage", imageService.randomImage(imageService.getAllImages()));
-
+        userService.displayUsername(model, authentication);
         return "home";
     }
 }

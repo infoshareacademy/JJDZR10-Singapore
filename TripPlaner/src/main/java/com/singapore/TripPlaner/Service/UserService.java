@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import javax.transaction.Transactional;
 
@@ -40,9 +41,16 @@ public class UserService implements UserDetailsService {
         return userRepository.findUserByEmail(user.getEmail()).isPresent() || userRepository.findUserByLogin(user.getLogin()).isPresent();
 
     }
+
     public User getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            return (User) authentication.getPrincipal();
+        return (User) authentication.getPrincipal();
     }
 
+    public void displayUsername(Model model, Authentication authentication) {
+        if (authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName();
+            model.addAttribute("username", username);
+        }
+    }
 }

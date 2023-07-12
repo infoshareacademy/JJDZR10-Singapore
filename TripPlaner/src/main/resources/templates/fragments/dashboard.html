@@ -34,7 +34,7 @@
                         Menu planer
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/place/type/type?type=Zabytki" >Zabytki</a></li>
+                        <li><a class="dropdown-item" href="/place/type/type?type=Zabytki">Zabytki</a></li>
                         <li><a class="dropdown-item" href="/place/type/type?type=Natura">Natura</a></li>
                         <li><a class="dropdown-item" href="/place/type/type?type=Jedzenie">Restauracje</a></li>
                         <li><a class="dropdown-item" href="/cities">Miasta</a></li>
@@ -48,22 +48,23 @@
                 </li>
             </ul>
             <div sec:authorize="!isAuthenticated()">
-            <button class="btn btn-outline-light" type="submit">
-                <a class="nav-link" href="/login"> Zaloguj</a>
-            </button>
-            <button class="btn btn-outline-light" type="submit">
-                <a class="nav-link" href="/register"> Zarejestruj</a>
-            </button>
+                <button class="btn btn-outline-light" type="submit">
+                    <a class="nav-link" href="/login"> Zaloguj</a>
+                </button>
+                <button class="btn btn-outline-light" type="submit">
+                    <a class="nav-link" href="/register"> Zarejestruj</a>
+                </button>
             </div>
             <div sec:authorize="isAuthenticated()">
-            <button class="btn btn-outline-light" type="submit">
-                <a class="nav-link" href="/logout"> Wyloguj </a>
-            </button>
+                   <span class="navbar-text text-light" th:text="'Cześć '+ ${username}+'!'"></span>
+                <button class="btn btn-outline-light" type="submit">
+                    <a class="nav-link" href="/logout"> Wyloguj </a>
+                </button>
             </div>
-            <form class="d-flex" role="search">
-                <input class="form-control me-1" type="search" placeholder="Szukaj" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Szukaj</button>
-            </form>
+<!--            <form class="d-flex" role="search">-->
+<!--                <input class="form-control me-1" type="search" placeholder="Szukaj" aria-label="Search">-->
+<!--                <button class="btn btn-outline-light" type="submit">Szukaj</button>-->
+<!--            </form>-->
         </div>
     </div>
 </nav>
