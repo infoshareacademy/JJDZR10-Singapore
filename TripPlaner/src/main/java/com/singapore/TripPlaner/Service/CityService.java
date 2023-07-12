@@ -18,7 +18,7 @@ public class CityService {
     }
 
     public City createCity(City city) {
-        logger.info("City created: {}",city);
+        logger.info("City created: {}",city.getName());
         return cityRepository.save(city);
     }
 

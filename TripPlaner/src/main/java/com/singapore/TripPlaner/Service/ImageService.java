@@ -56,13 +56,13 @@ public class ImageService {
     }
 
     public void savePlaceForImage(Image image, Place place){
-        logger.info("Image saved with url: {} for place with id {}",image.getUrl(),place.getId());
+        logger.info("Image with url: {} set for place with id {}",image.getUrl(),place.getId());
         image.setPlace(place);
         saveImage(image);
     }
 
     public void saveCityForImage(Image image, City city){
-        logger.info("Image saved with url: {} for city with id {}",image.getUrl(),city.getId());
+        logger.info("Image with url: {} set for city with id {}",image.getUrl(),city.getId());
         image.setCity(city);
         saveImage(image);
     }
