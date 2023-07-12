@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Singapore - Trip Planner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<!--    <link href="css/styles.css" rel="stylesheet"/>-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+</head>
+<body>
+<nav th:insert="~{/fragments/dashboard :: nav}"></nav>
+<header class="py-2 bg-light border-bottom mb-4">
+    <div class="container">
+        <div class="text-center my-5">
+            <h1 class="fw-bolder" th:text="${trip.name}"></h1>
+
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <a href="#!"><img class="card-img-top"
+                                  th:src="${randomPlaceImgUrl}"
+                                  alt="..."/></a>
+                <div class="card-body">
+                    <h2 class="card-title" th:text="${trip.name}"></h2>
+                    <p class="card-text" >Super wycieczka-sprawdż czy Ci się podoba</p>
+                    <a class="btn btn-primary" th:href="@{/trips}">←Znajdź inną wycieczkę </a>
+                </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-header">Parametry wycieczki</div>
+                <div class="card-body">
+                    <div th:if="${trip.distance} != null">
+                        <span> Dystans: </span>
+                        <span th:text="|${trip.distance} km|"></span>
+                    </div>
+                    <div th:if="${trip.time_for_trip} != null">
+                        <span> Czas: </span>
+                        <span th:text="|${trip.time_for_trip} h|"></span>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="card mb-4"  th:if="${trip.getDescription()} != null">
+                <div class="card-header">Krótki opis wycieczki</div>
+                <div class="card-body" th:text="${trip.description}"></div>
+            </div>
+            <div class="card mb-4" th:if="${trip.time_for_trip} != null">
+                <div class="card-header" >Pogoda</div>
+                <div class="card-body" >
+                    <div th:insert="weather.html::
+                            weather (cityName=${trip.places.get(0).getCity().getName()},
+                            weatherTemp=${weather.temp},
+                            weatherDesc=${weather.description},
+                            weatherSpeed=${weather.speed},
+                            weatherHum=${weather.humidity},
+                            weatherPres=${weather.pressure},
+                            localDateTime=${localDateTime},
+                            weatherIcon=${weather.icon})">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" th:if="${trip.getPlaces.size()} > 0">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card mb-12">
+                <div class="card-header">Punkty wycieczki:</div>
+                <div class="card-body">
+                    <div class="row">
+
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+                            <div th:each="place: ${trip.places}" class="col mb-4">
+                                <div class="card">
+                                    <img th:src="${place.images.get(0).url}" class="card-img-top" alt="card" width="390" height="150">
+                                    <div class="card-body">
+                                        <h5 th:text="${place.name}" class="card-title"></h5>
+                                        <p> <td th:text="${place.city.name}"/></p>
+
+                                        <a th:href="@{/place/{placeId}(placeId=${place.id})}" class="btn btn-primary"> Detale</a>
+                                        <a th:href="@{/place/edit-place/{id}(id=${place.id})}"  class="btn btn-secondary"> Edytuj</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="js/scripts.js"></script>
+</body>
+</html>

@@ -97,27 +97,14 @@
                     <h5 class="card-title">Jedzenie</h5>
                     <p class="card-text">Są miejsca w Polsce, w których warto zjeść, aby spróbować różnorodnych smaków i
                         potraw charakterystycznych dla danego regionu. Co i gdzie byś zjadł?</p>
-                    <a th:href="@{/place/type/type(type=*{restaurant.getPlaceType()})}"
-                       class="btn btn-primary">Zobacz</a>
+                    <a th:href="@{/place/type/type(type=*{restaurant.getPlaceType()})}" class="btn btn-primary">Zobacz</a>
                 </div>
             </div>
         </div>
         <div class="col-6 col-sm-4">
             <div class="card">
-                <img th:src="@{zdj1.jpg}" src="../static/zdj1.jpg" class="card-img-top" alt="card" width="390"
-                     height="250">
-                <div class="card-body">
-                    <h5 class="card-title">Wycieczki</h5>
-                    <p class="card-text">Jeśli nie jesteś zdecydowany lub nie masz pomysłu, skorzystaj z gotowych już
-                        planów na spędzenie wolnego czasu. Z całą pewnością znajdziesz coś dla siebie.</p>
-                    <a href="trips" class="btn btn-primary">Zobacz</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-sm-4" sec:authorize="hasAuthority('ADMIN')">>
-            <div class="card">
-                <img th:src="@{zdj1.jpg}" src="../static/zdj1.jpg" class="card-img-top" alt="card" width="390"
-                     height="250">
+                <img src="https://bow24.pl/wp-content/uploads/2022/07/opinie-2-1024x538.png"
+                     width="390" height="250">
                 <div class="card-body">
                     <h5 class="card-title">Opinie</h5>
                     <p class="card-text">Opinia to subiektywna ocena, zdanie lub wrażenie, na przykład na temat danej
