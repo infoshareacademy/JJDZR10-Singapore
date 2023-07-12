@@ -15,7 +15,8 @@
 <div class="container ">
     <div class="row ">
         <div class="mt-4 mb-3">
-            <h1 th:text="${trip.id} > 0 ? 'Edytuj wycieczkę' : 'Utwórz wycieczkę'"></h1>
+            <h1 th:text="${trip.id} != null ? 'Edytuj wycieczkę' : 'Utwórz wycieczkę'"></h1>
+            <a class="btn btn-primary" th:href="@{/trips}">← Powrót </a>
         </div>
     </div>
     <div class="row ">
@@ -26,20 +27,32 @@
                     <label for="name" class="form-label">Nazwa wycieczki</label>
                     <input id="name" class="form-control" placeholder="Nazwa wycieczki" type="text" th:field="*{name}" />
                 </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Ile czasu trwa wycieczka [h]</label>
+                    <input id="name" class="form-control" placeholder="Czas wycieczki [h]" type="text" th:field="*{time_for_trip}" />
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Orientacyjna odległość [km]</label>
+                    <input id="name" class="form-control" placeholder="Dystans wycieczki [h]" type="text" th:field="*{distance}" />
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Opis wycieczki</label>
+                    <textarea id="name" class="form-control" th:field="*{description}" ></textarea>
+                </div>
                 <div class="mb-3 form-group">
                     <a th:each="city: ${cities}"
                        th:href="@{/trips/new(cityId=${city.id})}"
                        th:class="${cityId}==${city.id}? 'btn active' : 'btn'"
                        type="button"
                        th:text="${city.name}"
-                       th:if="${trip.id} == 0 "></a>
+                       th:if="${trip.id} == null "></a>
 
                     <a th:each="city: ${cities}"
                        th:href="@{/trips/{tripId}/edit(tripId=${trip.id},cityId=${city.id})}"
                        th:class="${cityId}==${city.id}? 'btn active' : 'btn'"
                        type="button"
                        th:text="${city.name}"
-                       th:if="${trip.id} > 0 "></a>
+                       th:if="${trip.id} != null "></a>
                 </div>
                 <div class="mb-3 form-group">
                     <label for="places" class="form-label">Wybierz miejsca</label>
@@ -50,9 +63,9 @@
                     </select>
                 </div>
               <div class="mb-3">
-                  <input class="btn btn-primary" type="submit" th:value="${trip.id} > 0 ? 'Zapisz' : 'Dodaj'"/>
+                  <input class="btn btn-primary" type="submit" th:value="${trip.id} != null ? 'Zapisz' : 'Dodaj'"/>
                   <input class="btn" type="reset" value="Reset" />
-                  <a th:href="@{/trips/{tripId}/delete(tripId=${trip.id})}" class="btn btn-danger" type="button" th:if="${trip.id} > 0 " >Usuń</a>
+                  <a th:href="@{/trips/{tripId}/delete(tripId=${trip.id})}" class="btn btn-danger" type="button" th:if="${trip.id} != null " >Usuń</a>
               </div>
 
             </form>

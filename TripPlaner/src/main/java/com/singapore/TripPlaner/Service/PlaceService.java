@@ -1,5 +1,6 @@
 package com.singapore.TripPlaner.Service;
 
+import com.singapore.TripPlaner.Model.City;
 import com.singapore.TripPlaner.Model.Place;
 import com.singapore.TripPlaner.Exception.ObjectNotFoundException;
 import com.singapore.TripPlaner.Repository.PlaceRepository;
@@ -56,9 +57,19 @@ public class PlaceService {
 
     public List<Place> findPlacesByCityId(Long cityId) {
         findPlaces().stream().filter(place -> place.getCity().getId() == cityId)
-                .findAny().orElseThrow(() -> new ObjectNotFoundException("Not found place with given city_id: " + cityId));
+                .findAny()
+                .orElseThrow(() -> new ObjectNotFoundException("Not found place with given city_id: " + cityId));
         return findPlaces().stream().filter(place -> place.getCity().getId() == cityId)
                 .collect(Collectors.toList());
+    }
+    
+
+    public List<Long> getIdsExept(List<Long> listOfIds, City city) {
+        return placeRepository.getIdsInCityExept(listOfIds, city);
+    }
+
+    public List<Long> getAllIds(City city) {
+        return placeRepository.getAllIdsInCity(city);
     }
 }
 

@@ -31,6 +31,10 @@ public class Image {
     @JoinColumn(name = "city_id")
     private City city;
 
+    @ManyToOne
+    @JoinColumn(name = "trip_id")
+    private City trip;
+
     @Transient
     private User user;
 }

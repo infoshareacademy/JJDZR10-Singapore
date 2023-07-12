@@ -46,18 +46,8 @@ public class Reader {
         Object object = gson.fromJson(jsonObject.toJSONString(), c);
 
         switch (className) {
-            case "com.singapore.TripPlaner.Model.Trip":
-                return this.createTripInstance(jsonObject, object);
             case "com.singapore.TripPlaner.Model.User":
                 return (User) object;
-//            case "com.singapore.TripPlaner.Model.City":
-//                return (City) object;
-//            case "com.singapore.TripPlaner.Model.Place":
-//                return this.createPlaceInstance(jsonObject, object);
-//            case "com.singapore.TripPlaner.Model.Image":
-//                return this.createImageInstance(jsonObject, object);
-            case "com.singapore.TripPlaner.Model.TripPoint":
-                return this.createTripPointInstance(jsonObject, object);
         }
         throw (new Exception("No such model entity"));
     }
@@ -119,55 +109,6 @@ public class Reader {
                 + c.getSimpleName() + ".json");
     }
 
-    private Trip createTripInstance(JSONObject jsonObject, Object object) {
-        Trip trip = (Trip) object;
-        if (jsonObject.containsKey("userid")) {
-            long idUser = (long) jsonObject.get("userid");
-            User user = (User) this.getObjectById(User.class, idUser);
-            trip.setUser(user);
-        }
-        return trip;
-    }
-
-    private Place createPlaceInstance(JSONObject jsonObject, Object object) {
-        Place place = (Place) object;
-//        if (jsonObject.containsKey("cityid")) {
-//            long idCity = (long) jsonObject.get("cityid");
-//            City city = (City) this.getObjectById(City.class, idCity);
-//            place.setCity(city);
-//        }
-        return place;
-    }
-
-    private Opinion createOpinionInstance(JSONObject jsonObject, Object object) {
-        Opinion opinion = (Opinion) object;
-        if (jsonObject.containsKey("userid")) {
-            long idUser = (long) jsonObject.get("userid");
-            User user = (User) this.getObjectById(User.class, idUser);
-//            opinion.setUser(user);
-        }
-        return opinion;
-    }
-
-    private Image createImageInstance(JSONObject jsonObject, Object object) {
-        Image image = (Image) object;
-        return image;
-    }
-
-    private TripPoint createTripPointInstance(JSONObject jsonObject, Object object) {
-        TripPoint tripPoint = (TripPoint) object;
-        if(jsonObject.containsKey("placeid")) {
-            long idPlace = (long) jsonObject.get("placeid");
-            Place place  = (Place) this.getObjectById(Place.class, idPlace);
-            tripPoint.setPlace(place);
-        }
-        if(jsonObject.containsKey("tripid")) {
-            long idTrip = (long) jsonObject.get("tripid");
-            Trip trip  = (Trip) this.getObjectById(Trip.class, idTrip);
-            tripPoint.setTrip(trip);
-        }
-        return tripPoint;
-    }
 
 
 }
