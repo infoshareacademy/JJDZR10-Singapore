@@ -1,6 +1,7 @@
 package com.singapore.TripPlaner.Model;
 
 
+import com.singapore.TripPlaner.Model.User.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,6 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Table(name = "opinions")
 @AllArgsConstructor
-
 public class Opinion {
 
     @Id
@@ -26,7 +26,9 @@ public class Opinion {
     private String comment;
     @NotNull
     private Integer rate;
-    private String user = "Singapore";
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
     @ManyToOne
     @JoinColumn(name = "place_id")
     private Place place;

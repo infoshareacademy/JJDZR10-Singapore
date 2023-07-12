@@ -30,7 +30,7 @@ import javax.persistence.Table;
 public class Trip implements Comparable<Trip>  {
 
     public static final String TABLE_NAME = "trip";
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -51,10 +51,10 @@ public class Trip implements Comparable<Trip>  {
 
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL)
     private List<Image> images = new ArrayList<>();
-    
+
     @Length(min = 2, max = 1000)
     private String description;
-    
+
     /**
      * Places to see on the route
      */

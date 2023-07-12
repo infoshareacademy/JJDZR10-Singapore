@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
 
@@ -113,14 +113,14 @@
                 </div>
             </div>
         </div>
-        <div class="col-6 col-sm-4">
+        <div class="col-6 col-sm-4" sec:authorize="hasAuthority('ADMIN')">>
             <div class="card">
-                <img th:src="@{zdj1.jpg}" src="../static/zdj1.jpg" class="card-img-top" alt="card" width="390" height="250">
+                <img th:src="@{zdj1.jpg}" src="../static/zdj1.jpg" class="card-img-top" alt="card" width="390"
+                     height="250">
                 <div class="card-body">
-                    <h5 class="card-title">Wycieczki</h5>
-                    <p class="card-text">Jeśli nie jesteś zdecydowany lub nie masz pomysłu, skorzystaj z gotowych już
-                        planów na spędzenie wolnego czasu. Z całą pewnością znajdziesz coś dla siebie.</p>
-                    <a href="trips" class="btn btn-primary">Zobacz</a>
+                    <h5 class="card-title">Zdjęcia</h5>
+                    <p class="card-text">Podgląd załadowanych zdjęć</p>
+                    <a href="/images" class="btn btn-primary">Zobacz</a>
                 </div>
             </div>
         </div>

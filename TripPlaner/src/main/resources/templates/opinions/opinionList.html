@@ -17,6 +17,7 @@
             <td th:text="${iterStat.count}"/>
             <td th:text="${opinion.comment}"/>
             <td th:text="${opinion.rate}"/>
+            <td th:text="${opinion.user.login}"/>
             <td><a th:href="@{/opinions/edit/{id}(id=${opinion.opinionId})}" value="button"> Edytuj </a></td>
             <td><a th:href="@{/opinions/delete/{id}(id=${opinion.opinionId})}" value="button"> Usuń </a></td>
         </tr>

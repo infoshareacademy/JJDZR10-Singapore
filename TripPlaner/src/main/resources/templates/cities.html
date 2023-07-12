@@ -14,11 +14,11 @@
     <h1 style="margin-top:1.2cm; margin-bottom:1cm">
         Miasta w Polsce
     </h1>
-    <p>Aby dodać swoje miasto kliknij nastepujący przycisk: <a th:href="@{/city/create}"class="btn btn-primary" style="font-size: smaller">Dodaj miasto</a></p>
+    <p>Aby dodać swoje miasto kliknij następujący przycisk: <a th:href="@{/city/create}"class="btn btn-primary" style="font-size: smaller">Dodaj miasto</a></p>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
-        <div th:each="city: ${cities}" class="col mb-4">
+        <div th:each="city : ${cities}" class="col mb-4">
             <div class="card">
-                <img th:src="${city.images.get(0).url}" class="card-img-top" alt="card" width="390" height="150">
+                <img th:src="${city.images.get(0).url}"  class="card-img-top" alt="card" width="390" height="150">
                 <div class="card-body">
                     <h5 th:text="${city.name}" class="card-title"></h5>
                     <a th:href="@{/city/details(id=${city.id})}" class="btn btn-primary"> Detale </a>
