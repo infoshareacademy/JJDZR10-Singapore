@@ -29,7 +29,7 @@ public class TripService {
     }
 
     public void removeTrip(Trip trip) {
-        logger.info("Removed city with id: {}", id);
+        logger.info("Removed trip with id: {}", trip.getId());
         try {
             tripRepository.deleteById(trip.getId());
         } catch (NoSuchElementException e) {
@@ -43,6 +43,7 @@ public class TripService {
     }
 
     public Trip save(Trip trip) {
+        logger.info("Trip created: {}",trip.getName());
         return tripRepository.save(trip);
     }
 
