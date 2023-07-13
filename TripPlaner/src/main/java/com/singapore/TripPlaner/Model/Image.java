@@ -1,9 +1,6 @@
 package com.singapore.TripPlaner.Model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 

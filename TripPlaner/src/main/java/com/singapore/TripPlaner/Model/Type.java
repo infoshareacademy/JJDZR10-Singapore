@@ -14,4 +14,5 @@ public enum Type {
     public String getPlaceType() {
         return placeType;
     }
+
 }

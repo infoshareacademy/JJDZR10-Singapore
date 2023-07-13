@@ -66,7 +66,7 @@ public class CityController {
     @PostMapping("/city/edit/{id}")
     public String editCity(@PathVariable Long id, @ModelAttribute City city) {
         cityService.editCityById(city);
-        return "redirect:/cites";
+        return "redirect:/cities";
     }
 
     @GetMapping("/city/{id}/delete")

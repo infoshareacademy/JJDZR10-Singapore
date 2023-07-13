@@ -1,12 +1,8 @@
 package com.singapore.TripPlaner.Model;
 
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.json.simple.JSONObject;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;

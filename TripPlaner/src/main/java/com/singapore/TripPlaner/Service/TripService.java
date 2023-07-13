@@ -5,6 +5,8 @@ import com.singapore.TripPlaner.Model.*;
 import com.singapore.TripPlaner.Repository.TripRepository;
 import com.singapore.TripPlaner.Service.dataacces.Reader;
 import com.singapore.TripPlaner.Service.dataacces.Writer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,7 +17,7 @@ import java.util.Random;
 
 @Service
 public class TripService {
-
+    private static final Logger logger = LoggerFactory.getLogger(TripService.class);
     private final TripRepository tripRepository;
 
     public TripService(TripRepository tripRepository) {
@@ -27,6 +29,7 @@ public class TripService {
     }
 
     public void removeTrip(Trip trip) {
+        logger.info("Removed trip with id: {}", trip.getId());
         try {
             tripRepository.deleteById(trip.getId());
         } catch (NoSuchElementException e) {
@@ -40,6 +43,7 @@ public class TripService {
     }
 
     public Trip save(Trip trip) {
+        logger.info("Trip created: {}",trip.getName());
         return tripRepository.save(trip);
     }
 

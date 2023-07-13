@@ -7,6 +7,8 @@ import lombok.*;
 import java.util.ArrayList;
 
 @Entity
+@EqualsAndHashCode
+@ToString
 @Getter
 @Setter
 @NoArgsConstructor
